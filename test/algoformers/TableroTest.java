@@ -17,7 +17,7 @@ import org.junit.Test;
 public class TableroTest {
     
     @Test
-    public void testTableroVacio(){
+    public void testTableroEstaVacioCuandoSeInicia(){
         Tablero tablero = new Tablero(3,3);
         for (int i=0;i<3;i++){
             for (int j=0;j<3;j++){
@@ -28,41 +28,79 @@ public class TableroTest {
     }
     
     @Test
-    public void testColocarAlgoformer(){
+    public void testColocarAlgoformerNoEstaVacio(){
         Tablero tablero = new Tablero(3,3);
         Posicion posicion = new Posicion(1,2);
         FabricaAlgoformers fabrica = new FabricaAlgoformers();
         Algoformer optimus = fabrica.crearOptimus();
+        
         tablero.colocarAlgoformer(posicion,optimus);
+        
         Assert.assertFalse(tablero.estaVacio(posicion));
     }
     
     @Test
-    public void testAgregarUbicable(){
+    public void testAgregarUbicableNoEstaVacio(){
         Tablero tablero = new Tablero(3,3);
         Posicion posicion = new Posicion(1,2);
         Bonus bonus = new BurbujaInmaculada(posicion);
+        
         tablero.agregarUbicable(posicion, bonus);
+        
         Assert.assertFalse(tablero.estaVacio(posicion));
     }
     
     @Test
-    public void testBorrarUbicable(){
+    public void testBorrarUbicableYEstaVacio(){
         Tablero tablero = new Tablero(3,3);
         Posicion posicion = new Posicion(1,2);
         Bonus bonus = new BurbujaInmaculada(posicion);
         tablero.agregarUbicable(posicion, bonus);
+        
         Assert.assertFalse(tablero.estaVacio(posicion));
+        
         tablero.borrarUbicable(posicion);
+        
         Assert.assertTrue(tablero.estaVacio(posicion));
     }
     
     @Test
-    public void testEstaVacio(){
+    public void testEstaVacioSiHayAgregamosVacio(){
         Tablero tablero = new Tablero(3,3);
         Posicion posicion = new Posicion(1,2);
         Vacio vacio = new Vacio(posicion);
+        
         tablero.agregarUbicable(posicion, vacio);
+        
         Assert.assertTrue(tablero.estaVacio(posicion));
+    }
+    
+    @Test
+    public void testNoSePuedeSuperponerAlgoformers() {
+        Tablero tablero = new Tablero(3,3);
+        Posicion posicion = new Posicion(1,2);
+        FabricaAlgoformers fabrica = new FabricaAlgoformers();
+        Algoformer optimus = fabrica.crearOptimus();
+        Algoformer optimus2 = fabrica.crearOptimus();
+        
+        tablero.colocarAlgoformer(posicion,optimus);
+        tablero.colocarAlgoformer(posicion,optimus2);
+        
+        Assert.assertEquals(tablero.obtenerUbicable(posicion),optimus);
+    }
+    
+    @Test
+    public void testBonusAdmiteSuperposicion() {
+        Tablero tablero = new Tablero(3,3);
+        Posicion posicion = new Posicion(1,2);
+        FabricaAlgoformers fabrica = new FabricaAlgoformers();
+        Algoformer optimus = fabrica.crearOptimus();
+        Bonus bonus = new BurbujaInmaculada(posicion);
+        
+        tablero.agregarUbicable(posicion,bonus);
+        tablero.colocarAlgoformer(posicion,optimus);
+        
+        
+        Assert.assertEquals(tablero.obtenerUbicable(posicion),optimus);
     }
 }

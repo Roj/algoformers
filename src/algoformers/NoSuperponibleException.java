@@ -7,11 +7,8 @@ package algoformers;
 
 /**
  *
- * @author Matias
+ * @author joaquintz
  */
-public interface Ubicable {
-    
-    public void superponer(Algoformer algoformer);
+public class NoSuperponibleException extends RuntimeException {
     
 }
-

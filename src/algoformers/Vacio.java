@@ -18,8 +18,8 @@ class Vacio implements Ubicable {
     }
 
     @Override
-    public void superponer(Tablero tablero, Algoformer algoformer) {
-        tablero.agregarUbicable(this.posicion,algoformer);
+    public void superponer(Algoformer algoformer) {
+        //Metodo vacio
     }
     
 }

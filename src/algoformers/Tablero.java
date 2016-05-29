@@ -35,7 +35,12 @@ public class Tablero {
     
     public void colocarAlgoformer(Posicion posicion,Algoformer algoformer){
         Ubicable ubicableEnPosicion = this.tablero.get(posicion);
-        ubicableEnPosicion.superponer(this,algoformer);
+        try {
+            ubicableEnPosicion.superponer(algoformer);
+            this.agregarUbicable(posicion, algoformer);
+        } catch (NoSuperponibleException e) {
+            //no será agregado a la posición
+        }
     }
     
     public void agregarUbicable(Posicion posicion,Ubicable nuevoUbicable){
@@ -48,5 +53,9 @@ public class Tablero {
 
     public boolean estaVacio(Posicion posicion){
          return this.tablero.get(posicion) instanceof Vacio;
+    }
+    
+    public Ubicable obtenerUbicable(Posicion posicion) {
+        return this.tablero.get(posicion);
     }
 }

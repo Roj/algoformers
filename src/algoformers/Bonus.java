@@ -18,9 +18,8 @@ public abstract class Bonus implements Ubicable {
     }
     
     @Override
-    public void superponer(Tablero tablero, Algoformer algoformer){
+    public void superponer(Algoformer algoformer){
         this.accion(algoformer);
-        tablero.agregarUbicable(this.posicion, algoformer);
         
     }
     
