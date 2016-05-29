@@ -1,6 +1,6 @@
 package algoformers;
 
-public class Algoformer extends Ubicable {
+public class Algoformer implements Ubicable {
 	protected ModoAlgoformer modoAlgoformer;
 	protected TipoAlgoformer tipoAlgoformer;
 	
@@ -31,4 +31,8 @@ public class Algoformer extends Ubicable {
 	public void atacar(Algoformer algoformer) {
 		
 	}
+	@Override
+    	public void superponer(Tablero tablero, Algoformer algoformer) {
+        	throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    	}
 }
