@@ -1,6 +1,6 @@
 package algoformers;
 
-public class Algoformer {
+public class Algoformer extends Ubicable {
 	protected ModoAlgoformer modoAlgoformer;
 	protected TipoAlgoformer tipoAlgoformer;
 	
