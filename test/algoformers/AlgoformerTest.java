@@ -25,9 +25,19 @@ public class AlgoformerTest {
     @Test(expected=AtaqueInvalidoException.class)
     public void testAtacarAlgoformerMismoBando() {
     	FabricaAlgoformers fabrica = new FabricaAlgoformers();
-    	Algoformer alf = fabrica.crearOptimus();
-    	Algoformer otro_alf = fabrica.crearOptimus();
+    	Algoformer optimus = fabrica.crearOptimus();
+    	Algoformer otro_optimus = fabrica.crearOptimus();
     	
-    	alf.atacar(otro_alf);
+    	optimus.atacar(otro_optimus);
     }
+    @Test
+    public void testAtacarAlgoformerDiferenteBando() {
+    	FabricaAlgoformers fabrica = new FabricaAlgoformers();
+    	Algoformer optimus = fabrica.crearOptimus();
+    	Algoformer megatron = fabrica.crearMegatron();
+    	
+    	optimus.atacar(megatron);
+    	
+    	Assert.assertTrue(megatron.obtenerVida() == 500);	
+    }  
 }
