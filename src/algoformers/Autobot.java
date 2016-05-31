@@ -13,6 +13,6 @@ public class Autobot extends Algoformer {
 	public void atacar(Decepticon algoformer) {
 		vida -= algoformer.obtenerPuntosAtaque();
 		
-		//etc de cosas al atacar
+		//etc de cosas al atacar un autobot
 	}	
 }
