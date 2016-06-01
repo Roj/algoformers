@@ -27,10 +27,6 @@ public class Posicion {
     }
     
     public int calcularDistancia(Posicion otra) {
-        //TODO: esta bien esta funcion? Suma los lados del triangulo distancia.
-        //Tiene sentido si solo se mueven en rectas y no en diagonal.
-        //Tal vez queramos tener en cuenta la diagonal,
-        //ahi funcionaria algo como min{delta X, delta Y}
         return Math.max(Math.abs(this.X - otra.obtenerX()),Math.abs(this.Y - otra.obtenerY()));
     }
 
