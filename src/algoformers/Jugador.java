@@ -60,19 +60,9 @@ class Jugador {
         
         juego.verificarTurno(this);
         
-        //Ver si hay una mejor forma de checkear la distancia y la superponibilidad de la posicion
-        //La distancia se checkea en algoformer al mover
-        //La superponibilidad se checkea en tablero al colocar Algoformer en una posicion
-        Posicion origen = algoformerEnMovimiento.obtenerPosicion();
-        algoformerEnMovimiento.mover(destino);
-        try{
-            this.tablero.colocarAlgoformer(destino,algoformerEnMovimiento);
-            juego.avanzarTurno();
-        }
-        catch (NoSuperponibleException e){
-            algoformerEnMovimiento.mover(origen);
-            throw e;
-        }
+        tablero.moverAlgoformer(destino, algoformerEnMovimiento);
+        
+        juego.avanzarTurno();
     }
     public String obtenerNombre() {
         return this.nombre;

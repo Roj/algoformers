@@ -46,6 +46,17 @@ public class Tablero {
         }
     }
     
+    public void moverAlgoformer(Posicion posicion,Algoformer algoformer){
+        Ubicable ubicableEnPosicion = this.tablero.get(posicion);
+        try {
+            ubicableEnPosicion.superponer(algoformer);
+            algoformer.mover(posicion);
+            this.agregarUbicable(posicion, algoformer);
+        } catch (NoSuperponibleException e) {
+            throw e;
+        }
+    }
+    
     public void agregarUbicable(Posicion posicion,Ubicable nuevoUbicable){
         this.tablero.put(posicion, nuevoUbicable);
         nuevoUbicable.establecerPosicion(posicion);
