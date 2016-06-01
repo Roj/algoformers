@@ -73,4 +73,18 @@ public class AlgoformerTest {
     	
     	Assert.assertTrue(megatron.obtenerVida() == 500);	
     }
+    
+    @Test(expected=ObjetivoMuyLejosException.class)
+    public void testMoverObjetivoLejosLanzaExcepcion(){
+        FabricaAlgoformers fabrica = new FabricaAlgoformers();
+        Algoformer optimus = fabrica.crearOptimus();
+        
+        Posicion posicion = new Posicion(1,1);
+        optimus.establecerPosicion(posicion);
+        
+        Posicion nuevaPosicion = new Posicion(10,1);
+        optimus.mover(nuevaPosicion);
+        
+        Assert.assertTrue(optimus.obtenerPosicion() == posicion);
+    }
 }

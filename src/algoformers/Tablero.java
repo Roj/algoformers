@@ -42,7 +42,7 @@ public class Tablero {
             algoformer.establecerPosicion(posicion);
             this.agregarUbicable(posicion, algoformer);
         } catch (NoSuperponibleException e) {
-            //no será agregado a la posición
+            throw e;
         }
     }
     
