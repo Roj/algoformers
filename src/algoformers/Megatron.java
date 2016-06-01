@@ -1,23 +1,19 @@
 package algoformers;
 
-public class Optimus implements TipoAlgoformer {
+public class Megatron implements TipoAlgoformer {
 	
-	private int puntosVida = 500;
-	private int puntosAtaqueHumanoide = 50;
-	private int distanciaAtaqueHumanoide = 2;
-	private int velocidadHumanoide = 2;
+	private int puntosVida = 550;
+	private int puntosAtaqueHumanoide = 10;
+	private int distanciaAtaqueHumanoide = 3;
+	private int velocidadHumanoide = 1;
 	
-	private int puntosAtaqueAlterno = 15;
-	private int distanciaAtaqueAlterno = 4;
-	private int velocidadAlterno = 5;
+	private int puntosAtaqueAlterno = 55;
+	private int distanciaAtaqueAlterno = 2;
+	private int velocidadAlterno = 8;
 	
 	public int obtenerPuntosVida() {
 		return puntosVida;
 	}
-<<<<<<< HEAD
-
-=======
->>>>>>> f0f3b25d96b573f9fe22b5c25e57d3b8c3d0256d
 	public int obtenerPuntosAtaque(ModoHumanoide modoAlgoformer) {
 		return puntosAtaqueHumanoide;
 	}
@@ -36,4 +32,5 @@ public class Optimus implements TipoAlgoformer {
 	public int obtenerVelocidad(ModoAlterno modoAlgoformer) {
 		return velocidadAlterno;
 	}	
+
 }
