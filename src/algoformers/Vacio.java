@@ -29,10 +29,12 @@ class Vacio implements Ubicable {
     @Override
     public void recibirAtaque(Autobot algoformer){
         //Metodo vacio
+    	throw new AtaqueInvalidoException();
     }
     @Override
     public void recibirAtaque(Decepticon algoformer){
         //Metodo vacio
+    	throw new AtaqueInvalidoException();
     }
     
 }

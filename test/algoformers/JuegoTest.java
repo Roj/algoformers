@@ -85,14 +85,16 @@ public class JuegoTest {
         
         Assert.assertTrue(juego.verificarTurno(jugador1));
 
-        try {
+       /* try {
             jugador1.atacarPosicion(0,new Posicion(20,1));
             
             //Si esto sigue ejecutando caimos en un error
             throw new AssertionError();
         } catch(ObjetivoMuyLejosException e) {
             juego.verificarTurno(jugador1);
-        }
+        }*/
+        jugador1.atacarPosicion(0, new Posicion(20, 1));
+        Assert.assertTrue(juego.verificarTurno(jugador1));
     }
     @Test
     public void testAtacarMismoBandoNoCambiaTurno() {
@@ -106,13 +108,15 @@ public class JuegoTest {
         tablero.colocarAlgoformer(new Posicion(2,1),jugador1.obtenerAlgoformer(1));
         
         Assert.assertTrue(juego.verificarTurno(jugador1));
-        try {
+        /*try {
             jugador1.atacarPosicion(0,new Posicion(2,1));
             //Si esto sigue ejecutando caimos en un error
             throw new AssertionError();
         } catch(AtaqueInvalidoException e) {
             juego.verificarTurno(jugador1);
-        }
+        }*/
+        jugador1.atacarPosicion(0, new Posicion(2, 1));
+        Assert.assertTrue(juego.verificarTurno(jugador1));
         
     }
     @Test 
@@ -133,6 +137,21 @@ public class JuegoTest {
         
         Assert.assertTrue(vidaEnemigoOriginal > jugador2.obtenerAlgoformer(0).obtenerVida());
     }
-    
-    
+    @Test
+    public void testAtacarAlVacioNoCambiaTurno() {
+        String nombre1 = "Juan";
+        String nombre2 = "John";
+        Juego juego = new Juego(nombre1,nombre2,30,30);
+        Jugador jugador1 = juego.obtenerJugadorActual();
+        
+        Tablero tablero = juego.obtenerTablero();
+        tablero.colocarAlgoformer(new Posicion(1,1),jugador1.obtenerAlgoformer(0));
+        
+        Assert.assertTrue(juego.verificarTurno(jugador1));
+
+        jugador1.atacarPosicion(0, new Posicion(1, 0));
+        
+        Assert.assertTrue(juego.verificarTurno(jugador1));
+        
+    }        
 }

@@ -45,14 +45,17 @@ class Jugador {
         tablero.colocarAlgoformer(posicion, algoformer);
     }
     public void atacarPosicion(int indiceTransformerAtacante, Posicion destino) {
-        
         Algoformer algoformerAtacante = this.obtenerAlgoformer(indiceTransformerAtacante);
         
         juego.verificarTurno(this);
         
-        algoformerAtacante.atacar(tablero.obtenerUbicable(destino));
+        try {
+        	algoformerAtacante.atacar(tablero.obtenerUbicable(destino));
         
-        juego.avanzarTurno();
+        	juego.avanzarTurno();
+        } catch (AtaqueInvalidoException e) {
+        	// no avanza turno y tirara un print en el futuro o algo
+        }
         
     }
     public String obtenerNombre() {

@@ -58,7 +58,8 @@ public class AlgoformerTest {
         }
         
     }
-    @Test(expected=ObjetivoMuyLejosException.class)
+    //@Test(expected=ObjetivoMuyLejosException.class)
+    @Test(expected=AtaqueInvalidoException.class)
     public void testAtacarObjetivoLejosLanzaExcepcion() {
         FabricaAlgoformers fabrica = new FabricaAlgoformers();
     	Algoformer optimus = fabrica.crearOptimus();
