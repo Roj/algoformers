@@ -16,8 +16,8 @@ public class Juego {
     public Juego(String nombreJugadorA, String nombreJugadorB, int dim1, int dim2) {
         this.tablero = new Tablero(dim1,dim2);
         
-        this.jugadorActual = new Jugador(nombreJugadorA,tablero);
-        this.otroJugador = new Jugador(nombreJugadorB,tablero);
+        this.jugadorActual = new Jugador(nombreJugadorA,tablero, this);
+        this.otroJugador = new Jugador(nombreJugadorB,tablero, this);
      
         //Creacion de algoformers
         this.agregarAlgoformers();
@@ -34,7 +34,6 @@ public class Juego {
         this.otroJugador.agregarAlgoformer(fabrica.crearBonecrusher());
         this.otroJugador.agregarAlgoformer(fabrica.crearFrenzy());
     }
-    
     
     public boolean verificarTurno(Jugador jugador) {
         if(!jugador.equals(jugadorActual)) {

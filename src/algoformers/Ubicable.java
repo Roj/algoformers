@@ -11,8 +11,13 @@ package algoformers;
  */
 public interface Ubicable {
     
+    public void establecerPosicion(Posicion pos);
+    public Posicion obtenerPosicion();
+    
     public void superponer(Algoformer algoformer);
     
-    //public void recibirAtaque(Algoformer algoformer);
+    public void recibirAtaque(Autobot algoformer);
+    
+    public void recibirAtaque(Decepticon algoformer);
 }
 

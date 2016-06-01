@@ -7,15 +7,8 @@ package algoformers;
 
 /**
  *
- * @author Matias
+ * @author joaquintz
  */
-public class BurbujaInmaculada extends Bonus {
-
-    
-    @Override
-    public void accion(Algoformer algoformer) {
-        //Falta implementar
-        //algoformer.noRecibirDañosPor2Turnos();
-    }
+public class ObjetivoMuyLejosException extends RuntimeException {
     
 }

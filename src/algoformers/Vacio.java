@@ -13,18 +13,26 @@ class Vacio implements Ubicable {
 
     Posicion posicion;
     
-    public Vacio(Posicion ubicacion){
-        this.posicion = ubicacion;
+    @Override
+    public void establecerPosicion(Posicion pos) {
+        this.posicion = pos;
+    }
+    @Override
+    public Posicion obtenerPosicion() {
+        return this.posicion;
     }
 
     @Override
     public void superponer(Algoformer algoformer) {
         //Metodo vacio
     }
-    
-    /*@Override
-    public void recibirAtaque(Algoformer algoformer){
+    @Override
+    public void recibirAtaque(Autobot algoformer){
         //Metodo vacio
-    }*/
+    }
+    @Override
+    public void recibirAtaque(Decepticon algoformer){
+        //Metodo vacio
+    }
     
 }

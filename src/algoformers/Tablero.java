@@ -28,7 +28,9 @@ public class Tablero {
         for (int i=0;i<this.dimX;i++){
             for (int j=0;j<this.dimY;j++){
                 Posicion posicion = new Posicion(i,j);
-                this.tablero.put(posicion,new Vacio(posicion));
+                Vacio nuevoEspacio = new Vacio();
+                nuevoEspacio.establecerPosicion(posicion);
+                this.tablero.put(posicion,nuevoEspacio);
             }
         }   
     }
@@ -46,10 +48,13 @@ public class Tablero {
     
     public void agregarUbicable(Posicion posicion,Ubicable nuevoUbicable){
         this.tablero.put(posicion, nuevoUbicable);
+        nuevoUbicable.establecerPosicion(posicion);
     }
     
     public void borrarUbicable(Posicion posicion){
-        this.tablero.put(posicion,new Vacio(posicion));
+        Vacio nuevoEspacio = new Vacio();
+        nuevoEspacio.establecerPosicion(posicion);
+        this.tablero.put(posicion,nuevoEspacio);
     }
 
     public boolean estaVacio(Posicion posicion){
