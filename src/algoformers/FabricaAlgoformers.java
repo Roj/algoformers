@@ -5,7 +5,7 @@ public class FabricaAlgoformers {
         ModoAlgoformer humanoide = new ModoHumanoide(50,2,2);
         ModoAlgoformer alterno = new ModoHumanoide(15,4,5);
         
-        Algoformer optimus = new Autobot(500,alterno,humanoide);
+        Algoformer optimus = new Autobot(500,humanoide,alterno);
         
         return optimus;
     }
@@ -13,7 +13,7 @@ public class FabricaAlgoformers {
         ModoAlgoformer humanoide = new ModoHumanoide(40,1,2);
         ModoAlgoformer alterno = new ModoHumanoide(20,3,5);
         
-        Algoformer bambelbi = new Autobot(350,alterno,humanoide);
+        Algoformer bambelbi = new Autobot(350,humanoide,alterno);
         
         return bambelbi;
     }
@@ -21,7 +21,7 @@ public class FabricaAlgoformers {
         ModoAlgoformer humanoide = new ModoHumanoide(5,5,1);
         ModoAlgoformer alterno = new ModoHumanoide(35,2,8);
         
-        Algoformer ratchet = new Autobot(150,alterno,humanoide);
+        Algoformer ratchet = new Autobot(150,humanoide,alterno);
         
         return ratchet;
     }
@@ -31,7 +31,7 @@ public class FabricaAlgoformers {
         ModoAlgoformer humanoide = new ModoHumanoide(10,3,1);
         ModoAlgoformer alterno = new ModoHumanoide(55,2,8);
         
-        Algoformer megatron = new Decepticon(550,alterno,humanoide);
+        Algoformer megatron = new Decepticon(550,humanoide,alterno);
         
         return megatron;
     }	
@@ -41,7 +41,7 @@ public class FabricaAlgoformers {
         ModoAlgoformer humanoide = new ModoHumanoide(30,3,1);
         ModoAlgoformer alterno = new ModoHumanoide(30,3,8);
         
-        Algoformer boncrasher = new Decepticon(200,alterno,humanoide);
+        Algoformer boncrasher = new Decepticon(200,humanoide,alterno);
         
         return boncrasher;
     }	
@@ -51,7 +51,7 @@ public class FabricaAlgoformers {
         ModoAlgoformer humanoide = new ModoHumanoide(10,5,2);
         ModoAlgoformer alterno = new ModoHumanoide(25,2,6);
         
-        Algoformer frenzy = new Decepticon(400,alterno,humanoide);
+        Algoformer frenzy = new Decepticon(400,humanoide,alterno);
         
         return frenzy;
     }	

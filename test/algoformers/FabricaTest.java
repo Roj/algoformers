@@ -14,12 +14,8 @@ public class FabricaTest {
 		
 		Algoformer optimus = fabrica.crearOptimus();
 		
-                Assert.assertTrue(optimus.obtenerVida() == 500);
-		Assert.assertTrue(optimus.obtenerPuntosAtaque() == 15);
-		Assert.assertTrue(optimus.obtenerDistanciaAtaque() == 4);
-		Assert.assertTrue(optimus.obtenerVelocidad() == 5);		
-		
-		optimus.cambiarModo();
+                
+		//por defecto esta en modo humanoide
 		
                 Assert.assertTrue(optimus.obtenerVida() == 500);
 		Assert.assertTrue(optimus.obtenerPuntosAtaque() == 50);
@@ -28,11 +24,19 @@ public class FabricaTest {
 		
 		
 		optimus.cambiarModo();
-		
+                
 		Assert.assertTrue(optimus.obtenerVida() == 500);
 		Assert.assertTrue(optimus.obtenerPuntosAtaque() == 15);
 		Assert.assertTrue(optimus.obtenerDistanciaAtaque() == 4);
 		Assert.assertTrue(optimus.obtenerVelocidad() == 5);		
+                
+                optimus.cambiarModo();
+                
+                Assert.assertTrue(optimus.obtenerVida() == 500);
+		Assert.assertTrue(optimus.obtenerPuntosAtaque() == 50);
+		Assert.assertTrue(optimus.obtenerDistanciaAtaque() == 2);
+		Assert.assertTrue(optimus.obtenerVelocidad() == 2);
+		
 	}
 
 }
