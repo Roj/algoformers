@@ -14,10 +14,7 @@ public class Optimus implements TipoAlgoformer {
 	public int obtenerPuntosVida() {
 		return puntosVida;
 	}
-<<<<<<< HEAD
 
-=======
->>>>>>> f0f3b25d96b573f9fe22b5c25e57d3b8c3d0256d
 	public int obtenerPuntosAtaque(ModoHumanoide modoAlgoformer) {
 		return puntosAtaqueHumanoide;
 	}

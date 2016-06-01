@@ -9,11 +9,7 @@ import algoformers.FabricaAlgoformers;
 public class FabricaTest {
 
 	@Test
-<<<<<<< HEAD
-	public void test01ObtenerEstadisticasAlgoformer() {
-=======
 	public void testObtenerEstadisticasAlgoformer() {
->>>>>>> f0f3b25d96b573f9fe22b5c25e57d3b8c3d0256d
 		FabricaAlgoformers fabrica = new FabricaAlgoformers();
 		
 		Algoformer optimus = fabrica.crearOptimus();
