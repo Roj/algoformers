@@ -1,9 +1,24 @@
 package algoformers;
 
-public interface ModoAlgoformer { 
-	public abstract ModoAlgoformer cambiarModo();
+public abstract class ModoAlgoformer { 
 	
-	public abstract int obtenerPuntosAtaque(TipoAlgoformer tipo);
-	public abstract int obtenerVelocidad(TipoAlgoformer tipo);
-	public abstract int obtenerDistanciaAtaque(TipoAlgoformer tipo);
+        protected int puntosAtaque;
+        protected int velocidad;
+        protected int distanciaAtaque;
+        
+        public ModoAlgoformer(int puntosAtaque, int distanciaAtaque,int velocidad) {
+            this.puntosAtaque = puntosAtaque;
+            this.velocidad = velocidad;
+            this.distanciaAtaque = distanciaAtaque;
+        }
+	
+	public int obtenerPuntosAtaque() {
+            return this.puntosAtaque;
+        }
+	public int obtenerVelocidad() {
+            return this.velocidad;
+        }
+	public int obtenerDistanciaAtaque() {
+            return this.distanciaAtaque;
+        }
 }

@@ -1,45 +1,49 @@
 package algoformers;
 
-public class Algoformer implements Ubicable {
-	protected ModoAlgoformer modoAlgoformer;
-	protected TipoAlgoformer tipoAlgoformer;
-        protected Posicion posicion;
-	
-	protected String nombre;
-	protected int vida;
-	
-	public Algoformer(TipoAlgoformer tipo, ModoAlgoformer modo) {
-		modoAlgoformer = modo;
-		tipoAlgoformer = tipo;
-		
-		vida = tipoAlgoformer.obtenerPuntosVida();
-	}	
-   public void establecerPosicion(Posicion pos) {
+public abstract class Algoformer implements Ubicable {
+    protected ModoAlgoformer modoActual;
+    protected ModoAlgoformer otroModo;
+    
+    protected Posicion posicion;
+
+    protected String nombre;
+    protected int vida;
+    
+    public Algoformer(int vida, ModoAlgoformer modo1, ModoAlgoformer modo2) {
+        this.vida = vida;
+        this.modoActual = modo1;
+        this.otroModo = modo2;
+    }	
+    public void establecerPosicion(Posicion pos) {
        this.posicion = pos;
-   }
-   public Posicion obtenerPosicion(){
+    }
+    public Posicion obtenerPosicion(){
        return this.posicion;
-   }
-	public void cambiarModo() {
-		modoAlgoformer = modoAlgoformer.cambiarModo();
-	}
-	public int obtenerVida() {
-		return vida;
-	}
-	public int obtenerPuntosAtaque() {
-		return modoAlgoformer.obtenerPuntosAtaque(tipoAlgoformer);
-	}
-	public int obtenerVelocidad() {
-		return modoAlgoformer.obtenerVelocidad(tipoAlgoformer);
-	}	
-	public int obtenerDistanciaAtaque() {
-		return modoAlgoformer.obtenerDistanciaAtaque(tipoAlgoformer);
-	}	
-	public void atacar(Algoformer algoformer) {
-		
-	}
-	@Override
-    	public void superponer(Algoformer algoformer) {
-        	throw new NoSuperponibleException();
-    	}
+    }
+    public void cambiarModo() {
+        ModoAlgoformer aux = this.modoActual;
+        this.modoActual = this.otroModo;
+        this.otroModo = aux;
+    }
+    public int obtenerVida() {
+            return vida;
+    }
+    public int obtenerPuntosAtaque() {
+            return modoActual.obtenerPuntosAtaque();
+    }
+    public int obtenerVelocidad() {
+            return modoActual.obtenerVelocidad();
+    }	
+    public int obtenerDistanciaAtaque() {
+            return modoActual.obtenerDistanciaAtaque();
+    }	
+    
+    public abstract void atacar(Algoformer algoformer);
+    public abstract void atacar(Autobot algoformer);
+    public abstract void atacar(Decepticon algoformer);
+    
+    @Override
+    public void superponer(Algoformer algoformer) {
+            throw new NoSuperponibleException();
+    }
 }
