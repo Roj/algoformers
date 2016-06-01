@@ -22,4 +22,9 @@ class Vacio implements Ubicable {
         //Metodo vacio
     }
     
+    /*@Override
+    public void recibirAtaque(Algoformer algoformer){
+        //Metodo vacio
+    }*/
+    
 }
