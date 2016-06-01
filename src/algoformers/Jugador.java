@@ -48,14 +48,10 @@ class Jugador {
         Algoformer algoformerAtacante = this.obtenerAlgoformer(indiceTransformerAtacante);
         
         juego.verificarTurno(this);
+
+        algoformerAtacante.atacar(tablero.obtenerUbicable(destino));
         
-        try {
-        	algoformerAtacante.atacar(tablero.obtenerUbicable(destino));
-        
-        	juego.avanzarTurno();
-        } catch (AtaqueInvalidoException e) {
-        	// no avanza turno y tirara un print en el futuro o algo
-        }
+        juego.avanzarTurno();
         
     }
     public String obtenerNombre() {

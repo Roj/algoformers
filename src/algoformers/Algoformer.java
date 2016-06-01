@@ -41,8 +41,7 @@ public abstract class Algoformer implements Ubicable {
     }	
     public boolean revisarDistanciaAtaque(Posicion destino) {
         if(this.posicion.calcularDistancia(destino) > this.obtenerDistanciaAtaque()) {
-            //throw new ObjetivoMuyLejosException();
-        	throw new AtaqueInvalidoException();
+        	throw new ObjetivoMuyLejosException();
         }
         return true;
     }

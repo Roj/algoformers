@@ -85,16 +85,14 @@ public class JuegoTest {
         
         Assert.assertTrue(juego.verificarTurno(jugador1));
 
-       /* try {
+        try {
             jugador1.atacarPosicion(0,new Posicion(20,1));
             
             //Si esto sigue ejecutando caimos en un error
             throw new AssertionError();
         } catch(ObjetivoMuyLejosException e) {
             juego.verificarTurno(jugador1);
-        }*/
-        jugador1.atacarPosicion(0, new Posicion(20, 1));
-        Assert.assertTrue(juego.verificarTurno(jugador1));
+        }
     }
     @Test
     public void testAtacarMismoBandoNoCambiaTurno() {
@@ -108,16 +106,13 @@ public class JuegoTest {
         tablero.colocarAlgoformer(new Posicion(2,1),jugador1.obtenerAlgoformer(1));
         
         Assert.assertTrue(juego.verificarTurno(jugador1));
-        /*try {
+        try {
             jugador1.atacarPosicion(0,new Posicion(2,1));
             //Si esto sigue ejecutando caimos en un error
             throw new AssertionError();
         } catch(AtaqueInvalidoException e) {
             juego.verificarTurno(jugador1);
-        }*/
-        jugador1.atacarPosicion(0, new Posicion(2, 1));
-        Assert.assertTrue(juego.verificarTurno(jugador1));
-        
+        }        
     }
     @Test 
     public void testAtacarAlgoformerEnemigoLeBajaVida() {
@@ -149,9 +144,14 @@ public class JuegoTest {
         
         Assert.assertTrue(juego.verificarTurno(jugador1));
 
-        jugador1.atacarPosicion(0, new Posicion(1, 0));
-        
-        Assert.assertTrue(juego.verificarTurno(jugador1));
+        try {
+            jugador1.atacarPosicion(0,new Posicion(2,1));
+            
+            //Si esto sigue ejecutando caimos en un error
+            throw new AssertionError();
+        } catch(AtaqueInvalidoException e) {
+            juego.verificarTurno(jugador1);
+        }
         
     }        
 }
