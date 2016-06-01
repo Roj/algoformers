@@ -11,9 +11,7 @@ package algoformers;
  */
 public class Flash extends Bonus {
        
-    public Flash(Posicion ubicacion) {
-        super(ubicacion);
-    }
+    
 
     @Override
     public void accion(Algoformer algoformer) {

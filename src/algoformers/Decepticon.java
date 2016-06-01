@@ -5,15 +5,15 @@ public class Decepticon extends Algoformer {
             super(vida, modo1, modo2);
     }	
     @Override
-    public void atacar(Algoformer algoformer) {
-            algoformer.atacar(this);
+    public void atacar(Ubicable ubicable) {
+            ubicable.recibirAtaque(this);
     }
     @Override
-    public void atacar(Decepticon algoformer) {
+    public void recibirAtaque(Decepticon algoformer) {
             throw new AtaqueInvalidoException();
     }
     @Override
-    public void atacar(Autobot algoformer) {
+    public void recibirAtaque(Autobot algoformer) {
             vida -= algoformer.obtenerPuntosAtaque();
 
             //etc de cosas al atacar

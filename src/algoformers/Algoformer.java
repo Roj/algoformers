@@ -14,9 +14,11 @@ public abstract class Algoformer implements Ubicable {
         this.modoActual = modo1;
         this.otroModo = modo2;
     }	
+    @Override
     public void establecerPosicion(Posicion pos) {
        this.posicion = pos;
     }
+    @Override
     public Posicion obtenerPosicion(){
        return this.posicion;
     }
@@ -37,10 +39,13 @@ public abstract class Algoformer implements Ubicable {
     public int obtenerDistanciaAtaque() {
             return modoActual.obtenerDistanciaAtaque();
     }	
-    
-    public abstract void atacar(Algoformer algoformer);
-    public abstract void atacar(Autobot algoformer);
-    public abstract void atacar(Decepticon algoformer);
+    public boolean revisarDistanciaAtaque(Posicion destino) {
+        if(this.posicion.calcularDistancia(destino) > this.obtenerDistanciaAtaque()) {
+            throw new ObjetivoMuyLejosException();
+        }
+        return true;
+    }
+    public abstract void atacar(Ubicable ubicable);
     
     @Override
     public void superponer(Algoformer algoformer) {

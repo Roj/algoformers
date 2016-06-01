@@ -11,10 +11,7 @@ package algoformers;
  */
 public class DobleCañon extends Bonus{
 
-    public DobleCañon(Posicion ubicacion) {
-        super(ubicacion);
-    }
-
+    
     @Override
     public void accion(Algoformer algoformer) {
         //Falta implementar

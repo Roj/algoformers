@@ -13,14 +13,29 @@ public abstract class Bonus implements Ubicable {
     
     Posicion posicion;
     
-    public Bonus(Posicion ubicacion){
-        this.posicion = ubicacion;
+    public Bonus(){
+        
     }
-    
+    @Override
+    public void establecerPosicion(Posicion pos) {
+        this.posicion = pos;
+    }
+    @Override
+    public Posicion obtenerPosicion() {
+        return this.posicion;
+    }
     @Override
     public void superponer(Algoformer algoformer){
         this.accion(algoformer);
         
+    }
+    @Override
+    public void recibirAtaque(Decepticon algoformer){
+        //Metodo vacio
+    }
+    @Override
+    public void recibirAtaque(Autobot algoformer){
+        //Metodo vacio
     }
     
     public abstract void accion(Algoformer algoformer);

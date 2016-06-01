@@ -5,6 +5,8 @@
  */
 package algoformers;
 
+
+
 /**
  *
  * @author Matias
@@ -16,6 +18,16 @@ public class Posicion {
     public Posicion(int i, int j){
         this.X = i;
         this.Y = j;
+    }
+    public int obtenerX() {
+        return this.X;
+    }
+    public int obtenerY() {
+        return this.Y;
+    }
+    
+    public int calcularDistancia(Posicion otra) {
+        return Math.max(Math.abs(this.X - otra.obtenerX()),Math.abs(this.Y - otra.obtenerY()));
     }
 
     @Override

@@ -7,15 +7,11 @@ package algoformers;
 
 /**
  *
- * @author Matias
+ * @author joaquintz
  */
-public class BurbujaInmaculada extends Bonus {
+class NoEsSuTurnoException extends RuntimeException {
 
-    
-    @Override
-    public void accion(Algoformer algoformer) {
-        //Falta implementar
-        //algoformer.noRecibirDañosPor2Turnos();
+    public NoEsSuTurnoException() {
     }
     
 }
