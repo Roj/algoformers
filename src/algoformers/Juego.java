@@ -45,6 +45,12 @@ public class Juego {
     public Jugador obtenerJugadorActual() {
         return this.jugadorActual;
     }
+    public Jugador obtenerJugadorEnEspera() {
+        return this.otroJugador;
+    }
+    public Tablero obtenerTablero() {
+        return this.tablero;
+    }
     public void avanzarTurno() {
         Jugador aux = this.jugadorActual;
         this.jugadorActual = this.otroJugador;

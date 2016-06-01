@@ -27,7 +27,7 @@ class Jugador {
     public void agregarAlgoformer(Algoformer nuevoAlgoformer) {
         algoformers.add(nuevoAlgoformer);
     }
-    private Algoformer obtenerAlgoformer(int indice) {
+    public Algoformer obtenerAlgoformer(int indice) {
         Algoformer algoformer;
         
         try {
@@ -51,6 +51,9 @@ class Jugador {
         juego.verificarTurno(this);
         
         algoformerAtacante.atacar(tablero.obtenerUbicable(destino));
+        
+        juego.avanzarTurno();
+        
     }
     public String obtenerNombre() {
         return this.nombre;
