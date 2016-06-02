@@ -6,6 +6,7 @@
 
 package algoformers;
 
+import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -23,10 +24,8 @@ public class EntregaTest {
         Juego juego = new Juego(nombre1,nombre2,10,10);
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
-        tablero.colocarAlgoformer(new Posicion(1,1),jugador1.obtenerAlgoformer(0));
-      
-        // el algoformer[0] es Optimus
-        Algoformer optimus = jugador1.obtenerAlgoformer(0);
+        Algoformer optimus = jugador1.obtenerListaAlgoformers().get(0);
+        tablero.colocarAlgoformer(new Posicion(1,1),optimus);
         
         Posicion nuevaPosicion = new Posicion(2,1);
         // muevo a la nuevo posicion
@@ -42,10 +41,11 @@ public class EntregaTest {
         Juego juego = new Juego(nombre1,nombre2,3,3);
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
-        tablero.colocarAlgoformer(new Posicion(1,1),jugador1.obtenerAlgoformer(0));
         
-        // el algoformer[0] es Optimus
-        Algoformer optimus = jugador1.obtenerAlgoformer(0);
+        Algoformer optimus = jugador1.obtenerListaAlgoformers().get(0);
+        tablero.colocarAlgoformer(new Posicion(1,1),optimus);
+        
+        
         
         //por defecto esta en modo humanoide
         Assert.assertTrue(optimus.obtenerVida() == 500);
@@ -75,10 +75,11 @@ public class EntregaTest {
         Juego juego = new Juego(nombre1,nombre2,10,10);
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
-        tablero.colocarAlgoformer(new Posicion(1,1),jugador1.obtenerAlgoformer(0));
-      
-        // el algoformer[0] es Optimus
-        Algoformer optimus = jugador1.obtenerAlgoformer(0);
+        
+        Algoformer optimus = jugador1.obtenerListaAlgoformers().get(0);
+        tablero.colocarAlgoformer(new Posicion(1,1),optimus);
+     
+        // el algoformer[0] es Optimus   
         optimus.cambiarModo();
         
         Posicion nuevaPosicion = new Posicion(2,1);
@@ -98,16 +99,18 @@ public class EntregaTest {
         Jugador jugador2 = juego.obtenerJugadorEnEspera();
         
         Tablero tablero = juego.obtenerTablero();
+        List<Algoformer> algoformersj1 = jugador1.obtenerListaAlgoformers();
+        List<Algoformer> algoformersj2 = jugador2.obtenerListaAlgoformers();
         
-        Algoformer optimus = jugador1.obtenerAlgoformer(0);
-        Algoformer bumblebee = jugador1.obtenerAlgoformer(1);
-        Algoformer ratchet = jugador1.obtenerAlgoformer(2);
+        Algoformer optimus = algoformersj1.get(0);
+        Algoformer bumblebee = algoformersj1.get(1);
+        Algoformer ratchet = algoformersj1.get(2);
         
-        Algoformer megatron = jugador2.obtenerAlgoformer(0);
-        Algoformer bonecrusher = jugador2.obtenerAlgoformer(1);
-        Algoformer frenzy = jugador2.obtenerAlgoformer(2);
+        Algoformer megatron = algoformersj2.get(0);
+        Algoformer bonecrusher = algoformersj2.get(1);
+        Algoformer frenzy = algoformersj2.get(2);
         
-        Ubicable chispa = tablero.obtenerUbicable(new Posicion(10, 10));
+        Ubicable chispa = tablero.obtenerUbicable(new Posicion(9, 9));
                
         Posicion esquinaInferiorIzqBorde = new Posicion(0,0);
         Posicion esquinaInferiorIzqSuperior = new Posicion(0,1);
@@ -132,6 +135,7 @@ public class EntregaTest {
         Assert.assertTrue(megatron.obtenerPosicion() == esquinaSuperiorDerBorde);
         Assert.assertTrue(bonecrusher.obtenerPosicion() == esquinaSuperiorDerInferior);
         Assert.assertTrue(frenzy.obtenerPosicion() == esquinaSuperioDerTrasera);     
+        
         Assert.assertTrue(chispa instanceof ChispaSuprema); 
     }
     

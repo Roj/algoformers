@@ -15,7 +15,7 @@ public class AlgoformerTest {
         FabricaAlgoformers fabrica = new FabricaAlgoformers();	
         Algoformer alf = fabrica.crearOptimus();
         
-        alf.superponer(alf);
+        alf.reemplazar(alf);
     }
     
     @Test(expected=AtaqueInvalidoException.class)

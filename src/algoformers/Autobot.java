@@ -4,9 +4,8 @@ public class Autobot extends Algoformer {
     public Autobot(int vida, ModoAlgoformer modo1, ModoAlgoformer modo2) {
             super(vida, modo1, modo2);
     }		
-    @Override
     public void atacar(Ubicable ubicable) {
-        this.revisarDistanciaAtaque(ubicable.obtenerPosicion());
+        super.atacar(ubicable);
         ubicable.recibirAtaque(this);
     }
     @Override

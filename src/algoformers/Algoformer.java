@@ -45,10 +45,12 @@ public abstract class Algoformer implements Ubicable {
         }
         return true;
     }
-    public abstract void atacar(Ubicable ubicable);
+    public void atacar(Ubicable ubicable) {
+        this.revisarDistanciaAtaque(ubicable.obtenerPosicion());
+    }
     
     @Override
-    public void superponer(Algoformer algoformer) {
+    public void reemplazar(Algoformer algoformer) {
         throw new NoSuperponibleException();
     }
     
@@ -58,7 +60,9 @@ public abstract class Algoformer implements Ubicable {
         }
         return true;
     }
-            
+    public boolean verificarMovida(Posicion destino) {
+        return this.revisarVelocidad(destino);
+    }        
     public void mover(Posicion nuevaPosicion) {
         this.revisarVelocidad(nuevaPosicion);
         this.establecerPosicion(nuevaPosicion);

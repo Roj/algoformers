@@ -20,7 +20,7 @@ public class Juego {
         this.otroJugador = new Jugador(nombreJugadorB,tablero, this);
      
         //Agregar chispa en el centro del tablero
-        this.tablero.agregarUbicable(new Posicion(dim1/2, dim2/2), new ChispaSuprema());
+        this.tablero.agregarUbicable(new Posicion((dim1-1)/2, (dim2-1)/2), new ChispaSuprema());
         
         //Creacion de algoformers
         this.agregarAlgoformers();

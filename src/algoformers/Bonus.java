@@ -25,7 +25,7 @@ public abstract class Bonus implements Ubicable {
         return this.posicion;
     }
     @Override
-    public void superponer(Algoformer algoformer){
+    public void reemplazar(Algoformer algoformer){
         this.accion(algoformer);
         
     }

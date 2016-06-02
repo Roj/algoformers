@@ -6,7 +6,8 @@ public class Decepticon extends Algoformer {
     }	
     @Override
     public void atacar(Ubicable ubicable) {
-            ubicable.recibirAtaque(this);
+        this.revisarDistanciaAtaque(ubicable.obtenerPosicion());
+        ubicable.recibirAtaque(this);
     }
     @Override
     public void recibirAtaque(Decepticon algoformer) {

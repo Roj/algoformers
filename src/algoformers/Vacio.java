@@ -23,7 +23,7 @@ class Vacio implements Ubicable {
     }
 
     @Override
-    public void superponer(Algoformer algoformer) {
+    public void reemplazar(Algoformer algoformer) {
         //Metodo vacio
     }
     @Override
