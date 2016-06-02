@@ -257,4 +257,15 @@ public class JuegoTest {
         Posicion posicionFinal = new Posicion(1,2);
         jugador1.moverAPosicion(0,posicionFinal);        
     }
+    @Test
+    public void testUbicarChispaEnCentroDelTablero(){
+        String nombre1 = "Juan";
+        String nombre2 = "Jhon";
+        Juego juego = new Juego(nombre1,nombre2,30,30);
+
+        Tablero tablero = juego.obtenerTablero();
+        Ubicable chispa = tablero.obtenerUbicable(new Posicion(15, 15));
+        
+        Assert.assertTrue(chispa instanceof ChispaSuprema);     
+    }    
 }
