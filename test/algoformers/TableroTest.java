@@ -50,6 +50,16 @@ public class TableroTest {
         Assert.assertFalse(tablero.estaVacio(posicion));
     }
     
+    @Test(expected=FueraDeRangoDeTableroException.class)
+    public void testColocarAlgoformerEnPosicionFueraDeRango(){
+        Tablero tablero = new Tablero(3,3);
+        Posicion posicion = new Posicion (4,4);
+        FabricaAlgoformers fabrica = new FabricaAlgoformers();
+        Algoformer optimus = fabrica.crearOptimus();
+        
+        tablero.colocarAlgoformer(posicion, optimus);
+    }
+    
     @Test
     public void testBorrarUbicableYEstaVacio(){
         Tablero tablero = new Tablero(3,3);

@@ -48,7 +48,7 @@ class Jugador {
         Algoformer algoformerAtacante = this.obtenerAlgoformer(indiceTransformerAtacante);
         
         juego.verificarTurno(this);
-
+        
         algoformerAtacante.atacar(tablero.obtenerUbicable(destino));
         
         juego.avanzarTurno();

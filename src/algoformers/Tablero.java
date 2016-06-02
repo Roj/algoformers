@@ -36,23 +36,29 @@ public class Tablero {
     }
     
     public void colocarAlgoformer(Posicion posicion,Algoformer algoformer){
-        Ubicable ubicableEnPosicion = this.tablero.get(posicion);
         try {
+            Ubicable ubicableEnPosicion = this.tablero.get(posicion);
             ubicableEnPosicion.superponer(algoformer);
             algoformer.establecerPosicion(posicion);
             this.agregarUbicable(posicion, algoformer);
-        } catch (NoSuperponibleException e) {
+        } catch (NullPointerException|NoSuperponibleException e){
+            if (e instanceof NullPointerException){
+                throw new FueraDeRangoDeTableroException();
+            }
             throw e;
         }
     }
     
     public void moverAlgoformer(Posicion posicion,Algoformer algoformer){
-        Ubicable ubicableEnPosicion = this.tablero.get(posicion);
         try {
+            Ubicable ubicableEnPosicion = this.tablero.get(posicion);
             ubicableEnPosicion.superponer(algoformer);
             algoformer.mover(posicion);
             this.agregarUbicable(posicion, algoformer);
-        } catch (NoSuperponibleException e) {
+        } catch (NullPointerException|NoSuperponibleException e){
+            if (e instanceof NullPointerException){
+                throw new FueraDeRangoDeTableroException();
+            }
             throw e;
         }
     }
@@ -73,6 +79,10 @@ public class Tablero {
     }
     
     public Ubicable obtenerUbicable(Posicion posicion) {
-        return this.tablero.get(posicion);
+        Ubicable ubicable = tablero.get(posicion);
+        if (ubicable == null) {
+            throw new FueraDeRangoDeTableroException();
+        }
+        return ubicable;
     }
 }
