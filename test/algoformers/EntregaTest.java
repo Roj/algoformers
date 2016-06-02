@@ -71,7 +71,11 @@ public class EntregaTest {
         
     }
     
+<<<<<<< HEAD
     @Test
+=======
+     @Test
+>>>>>>> 9db8aef1b58ff441e15c86c4e933688c5150e348
     public void test03ColocarAlgoformerAlternoYMoverSobreElTablero(){
         String nombre1 = "Juan";
         String nombre2 = "John";
