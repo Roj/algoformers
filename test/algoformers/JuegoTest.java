@@ -226,7 +226,6 @@ public class JuegoTest {
         String nombre2 = "Jhon";
         Juego juego = new Juego(nombre1,nombre2,30,30);
         Jugador jugador1 = juego.obtenerJugadorActual();
-        Jugador jugador2 = juego.obtenerJugadorEnEspera();
         Tablero tablero = juego.obtenerTablero();
         Posicion posicionInicial = new Posicion(1,1);
         tablero.colocarAlgoformer(posicionInicial,jugador1.obtenerAlgoformer(0));
@@ -268,7 +267,6 @@ public class JuegoTest {
         String nombre2 = "Jhon";
         Juego juego = new Juego(nombre1,nombre2,30,30);
         Jugador jugador1 = juego.obtenerJugadorActual();
-        Jugador jugador2 = juego.obtenerJugadorEnEspera();
         Tablero tablero = juego.obtenerTablero();
         Posicion posicionInicial = new Posicion(1,1);
         tablero.colocarAlgoformer(posicionInicial,jugador1.obtenerAlgoformer(0));

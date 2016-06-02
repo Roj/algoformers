@@ -22,7 +22,6 @@ public class EntregaTest {
         String nombre2 = "John";
         Juego juego = new Juego(nombre1,nombre2,10,10);
         Jugador jugador1 = juego.obtenerJugadorActual();
-        Jugador jugador2 = juego.obtenerJugadorEnEspera();
         Tablero tablero = juego.obtenerTablero();
         tablero.colocarAlgoformer(new Posicion(1,1),jugador1.obtenerAlgoformer(0));
       
@@ -42,7 +41,6 @@ public class EntregaTest {
         String nombre2 = "John";
         Juego juego = new Juego(nombre1,nombre2,3,3);
         Jugador jugador1 = juego.obtenerJugadorActual();
-        Jugador jugador2 = juego.obtenerJugadorEnEspera();
         Tablero tablero = juego.obtenerTablero();
         tablero.colocarAlgoformer(new Posicion(1,1),jugador1.obtenerAlgoformer(0));
         
@@ -76,7 +74,6 @@ public class EntregaTest {
         String nombre2 = "John";
         Juego juego = new Juego(nombre1,nombre2,10,10);
         Jugador jugador1 = juego.obtenerJugadorActual();
-        Jugador jugador2 = juego.obtenerJugadorEnEspera();
         Tablero tablero = juego.obtenerTablero();
         tablero.colocarAlgoformer(new Posicion(1,1),jugador1.obtenerAlgoformer(0));
       
