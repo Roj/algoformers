@@ -70,8 +70,7 @@ public class EntregaTest {
         Assert.assertTrue(optimus.obtenerVelocidad() == 2);
         
     }
-    
-     @Test
+    @Test
     public void test03ColocarAlgoformerAlternoYMoverSobreElTablero(){
         String nombre1 = "Juan";
         String nombre2 = "John";

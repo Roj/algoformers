@@ -267,5 +267,6 @@ public class JuegoTest {
         Ubicable chispa = tablero.obtenerUbicable(new Posicion(15, 15));
         
         Assert.assertTrue(chispa instanceof ChispaSuprema);     
-    }    
+    }
+    
 }
