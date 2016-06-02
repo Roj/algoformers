@@ -71,7 +71,7 @@ public class EntregaTest {
         
     }
     
-     @Test
+    @Test
     public void test03ColocarAlgoformerAlternoYMoverSobreElTablero(){
         String nombre1 = "Juan";
         String nombre2 = "John";
