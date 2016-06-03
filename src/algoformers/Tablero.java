@@ -37,13 +37,16 @@ public class Tablero {
     
     public void colocarAlgoformer(Posicion posicion,Algoformer algoformer){
         Ubicable ubicableEnPosicion = this.tablero.get(posicion);
-        try {
-            ubicableEnPosicion.superponer(algoformer);
-            algoformer.establecerPosicion(posicion);
-            this.agregarUbicable(posicion, algoformer);
-        } catch (NoSuperponibleException e) {
-            //no será agregado a la posición
-        }
+        ubicableEnPosicion.reemplazar(algoformer);
+        algoformer.establecerPosicion(posicion);
+        this.agregarUbicable(posicion, algoformer);
+    }
+    
+    public void moverAlgoformer(Posicion posicion,Algoformer algoformer){
+        Posicion viejaPos = algoformer.obtenerPosicion();
+        algoformer.verificarMovida(posicion);
+        this.colocarAlgoformer(posicion, algoformer);
+        this.borrarUbicable(viejaPos);
     }
     
     public void agregarUbicable(Posicion posicion,Ubicable nuevoUbicable){
@@ -62,6 +65,7 @@ public class Tablero {
     }
     
     public Ubicable obtenerUbicable(Posicion posicion) {
-        return this.tablero.get(posicion);
+        Ubicable ubicable = tablero.get(posicion);
+        return ubicable;
     }
 }

@@ -27,33 +27,19 @@ class Jugador {
     public void agregarAlgoformer(Algoformer nuevoAlgoformer) {
         algoformers.add(nuevoAlgoformer);
     }
-    public Algoformer obtenerAlgoformer(int indice) {
-        Algoformer algoformer;
-        
-        try {
-            algoformer = algoformers.get(indice);
-        } catch(IndexOutOfBoundsException e) {
-            throw new AlgoformerNoExisteException();
-        }
-        return algoformer;
+    public List<Algoformer> obtenerListaAlgoformers() {
+        return this.algoformers;
     }
-    public void colocarAlgoformer(int indice, Posicion posicion) {
-        //Esta funcion se usara para ubicar los algoformers inicialmente
-        //El jugador tiene la posibilidad de ubicar sus algoformers inicialmente
-        //Dentro de un lugar no tan cerca de la chispa
-        Algoformer algoformer = this.obtenerAlgoformer(indice);
-        tablero.colocarAlgoformer(posicion, algoformer);
-    }
-    public void atacarPosicion(int indiceTransformerAtacante, Posicion destino) {
-        
-        Algoformer algoformerAtacante = this.obtenerAlgoformer(indiceTransformerAtacante);
-        
+    public void atacarPosicion(Algoformer alf, Posicion destino) {
         juego.verificarTurno(this);
-        
-        algoformerAtacante.atacar(tablero.obtenerUbicable(destino));
-        
+        alf.atacar(tablero.obtenerUbicable(destino));
         juego.avanzarTurno();
-        
+    }
+    
+    public void moverAPosicion(Algoformer algof, Posicion destino) {
+        juego.verificarTurno(this);
+        tablero.moverAlgoformer(destino, algof);
+        juego.avanzarTurno();
     }
     public String obtenerNombre() {
         return this.nombre;

@@ -3,7 +3,7 @@ package algoformers;
 public class FabricaAlgoformers {
     public Algoformer crearOptimus() {	
         ModoAlgoformer humanoide = new ModoHumanoide(50,2,2);
-        ModoAlgoformer alterno = new ModoHumanoide(15,4,5);
+        ModoAlgoformer alterno = new ModoAlterno(15,4,5);
         
         Algoformer optimus = new Autobot(500,humanoide,alterno);
         
@@ -11,7 +11,7 @@ public class FabricaAlgoformers {
     }
     public Algoformer crearBumblebee() {	
         ModoAlgoformer humanoide = new ModoHumanoide(40,1,2);
-        ModoAlgoformer alterno = new ModoHumanoide(20,3,5);
+        ModoAlgoformer alterno = new ModoAlterno(20,3,5);
         
         Algoformer bambelbi = new Autobot(350,humanoide,alterno);
         
@@ -19,7 +19,7 @@ public class FabricaAlgoformers {
     }
     public Algoformer crearRatchet() {	
         ModoAlgoformer humanoide = new ModoHumanoide(5,5,1);
-        ModoAlgoformer alterno = new ModoHumanoide(35,2,8);
+        ModoAlgoformer alterno = new ModoAlterno(35,2,8);
         
         Algoformer ratchet = new Autobot(150,humanoide,alterno);
         
@@ -29,7 +29,7 @@ public class FabricaAlgoformers {
     public Algoformer crearMegatron() {
         
         ModoAlgoformer humanoide = new ModoHumanoide(10,3,1);
-        ModoAlgoformer alterno = new ModoHumanoide(55,2,8);
+        ModoAlgoformer alterno = new ModoAlterno(55,2,8);
         
         Algoformer megatron = new Decepticon(550,humanoide,alterno);
         
@@ -39,7 +39,7 @@ public class FabricaAlgoformers {
     public Algoformer crearBonecrusher() {
         
         ModoAlgoformer humanoide = new ModoHumanoide(30,3,1);
-        ModoAlgoformer alterno = new ModoHumanoide(30,3,8);
+        ModoAlgoformer alterno = new ModoAlterno(30,3,8);
         
         Algoformer boncrasher = new Decepticon(200,humanoide,alterno);
         
@@ -49,7 +49,7 @@ public class FabricaAlgoformers {
     public Algoformer crearFrenzy() {
         
         ModoAlgoformer humanoide = new ModoHumanoide(10,5,2);
-        ModoAlgoformer alterno = new ModoHumanoide(25,2,6);
+        ModoAlgoformer alterno = new ModoAlterno(25,2,6);
         
         Algoformer frenzy = new Decepticon(400,humanoide,alterno);
         

@@ -49,7 +49,7 @@ public class TableroTest {
         
         Assert.assertFalse(tablero.estaVacio(posicion));
     }
-    
+        
     @Test
     public void testBorrarUbicableYEstaVacio(){
         Tablero tablero = new Tablero(3,3);
@@ -75,7 +75,7 @@ public class TableroTest {
         Assert.assertTrue(tablero.estaVacio(posicion));
     }
     
-    @Test
+    @Test(expected=NoSuperponibleException.class)
     public void testNoSePuedeSuperponerAlgoformers() {
         Tablero tablero = new Tablero(3,3);
         Posicion posicion = new Posicion(1,2);

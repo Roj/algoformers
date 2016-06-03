@@ -14,7 +14,7 @@ public interface Ubicable {
     public void establecerPosicion(Posicion pos);
     public Posicion obtenerPosicion();
     
-    public void superponer(Algoformer algoformer);
+    public void reemplazar(Algoformer algoformer);
     
     public void recibirAtaque(Autobot algoformer);
     

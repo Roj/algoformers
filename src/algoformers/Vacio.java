@@ -23,16 +23,18 @@ class Vacio implements Ubicable {
     }
 
     @Override
-    public void superponer(Algoformer algoformer) {
+    public void reemplazar(Algoformer algoformer) {
         //Metodo vacio
     }
     @Override
     public void recibirAtaque(Autobot algoformer){
         //Metodo vacio
+    	throw new AtaqueInvalidoException();
     }
     @Override
     public void recibirAtaque(Decepticon algoformer){
         //Metodo vacio
+    	throw new AtaqueInvalidoException();
     }
     
 }

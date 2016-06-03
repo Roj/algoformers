@@ -25,17 +25,19 @@ public abstract class Bonus implements Ubicable {
         return this.posicion;
     }
     @Override
-    public void superponer(Algoformer algoformer){
+    public void reemplazar(Algoformer algoformer){
         this.accion(algoformer);
         
     }
     @Override
     public void recibirAtaque(Decepticon algoformer){
         //Metodo vacio
+    	throw new AtaqueInvalidoException();
     }
     @Override
     public void recibirAtaque(Autobot algoformer){
         //Metodo vacio
+    	throw new AtaqueInvalidoException();
     }
     
     public abstract void accion(Algoformer algoformer);
