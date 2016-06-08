@@ -7,6 +7,7 @@
 package algoformers;
 
 import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -25,9 +26,9 @@ public class EntregaTest {
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
         Algoformer optimus = jugador1.obtenerListaAlgoformers().get(0);
-        tablero.colocarAlgoformer(new Posicion(1,1),optimus);
+        tablero.colocarAlgoformer(new Posicion(1,1, new Tierra()),optimus);
         
-        Posicion nuevaPosicion = new Posicion(2,1);
+        Posicion nuevaPosicion = new Posicion(2,1, new Tierra());
         // muevo a la nuevo posicion
         optimus.mover(nuevaPosicion);
         
@@ -43,7 +44,7 @@ public class EntregaTest {
         Tablero tablero = juego.obtenerTablero();
         
         Algoformer optimus = jugador1.obtenerListaAlgoformers().get(0);
-        tablero.colocarAlgoformer(new Posicion(1,1),optimus);
+        tablero.colocarAlgoformer(new Posicion(1,1, new Tierra()),optimus);
         
         
         
@@ -77,12 +78,12 @@ public class EntregaTest {
         Tablero tablero = juego.obtenerTablero();
         
         Algoformer optimus = jugador1.obtenerListaAlgoformers().get(0);
-        tablero.colocarAlgoformer(new Posicion(1,1),optimus);
+        tablero.colocarAlgoformer(new Posicion(1,1, new Tierra()),optimus);
      
         // el algoformer[0] es Optimus   
         optimus.cambiarModo();
         
-        Posicion nuevaPosicion = new Posicion(2,1);
+        Posicion nuevaPosicion = new Posicion(2,1, new Tierra());
         // muevo a la nuevo posicion
         optimus.mover(nuevaPosicion);
         

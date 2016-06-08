@@ -68,13 +68,13 @@ public class JuegoTest {
         Algoformer algoformerj1 = jugador1.obtenerListaAlgoformers().get(0);
         Algoformer algoformerj2 = jugador2.obtenerListaAlgoformers().get(0);
         
-        tablero.colocarAlgoformer(new Posicion(1,1),algoformerj1);
-        tablero.colocarAlgoformer(new Posicion(2,1),algoformerj2);
+        tablero.colocarAlgoformer(new Posicion(1,1, new Tierra()),algoformerj1);
+        tablero.colocarAlgoformer(new Posicion(2,1, new Tierra()),algoformerj2);
         
         
         
         Assert.assertTrue(juego.verificarTurno(jugador1));
-        jugador1.atacarPosicion(algoformerj1,new Posicion(2,1));
+        jugador1.atacarPosicion(algoformerj1,new Posicion(2,1, new Tierra()));
         
         Assert.assertTrue(juego.verificarTurno(jugador2));
         
@@ -91,12 +91,12 @@ public class JuegoTest {
         
         Algoformer algoformer = jugador1.obtenerListaAlgoformers().get(0);
         
-        tablero.colocarAlgoformer(new Posicion(1,1),algoformer);
+        tablero.colocarAlgoformer(new Posicion(1,1, new Tierra()),algoformer);
         
         Assert.assertTrue(juego.verificarTurno(jugador1));
 
         try {
-            jugador1.atacarPosicion(algoformer,new Posicion(20,1));
+            jugador1.atacarPosicion(algoformer,new Posicion(20,1, new Tierra()));
             
             //Si esto sigue ejecutando caimos en un error
             throw new AssertionError();
@@ -116,12 +116,12 @@ public class JuegoTest {
         Tablero tablero = juego.obtenerTablero();
         Algoformer algoformer1 = jugador1.obtenerListaAlgoformers().get(0);
         Algoformer algoformer2 = jugador1.obtenerListaAlgoformers().get(1);
-        tablero.colocarAlgoformer(new Posicion(1,1),algoformer1);
-        tablero.colocarAlgoformer(new Posicion(2,1),algoformer2);
+        tablero.colocarAlgoformer(new Posicion(1,1, new Tierra()),algoformer1);
+        tablero.colocarAlgoformer(new Posicion(2,1, new Tierra()),algoformer2);
         
         Assert.assertTrue(juego.verificarTurno(jugador1));
         try {
-            jugador1.atacarPosicion(algoformer1,new Posicion(2,1));
+            jugador1.atacarPosicion(algoformer1,new Posicion(2,1, new Tierra()));
             //Si esto sigue ejecutando caimos en un error
             throw new AssertionError();
         } catch(AtaqueInvalidoException e) {
@@ -139,13 +139,13 @@ public class JuegoTest {
         
         Algoformer algoformerj1 = jugador1.obtenerListaAlgoformers().get(0);
         Algoformer algoformerj2 = jugador2.obtenerListaAlgoformers().get(0);
-        tablero.colocarAlgoformer(new Posicion(1,1),algoformerj1);
-        tablero.colocarAlgoformer(new Posicion(2,1),algoformerj2);
+        tablero.colocarAlgoformer(new Posicion(1,1, new Tierra()),algoformerj1);
+        tablero.colocarAlgoformer(new Posicion(2,1, new Tierra()),algoformerj2);
         
         int vidaEnemigoOriginal = algoformerj2.obtenerVida();
         
         Assert.assertTrue(juego.verificarTurno(jugador1));
-        jugador1.atacarPosicion(algoformerj1,new Posicion(2,1));
+        jugador1.atacarPosicion(algoformerj1,new Posicion(2,1, new Tierra()));
         
         Assert.assertTrue(vidaEnemigoOriginal > algoformerj2.obtenerVida());
     }
@@ -159,13 +159,13 @@ public class JuegoTest {
         
         Algoformer algoformer1 = jugador1.obtenerListaAlgoformers().get(0);
         
-        tablero.colocarAlgoformer(new Posicion(1,1),algoformer1);
+        tablero.colocarAlgoformer(new Posicion(1,1, new Tierra()),algoformer1);
         
         
         Assert.assertTrue(juego.verificarTurno(jugador1));
 
         try {
-            jugador1.atacarPosicion(algoformer1,new Posicion(2,1));
+            jugador1.atacarPosicion(algoformer1,new Posicion(2,1, new Tierra()));
             
             //Si esto sigue ejecutando caimos en un error
             throw new AssertionError();
@@ -180,14 +180,14 @@ public class JuegoTest {
         Juego juego = new Juego(nombre1,nombre2,3,3);
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
-        Posicion posicionInicial = new Posicion(1,1);
+        Posicion posicionInicial = new Posicion(1,1, new Tierra());
         
         Algoformer algo1 = jugador1.obtenerListaAlgoformers().get(0);
         tablero.colocarAlgoformer(posicionInicial,algo1);
         
         Assert.assertTrue(algo1.obtenerPosicion()==posicionInicial);
         
-        Posicion posicionFinal = new Posicion(2,1);
+        Posicion posicionFinal = new Posicion(2,1, new Tierra());
         jugador1.moverAPosicion(algo1,posicionFinal);
         Assert.assertTrue(algo1.obtenerPosicion()==posicionFinal);
     }
@@ -198,14 +198,14 @@ public class JuegoTest {
         Juego juego = new Juego(nombre1,nombre2,3,3);
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
-        Posicion posicionInicial = new Posicion(1,1);
+        Posicion posicionInicial = new Posicion(1,1, new Tierra());
         Algoformer algo1 = jugador1.obtenerListaAlgoformers().get(0);
         
         tablero.colocarAlgoformer(posicionInicial,algo1);
         
         Assert.assertEquals(algo1.obtenerPosicion(), posicionInicial);
         
-        Posicion posicionFinal = new Posicion(2,1);
+        Posicion posicionFinal = new Posicion(2,1, new Tierra());
         jugador1.moverAPosicion(algo1,posicionFinal);
         
         //comparamos punteros
@@ -219,12 +219,12 @@ public class JuegoTest {
         Jugador jugador1 = juego.obtenerJugadorActual();
         Jugador jugador2 = juego.obtenerJugadorEnEspera();
         Tablero tablero = juego.obtenerTablero();
-        Posicion posicionInicial = new Posicion(1,1);
+        Posicion posicionInicial = new Posicion(1,1, new Tierra());
         Algoformer algoformer1 = jugador1.obtenerListaAlgoformers().get(0);
         tablero.colocarAlgoformer(posicionInicial,algoformer1);
         
         Assert.assertTrue(juego.verificarTurno(jugador1));
-        Posicion posicionFinal = new Posicion(2,1);
+        Posicion posicionFinal = new Posicion(2,1, new Tierra());
         jugador1.moverAPosicion(algoformer1,posicionFinal);
         
         Assert.assertTrue(juego.verificarTurno(jugador2));        
@@ -236,14 +236,14 @@ public class JuegoTest {
         Juego juego = new Juego(nombre1,nombre2,30,30);
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
-        Posicion posicionInicial = new Posicion(1,1);
+        Posicion posicionInicial = new Posicion(1,1, new Tierra());
         Algoformer algoformer1 = jugador1.obtenerListaAlgoformers().get(0);
         tablero.colocarAlgoformer(posicionInicial,algoformer1);
         
         Assert.assertTrue(juego.verificarTurno(jugador1));
         
         try{
-            Posicion posicionFinal = new Posicion(15,1);
+            Posicion posicionFinal = new Posicion(15,1, new Tierra());
             jugador1.moverAPosicion(algoformer1,posicionFinal);
             throw new AssertionError();
         } catch(ObjetivoMuyLejosException e) {
@@ -260,13 +260,13 @@ public class JuegoTest {
         Tablero tablero = juego.obtenerTablero();
         Algoformer algoformerj1 = jugador1.obtenerListaAlgoformers().get(0);
         Algoformer algoformerj2 = jugador2.obtenerListaAlgoformers().get(0);
-        tablero.colocarAlgoformer(new Posicion(1,1),algoformerj1);
-        tablero.colocarAlgoformer(new Posicion(1,2),algoformerj2);
+        tablero.colocarAlgoformer(new Posicion(1,1, new Tierra()),algoformerj1);
+        tablero.colocarAlgoformer(new Posicion(1,2, new Tierra()),algoformerj2);
 
         Assert.assertTrue(juego.verificarTurno(jugador1));
         
         try{
-            Posicion posicionFinal = new Posicion(1,2);
+            Posicion posicionFinal = new Posicion(1,2, new Tierra());
             jugador1.moverAPosicion(algoformerj1,posicionFinal);
             throw new AssertionError();
         } catch(NoSuperponibleException e) {
@@ -284,11 +284,11 @@ public class JuegoTest {
         Tablero tablero = juego.obtenerTablero();
         
         Algoformer algoformer = jugador1.obtenerListaAlgoformers().get(0);
-        Posicion posicionInicial = new Posicion(1,1);
+        Posicion posicionInicial = new Posicion(1,1, new Tierra());
         
         tablero.colocarAlgoformer(posicionInicial,algoformer);
         
-        Posicion posicionFinal = new Posicion(15,1);
+        Posicion posicionFinal = new Posicion(15,1, new Tierra());
         jugador1.moverAPosicion(algoformer,posicionFinal);        
     }
     @Test(expected=NoSuperponibleException.class)
@@ -301,10 +301,10 @@ public class JuegoTest {
         Tablero tablero = juego.obtenerTablero();
         Algoformer algoformerj1 = jugador1.obtenerListaAlgoformers().get(0);
         Algoformer algoformerj2 = jugador2.obtenerListaAlgoformers().get(0);
-        tablero.colocarAlgoformer(new Posicion(1,1),algoformerj1);
-        tablero.colocarAlgoformer(new Posicion(1,2),algoformerj2);
+        tablero.colocarAlgoformer(new Posicion(1,1, new Tierra()),algoformerj1);
+        tablero.colocarAlgoformer(new Posicion(1,2, new Tierra()),algoformerj2);
         
-        Posicion posicionFinal = new Posicion(1,2);
+        Posicion posicionFinal = new Posicion(1,2, new Tierra());
         jugador1.moverAPosicion(algoformerj1,posicionFinal);        
     }
     @Test
@@ -314,7 +314,7 @@ public class JuegoTest {
         Juego juego = new Juego(nombre1,nombre2,30,30);
 
         Tablero tablero = juego.obtenerTablero();
-        Ubicable chispa = tablero.obtenerUbicable(new Posicion(14, 14));
+        Ubicable chispa = tablero.obtenerUbicable(new Posicion(14, 14, new Tierra()));
         
         Assert.assertTrue(chispa instanceof ChispaSuprema);     
     }
