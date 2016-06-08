@@ -346,5 +346,22 @@ public class JuegoTest {
         
         Assert.assertTrue(chispa instanceof ChispaSuprema);     
     }
-    
+    @Test
+    public void testCambiarModoCambiaJugador(){
+        String nombre1 = "Juan";
+        String nombre2 = "Jhon";
+        Juego juego = new Juego(nombre1,nombre2,3,3);
+        Jugador jugador1 = juego.obtenerJugadorActual();
+        Jugador jugador2 = juego.obtenerJugadorEnEspera();
+        Tablero tablero = juego.obtenerTablero();
+        Posicion posicionInicial = new Posicion(1,1, new Tierra());
+        Algoformer algoformer1 = jugador1.obtenerListaAlgoformers().get(0);
+        tablero.colocarAlgoformer(posicionInicial,algoformer1);
+        
+        Assert.assertTrue(juego.verificarTurno(jugador1));
+
+        jugador1.cambiarModo(algoformer1);
+        
+        Assert.assertTrue(juego.verificarTurno(jugador2));        
+    }    
 }
