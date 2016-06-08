@@ -64,13 +64,13 @@ public class Posicion {
             return false;
         }
         if (Objects.equals(this.superficie, other.superficie)) {
-        	return true;
+            return true;
         }
         else {
-        	Class <?> clase = (other.superficie).getClass();
-        	if(clase.isInstance(this.superficie)) {
-        		return true;
-        	}
+            Class <?> clase = (other.superficie).getClass();
+            if(!clase.isInstance(this.superficie)) {
+                return false;
+            }
         }
         
         return true;
