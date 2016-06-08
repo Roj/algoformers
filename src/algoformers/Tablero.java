@@ -7,6 +7,7 @@ package algoformers;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
 
 /**
  *
@@ -46,10 +47,10 @@ public class Tablero {
         this.agregarUbicable(posicion, algoformer);
     }
     
-    public void moverAlgoformer(Posicion posicion,Algoformer algoformer){
+    /*public void moverAlgoformer(Posicion posicion,Algoformer algoformer){    	
         Posicion viejaPos = algoformer.obtenerPosicion();
         algoformer.verificarMovida(posicion);
-                
+        
         this.colocarAlgoformer(posicion, algoformer);
         this.borrarUbicable(viejaPos);
         
@@ -57,8 +58,25 @@ public class Tablero {
         Superficie sup = posicion.obtenerSuperficie();
         sup.accionSobreAlgoformer(algoformer); //hara lo que tenga que hacer sobre el algoformer
                
-    }
-    
+    }*/
+    public void moverAlgoformer(List<Posicion> posiciones,Algoformer algoformer){    	    	
+    	for (Posicion siguientePos : posiciones) {
+			/*if (!this.estaVacio(siguientePos)) {
+				algoformer.restablecerPuntosMovimiento();
+				break;
+			}*/
+			
+			Posicion viejaPos = algoformer.obtenerPosicion();
+			
+	        Superficie sup = siguientePos.obtenerSuperficie();
+	        sup.accionSobreAlgoformer(algoformer); //hara lo que tenga que hacer sobre el algoformer	
+	        
+	        algoformer.verificarMovida(siguientePos);
+	        this.colocarAlgoformer(siguientePos, algoformer);
+	        this.borrarUbicable(viejaPos);	        
+		}   	
+    	               
+    }    
     public void agregarUbicable(Posicion posicion,Ubicable nuevoUbicable){
         this.tablero.put(posicion, nuevoUbicable);
         nuevoUbicable.establecerPosicion(posicion);

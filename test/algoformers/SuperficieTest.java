@@ -1,5 +1,7 @@
 package algoformers;
 
+import java.util.ArrayList;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -20,8 +22,12 @@ public class SuperficieTest {
 	    
 	    Assert.assertTrue(optimus.obtenerVida() == 500);
 	    
-	    jugador1.moverAPosicion(optimus, pos2);
-	    	    
+	    //jugador1.moverAPosicion(optimus, pos2);
+        ArrayList<Posicion> posiciones = new ArrayList<Posicion>();
+        
+        posiciones.add(pos2);
+        jugador1.moverAPosiciones(optimus, posiciones);
+        
 	    Assert.assertTrue(optimus.obtenerVida() == 475);
 	    
 	}
@@ -47,8 +53,12 @@ public class SuperficieTest {
 	    
 	    Assert.assertTrue(optimus.obtenerVida() == 500);
 	    
-	    jugador1.moverAPosicion(optimus, pos2);
-	    	    
+	    //jugador1.moverAPosicion(optimus, pos2);
+        ArrayList<Posicion> posiciones = new ArrayList<Posicion>();
+        
+        posiciones.add(pos2);
+        jugador1.moverAPosiciones(optimus, posiciones);
+        
 	    Assert.assertTrue(optimus.obtenerVida() == 475);
 	    
 	}	

@@ -8,11 +8,14 @@ public abstract class Algoformer implements Ubicable {
 
     protected String nombre;
     protected int vida;
+    protected int puntosMovimiento;
     
     public Algoformer(int vida, ModoAlgoformer modo1, ModoAlgoformer modo2) {
         this.vida = vida;
         this.modoActual = modo1;
         this.otroModo = modo2;
+        
+        this.restablecerPuntosMovimiento();
     }	
     @Override
     public void establecerPosicion(Posicion pos) {
@@ -26,6 +29,14 @@ public abstract class Algoformer implements Ubicable {
         ModoAlgoformer aux = this.modoActual;
         this.modoActual = this.otroModo;
         this.otroModo = aux;
+        
+        this.restablecerPuntosMovimiento();
+    }
+    public void setPuntosMovimiento(int num) {
+    	puntosMovimiento = num;
+    }
+    public void restablecerPuntosMovimiento() {
+    	puntosMovimiento = this.obtenerVelocidad();
     }
     public void setVida(int num) {
     	vida = num;
@@ -54,6 +65,7 @@ public abstract class Algoformer implements Ubicable {
     
     @Override
     public void reemplazar(Algoformer algoformer) {
+    	algoformer.restablecerPuntosMovimiento();
         throw new NoSuperponibleException();
     }
     
@@ -64,10 +76,14 @@ public abstract class Algoformer implements Ubicable {
         return true;
     }
     public boolean verificarMovida(Posicion destino) {
-        return this.revisarVelocidad(destino);
+    	if (this.puntosMovimiento == 0)
+    		throw new ObjetivoMuyLejosException(); // Por ahora está esta excepcion
+    	
+    	return true;
+       //return this.revisarVelocidad(destino);
     }        
     public void mover(Posicion nuevaPosicion) {
         this.revisarVelocidad(nuevaPosicion);
         this.establecerPosicion(nuevaPosicion);
-    }
+    }       
 }

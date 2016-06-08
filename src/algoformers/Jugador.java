@@ -36,7 +36,7 @@ class Jugador {
         juego.avanzarTurno();
     }
     
-    public void moverAPosicion(Algoformer algof, Posicion destino) {
+    public void moverAPosiciones(Algoformer algof, List<Posicion> destino) {
         juego.verificarTurno(this);
         tablero.moverAlgoformer(destino, algof);
         juego.avanzarTurno();
