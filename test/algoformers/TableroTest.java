@@ -102,5 +102,5 @@ public class TableroTest {
         
         
         Assert.assertEquals(tablero.obtenerUbicable(posicion),optimus);
-    }
+    }   
 }

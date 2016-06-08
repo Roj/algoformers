@@ -41,6 +41,12 @@ class Jugador {
         tablero.moverAlgoformer(destino, algof);
         juego.avanzarTurno();
     }
+    
+    public void cambiarModo(Algoformer algof) {
+        juego.verificarTurno(this);
+        algof.cambiarModo();
+        juego.avanzarTurno();    	
+    }
     public String obtenerNombre() {
         return this.nombre;
     }

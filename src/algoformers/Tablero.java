@@ -24,15 +24,19 @@ public class Tablero {
         this.inicializarTablero();
     }
 
-    private void inicializarTablero(){
+    private void inicializarTablero(){    	
         for (int i=0;i<this.dimX;i++){
             for (int j=0;j<this.dimY;j++){
-                Posicion posicion = new Posicion(i,j);
+                Posicion posicion = new Posicion(i,j, new Tierra());
                 Vacio nuevoEspacio = new Vacio();
                 nuevoEspacio.establecerPosicion(posicion);
                 this.tablero.put(posicion,nuevoEspacio);
+                
+                Posicion posicion2 = new Posicion(i,j, new Aire());
+                nuevoEspacio.establecerPosicion(posicion2);
+                this.tablero.put(posicion2,nuevoEspacio);
             }
-        }   
+        }          
     }
     
     public void colocarAlgoformer(Posicion posicion,Algoformer algoformer){
@@ -45,8 +49,14 @@ public class Tablero {
     public void moverAlgoformer(Posicion posicion,Algoformer algoformer){
         Posicion viejaPos = algoformer.obtenerPosicion();
         algoformer.verificarMovida(posicion);
+                
         this.colocarAlgoformer(posicion, algoformer);
         this.borrarUbicable(viejaPos);
+        
+        
+        Superficie sup = posicion.obtenerSuperficie();
+        sup.accionSobreAlgoformer(algoformer); //hara lo que tenga que hacer sobre el algoformer
+               
     }
     
     public void agregarUbicable(Posicion posicion,Ubicable nuevoUbicable){

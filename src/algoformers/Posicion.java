@@ -5,7 +5,7 @@
  */
 package algoformers;
 
-
+import java.util.Objects;
 
 /**
  *
@@ -15,15 +15,21 @@ public class Posicion {
     int X;
     int Y;
     
-    public Posicion(int i, int j){
+    Superficie superficie;
+    
+    public Posicion(int i, int j, Superficie sup){
         this.X = i;
         this.Y = j;
-    }
+        this.superficie = sup;
+    }  
     public int obtenerX() {
         return this.X;
     }
     public int obtenerY() {
         return this.Y;
+    }   
+    public Superficie obtenerSuperficie() {
+    	return this.superficie;
     }
     
     public int calcularDistancia(Posicion otra) {
@@ -35,6 +41,13 @@ public class Posicion {
         int hash = 7;
         hash = 97 * hash + this.X;
         hash = 97 * hash + this.Y;
+        
+        if (this.superficie instanceof Tierra) {
+        	hash = 47 * hash + 0;
+        }
+        if (this.superficie instanceof Aire) {
+        	hash = 47 * hash + 1;
+        }        
         return hash;
     }
 
@@ -56,6 +69,16 @@ public class Posicion {
         if (this.Y != other.Y) {
             return false;
         }
+        if (Objects.equals(this.superficie, other.superficie)) {
+        	return true;
+        }
+        else {
+        	Class <?> clase = (other.superficie).getClass();
+        	if(!clase.isInstance(this.superficie)) {
+        		return false;
+        	}
+        }
+        
         return true;
     }
     

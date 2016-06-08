@@ -15,10 +15,12 @@ import org.junit.Test;
 public class PosicionTest {
     @Test
     public void testCalcularDistancia() {
-        Posicion pos1 = new Posicion(1,1);
-        Posicion pos2 = new Posicion(2,2);
-        Posicion pos3 = new Posicion(1,3);
-        Posicion pos4 = new Posicion(4,1);
+    	Superficie tierra = new Tierra();
+    	
+        Posicion pos1 = new Posicion(1,1, tierra);
+        Posicion pos2 = new Posicion(2,2, tierra);
+        Posicion pos3 = new Posicion(1,3, tierra);
+        Posicion pos4 = new Posicion(4,1, tierra);
         
         //diagonal
         Assert.assertEquals(pos1.calcularDistancia(pos2), 1);
@@ -27,5 +29,15 @@ public class PosicionTest {
         //horizontal
         Assert.assertEquals(pos1.calcularDistancia(pos4), 3);
         
-    }
+    } 
+    @Test
+    public void testPosicionesDiferenteTerreno() {    	
+        Posicion pos1 = new Posicion(1,1, new Rocosa());
+        Posicion pos2 = new Posicion(1,1, new Aire());
+        Posicion pos3 = new Posicion(1,1, new Tierra());
+        
+        Assert.assertEquals(pos1.equals(pos2), false);
+        Assert.assertEquals(pos1.equals(pos3), true);
+        
+    }     
 }

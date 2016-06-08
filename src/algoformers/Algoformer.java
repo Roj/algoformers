@@ -27,6 +27,9 @@ public abstract class Algoformer implements Ubicable {
         this.modoActual = this.otroModo;
         this.otroModo = aux;
     }
+    public void setVida(int num) {
+    	vida = num;
+    }
     public int obtenerVida() {
         return vida;
     }

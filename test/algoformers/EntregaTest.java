@@ -110,15 +110,15 @@ public class EntregaTest {
         Algoformer bonecrusher = algoformersj2.get(1);
         Algoformer frenzy = algoformersj2.get(2);
         
-        Ubicable chispa = tablero.obtenerUbicable(new Posicion(9, 9));
+        Ubicable chispa = tablero.obtenerUbicable(new Posicion(9,9, new Tierra()));
                
-        Posicion esquinaInferiorIzqBorde = new Posicion(0,0);
-        Posicion esquinaInferiorIzqSuperior = new Posicion(0,1);
-        Posicion esquinaInferiorIzqFrontal = new Posicion(1,0);
+        Posicion esquinaInferiorIzqBorde = new Posicion(0,0, new Tierra());
+        Posicion esquinaInferiorIzqSuperior = new Posicion(0,1,new Tierra());
+        Posicion esquinaInferiorIzqFrontal = new Posicion(1,0,new Tierra());
         
-        Posicion esquinaSuperiorDerBorde = new Posicion(19,19);
-        Posicion esquinaSuperiorDerInferior = new Posicion(19,18);
-        Posicion esquinaSuperioDerTrasera = new Posicion(18,19);
+        Posicion esquinaSuperiorDerBorde = new Posicion(19,19,new Tierra());
+        Posicion esquinaSuperiorDerInferior = new Posicion(19,18,new Tierra());
+        Posicion esquinaSuperioDerTrasera = new Posicion(18,19,new Tierra());
         
         tablero.colocarAlgoformer(esquinaInferiorIzqBorde, optimus);
         tablero.colocarAlgoformer(esquinaInferiorIzqSuperior, bumblebee);
