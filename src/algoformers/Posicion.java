@@ -41,13 +41,7 @@ public class Posicion {
         int hash = 7;
         hash = 97 * hash + this.X;
         hash = 97 * hash + this.Y;
-        
-        if (this.superficie instanceof Tierra) {
-        	hash = 47 * hash + 0;
-        }
-        if (this.superficie instanceof Aire) {
-        	hash = 47 * hash + 1;
-        }        
+        hash = 97 * hash + this.superficie.hash();
         return hash;
     }
 
@@ -74,8 +68,8 @@ public class Posicion {
         }
         else {
         	Class <?> clase = (other.superficie).getClass();
-        	if(!clase.isInstance(this.superficie)) {
-        		return false;
+        	if(clase.isInstance(this.superficie)) {
+        		return true;
         	}
         }
         
