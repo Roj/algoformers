@@ -72,7 +72,6 @@ public abstract class Algoformer implements Ubicable {
     
     @Override
     public void reemplazar(Algoformer algoformer) {
-    	algoformer.restablecerPuntosMovimiento();
         throw new NoSuperponibleException();
     }
     
