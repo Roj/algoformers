@@ -364,4 +364,29 @@ public class JuegoTest {
         
         Assert.assertTrue(juego.verificarTurno(jugador2));        
     }    
+    
+    @Test
+    public void testAlHacerJugadaSeRestauranPuntosDeMovimiento(){
+        String nombre1 = "Juan";
+        String nombre2 = "Jhon";
+        Juego juego = new Juego(nombre1,nombre2,3,3);
+        Jugador jugador1 = juego.obtenerJugadorActual();
+        Jugador jugador2 = juego.obtenerJugadorEnEspera();
+        Tablero tablero = juego.obtenerTablero();
+        Posicion posicionInicial = new Posicion(1,1, new Rocosa());
+        Algoformer algoformer1 = jugador1.obtenerListaAlgoformers().get(0);
+        tablero.colocarAlgoformer(posicionInicial,algoformer1);
+        
+        Assert.assertTrue(juego.verificarTurno(jugador1));
+        Posicion posicionFinal = new Posicion(2,1, new Rocosa());
+        
+        ArrayList<Posicion> posiciones = new ArrayList<Posicion>();
+        posiciones.add(posicionFinal);
+        
+        int cantidadMovimientosIniciales = algoformer1.obtenerPuntosDeMovimiento();
+        
+        jugador1.moverAPosiciones(algoformer1, posiciones);
+        Assert.assertEquals(cantidadMovimientosIniciales,algoformer1.obtenerPuntosDeMovimiento());
+    
+    }
 }

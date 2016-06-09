@@ -6,6 +6,7 @@
 package algoformers;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -34,18 +35,27 @@ class Jugador {
         juego.verificarTurno(this);
         alf.atacar(tablero.obtenerUbicable(destino));
         juego.avanzarTurno();
+        this.avisarAlgoformersPaseDeTurno();
     }
     
     public void moverAPosiciones(Algoformer algof, List<Posicion> destino) {
         juego.verificarTurno(this);
         tablero.moverAlgoformer(destino, algof);
         juego.avanzarTurno();
+        this.avisarAlgoformersPaseDeTurno();
     }
     
     public void cambiarModo(Algoformer algof) {
         juego.verificarTurno(this);
         algof.cambiarModo();
         juego.avanzarTurno();    	
+        this.avisarAlgoformersPaseDeTurno();
+    }
+    public void avisarAlgoformersPaseDeTurno() {
+        for(Iterator<Algoformer> i = algoformers.iterator(); i.hasNext();) {
+            Algoformer algoformer = i.next();
+            algoformer.pasarTurno();
+        }
     }
     public String obtenerNombre() {
         return this.nombre;

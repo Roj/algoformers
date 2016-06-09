@@ -14,9 +14,6 @@ public class Pantano extends Tierra {
         //no restar narinas
     }
     @Override
-    public void ajustarPuntosDeMovimiento(ModoAlgoformer modo, Algoformer algof) {
-        //no deberia ser llamado nunca, tenemos metodos mas descriptivos 
-    }
     public void ajustarPuntosDeMovimiento(ModoTerrestre modo, Algoformer algof) {
         algof.modificarPuntosDeMovimiento(-2);
     }

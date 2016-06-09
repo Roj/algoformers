@@ -88,4 +88,53 @@ public class AlgoformerTest {
         }
         Assert.assertTrue(optimus.obtenerPosicion() == posicion);
     }
+    @Test
+    public void testMoverDisminuyePuntosDeMovimiento() {
+        FabricaAlgoformers fabrica = new FabricaAlgoformers();
+        Algoformer optimus = fabrica.crearOptimus();
+        
+        Posicion posicion = new Posicion(1,1, new Rocosa());
+        Posicion posicion2 = new Posicion(1,2, new Rocosa());
+        
+        optimus.establecerPosicion(posicion);
+        int puntosIniciales = optimus.obtenerPuntosDeMovimiento();
+        optimus.mover(posicion2);
+        
+        Assert.assertTrue(puntosIniciales > optimus.obtenerPuntosDeMovimiento());
+    }
+    @Test
+    public void testPasarTurnoRestauraPtosMovimiento() {
+        FabricaAlgoformers fabrica = new FabricaAlgoformers();
+        Algoformer optimus = fabrica.crearOptimus();
+        
+        Posicion posicion = new Posicion(1,1, new Rocosa());
+        Posicion posicion2 = new Posicion(1,2, new Rocosa());
+        
+        optimus.establecerPosicion(posicion);
+        int puntosIniciales = optimus.obtenerPuntosDeMovimiento();
+        optimus.mover(posicion2);
+        optimus.pasarTurno();
+        
+        Assert.assertEquals(puntosIniciales, optimus.obtenerPuntosDeMovimiento());
+    }
+    @Test
+    public void testMovidaInvalidaNoDisminuyePtsDeMovimiento() {
+        FabricaAlgoformers fabrica = new FabricaAlgoformers();
+        Algoformer optimus = fabrica.crearOptimus();
+        
+        Posicion posicion = new Posicion(1,1, new Rocosa());
+        Posicion posicion2 = new Posicion(1,1, new Nube());
+        
+        optimus.establecerPosicion(posicion);
+        int puntosIniciales = optimus.obtenerPuntosDeMovimiento();
+        try {
+            optimus.mover(posicion2);
+            //si llegamos acá, estamos mal
+            throw new AssertionError();
+        } catch(SuperficieNoAtravesableException e) {
+            Assert.assertEquals(puntosIniciales, optimus.obtenerPuntosDeMovimiento());        
+        }
+        
+    }
+    
 }

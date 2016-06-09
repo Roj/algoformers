@@ -75,19 +75,24 @@ public abstract class Algoformer implements Ubicable {
         }
         return true;
     }
-    public boolean verificarMovida(Posicion destino) {
-        this.modoActual.ajustarPuntosDeMovimiento(destino.obtenerSuperficie(),this);
+    public boolean verificarMovida() {
+        //Obtenemos el valor en el que quedaria el algoformer
+        int puntosIniciales = this.puntosMovimiento;
+        this.modoActual.ajustarPuntosDeMovimiento(this.posicion.obtenerSuperficie(),this);
+        int puntosModificados = this.puntosMovimiento;
+        this.puntosMovimiento = puntosIniciales;
         
-    	if (this.puntosMovimiento <= 0)
+    	if (puntosModificados < 0)
     		throw new ObjetivoMuyLejosException(); // Por ahora está esta excepcion
     	
     	return true;
     }        
     public void mover(Posicion nuevaPosicion) {
-        this.verificarMovida(nuevaPosicion);
-        
+        //verificacion
+        this.verificarMovida();
         this.modoActual.aceptarSuperficie(nuevaPosicion.obtenerSuperficie(),this);
-        
+        //todo bien, nos cambiamos
+        this.modoActual.ajustarPuntosDeMovimiento(this.posicion.obtenerSuperficie(),this);
         this.establecerPosicion(nuevaPosicion);
     }       
 
@@ -95,8 +100,18 @@ public abstract class Algoformer implements Ubicable {
         return this.modoActual;
     }
 
-
-    void modificarPuntosDeMovimiento(int i) {
+    public int obtenerPuntosDeMovimiento() {
+        return this.puntosMovimiento;
+    }
+    
+    public void modificarPuntosDeMovimiento(int i) {
         this.puntosMovimiento = this.puntosMovimiento+i;
+    }
+    public void restablecerPuntosDeMovimiento() {
+        this.puntosMovimiento = this.modoActual.obtenerVelocidad();
+    }
+    public void pasarTurno() {
+        //en el futuro deberia tambien avisarle a los buffs
+        this.restablecerPuntosDeMovimiento();
     }
 }

@@ -55,8 +55,8 @@ public class Tablero {
     
     public void moverAlgoformer(List<Posicion> posiciones,Algoformer algoformer){    	    	
     	for (Posicion siguientePos : posiciones) {
+
             this.verificarReemplazable(siguientePos,algoformer);
-            
             
             Posicion viejaPos = algoformer.obtenerPosicion();
             

@@ -13,10 +13,5 @@ public class Espinas extends Tierra {
     public void accionSobreAlgoformer(ModoAereo modo, Algoformer algof) {
         //no restar narinas
     }
-
-    @Override
-    public void ajustarPuntosDeMovimiento(ModoAlgoformer modo, Algoformer algof) {
-        algof.modificarPuntosDeMovimiento(-1);
-    }
     
 }

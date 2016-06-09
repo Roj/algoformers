@@ -13,9 +13,4 @@ public class Rocosa extends Tierra {
     public void accionSobreAlgoformer(ModoHumanoide modo, Algoformer algof) {
 
     }
-
-    @Override
-    public void ajustarPuntosDeMovimiento(ModoAlgoformer modo, Algoformer algof) {
-        algof.modificarPuntosDeMovimiento(-1);
-    }
 }

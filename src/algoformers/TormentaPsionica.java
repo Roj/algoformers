@@ -13,10 +13,6 @@ public class TormentaPsionica extends Aire {
     public void accionSobreAlgoformer(Algoformer alg) {
         // Disminuye poder de ataque para siempre en 40% solo la primera vez que pasa
     }
-    @Override
-    public void ajustarPuntosDeMovimiento(ModoAlgoformer modo, Algoformer algof) {
-        algof.modificarPuntosDeMovimiento(-1);
-    }
 
     @Override
     public void accionSobreAlgoformer(ModoAereo modo, Algoformer algof) {
