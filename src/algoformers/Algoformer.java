@@ -1,5 +1,9 @@
 package algoformers;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map.Entry;
+
 public abstract class Algoformer implements Ubicable {
     protected ModoAlgoformer modoActual;
     protected ModoAlgoformer otroModo;
@@ -10,10 +14,13 @@ public abstract class Algoformer implements Ubicable {
     protected int vida;
     protected int puntosMovimiento;
     
+    protected HashMap<Integer,Buff> buffs;
+    
     public Algoformer(int vida, ModoAlgoformer modo1, ModoAlgoformer modo2) {
         this.vida = vida;
         this.modoActual = modo1;
         this.otroModo = modo2;
+        this.buffs = new HashMap<>();
         
         this.restablecerPuntosMovimiento();
     }	
@@ -89,6 +96,7 @@ public abstract class Algoformer implements Ubicable {
     }        
     public void mover(Posicion nuevaPosicion) {
         //verificacion
+        this.avisarABuffsMovida();
         this.verificarMovida();
         this.modoActual.aceptarSuperficie(nuevaPosicion.obtenerSuperficie(),this);
         //todo bien, nos cambiamos
@@ -112,6 +120,38 @@ public abstract class Algoformer implements Ubicable {
     }
     public void pasarTurno() {
         //en el futuro deberia tambien avisarle a los buffs
+        this.avisarABuffsPasarTurno();
         this.restablecerPuntosDeMovimiento();
     }
+    public void agregarBuff(Buff buff) {
+        Buff existente = this.buffs.get(buff.hashCode());
+        try {
+            existente.repetir(this);
+        } catch(NullPointerException e) {
+            this.buffs.put(buff.hashCode(), buff);
+            buff.accionSobreAlgoformer(this);
+        }
+        
+    }
+    public void borrarBuff(Buff buff) {
+        this.buffs.remove(buff.hashCode());
+    }
+    public void avisarABuffsMovida() {
+
+        for(Entry<Integer, Buff> entry : this.buffs.entrySet()) {
+            Buff actual = entry.getValue();
+            actual.avisarMovimiento(this);
+        
+        }
+    }
+    public void avisarABuffsPasarTurno() {
+
+        for(Entry<Integer, Buff> entry : this.buffs.entrySet()) {
+            Buff actual = entry.getValue();
+            actual.pasarTurno(this);
+        
+        }
+    }
+        
+    
 }

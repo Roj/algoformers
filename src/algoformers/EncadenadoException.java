@@ -9,9 +9,6 @@ package algoformers;
  *
  * @author joaquintz
  */
-public interface Buff {
-    public void avisarMovimiento(Algoformer algof);
-    public void repetir(Algoformer algof);
-    public void accionSobreAlgoformer(Algoformer algof);
-    public void pasarTurno(Algoformer algoformer);
+public class EncadenadoException extends RuntimeException{
+    
 }

@@ -21,6 +21,9 @@ public abstract class ModoAlgoformer {
     public int obtenerDistanciaAtaque() {
         return this.distanciaAtaque;
     }
+    public void establecerPuntosAtaque(int puntosAtaqueNuevos) {
+        this.puntosAtaque = puntosAtaqueNuevos;
+    }
 
     public abstract void aceptarSuperficie(Superficie sup, Algoformer algof);
     public abstract void ajustarPuntosDeMovimiento(Superficie sup, Algoformer algof);
