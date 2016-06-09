@@ -16,7 +16,8 @@ public class NebulosaDeAndromeda extends Aire {
     }
     @Override
     public void accionSobreAlgoformer(ModoAereo modo, Algoformer algof) {
-        //en el futuro, agregar el buff de no movible
+        algof.agregarBuff(new EncadenadoEnAndromeda());
+        
     }
     @Override
     public void accionSobreAlgoformer(ModoHumanoide modo, Algoformer algof) {

@@ -17,6 +17,7 @@ public class TormentaPsionica extends Aire {
     @Override
     public void accionSobreAlgoformer(ModoAereo modo, Algoformer algof) {
         //bajar capacidad de ataque por unica vez, es un buff
+        algof.agregarBuff(new Psionizado());
     }
 
     @Override
