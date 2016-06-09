@@ -8,6 +8,8 @@ package algoformers;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -25,22 +27,36 @@ public class Tablero {
         this.inicializarTablero();
     }
 
-    private void inicializarTablero(){    	
+    private void inicializarTablero(){    	    	
+    	List<Superficie> superficiesTierra = new ArrayList<Superficie>();
+    	List<Superficie> superficiesAereas = new ArrayList<Superficie>();
+    	
+    	superficiesTierra.add(new Rocosa());
+    	superficiesTierra.add(new Espinas());
+    	superficiesTierra.add(new Pantano());
+    	
+    	superficiesAereas.add(new Nube());
+    	superficiesAereas.add(new NebulosaDeAndromeda());
+    	superficiesAereas.add(new TormentaPsionica());
+    	
+    	inicializarUnTablero(superficiesTierra);
+    	inicializarUnTablero(superficiesAereas);          
+    }
+    private void inicializarUnTablero(List<Superficie> superficies) {
+    	Random random = new Random();    	
+    	
         for (int i=0;i<this.dimX;i++){
-            for (int j=0;j<this.dimY;j++){
-                Posicion posicion = new Posicion(i,j, new Rocosa());
+            for (int j=0;j<this.dimY;j++){            	
+            	int numAleatorio = (int)(random.nextDouble() * superficies.size());
+            	
+                Posicion posicion = new Posicion(i,j, superficies.get(numAleatorio));                     
                 Vacio nuevoEspacio = new Vacio();
                 nuevoEspacio.establecerPosicion(posicion);
                 this.tablero.put(posicion,nuevoEspacio);
-                
-                
-                Posicion posicion2 = new Posicion(i,j, new Nube());
-                nuevoEspacio.establecerPosicion(posicion2);
-                this.tablero.put(posicion2,nuevoEspacio);
-                
             }
-        }          
+        }     	
     }
+    
     public void verificarReemplazable(Posicion pos, Algoformer algof) {
         Ubicable ubicableEnPosicion = this.tablero.get(pos);
         ubicableEnPosicion.reemplazar(algof);
