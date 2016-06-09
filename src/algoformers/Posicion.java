@@ -68,7 +68,7 @@ public class Posicion {
         }
         else {
             Class <?> clase = (other.superficie).getClass();
-            if(!clase.isInstance(this.superficie)) {
+            if(!clase.isInstance(this.superficie)) {                
                 return false;
             }
         }

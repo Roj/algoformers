@@ -54,13 +54,69 @@ public class SuperficieTest {
 	    Assert.assertTrue(optimus.obtenerVida() == 500);
 	    
 	    //jugador1.moverAPosicion(optimus, pos2);
-        ArrayList<Posicion> posiciones = new ArrayList<Posicion>();
+            ArrayList<Posicion> posiciones = new ArrayList<Posicion>();
         
-        posiciones.add(pos2);
-        jugador1.moverAPosiciones(optimus, posiciones);
+            posiciones.add(pos2);
+            jugador1.moverAPosiciones(optimus, posiciones);
         
 	    Assert.assertTrue(optimus.obtenerVida() == 475);
 	    
 	}	
-	
+        @Test(expected=ModoHumanoideNoPasaPorPantano.class)
+        public void testMoverAlgoformerTerrestreSobrePantanoModoHumanoide(){
+            String nombre1 = "Juan";
+	    String nombre2 = "John";
+	    Juego juego = new Juego(nombre1,nombre2,10,10);
+	    Jugador jugador1 = juego.obtenerJugadorActual();
+	    Tablero tablero = juego.obtenerTablero();
+	    Algoformer optimus = jugador1.obtenerListaAlgoformers().get(0);
+	    
+	    Posicion pos1 = new Posicion(1, 1, new Tierra());
+	    Posicion pos2 = new Posicion(2, 1, new Pantano());
+	    	    
+	    tablero.colocarAlgoformer(pos1, optimus);
+	    
+	    Assert.assertTrue(optimus.obtenerPosicion() == pos1);
+	    
+	    //jugador1.moverAPosicion(optimus, pos2);
+            ArrayList<Posicion> posiciones = new ArrayList<Posicion>();
+        
+            posiciones.add(pos2);
+            
+            jugador1.moverAPosiciones(optimus, posiciones);
+        
+	    Assert.assertTrue(optimus.obtenerPosicion() == pos1);
+        }
+        @Test
+        public void testMoverAlgoformerTerrestreSobrePantanoModoAlgoformer(){
+            String nombre1 = "Juan";
+	    String nombre2 = "John";
+	    Juego juego = new Juego(nombre1,nombre2,10,10);
+	    Jugador jugador1 = juego.obtenerJugadorActual();
+	    Tablero tablero = juego.obtenerTablero();
+	    Algoformer optimus = jugador1.obtenerListaAlgoformers().get(0);
+	    
+	    Posicion pos1 = new Posicion(1, 1, new Tierra());
+	    	    
+	    tablero.colocarAlgoformer(pos1, optimus);
+	    
+            optimus.cambiarModo(); //No se lo pido a jugador así no pasa de turno
+            
+            Assert.assertTrue(optimus.obtenerPosicion() == pos1);
+	    
+	    //jugador1.moverAPosicion(optimus, pos2);
+            ArrayList<Posicion> posiciones = new ArrayList<Posicion>();
+        
+            posiciones.add(new Posicion(2,1,new Pantano()));
+            posiciones.add(new Posicion(3,1,new Rocosa()));
+            posiciones.add(new Posicion(4,1,new Rocosa()));
+            posiciones.add(new Posicion(5,1,new Rocosa()));
+            posiciones.add(new Posicion(6,1,new Rocosa())); //No deberia llegar a esta posicion
+            try{
+                jugador1.moverAPosiciones(optimus, posiciones);
+            } catch (ObjetivoMuyLejosException e){
+                 Assert.assertEquals(optimus.obtenerPosicion(),new Posicion(5,1,new Rocosa()));
+            }
+        }
+        
 }

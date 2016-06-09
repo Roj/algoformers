@@ -66,13 +66,15 @@ public class Tablero {
 				break;
 			}*/
 			
-			Posicion viejaPos = algoformer.obtenerPosicion();
+		Posicion viejaPos = algoformer.obtenerPosicion();
 			
 	        Superficie sup = siguientePos.obtenerSuperficie();
 	        sup.accionSobreAlgoformer(algoformer); //hara lo que tenga que hacer sobre el algoformer	
-	        
+//                System.out.println("X:" + algoformer.obtenerPosicion().obtenerX());
+//                System.out.println(algoformer.puntosMovimiento);
 	        algoformer.verificarMovida(siguientePos);
 	        this.colocarAlgoformer(siguientePos, algoformer);
+                algoformer.modificarPuntosDeMovimiento(-1);
 	        this.borrarUbicable(viejaPos);	        
 		}   	
     	               

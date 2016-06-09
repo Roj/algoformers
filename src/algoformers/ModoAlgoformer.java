@@ -21,4 +21,6 @@ public abstract class ModoAlgoformer {
 	public int obtenerDistanciaAtaque() {
             return this.distanciaAtaque;
         }
+
+        public abstract void aceptaPantano();
 }
