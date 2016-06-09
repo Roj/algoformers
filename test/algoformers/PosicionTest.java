@@ -15,7 +15,7 @@ import org.junit.Test;
 public class PosicionTest {
     @Test
     public void testCalcularDistancia() {
-    	Superficie tierra = new Tierra();
+    	Superficie tierra = new Rocosa();
     	
         Posicion pos1 = new Posicion(1,1, tierra);
         Posicion pos2 = new Posicion(2,2, tierra);
@@ -33,8 +33,8 @@ public class PosicionTest {
     @Test
     public void testPosicionesDiferenteTerreno() {    	
         Posicion pos1 = new Posicion(1,1, new Rocosa());
-        Posicion pos2 = new Posicion(1,1, new Aire());
-        Posicion pos3 = new Posicion(1,1, new Tierra());
+        Posicion pos2 = new Posicion(1,1, new Nube());
+        Posicion pos3 = new Posicion(1,1, new Rocosa());
         
         Assert.assertEquals(pos1.equals(pos2), false);
         Assert.assertEquals(pos1.equals(pos3), true);

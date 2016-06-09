@@ -76,14 +76,18 @@ public abstract class Algoformer implements Ubicable {
         return true;
     }
     public boolean verificarMovida(Posicion destino) {
+        this.modoActual.ajustarPuntosDeMovimiento(destino.obtenerSuperficie(),this);
+        
     	if (this.puntosMovimiento <= 0)
     		throw new ObjetivoMuyLejosException(); // Por ahora está esta excepcion
     	
     	return true;
-       //return this.revisarVelocidad(destino);
     }        
     public void mover(Posicion nuevaPosicion) {
-        this.revisarVelocidad(nuevaPosicion);
+        this.verificarMovida(nuevaPosicion);
+        
+        this.modoActual.aceptarSuperficie(nuevaPosicion.obtenerSuperficie(),this);
+        
         this.establecerPosicion(nuevaPosicion);
     }       
 
@@ -91,9 +95,6 @@ public abstract class Algoformer implements Ubicable {
         return this.modoActual;
     }
 
-    void puedeAtravesarPantano() {
-        this.modoActual.aceptaPantano();
-    }
 
     void modificarPuntosDeMovimiento(int i) {
         this.puntosMovimiento = this.puntosMovimiento+i;

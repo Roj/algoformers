@@ -6,7 +6,10 @@ public class ModoHumanoide extends ModoAlgoformer {
     }
 
     @Override
-    public void aceptaPantano() {
-        throw new ModoHumanoideNoPasaPorPantano();
+    public void aceptarSuperficie(Superficie sup, Algoformer algof) {
+        sup.accionSobreAlgoformer(this, algof);
     }
+    public void ajustarPuntosDeMovimiento(Superficie sup, Algoformer algof) {
+        sup.ajustarPuntosDeMovimiento(this,algof);
+    }    
 }

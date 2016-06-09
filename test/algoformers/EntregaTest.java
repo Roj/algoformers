@@ -26,9 +26,9 @@ public class EntregaTest {
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
         Algoformer optimus = jugador1.obtenerListaAlgoformers().get(0);
-        tablero.colocarAlgoformer(new Posicion(1,1, new Tierra()),optimus);
+        tablero.colocarAlgoformer(new Posicion(1,1, new Rocosa()),optimus);
         
-        Posicion nuevaPosicion = new Posicion(2,1, new Tierra());
+        Posicion nuevaPosicion = new Posicion(2,1, new Rocosa());
         // muevo a la nuevo posicion
         optimus.mover(nuevaPosicion);
         
@@ -44,7 +44,7 @@ public class EntregaTest {
         Tablero tablero = juego.obtenerTablero();
         
         Algoformer optimus = jugador1.obtenerListaAlgoformers().get(0);
-        tablero.colocarAlgoformer(new Posicion(1,1, new Tierra()),optimus);
+        tablero.colocarAlgoformer(new Posicion(1,1, new Rocosa()),optimus);
         
         
         
@@ -78,12 +78,12 @@ public class EntregaTest {
         Tablero tablero = juego.obtenerTablero();
         
         Algoformer optimus = jugador1.obtenerListaAlgoformers().get(0);
-        tablero.colocarAlgoformer(new Posicion(1,1, new Tierra()),optimus);
+        tablero.colocarAlgoformer(new Posicion(1,1, new Rocosa()),optimus);
      
         // el algoformer[0] es Optimus   
         optimus.cambiarModo();
         
-        Posicion nuevaPosicion = new Posicion(2,1, new Tierra());
+        Posicion nuevaPosicion = new Posicion(2,1, new Rocosa());
         // muevo a la nuevo posicion
         optimus.mover(nuevaPosicion);
         
@@ -111,15 +111,15 @@ public class EntregaTest {
         Algoformer bonecrusher = algoformersj2.get(1);
         Algoformer frenzy = algoformersj2.get(2);
         
-        Ubicable chispa = tablero.obtenerUbicable(new Posicion(9,9, new Tierra()));
+        Ubicable chispa = tablero.obtenerUbicable(new Posicion(9,9, new Rocosa()));
                
-        Posicion esquinaInferiorIzqBorde = new Posicion(0,0, new Tierra());
-        Posicion esquinaInferiorIzqSuperior = new Posicion(0,1,new Tierra());
-        Posicion esquinaInferiorIzqFrontal = new Posicion(1,0,new Tierra());
+        Posicion esquinaInferiorIzqBorde = new Posicion(0,0, new Rocosa());
+        Posicion esquinaInferiorIzqSuperior = new Posicion(0,1,new Rocosa());
+        Posicion esquinaInferiorIzqFrontal = new Posicion(1,0,new Rocosa());
         
-        Posicion esquinaSuperiorDerBorde = new Posicion(19,19,new Tierra());
-        Posicion esquinaSuperiorDerInferior = new Posicion(19,18,new Tierra());
-        Posicion esquinaSuperioDerTrasera = new Posicion(18,19,new Tierra());
+        Posicion esquinaSuperiorDerBorde = new Posicion(19,19,new Rocosa());
+        Posicion esquinaSuperiorDerInferior = new Posicion(19,18,new Rocosa());
+        Posicion esquinaSuperioDerTrasera = new Posicion(18,19,new Rocosa());
         
         tablero.colocarAlgoformer(esquinaInferiorIzqBorde, optimus);
         tablero.colocarAlgoformer(esquinaInferiorIzqSuperior, bumblebee);

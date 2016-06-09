@@ -1,9 +1,11 @@
 package algoformers;
 
-public class Aire extends Superficie { 
-	public void accionSobreAlgoformer(Algoformer alg) {		
-	}	
-        public int hash(){
-            return 0;
-        }
+public abstract class Aire extends Superficie { 
+    public int hash(){
+        return 0;
+    }
+    @Override
+    public boolean equals(Object obj) {
+        return (obj instanceof Aire);
+    }
 }

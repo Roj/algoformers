@@ -23,7 +23,7 @@ public class AlgoformerTest {
     	FabricaAlgoformers fabrica = new FabricaAlgoformers();
     	Algoformer optimus = fabrica.crearOptimus();
     	Algoformer otro_optimus = fabrica.crearOptimus();
-        Posicion pos = new Posicion(1,1, new Tierra());
+        Posicion pos = new Posicion(1,1, new Rocosa());
         optimus.establecerPosicion(pos);
         otro_optimus.establecerPosicion(pos);
     	
@@ -34,7 +34,7 @@ public class AlgoformerTest {
     	FabricaAlgoformers fabrica = new FabricaAlgoformers();
     	Algoformer optimus = fabrica.crearOptimus();
     	Algoformer megatron = fabrica.crearMegatron();
-        Posicion pos = new Posicion(1,1, new Tierra());
+        Posicion pos = new Posicion(1,1, new Rocosa());
         optimus.establecerPosicion(pos);
         megatron.establecerPosicion(pos);
     	
@@ -47,12 +47,12 @@ public class AlgoformerTest {
         FabricaAlgoformers fabrica = new FabricaAlgoformers();
     	Algoformer optimus = fabrica.crearOptimus();
         
-        Posicion posOptimus = new Posicion(2,2, new Tierra());
+        Posicion posOptimus = new Posicion(2,2, new Rocosa());
         optimus.establecerPosicion(posOptimus);
         //Este es el ejemplo en la documentacion
         for(int i=0; i<=4; i++) {
             for(int j=0; j<=4; j++ ) {
-                Posicion actual = new Posicion(i,j, new Tierra());
+                Posicion actual = new Posicion(i,j, new Rocosa());
                 Assert.assertTrue(optimus.revisarDistanciaAtaque(actual));
             }
         }
@@ -64,9 +64,9 @@ public class AlgoformerTest {
     	Algoformer optimus = fabrica.crearOptimus();
     	Algoformer megatron = fabrica.crearMegatron();
         
-        Posicion posOptimus = new Posicion(1,1, new Tierra());
+        Posicion posOptimus = new Posicion(1,1, new Rocosa());
         optimus.establecerPosicion(posOptimus);
-        Posicion posMegatron = new Posicion(4,4, new Tierra());
+        Posicion posMegatron = new Posicion(4,4, new Rocosa());
         megatron.establecerPosicion(posMegatron);
     	
     	optimus.atacar(megatron);
@@ -79,12 +79,13 @@ public class AlgoformerTest {
         FabricaAlgoformers fabrica = new FabricaAlgoformers();
         Algoformer optimus = fabrica.crearOptimus();
         
-        Posicion posicion = new Posicion(1,1, new Tierra());
+        Posicion posicion = new Posicion(1,1, new Rocosa());
         optimus.establecerPosicion(posicion);
         
-        Posicion nuevaPosicion = new Posicion(10,1, new Tierra());
-        optimus.mover(nuevaPosicion);
-        
+        for(int i=1; i<=10; i++) {
+            Posicion nuevaPosicion = new Posicion(i,1, new Rocosa());
+            optimus.mover(nuevaPosicion);
+        }
         Assert.assertTrue(optimus.obtenerPosicion() == posicion);
     }
 }

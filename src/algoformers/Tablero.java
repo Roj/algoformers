@@ -19,7 +19,7 @@ public class Tablero {
     int dimY;
             
     public Tablero(int X,int Y){
-        this.tablero = new HashMap<Posicion,Ubicable>();
+        this.tablero = new HashMap<>();
         this.dimX = X;
         this.dimY = Y;
         this.inicializarTablero();
@@ -28,55 +28,45 @@ public class Tablero {
     private void inicializarTablero(){    	
         for (int i=0;i<this.dimX;i++){
             for (int j=0;j<this.dimY;j++){
-                Posicion posicion = new Posicion(i,j, new Tierra());
+                Posicion posicion = new Posicion(i,j, new Rocosa());
                 Vacio nuevoEspacio = new Vacio();
                 nuevoEspacio.establecerPosicion(posicion);
                 this.tablero.put(posicion,nuevoEspacio);
                 
-                Posicion posicion2 = new Posicion(i,j, new Aire());
+                
+                Posicion posicion2 = new Posicion(i,j, new Nube());
                 nuevoEspacio.establecerPosicion(posicion2);
                 this.tablero.put(posicion2,nuevoEspacio);
+                
             }
         }          
     }
-    
+    public void verificarReemplazable(Posicion pos, Algoformer algof) {
+        Ubicable ubicableEnPosicion = this.tablero.get(pos);
+        ubicableEnPosicion.reemplazar(algof);
+    }
     public void colocarAlgoformer(Posicion posicion,Algoformer algoformer){
-        Ubicable ubicableEnPosicion = this.tablero.get(posicion);
-        ubicableEnPosicion.reemplazar(algoformer);
+        this.verificarReemplazable(posicion,algoformer);
+        
         algoformer.establecerPosicion(posicion);
         this.agregarUbicable(posicion, algoformer);
     }
     
-    /*public void moverAlgoformer(Posicion posicion,Algoformer algoformer){    	
-        Posicion viejaPos = algoformer.obtenerPosicion();
-        algoformer.verificarMovida(posicion);
-        
-        this.colocarAlgoformer(posicion, algoformer);
-        this.borrarUbicable(viejaPos);
-        
-        
-        Superficie sup = posicion.obtenerSuperficie();
-        sup.accionSobreAlgoformer(algoformer); //hara lo que tenga que hacer sobre el algoformer
-               
-    }*/
+    
     public void moverAlgoformer(List<Posicion> posiciones,Algoformer algoformer){    	    	
     	for (Posicion siguientePos : posiciones) {
-			/*if (!this.estaVacio(siguientePos)) {
-				algoformer.restablecerPuntosMovimiento();
-				break;
-			}*/
-			
-		Posicion viejaPos = algoformer.obtenerPosicion();
-			
-	        Superficie sup = siguientePos.obtenerSuperficie();
-	        sup.accionSobreAlgoformer(algoformer); //hara lo que tenga que hacer sobre el algoformer	
-//                System.out.println("X:" + algoformer.obtenerPosicion().obtenerX());
-//                System.out.println(algoformer.puntosMovimiento);
-	        algoformer.verificarMovida(siguientePos);
-	        this.colocarAlgoformer(siguientePos, algoformer);
-                algoformer.modificarPuntosDeMovimiento(-1);
-	        this.borrarUbicable(viejaPos);	        
-		}   	
+            this.verificarReemplazable(siguientePos,algoformer);
+            
+            
+            Posicion viejaPos = algoformer.obtenerPosicion();
+            
+            algoformer.mover(siguientePos);
+            
+            //Si todo sale bien
+            this.agregarUbicable(siguientePos, algoformer);
+            this.borrarUbicable(viejaPos);	        
+            
+	}   	
     	               
     }    
     public void agregarUbicable(Posicion posicion,Ubicable nuevoUbicable){

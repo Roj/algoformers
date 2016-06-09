@@ -1,10 +1,13 @@
 package algoformers;
 
-public class Tierra extends Superficie { 
-	public void accionSobreAlgoformer(Algoformer alg) {
-		
-        }
-        public int hash(){
-            return 1;
-        }
+public abstract class Tierra extends Superficie { 
+    @Override
+    public int hash(){
+        return 1;
+    }
+    @Override
+    public boolean equals(Object obj) {
+        return (obj instanceof Tierra);
+    }
+    
 }

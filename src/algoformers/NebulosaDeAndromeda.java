@@ -10,7 +10,20 @@ package algoformers;
  * @author Matias
  */
 public class NebulosaDeAndromeda extends Aire {
-    public void accionSobreAlgoformer(Algoformer alg) {
-        //Atrapa unidades aereas por 3 turnos
+    @Override
+    public void accionSobreAlgoformer(ModoTerrestre modo, Algoformer algof) {
+        throw new SuperficieNoAtravesableException();
+    }
+    @Override
+    public void accionSobreAlgoformer(ModoAereo modo, Algoformer algof) {
+        //en el futuro, agregar el buff de no movible
+    }
+    @Override
+    public void accionSobreAlgoformer(ModoHumanoide modo, Algoformer algof) {
+        throw new SuperficieNoAtravesableException();
+    }
+    @Override
+    public void ajustarPuntosDeMovimiento(ModoAlgoformer modo, Algoformer algof) {
+        algof.modificarPuntosDeMovimiento(-1);
     }
 }

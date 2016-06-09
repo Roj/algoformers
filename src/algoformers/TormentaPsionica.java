@@ -13,4 +13,23 @@ public class TormentaPsionica extends Aire {
     public void accionSobreAlgoformer(Algoformer alg) {
         // Disminuye poder de ataque para siempre en 40% solo la primera vez que pasa
     }
+    @Override
+    public void ajustarPuntosDeMovimiento(ModoAlgoformer modo, Algoformer algof) {
+        algof.modificarPuntosDeMovimiento(-1);
+    }
+
+    @Override
+    public void accionSobreAlgoformer(ModoAereo modo, Algoformer algof) {
+        //bajar capacidad de ataque por unica vez, es un buff
+    }
+
+    @Override
+    public void accionSobreAlgoformer(ModoTerrestre modo, Algoformer algof) {
+        throw new SuperficieNoAtravesableException();
+    }
+
+    @Override
+    public void accionSobreAlgoformer(ModoHumanoide modo, Algoformer algof) {
+        throw new SuperficieNoAtravesableException();
+    }
 }

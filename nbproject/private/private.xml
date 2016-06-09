@@ -4,19 +4,30 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/joaquintz/algoformers/src/algoformers/Bonus.java</file>
-            <file>file:/home/joaquintz/algoformers/src/algoformers/Algoformer.java</file>
-            <file>file:/home/joaquintz/algoformers/src/algoformers/Optimus.java</file>
-            <file>file:/home/joaquintz/algoformers/src/algoformers/Tablero.java</file>
-            <file>file:/home/joaquintz/algoformers/test/algoformers/FabricaTest.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/ObjetivoMuyLejosException.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/Autobot.java</file>
             <file>file:/home/joaquintz/algoformers/test/algoformers/TableroTest.java</file>
             <file>file:/home/joaquintz/algoformers/src/algoformers/Ubicable.java</file>
+            <file>file:/home/joaquintz/algoformers/test/algoformers/PosicionTest.java</file>
+            <file>file:/home/joaquintz/algoformers/test/algoformers/JuegoTest.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/FabricaAlgoformers.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/Juego.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/Decepticon.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/Jugador.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/Flash.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/ModoAlterno.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/AlgoformerNoExisteException.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/BurbujaInmaculada.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/Algoformer.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/Posicion.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/Tablero.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/NoEsSuTurnoException.java</file>
+            <file>file:/home/joaquintz/algoformers/test/algoformers/FabricaTest.java</file>
             <file>file:/home/joaquintz/algoformers/test/algoformers/AlgoformerTest.java</file>
             <file>file:/home/joaquintz/algoformers/src/algoformers/Vacio.java</file>
             <file>file:/home/joaquintz/algoformers/src/algoformers/ModoAlgoformer.java</file>
-            <file>file:/home/joaquintz/algoformers/src/algoformers/FabricaAlgoformers.java</file>
             <file>file:/home/joaquintz/algoformers/src/algoformers/NoSuperponibleException.java</file>
-            <file>file:/home/joaquintz/algoformers/src/algoformers/ModoAlterno.java</file>
-            <file>file:/home/joaquintz/algoformers/src/algoformers/TipoAlgoformer.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/DobleCañon.java</file>
             <file>file:/home/joaquintz/algoformers/src/algoformers/ModoHumanoide.java</file>
         </group>
     </open-files>
