@@ -311,6 +311,17 @@ public class SuperficieTest {
 
         int ataqueOriginal = ratchet.obtenerPuntosAtaque();
         ratchet.mover(pos2);
+        
+        for(int i=0; i<3; i++) {
+        	try {
+        		ratchet.mover(pos3);
+        	} catch(EncadenadoException e) {
+        		ratchet.pasarTurno();
+        	}
+        }
+        //Ahora esta libre
+        ratchet.mover(pos3);
+        Assert.assertEquals(ratchet.obtenerPosicion(),pos3);        
     }
     
     @Test
