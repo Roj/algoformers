@@ -243,6 +243,316 @@ public class SuperficieTest {
 
         Posicion pos1 = new Posicion(1, 1, new Rocosa());
         Posicion pos2 = new Posicion(9, 1, new Rocosa());
+    @Test
+    public void testMoverAlgoformerAereoSobreTormentaBajaAtaque() {
+        FabricaAlgoformers fabrica = new FabricaAlgoformers();
+        Algoformer ratchet = fabrica.crearRatchet();
+        ratchet.cambiarModo(); //F22 raptor
+        Posicion pos1 = new Posicion(1, 1, new Rocosa());
+        Posicion pos2 = new Posicion(1, 1, new TormentaPsionica());
+
+        ratchet.establecerPosicion(pos1);
+
+        int ataqueOriginal = ratchet.obtenerPuntosAtaque();
+        ratchet.mover(pos2);
+               
+        Assert.assertEquals((int)(ataqueOriginal*0.6), ratchet.obtenerPuntosAtaque());
+
+    }
+    public void testMoverAlgoformerAereoSobreTormentaDosVecesBajaAtaqueUnaVez() {
+        FabricaAlgoformers fabrica = new FabricaAlgoformers();
+        Algoformer ratchet = fabrica.crearRatchet();
+        ratchet.cambiarModo(); //F22 raptor
+        Posicion pos1 = new Posicion(1, 1, new Rocosa());
+        Posicion pos2 = new Posicion(1, 1, new TormentaPsionica());
+        Posicion pos3 = new Posicion(1, 2, new TormentaPsionica());
+
+        ratchet.establecerPosicion(pos1);
+
+        int ataqueOriginal = ratchet.obtenerPuntosAtaque();
+        ratchet.mover(pos2);
+        ratchet.mover(pos3);
+               
+        Assert.assertEquals((int)(ataqueOriginal*0.6), ratchet.obtenerPuntosAtaque());
+
+    }
+    @Test(expected=EncadenadoException.class)
+    public void testMoverAlgoformerAereoSobreAndromedaLuegoNoPermiteMover() {
+        FabricaAlgoformers fabrica = new FabricaAlgoformers();
+        Algoformer ratchet = fabrica.crearRatchet();
+        ratchet.cambiarModo(); //F22 raptor
+        Posicion pos1 = new Posicion(1, 1, new Rocosa());
+        Posicion pos2 = new Posicion(1, 1, new NebulosaDeAndromeda());
+        Posicion pos3 = new Posicion(1, 2, new TormentaPsionica());
+
+        ratchet.establecerPosicion(pos1);
+
+        int ataqueOriginal = ratchet.obtenerPuntosAtaque();
+        ratchet.mover(pos2);
+        ratchet.mover(pos3);
+
+    }
+    @Test
+    public void testMoverAlgoformerAereoSobreAndromedaDesapareceEn3Turnos() {
+        FabricaAlgoformers fabrica = new FabricaAlgoformers();
+        Algoformer ratchet = fabrica.crearRatchet();
+        ratchet.cambiarModo(); //F22 raptor
+        Posicion pos1 = new Posicion(1, 1, new Rocosa());
+        Posicion pos2 = new Posicion(1, 1, new NebulosaDeAndromeda());
+        Posicion pos3 = new Posicion(1, 2, new TormentaPsionica());
+
+        ratchet.establecerPosicion(pos1);
+
+        int ataqueOriginal = ratchet.obtenerPuntosAtaque();
+        ratchet.mover(pos2);
+    @Test
+    public void testMoverAlgoformerAereoSobreTormentaBajaAtaque() {
+        FabricaAlgoformers fabrica = new FabricaAlgoformers();
+        Algoformer ratchet = fabrica.crearRatchet();
+        ratchet.cambiarModo(); //F22 raptor
+        Posicion pos1 = new Posicion(1, 1, new Rocosa());
+        Posicion pos2 = new Posicion(1, 1, new TormentaPsionica());
+
+        ratchet.establecerPosicion(pos1);
+
+        int ataqueOriginal = ratchet.obtenerPuntosAtaque();
+        ratchet.mover(pos2);
+               
+        Assert.assertEquals((int)(ataqueOriginal*0.6), ratchet.obtenerPuntosAtaque());
+
+    }
+    public void testMoverAlgoformerAereoSobreTormentaDosVecesBajaAtaqueUnaVez() {
+        FabricaAlgoformers fabrica = new FabricaAlgoformers();
+        Algoformer ratchet = fabrica.crearRatchet();
+        ratchet.cambiarModo(); //F22 raptor
+        Posicion pos1 = new Posicion(1, 1, new Rocosa());
+        Posicion pos2 = new Posicion(1, 1, new TormentaPsionica());
+        Posicion pos3 = new Posicion(1, 2, new TormentaPsionica());
+
+        ratchet.establecerPosicion(pos1);
+
+        int ataqueOriginal = ratchet.obtenerPuntosAtaque();
+        ratchet.mover(pos2);
+        ratchet.mover(pos3);
+               
+        Assert.assertEquals((int)(ataqueOriginal*0.6), ratchet.obtenerPuntosAtaque());
+
+    }
+    @Test(expected=EncadenadoException.class)
+    public void testMoverAlgoformerAereoSobreAndromedaLuegoNoPermiteMover() {
+        FabricaAlgoformers fabrica = new FabricaAlgoformers();
+        Algoformer ratchet = fabrica.crearRatchet();
+        ratchet.cambiarModo(); //F22 raptor
+        Posicion pos1 = new Posicion(1, 1, new Rocosa());
+        Posicion pos2 = new Posicion(1, 1, new NebulosaDeAndromeda());
+        Posicion pos3 = new Posicion(1, 2, new TormentaPsionica());
+
+        ratchet.establecerPosicion(pos1);
+
+        int ataqueOriginal = ratchet.obtenerPuntosAtaque();
+        ratchet.mover(pos2);
+        ratchet.mover(pos3);
+
+    }
+    @Test
+    public void testMoverAlgoformerAereoSobreAndromedaDesapareceEn3Turnos() {
+        FabricaAlgoformers fabrica = new FabricaAlgoformers();
+        Algoformer ratchet = fabrica.crearRatchet();
+        ratchet.cambiarModo(); //F22 raptor
+        Posicion pos1 = new Posicion(1, 1, new Rocosa());
+        Posicion pos2 = new Posicion(1, 1, new NebulosaDeAndromeda());
+        Posicion pos3 = new Posicion(1, 2, new TormentaPsionica());
+
+        ratchet.establecerPosicion(pos1);
+
+        int ataqueOriginal = ratchet.obtenerPuntosAtaque();
+        ratchet.mover(pos2);
+    @Test
+    public void testMoverAlgoformerAereoSobreTormentaBajaAtaque() {
+        FabricaAlgoformers fabrica = new FabricaAlgoformers();
+        Algoformer ratchet = fabrica.crearRatchet();
+        ratchet.cambiarModo(); //F22 raptor
+        Posicion pos1 = new Posicion(1, 1, new Rocosa());
+        Posicion pos2 = new Posicion(1, 1, new TormentaPsionica());
+
+        ratchet.establecerPosicion(pos1);
+
+        int ataqueOriginal = ratchet.obtenerPuntosAtaque();
+        ratchet.mover(pos2);
+               
+        Assert.assertEquals((int)(ataqueOriginal*0.6), ratchet.obtenerPuntosAtaque());
+
+    }
+    public void testMoverAlgoformerAereoSobreTormentaDosVecesBajaAtaqueUnaVez() {
+        FabricaAlgoformers fabrica = new FabricaAlgoformers();
+        Algoformer ratchet = fabrica.crearRatchet();
+        ratchet.cambiarModo(); //F22 raptor
+        Posicion pos1 = new Posicion(1, 1, new Rocosa());
+        Posicion pos2 = new Posicion(1, 1, new TormentaPsionica());
+        Posicion pos3 = new Posicion(1, 2, new TormentaPsionica());
+
+        ratchet.establecerPosicion(pos1);
+
+        int ataqueOriginal = ratchet.obtenerPuntosAtaque();
+        ratchet.mover(pos2);
+        ratchet.mover(pos3);
+               
+        Assert.assertEquals((int)(ataqueOriginal*0.6), ratchet.obtenerPuntosAtaque());
+
+    }
+    @Test(expected=EncadenadoException.class)
+    public void testMoverAlgoformerAereoSobreAndromedaLuegoNoPermiteMover() {
+        FabricaAlgoformers fabrica = new FabricaAlgoformers();
+        Algoformer ratchet = fabrica.crearRatchet();
+        ratchet.cambiarModo(); //F22 raptor
+        Posicion pos1 = new Posicion(1, 1, new Rocosa());
+        Posicion pos2 = new Posicion(1, 1, new NebulosaDeAndromeda());
+        Posicion pos3 = new Posicion(1, 2, new TormentaPsionica());
+
+        ratchet.establecerPosicion(pos1);
+
+        int ataqueOriginal = ratchet.obtenerPuntosAtaque();
+        ratchet.mover(pos2);
+        ratchet.mover(pos3);
+
+    }
+    @Test
+    public void testMoverAlgoformerAereoSobreAndromedaDesapareceEn3Turnos() {
+        FabricaAlgoformers fabrica = new FabricaAlgoformers();
+        Algoformer ratchet = fabrica.crearRatchet();
+        ratchet.cambiarModo(); //F22 raptor
+        Posicion pos1 = new Posicion(1, 1, new Rocosa());
+        Posicion pos2 = new Posicion(1, 1, new NebulosaDeAndromeda());
+        Posicion pos3 = new Posicion(1, 2, new TormentaPsionica());
+
+        ratchet.establecerPosicion(pos1);
+
+        int ataqueOriginal = ratchet.obtenerPuntosAtaque();
+        ratchet.mover(pos2);
+    @Test
+    public void testMoverAlgoformerAereoSobreTormentaBajaAtaque() {
+        FabricaAlgoformers fabrica = new FabricaAlgoformers();
+        Algoformer ratchet = fabrica.crearRatchet();
+        ratchet.cambiarModo(); //F22 raptor
+        Posicion pos1 = new Posicion(1, 1, new Rocosa());
+        Posicion pos2 = new Posicion(1, 1, new TormentaPsionica());
+
+        ratchet.establecerPosicion(pos1);
+
+        int ataqueOriginal = ratchet.obtenerPuntosAtaque();
+        ratchet.mover(pos2);
+               
+        Assert.assertEquals((int)(ataqueOriginal*0.6), ratchet.obtenerPuntosAtaque());
+
+    }
+    public void testMoverAlgoformerAereoSobreTormentaDosVecesBajaAtaqueUnaVez() {
+        FabricaAlgoformers fabrica = new FabricaAlgoformers();
+        Algoformer ratchet = fabrica.crearRatchet();
+        ratchet.cambiarModo(); //F22 raptor
+        Posicion pos1 = new Posicion(1, 1, new Rocosa());
+        Posicion pos2 = new Posicion(1, 1, new TormentaPsionica());
+        Posicion pos3 = new Posicion(1, 2, new TormentaPsionica());
+
+        ratchet.establecerPosicion(pos1);
+
+        int ataqueOriginal = ratchet.obtenerPuntosAtaque();
+        ratchet.mover(pos2);
+        ratchet.mover(pos3);
+               
+        Assert.assertEquals((int)(ataqueOriginal*0.6), ratchet.obtenerPuntosAtaque());
+
+    }
+    @Test(expected=EncadenadoException.class)
+    public void testMoverAlgoformerAereoSobreAndromedaLuegoNoPermiteMover() {
+        FabricaAlgoformers fabrica = new FabricaAlgoformers();
+        Algoformer ratchet = fabrica.crearRatchet();
+        ratchet.cambiarModo(); //F22 raptor
+        Posicion pos1 = new Posicion(1, 1, new Rocosa());
+        Posicion pos2 = new Posicion(1, 1, new NebulosaDeAndromeda());
+        Posicion pos3 = new Posicion(1, 2, new TormentaPsionica());
+
+        ratchet.establecerPosicion(pos1);
+
+        int ataqueOriginal = ratchet.obtenerPuntosAtaque();
+        ratchet.mover(pos2);
+        ratchet.mover(pos3);
+
+    }
+    @Test
+    public void testMoverAlgoformerAereoSobreAndromedaDesapareceEn3Turnos() {
+        FabricaAlgoformers fabrica = new FabricaAlgoformers();
+        Algoformer ratchet = fabrica.crearRatchet();
+        ratchet.cambiarModo(); //F22 raptor
+        Posicion pos1 = new Posicion(1, 1, new Rocosa());
+        Posicion pos2 = new Posicion(1, 1, new NebulosaDeAndromeda());
+        Posicion pos3 = new Posicion(1, 2, new TormentaPsionica());
+
+        ratchet.establecerPosicion(pos1);
+
+        int ataqueOriginal = ratchet.obtenerPuntosAtaque();
+        ratchet.mover(pos2);
+    @Test
+    public void testMoverAlgoformerAereoSobreTormentaBajaAtaque() {
+        FabricaAlgoformers fabrica = new FabricaAlgoformers();
+        Algoformer ratchet = fabrica.crearRatchet();
+        ratchet.cambiarModo(); //F22 raptor
+        Posicion pos1 = new Posicion(1, 1, new Rocosa());
+        Posicion pos2 = new Posicion(1, 1, new TormentaPsionica());
+
+        ratchet.establecerPosicion(pos1);
+
+        int ataqueOriginal = ratchet.obtenerPuntosAtaque();
+        ratchet.mover(pos2);
+               
+        Assert.assertEquals((int)(ataqueOriginal*0.6), ratchet.obtenerPuntosAtaque());
+
+    }
+    public void testMoverAlgoformerAereoSobreTormentaDosVecesBajaAtaqueUnaVez() {
+        FabricaAlgoformers fabrica = new FabricaAlgoformers();
+        Algoformer ratchet = fabrica.crearRatchet();
+        ratchet.cambiarModo(); //F22 raptor
+        Posicion pos1 = new Posicion(1, 1, new Rocosa());
+        Posicion pos2 = new Posicion(1, 1, new TormentaPsionica());
+        Posicion pos3 = new Posicion(1, 2, new TormentaPsionica());
+
+        ratchet.establecerPosicion(pos1);
+
+        int ataqueOriginal = ratchet.obtenerPuntosAtaque();
+        ratchet.mover(pos2);
+        ratchet.mover(pos3);
+               
+        Assert.assertEquals((int)(ataqueOriginal*0.6), ratchet.obtenerPuntosAtaque());
+
+    }
+    @Test(expected=EncadenadoException.class)
+    public void testMoverAlgoformerAereoSobreAndromedaLuegoNoPermiteMover() {
+        FabricaAlgoformers fabrica = new FabricaAlgoformers();
+        Algoformer ratchet = fabrica.crearRatchet();
+        ratchet.cambiarModo(); //F22 raptor
+        Posicion pos1 = new Posicion(1, 1, new Rocosa());
+        Posicion pos2 = new Posicion(1, 1, new NebulosaDeAndromeda());
+        Posicion pos3 = new Posicion(1, 2, new TormentaPsionica());
+
+        ratchet.establecerPosicion(pos1);
+
+        int ataqueOriginal = ratchet.obtenerPuntosAtaque();
+        ratchet.mover(pos2);
+        ratchet.mover(pos3);
+
+    }
+    @Test
+    public void testMoverAlgoformerAereoSobreAndromedaDesapareceEn3Turnos() {
+        FabricaAlgoformers fabrica = new FabricaAlgoformers();
+        Algoformer ratchet = fabrica.crearRatchet();
+        ratchet.cambiarModo(); //F22 raptor
+        Posicion pos1 = new Posicion(1, 1, new Rocosa());
+        Posicion pos2 = new Posicion(1, 1, new NebulosaDeAndromeda());
+        Posicion pos3 = new Posicion(1, 2, new TormentaPsionica());
+
+        ratchet.establecerPosicion(pos1);
+
+        int ataqueOriginal = ratchet.obtenerPuntosAtaque();
+        ratchet.mover(pos2);
         
         tablero.colocarAlgoformer(pos1, ratchet);
 
