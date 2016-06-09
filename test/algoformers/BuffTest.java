@@ -17,6 +17,7 @@ public class BuffTest {
     public void testPsionizadoDisminuyeAtaque() {
         FabricaAlgoformers fabrica = new FabricaAlgoformers();
         Algoformer optimus = fabrica.crearOptimus();
+        optimus.establecerPosicion(new Posicion(1,1, new Rocosa()));
         optimus.cambiarModo();
         Buff psionizado = new Psionizado();
         int puntosAtaqueOriginal = optimus.obtenerPuntosAtaque();
@@ -29,6 +30,7 @@ public class BuffTest {
     public void testPsionizadoNoDisminuyeDeNuevoSiRepite() {
         FabricaAlgoformers fabrica = new FabricaAlgoformers();
         Algoformer optimus = fabrica.crearOptimus();
+        optimus.establecerPosicion(new Posicion(1,1, new Rocosa()));
         optimus.cambiarModo();
         Buff psionizado = new Psionizado();
         int puntosAtaqueOriginal = optimus.obtenerPuntosAtaque();
@@ -44,6 +46,7 @@ public class BuffTest {
     public void testEncadenadoEnAndromedaNoPermiteMoverse() {
         FabricaAlgoformers fabrica = new FabricaAlgoformers();
         Algoformer optimus = fabrica.crearOptimus();
+        optimus.establecerPosicion(new Posicion(1,1, new Rocosa()));
         optimus.cambiarModo();
         Buff buff = new EncadenadoEnAndromeda();
         
@@ -58,6 +61,7 @@ public class BuffTest {
     public void testEncadenadoEnAndromedaSeVaDespuesDe3Turnos() {
         FabricaAlgoformers fabrica = new FabricaAlgoformers();
         Algoformer optimus = fabrica.crearOptimus();
+        optimus.establecerPosicion(new Posicion(1,1, new Rocosa()));
         optimus.cambiarModo();
         Buff buff = new EncadenadoEnAndromeda();
         

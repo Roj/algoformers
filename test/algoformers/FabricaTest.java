@@ -12,7 +12,7 @@ public class FabricaTest {
         FabricaAlgoformers fabrica = new FabricaAlgoformers();
 
         Algoformer optimus = fabrica.crearOptimus();
-
+        optimus.establecerPosicion(new Posicion(1,1, new Rocosa()));
 
         //por defecto esta en modo humanoide
 
@@ -42,7 +42,7 @@ public class FabricaTest {
         FabricaAlgoformers fabrica = new FabricaAlgoformers();
 
         Algoformer bumblebee = fabrica.crearBumblebee();
-
+        bumblebee.establecerPosicion(new Posicion(1,1, new Rocosa()));
 
         //por defecto esta en modo humanoide
 
@@ -65,7 +65,7 @@ public class FabricaTest {
         FabricaAlgoformers fabrica = new FabricaAlgoformers();
 
         Algoformer ratchet = fabrica.crearRatchet();
-
+        ratchet.establecerPosicion(new Posicion(1,1, new Rocosa()));
 
         //por defecto esta en modo humanoide
 
@@ -88,7 +88,7 @@ public class FabricaTest {
         FabricaAlgoformers fabrica = new FabricaAlgoformers();
 
         Algoformer megatron = fabrica.crearMegatron();
-
+        megatron.establecerPosicion(new Posicion(1,1, new Rocosa()));
 
         //por defecto esta en modo humanoide
 
@@ -111,7 +111,7 @@ public class FabricaTest {
         FabricaAlgoformers fabrica = new FabricaAlgoformers();
 
         Algoformer bonecrusher = fabrica.crearBonecrusher();
-
+        bonecrusher.establecerPosicion(new Posicion(1,1, new Rocosa()));
 
         //por defecto esta en modo humanoide
 
@@ -135,7 +135,7 @@ public class FabricaTest {
         FabricaAlgoformers fabrica = new FabricaAlgoformers();
 
         Algoformer frenzy = fabrica.crearFrenzy();
-
+        frenzy.establecerPosicion(new Posicion(1,1, new Rocosa()));
 
         //por defecto esta en modo humanoide
 

@@ -7,14 +7,8 @@ package algoformers;
 
 /**
  *
- * @author Matias
+ * @author Joaquin
  */
-public class DobleCañon extends Bonus{
-
-    @Override
-    public void accion(Algoformer algoformer) {
-        //Falta implementar
-        //algoformer.duplicarAtaquePor3Turnos();
-    }
-
+public class NoSePuedeTransformarException extends RuntimeException {
+    
 }

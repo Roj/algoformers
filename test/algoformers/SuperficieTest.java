@@ -41,16 +41,18 @@ public class SuperficieTest {
         Jugador jugador2 = juego.obtenerJugadorEnEspera();
         Tablero tablero = juego.obtenerTablero();
         Algoformer optimus = jugador1.obtenerListaAlgoformers().get(0);
-
+        Algoformer megatron = jugador2.obtenerListaAlgoformers().get(0);
         Posicion pos1 = new Posicion(1, 1, new Rocosa());
+        Posicion pos1b = new Posicion(1, 2, new Rocosa());
         Posicion pos2 = new Posicion(2, 1, new Espinas());
 
         tablero.colocarAlgoformer(pos1, optimus);
+        tablero.colocarAlgoformer(pos1b, megatron);
 
         jugador1.cambiarModo(optimus);
 
         // Paso el turno del jugador 2
-        jugador2.cambiarModo(jugador2.obtenerListaAlgoformers().get(0));
+        jugador2.cambiarModo(megatron);
 
         Assert.assertTrue(optimus.obtenerVida() == 500);
 
@@ -101,7 +103,8 @@ public class SuperficieTest {
 
         tablero.colocarAlgoformer(pos1, optimus);
 
-        optimus.cambiarModo(); //No se lo pido a jugador así no pasa de turno
+        optimus.cambiarModo(); 
+        optimus.restablecerPuntosDeMovimiento();
 
         Assert.assertTrue(optimus.obtenerPosicion() == pos1);
 
@@ -138,7 +141,8 @@ public class SuperficieTest {
 
         tablero.colocarAlgoformer(pos1, optimus);
 
-        optimus.cambiarModo(); //No se lo pido a jugador así no pasa de turno
+        optimus.cambiarModo(); 
+        optimus.restablecerPuntosDeMovimiento();
 
         Assert.assertTrue(optimus.obtenerPosicion() == pos1);
 
@@ -176,6 +180,7 @@ public class SuperficieTest {
         tablero.colocarAlgoformer(pos1, ratchet);
 
         ratchet.cambiarModo(); //cambio a modo aereo
+        ratchet.restablecerPuntosDeMovimiento(); //actualizo ptos de mov
 
         Assert.assertTrue(ratchet.obtenerPosicion() == pos1);
 
@@ -210,16 +215,18 @@ public class SuperficieTest {
         Jugador jugador2 = juego.obtenerJugadorEnEspera();
         Tablero tablero = juego.obtenerTablero();
         Algoformer ratchet = jugador1.obtenerListaAlgoformers().get(2);
-
+        Algoformer megatron = jugador2.obtenerListaAlgoformers().get(0);
         Posicion pos1 = new Posicion(1, 1, new Rocosa());
+        Posicion pos1b = new Posicion(1, 2, new Rocosa());
         Posicion pos2 = new Posicion(2, 1, new Espinas());
 
         tablero.colocarAlgoformer(pos1, ratchet);
-
+        tablero.colocarAlgoformer(pos1b, megatron);
+        
         jugador1.cambiarModo(ratchet); // Lo paso a modo alterno aereo
 
         // Paso el turno del jugador 2
-        jugador2.cambiarModo(jugador2.obtenerListaAlgoformers().get(0));
+        jugador2.cambiarModo(megatron);
 
         Assert.assertTrue(ratchet.obtenerVida() == 150);
 
@@ -246,8 +253,9 @@ public class SuperficieTest {
         
         tablero.colocarAlgoformer(pos1, ratchet);
 
-        ratchet.cambiarModo(); //No se lo pido a jugador así no pasa de turno
-
+        ratchet.cambiarModo(); 
+        ratchet.restablecerPuntosDeMovimiento(); //actualizo los ptos de movimiento
+        
         Assert.assertTrue(ratchet.obtenerPosicion() == pos1);
         
         ArrayList<Posicion> posiciones = new ArrayList<Posicion>();
@@ -268,7 +276,9 @@ public class SuperficieTest {
     public void testMoverAlgoformerAereoSobreTormentaDosVecesBajaAtaqueUnaVez() {
         FabricaAlgoformers fabrica = new FabricaAlgoformers();
         Algoformer ratchet = fabrica.crearRatchet();
+        ratchet.establecerPosicion(new Posicion(1,1, new Rocosa()));
         ratchet.cambiarModo(); //F22 raptor
+        ratchet.restablecerPuntosDeMovimiento(); //actualizo los puntos
         Posicion pos1 = new Posicion(1, 1, new Rocosa());
         Posicion pos2 = new Posicion(1, 1, new TormentaPsionica());
         Posicion pos3 = new Posicion(1, 2, new TormentaPsionica());
@@ -286,13 +296,14 @@ public class SuperficieTest {
     public void testMoverAlgoformerAereoSobreAndromedaLuegoNoPermiteMover() {
         FabricaAlgoformers fabrica = new FabricaAlgoformers();
         Algoformer ratchet = fabrica.crearRatchet();
-        ratchet.cambiarModo(); //F22 raptor
+        
         Posicion pos1 = new Posicion(1, 1, new Rocosa());
         Posicion pos2 = new Posicion(1, 1, new NebulosaDeAndromeda());
         Posicion pos3 = new Posicion(1, 2, new TormentaPsionica());
 
         ratchet.establecerPosicion(pos1);
-
+        ratchet.cambiarModo(); //F22 raptor
+        
         int ataqueOriginal = ratchet.obtenerPuntosAtaque();
         ratchet.mover(pos2);
         ratchet.mover(pos3);
@@ -302,14 +313,14 @@ public class SuperficieTest {
     public void testMoverAlgoformerAereoSobreAndromedaDesapareceEn3Turnos() {
         FabricaAlgoformers fabrica = new FabricaAlgoformers();
         Algoformer ratchet = fabrica.crearRatchet();
-        ratchet.cambiarModo(); //F22 raptor
+        
         Posicion pos1 = new Posicion(1, 1, new Rocosa());
         Posicion pos2 = new Posicion(1, 1, new NebulosaDeAndromeda());
         Posicion pos3 = new Posicion(1, 2, new TormentaPsionica());
 
         ratchet.establecerPosicion(pos1);
-
-        int ataqueOriginal = ratchet.obtenerPuntosAtaque();
+        
+        ratchet.cambiarModo(); //F22 raptor
         ratchet.mover(pos2);
         
         for(int i=0; i<3; i++) {
@@ -328,11 +339,11 @@ public class SuperficieTest {
     public void testMoverAlgoformerAereoSobreTormentaBajaAtaque() {
         FabricaAlgoformers fabrica = new FabricaAlgoformers();
         Algoformer ratchet = fabrica.crearRatchet();
-        ratchet.cambiarModo(); //F22 raptor
         Posicion pos1 = new Posicion(1, 1, new Rocosa());
         Posicion pos2 = new Posicion(1, 1, new TormentaPsionica());
 
         ratchet.establecerPosicion(pos1);
+        ratchet.cambiarModo(); //F22 raptor
 
         int ataqueOriginal = ratchet.obtenerPuntosAtaque();
         ratchet.mover(pos2);
@@ -354,7 +365,8 @@ public class SuperficieTest {
         
         tablero.colocarAlgoformer(pos1, ratchet);
 
-        ratchet.cambiarModo(); //No se lo pido a jugador así no pasa de turno
+        ratchet.cambiarModo(); 
+        ratchet.restablecerPuntosDeMovimiento();
 
         Assert.assertTrue(ratchet.obtenerPosicion() == pos1);
 
@@ -420,6 +432,7 @@ public class SuperficieTest {
         Assert.assertTrue(optimus.obtenerPosicion() == pos1);
 
         optimus.cambiarModo();
+        optimus.restablecerPuntosDeMovimiento();
         
         ArrayList<Posicion> posiciones = new ArrayList<Posicion>();
         
@@ -434,4 +447,21 @@ public class SuperficieTest {
         }
         
     }    
+    @Test(expected=NoSePuedeTransformarException.class)
+    public void testAlgoformerNoPuedeTransformarseEnAireLanzaExcepcion() {
+        FabricaAlgoformers fabrica = new FabricaAlgoformers();
+        Algoformer ratchet = fabrica.crearRatchet();
+        Posicion pos_tierra = new Posicion(8,1, new Rocosa());
+        Posicion pos_aire = new Posicion(8, 1, new Nube());
+        
+        ratchet.establecerPosicion(pos_tierra);
+        
+        ratchet.cambiarModo(); 
+        
+        ratchet.mover(pos_aire);
+        
+        Assert.assertTrue(ratchet.obtenerPosicion() == pos_aire);
+        
+        ratchet.cambiarModo();
+    }
 }

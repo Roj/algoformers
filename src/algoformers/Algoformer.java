@@ -34,10 +34,15 @@ public abstract class Algoformer implements Ubicable {
     }
     public void cambiarModo() {
         ModoAlgoformer aux = this.modoActual;
-        this.modoActual = this.otroModo;
-        this.otroModo = aux;
+        //verificamos que la nueva superficie acepte la superficie
+        try {
+            this.otroModo.aceptarSuperficie(this.posicion.obtenerSuperficie(), this);
+            this.modoActual = this.otroModo;
+            this.otroModo = aux;
+        } catch (SuperficieNoAtravesableException e) {
+            throw new NoSePuedeTransformarException();
+        }
         
-        this.restablecerPuntosMovimiento();
     }
     public void setPuntosMovimiento(int num) {
     	puntosMovimiento = num;
