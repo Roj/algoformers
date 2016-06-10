@@ -156,6 +156,14 @@ public abstract class Algoformer implements Ubicable {
         
         }
     }
+    
+    public void avisarABuffsAtacado(){
         
+        for(Entry<Integer, Buff> entry : this.buffs.entrySet()) {
+            Buff actual = entry.getValue();
+            actual.avisarAtaque(this);
+            
+        }
+    }
     
 }

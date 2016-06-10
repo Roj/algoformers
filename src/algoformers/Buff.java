@@ -10,6 +10,7 @@ package algoformers;
  * @author joaquintz
  */
 public interface Buff {
+    public void avisarAtaque(Algoformer algof);
     public void avisarMovimiento(Algoformer algof);
     public void repetir(Algoformer algof);
     public void accionSobreAlgoformer(Algoformer algof);

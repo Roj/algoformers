@@ -9,13 +9,17 @@ package algoformers;
  *
  * @author Matias
  */
-public abstract class Bonus implements Ubicable {
+public class Bonus implements Ubicable {
     
     Posicion posicion;
-    
-    public Bonus(){
-        
+    Buff buffer;
+
+    public Bonus(Buff efecto) {
+        this.buffer = efecto;
     }
+    
+
+
     @Override
     public void establecerPosicion(Posicion pos) {
         this.posicion = pos;
@@ -26,8 +30,8 @@ public abstract class Bonus implements Ubicable {
     }
     @Override
     public void reemplazar(Algoformer algoformer){
-        this.accion(algoformer);
-        
+        algoformer.agregarBuff(buffer);
+        //Borrar de posicion
     }
     @Override
     public void recibirAtaque(Decepticon algoformer){
@@ -39,7 +43,5 @@ public abstract class Bonus implements Ubicable {
         //Metodo vacio
     	throw new AtaqueInvalidoException();
     }
-    
-    public abstract void accion(Algoformer algoformer);
-    
+        
 }

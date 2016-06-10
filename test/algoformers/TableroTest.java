@@ -43,7 +43,8 @@ public class TableroTest {
     public void testAgregarUbicableNoEstaVacio(){
         Tablero tablero = new Tablero(3,3);
         Posicion posicion = new Posicion(1,2, new Rocosa());
-        Bonus bonus = new BurbujaInmaculada();
+        FabricaBonus fabricaBonus = new FabricaBonus();
+        Bonus bonus = fabricaBonus.crearBurbujaInmaculada();
         
         tablero.agregarUbicable(posicion, bonus);
         
@@ -54,7 +55,8 @@ public class TableroTest {
     public void testBorrarUbicableYEstaVacio(){
         Tablero tablero = new Tablero(3,3);
         Posicion posicion = new Posicion(1,2, new Rocosa());
-        Bonus bonus = new BurbujaInmaculada();
+        FabricaBonus fabricaBonus = new FabricaBonus();
+        Bonus bonus = fabricaBonus.crearBurbujaInmaculada();
         tablero.agregarUbicable(posicion, bonus);
         
         Assert.assertFalse(tablero.estaVacio(posicion));
@@ -95,8 +97,9 @@ public class TableroTest {
         Posicion posicion = new Posicion(1,2, new Rocosa());
         FabricaAlgoformers fabrica = new FabricaAlgoformers();
         Algoformer optimus = fabrica.crearOptimus();
-        Bonus bonus = new BurbujaInmaculada();
-        
+        FabricaBonus fabricaBonus = new FabricaBonus();
+        Bonus bonus = fabricaBonus.crearBurbujaInmaculada();        
+
         tablero.agregarUbicable(posicion,bonus);
         tablero.colocarAlgoformer(posicion,optimus);
         

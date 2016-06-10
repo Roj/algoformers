@@ -16,7 +16,7 @@ public class Decepticon extends Algoformer {
     @Override
     public void recibirAtaque(Autobot algoformer) {
             vida -= algoformer.obtenerPuntosAtaque();
-
+            this.avisarABuffsAtacado();
             //etc de cosas al atacar
     }
 }

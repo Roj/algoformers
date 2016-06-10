@@ -16,6 +16,11 @@ public class EncadenadoEnAndromeda implements Buff {
         this.turnosRestantes = 3;
     }
     @Override
+    public void avisarAtaque(Algoformer algof){
+        //no es afectado por ataque
+    }
+    
+    @Override
     public void avisarMovimiento(Algoformer algof) {
         throw new EncadenadoException();
     }

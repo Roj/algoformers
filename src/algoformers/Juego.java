@@ -19,8 +19,12 @@ public class Juego {
         this.jugadorActual = new Jugador(nombreJugadorA,tablero, this);
         this.otroJugador = new Jugador(nombreJugadorB,tablero, this);
      
+        FabricaBonus fabricaBonus = new FabricaBonus();
+        Bonus chispaSuprema = fabricaBonus.crearChispaSuprema();
+        Posicion centro = new Posicion((dim1-1)/2, (dim2-1)/2, new Rocosa());
+        chispaSuprema.establecerPosicion(centro);
         //Agregar chispa en el centro del tablero
-        this.tablero.agregarUbicable(new Posicion((dim1-1)/2, (dim2-1)/2, new Rocosa()), new ChispaSuprema());
+        this.tablero.agregarUbicable(centro, chispaSuprema);
         
         //Creacion de algoformers
         this.agregarAlgoformers();
