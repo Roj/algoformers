@@ -14,8 +14,12 @@ public class Autobot extends Algoformer {
     }
     @Override
     public void recibirAtaque(Decepticon algoformer) {        
-        vida -= algoformer.obtenerPuntosAtaque();
-        this.avisarABuffsAtacado();
-        //TODO: revisar muerte
-    }	
+        try{
+            this.avisarABuffsAtacado();
+            vida -= algoformer.obtenerPuntosAtaque();
+        } catch (NoPuedeSerAtacado e) {
+            
+        }
+        //TODO: revisar muerte	
+    }
 }

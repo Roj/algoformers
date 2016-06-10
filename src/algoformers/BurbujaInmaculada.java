@@ -41,7 +41,7 @@ public class BurbujaInmaculada implements Buff {
 
     @Override
     public void avisarAtaque(Algoformer algof) {
-        algof.setVida(this.vidaAlgoformer);
+        throw new NoPuedeSerAtacado();
     }
 
     
