@@ -344,7 +344,8 @@ public class JuegoTest {
         Tablero tablero = juego.obtenerTablero();
         Ubicable chispa = tablero.obtenerUbicable(new Posicion(14, 14, new Rocosa()));
         
-        Assert.assertTrue(chispa instanceof Bonus); //Debería chequearse que en particular sea la chispaSuprema     
+        Assert.assertTrue(chispa instanceof Bonus); //Debería chequearse que en particular sea la chispaSuprema
+        Assert.assertTrue(((Bonus) chispa).obtenerEfecto() instanceof ChispaSuprema);
     }
     @Test
     public void testCambiarModoCambiaJugador(){

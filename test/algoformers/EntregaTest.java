@@ -137,7 +137,8 @@ public class EntregaTest {
         Assert.assertTrue(bonecrusher.obtenerPosicion() == esquinaSuperiorDerInferior);
         Assert.assertTrue(frenzy.obtenerPosicion() == esquinaSuperioDerTrasera);     
         
-        Assert.assertTrue(chispa instanceof Bonus); //Deberia chequearse que en particular sea una chispaSuprema
+        Assert.assertTrue(chispa instanceof Bonus);
+        Assert.assertTrue(((Bonus) chispa).obtenerEfecto() instanceof ChispaSuprema);
     }
     
 }

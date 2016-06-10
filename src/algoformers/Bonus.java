@@ -43,5 +43,8 @@ public class Bonus implements Ubicable {
         //Metodo vacio
     	throw new AtaqueInvalidoException();
     }
+    public Buff obtenerEfecto(){
+        return this.buffer;
+    }
         
 }
