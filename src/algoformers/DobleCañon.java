@@ -18,7 +18,7 @@ public class DobleCañon implements Buff{
     
     @Override
     public void avisarAtaque(Algoformer algof) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //no es afectado por ataque
     }
 
     @Override

@@ -10,30 +10,39 @@ package algoformers;
  * @author Matias
  */
 public class Flash implements Buff {
-       
+
+    protected int turnosRestantes;
+    public Flash() {
+        this.turnosRestantes = 3;
+    }
 
     @Override
     public void avisarAtaque(Algoformer algof) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //no es afectado por ataque
     }
 
     @Override
     public void avisarMovimiento(Algoformer algof) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //no es afectado por movimiento
     }
 
     @Override
     public void repetir(Algoformer algof) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //Que hace aca?
     }
 
     @Override
     public void accionSobreAlgoformer(Algoformer algof) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int nuevaVelocidad = (int) (algof.obtenerModoActual().obtenerVelocidad()*3);
+        algof.obtenerModoActual().establecerVelocidad(nuevaVelocidad);
     }
 
     @Override
     public void pasarTurno(Algoformer algoformer) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        this.turnosRestantes -= 1;
+        if (this.turnosRestantes <=0) {
+            int velocidad = (int) (algoformer.obtenerModoActual().obtenerVelocidad()/3);
+            algoformer.obtenerModoActual().establecerVelocidad(velocidad);
+            algoformer.borrarBuff(this);
+        }    }
 }

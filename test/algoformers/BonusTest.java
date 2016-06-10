@@ -69,4 +69,27 @@ public class BonusTest {
         }
         Assert.assertTrue(optimus.obtenerPuntosAtaque()==50);
     }
+    @Test
+    public void testFlashTriplicaVelocidadPorTresTurnos(){
+        Posicion pos1 = new Posicion(1, 1, new Rocosa());
+        Posicion pos2 = new Posicion(2, 1, new Rocosa());
+        
+        FabricaAlgoformers fabricaAlgoformers = new FabricaAlgoformers();
+        Algoformer optimus = fabricaAlgoformers.crearOptimus();
+        optimus.establecerPosicion(pos1);
+        
+        FabricaBonus fabricaBonus = new FabricaBonus();
+        Bonus flash = fabricaBonus.crearFlash();
+        flash.establecerPosicion(pos2);
+        
+        flash.reemplazar(optimus);
+        optimus.mover(pos2);
+        
+        
+        for (int i=0; i<3; i++){
+            Assert.assertTrue(optimus.obtenerVelocidad() == 6);
+            optimus.pasarTurno();
+        }
+        Assert.assertTrue(optimus.obtenerVelocidad()==2);
+    }
 }
