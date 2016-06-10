@@ -10,7 +10,12 @@ package algoformers;
  * @author Matias
  */
 public class DobleCañon implements Buff{
-
+    
+    protected int turnosRestantes;
+    public DobleCañon() {
+        this.turnosRestantes = 3;
+    }
+    
     @Override
     public void avisarAtaque(Algoformer algof) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -18,22 +23,28 @@ public class DobleCañon implements Buff{
 
     @Override
     public void avisarMovimiento(Algoformer algof) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //no es afectado por movimiento
     }
 
     @Override
     public void repetir(Algoformer algof) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //Que hace aca?
     }
 
     @Override
     public void accionSobreAlgoformer(Algoformer algof) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int nuevoAtaque = (int) (algof.obtenerModoActual().obtenerPuntosAtaque()*2);
+        algof.obtenerModoActual().establecerPuntosAtaque(nuevoAtaque);
     }
 
     @Override
     public void pasarTurno(Algoformer algoformer) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.turnosRestantes -= 1;
+        if (this.turnosRestantes <=0) {
+            int ataque = (int) (algoformer.obtenerModoActual().obtenerPuntosAtaque()/2);
+            algoformer.obtenerModoActual().establecerPuntosAtaque(ataque);
+            algoformer.borrarBuff(this);
+        }
     }
 
 }
