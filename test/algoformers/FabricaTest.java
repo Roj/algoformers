@@ -1,10 +1,12 @@
 package algoformers;
 
+import algoformers.modelo.Posicion;
+import algoformers.modelo.Rocosa;
 import org.junit.Assert;
 import org.junit.Test;
 
-import algoformers.Algoformer;
-import algoformers.FabricaAlgoformers;
+import algoformers.modelo.Algoformer;
+import algoformers.modelo.FabricaAlgoformers;
 
 public class FabricaTest {
     @Test

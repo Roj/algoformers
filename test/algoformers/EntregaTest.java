@@ -6,6 +6,15 @@
 
 package algoformers;
 
+import algoformers.modelo.Posicion;
+import algoformers.modelo.Tablero;
+import algoformers.modelo.ChispaSuprema;
+import algoformers.modelo.Ubicable;
+import algoformers.modelo.Juego;
+import algoformers.modelo.Rocosa;
+import algoformers.modelo.Jugador;
+import algoformers.modelo.Bonus;
+import algoformers.modelo.Algoformer;
 import java.util.List;
 
 import org.junit.Assert;

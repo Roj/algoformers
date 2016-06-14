@@ -1,5 +1,21 @@
 package algoformers;
 
+import algoformers.modelo.Nube;
+import algoformers.modelo.EncadenadoException;
+import algoformers.modelo.Tablero;
+import algoformers.modelo.ObjetivoMuyLejosException;
+import algoformers.modelo.NebulosaDeAndromeda;
+import algoformers.modelo.Rocosa;
+import algoformers.modelo.Jugador;
+import algoformers.modelo.FabricaAlgoformers;
+import algoformers.modelo.SuperficieNoAtravesableException;
+import algoformers.modelo.Algoformer;
+import algoformers.modelo.Espinas;
+import algoformers.modelo.Posicion;
+import algoformers.modelo.Pantano;
+import algoformers.modelo.Juego;
+import algoformers.modelo.NoSePuedeTransformarException;
+import algoformers.modelo.TormentaPsionica;
 import java.util.ArrayList;
 
 import org.junit.Assert;

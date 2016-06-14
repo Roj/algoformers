@@ -6,6 +6,15 @@
 package algoformers;
 
 
+import algoformers.modelo.Posicion;
+import algoformers.modelo.Vacio;
+import algoformers.modelo.Tablero;
+import algoformers.modelo.Rocosa;
+import algoformers.modelo.FabricaAlgoformers;
+import algoformers.modelo.NoSuperponibleException;
+import algoformers.modelo.Bonus;
+import algoformers.modelo.Algoformer;
+import algoformers.modelo.FabricaBonus;
 import org.junit.Assert;
 import org.junit.Test;
 

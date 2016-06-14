@@ -5,6 +5,12 @@
  */
 package algoformers;
 
+import algoformers.modelo.Posicion;
+import algoformers.modelo.Rocosa;
+import algoformers.modelo.FabricaAlgoformers;
+import algoformers.modelo.Bonus;
+import algoformers.modelo.Algoformer;
+import algoformers.modelo.FabricaBonus;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
