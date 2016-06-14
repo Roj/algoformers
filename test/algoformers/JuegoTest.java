@@ -14,7 +14,7 @@ import algoformers.modelo.NoSuperponibleException;
 import algoformers.modelo.Bonus;
 import algoformers.modelo.Algoformer;
 import algoformers.modelo.Posicion;
-import algoformers.modelo.ChispaSuprema;
+import algoformers.modelo.buffs.ChispaSuprema;
 import algoformers.modelo.Juego;
 import algoformers.modelo.AtaqueInvalidoException;
 import algoformers.modelo.NoEsSuTurnoException;

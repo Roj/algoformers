@@ -1,5 +1,6 @@
 package algoformers.modelo;
 
+import algoformers.modelo.buffs.Buff;
 import java.util.HashSet;
 
 
@@ -107,7 +108,7 @@ public abstract class Algoformer implements Ubicable {
         this.establecerPosicion(nuevaPosicion);
     }       
 
-    ModoAlgoformer obtenerModoActual() {
+    public ModoAlgoformer obtenerModoActual() {
         return this.modoActual;
     }
 

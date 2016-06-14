@@ -3,28 +3,34 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package algoformers.modelo;
+package algoformers.modelo.buffs;
+
+import algoformers.modelo.Algoformer;
 
 /**
  *
- * @author Matias
+ * @author joaquintz
  */
-public class BurbujaInmaculada implements Buff {
+//
+public class EncadenadoEnAndromeda implements Buff {
     protected int turnosRestantes;
-    protected int vidaAlgoformer;
-    public BurbujaInmaculada() {
-        this.turnosRestantes = 2;
+    public EncadenadoEnAndromeda() {
+        this.turnosRestantes = 3;
+    }
+    @Override
+    public void avisarAtaque(Algoformer algof){
+        //no es afectado por ataque
     }
     
     @Override
     public void avisarMovimiento(Algoformer algof) {
-        //no es afectado por movimientos
+        throw new EncadenadoException();
     }
 
 
     @Override
     public void accionSobreAlgoformer(Algoformer algof) {
-        this.vidaAlgoformer = algof.obtenerVida();
+        //no hace nada en especial
     }
 
     @Override
@@ -34,12 +40,5 @@ public class BurbujaInmaculada implements Buff {
             algoformer.borrarBuff(this);
         }
     }
-
-    @Override
-    public void avisarAtaque(Algoformer algof) {
-        throw new NoPuedeSerAtacado();
-    }
-
-    
     
 }

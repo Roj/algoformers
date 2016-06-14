@@ -8,7 +8,7 @@ package algoformers;
 
 import algoformers.modelo.Posicion;
 import algoformers.modelo.Tablero;
-import algoformers.modelo.ChispaSuprema;
+import algoformers.modelo.buffs.ChispaSuprema;
 import algoformers.modelo.Ubicable;
 import algoformers.modelo.Juego;
 import algoformers.modelo.Rocosa;

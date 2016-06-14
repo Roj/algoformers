@@ -3,19 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package algoformers.modelo;
+package algoformers.modelo.buffs;
+
+import algoformers.modelo.Algoformer;
 
 /**
  *
  * @author Matias
  */
-public class Flash implements Buff {
-
+public class DobleCañon implements Buff{
+    
     protected int turnosRestantes;
-    public Flash() {
+    public DobleCañon() {
         this.turnosRestantes = 3;
     }
-
+    
     @Override
     public void avisarAtaque(Algoformer algof) {
         //no es afectado por ataque
@@ -29,16 +31,18 @@ public class Flash implements Buff {
 
     @Override
     public void accionSobreAlgoformer(Algoformer algof) {
-        int nuevaVelocidad = (int) (algof.obtenerModoActual().obtenerVelocidad()*3);
-        algof.obtenerModoActual().establecerVelocidad(nuevaVelocidad);
+        int nuevoAtaque = (int) (algof.obtenerModoActual().obtenerPuntosAtaque()*2);
+        algof.obtenerModoActual().establecerPuntosAtaque(nuevoAtaque);
     }
 
     @Override
     public void pasarTurno(Algoformer algoformer) {
         this.turnosRestantes -= 1;
         if (this.turnosRestantes <=0) {
-            int velocidad = (int) (algoformer.obtenerModoActual().obtenerVelocidad()/3);
-            algoformer.obtenerModoActual().establecerVelocidad(velocidad);
+            int ataque = (int) (algoformer.obtenerModoActual().obtenerPuntosAtaque()/2);
+            algoformer.obtenerModoActual().establecerPuntosAtaque(ataque);
             algoformer.borrarBuff(this);
-        }    }
+        }
+    }
+
 }

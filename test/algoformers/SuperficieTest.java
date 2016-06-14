@@ -1,7 +1,7 @@
 package algoformers;
 
 import algoformers.modelo.Nube;
-import algoformers.modelo.EncadenadoException;
+import algoformers.modelo.buffs.EncadenadoException;
 import algoformers.modelo.Tablero;
 import algoformers.modelo.ObjetivoMuyLejosException;
 import algoformers.modelo.NebulosaDeAndromeda;

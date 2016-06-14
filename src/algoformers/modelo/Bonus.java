@@ -5,6 +5,8 @@
  */
 package algoformers.modelo;
 
+import algoformers.modelo.buffs.Buff;
+
 /**
  *
  * @author Matias

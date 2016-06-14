@@ -5,6 +5,11 @@
  */
 package algoformers.modelo;
 
+import algoformers.modelo.buffs.BurbujaInmaculada;
+import algoformers.modelo.buffs.DobleCañon;
+import algoformers.modelo.buffs.ChispaSuprema;
+import algoformers.modelo.buffs.Flash;
+
 /**
  *
  * @author Matias

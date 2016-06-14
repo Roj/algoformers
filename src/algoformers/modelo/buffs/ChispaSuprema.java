@@ -1,4 +1,6 @@
-package algoformers.modelo;
+package algoformers.modelo.buffs;
+
+import algoformers.modelo.Algoformer;
 
 public class ChispaSuprema implements Buff {
   

@@ -9,7 +9,7 @@ package algoformers.modelo;
  *
  * @author Matias
  */
-class NoPuedeSerAtacado extends RuntimeException {
+public class NoPuedeSerAtacado extends RuntimeException {
 
     public NoPuedeSerAtacado() {
     }

@@ -3,44 +3,46 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package algoformers.modelo;
+package algoformers.modelo.buffs;
+
+import algoformers.modelo.NoPuedeSerAtacado;
+import algoformers.modelo.Algoformer;
 
 /**
  *
  * @author Matias
  */
-public class DobleCañon implements Buff{
-    
+public class BurbujaInmaculada implements Buff {
     protected int turnosRestantes;
-    public DobleCañon() {
-        this.turnosRestantes = 3;
+    protected int vidaAlgoformer;
+    public BurbujaInmaculada() {
+        this.turnosRestantes = 2;
     }
     
-    @Override
-    public void avisarAtaque(Algoformer algof) {
-        //no es afectado por ataque
-    }
-
     @Override
     public void avisarMovimiento(Algoformer algof) {
-        //no es afectado por movimiento
+        //no es afectado por movimientos
     }
 
 
     @Override
     public void accionSobreAlgoformer(Algoformer algof) {
-        int nuevoAtaque = (int) (algof.obtenerModoActual().obtenerPuntosAtaque()*2);
-        algof.obtenerModoActual().establecerPuntosAtaque(nuevoAtaque);
+        this.vidaAlgoformer = algof.obtenerVida();
     }
 
     @Override
     public void pasarTurno(Algoformer algoformer) {
         this.turnosRestantes -= 1;
         if (this.turnosRestantes <=0) {
-            int ataque = (int) (algoformer.obtenerModoActual().obtenerPuntosAtaque()/2);
-            algoformer.obtenerModoActual().establecerPuntosAtaque(ataque);
             algoformer.borrarBuff(this);
         }
     }
 
+    @Override
+    public void avisarAtaque(Algoformer algof) {
+        throw new NoPuedeSerAtacado();
+    }
+
+    
+    
 }

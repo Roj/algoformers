@@ -6,13 +6,13 @@
 package algoformers;
 
 import algoformers.modelo.Posicion;
-import algoformers.modelo.EncadenadoException;
+import algoformers.modelo.buffs.EncadenadoException;
 import algoformers.modelo.Rocosa;
-import algoformers.modelo.EncadenadoEnAndromeda;
+import algoformers.modelo.buffs.EncadenadoEnAndromeda;
 import algoformers.modelo.FabricaAlgoformers;
-import algoformers.modelo.Buff;
+import algoformers.modelo.buffs.Buff;
 import algoformers.modelo.Algoformer;
-import algoformers.modelo.Psionizado;
+import algoformers.modelo.buffs.Psionizado;
 import org.junit.Assert;
 import org.junit.Test;
 
