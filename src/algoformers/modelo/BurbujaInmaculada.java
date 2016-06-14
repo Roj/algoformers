@@ -21,10 +21,6 @@ public class BurbujaInmaculada implements Buff {
         //no es afectado por movimientos
     }
 
-    @Override
-    public void repetir(Algoformer algof) {
-        //Que hace aca?
-    }
 
     @Override
     public void accionSobreAlgoformer(Algoformer algof) {

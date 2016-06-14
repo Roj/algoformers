@@ -26,10 +26,6 @@ public class Flash implements Buff {
         //no es afectado por movimiento
     }
 
-    @Override
-    public void repetir(Algoformer algof) {
-        //Que hace aca?
-    }
 
     @Override
     public void accionSobreAlgoformer(Algoformer algof) {

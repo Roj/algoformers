@@ -24,10 +24,6 @@ public class Psionizado implements Buff {
         //no es afectado por movimientos
     }
     @Override
-    public void repetir(Algoformer algof) {
-        //solo se aplica una vez, por lo cual no hace nada al repetirse
-    }
-    @Override
     public void accionSobreAlgoformer(Algoformer algof) {
         //no es necesario verificar el modo pues solo se puede entrar aqui
         //si se ha entrado en una tormenta psionica (en modo alterno unicamente)

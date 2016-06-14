@@ -25,10 +25,6 @@ public class EncadenadoEnAndromeda implements Buff {
         throw new EncadenadoException();
     }
 
-    @Override
-    public void repetir(Algoformer algof) {
-        //es imposible que se repita
-    }
 
     @Override
     public void accionSobreAlgoformer(Algoformer algof) {

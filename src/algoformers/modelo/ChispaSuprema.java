@@ -12,10 +12,6 @@ public class ChispaSuprema implements Buff {
         //no se utiliza en la chispa suprema
     }
 
-    @Override
-    public void repetir(Algoformer algof) {
-        //no se utiliza en la chispa suprema
-    }
 
     @Override
     public void accionSobreAlgoformer(Algoformer algof) {
