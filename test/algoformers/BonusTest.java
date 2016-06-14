@@ -45,11 +45,17 @@ public class BonusTest {
         megatron.mover(pos2);
         
         
-        for (int i=0; i<=2; i++){
-            Assert.assertTrue(megatron.obtenerVida()==550);
-            optimus.atacar(megatron);
-            megatron.pasarTurno();
-        }   
+        Assert.assertTrue(megatron.obtenerVida()==550);
+        optimus.atacar(megatron);
+        megatron.pasarTurno(); //restantes: 2-> 1
+        
+        
+        Assert.assertTrue(megatron.obtenerVida()==550);
+        optimus.atacar(megatron);
+        megatron.pasarTurno(); // restantes: 1->0. Deberia eliminarse
+        
+        
+        optimus.atacar(megatron);
         Assert.assertTrue(megatron.obtenerVida()==500);
     }
     @Test
