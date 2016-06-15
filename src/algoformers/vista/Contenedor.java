@@ -17,17 +17,17 @@ import javafx.scene.layout.StackPane;
  */
 public class Contenedor extends StackPane {
     
-    public void colocarImagen(Image imagen,String nombreArchivo,int X, int Y){
-        imagen = new Image(nombreArchivo);
-        ImageView viewImagen = new ImageView();
-        viewImagen.setImage(imagen);
-        viewImagen.setFitWidth(100);
-        viewImagen.setPreserveRatio(true);
-        viewImagen.setSmooth(true);
-        viewImagen.setCache(true);
-        this.getChildren().add(viewImagen);
-        viewImagen.setTranslateX(X);
-        viewImagen.setTranslateY(Y);
+    public void colocarImagen(ImageView viewImage,String nombreArchivo,int X, int Y){
+        Image imagen = new Image(nombreArchivo);
+        viewImage = new ImageView();
+        viewImage.setImage(imagen);
+        viewImage.setFitWidth(100);
+        viewImage.setPreserveRatio(true);
+        viewImage.setSmooth(true);
+        viewImage.setCache(true);
+        this.getChildren().add(viewImage);
+        viewImage.setTranslateX(X);
+        viewImage.setTranslateY(Y);
     }
 
     public void colocarBoton(Button boton,String titulo,int size, int X, int Y){

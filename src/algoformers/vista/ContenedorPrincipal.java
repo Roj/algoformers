@@ -42,8 +42,8 @@ public class ContenedorPrincipal extends Contenedor {
         this.stage = stage;
         
         //Setea el background con imagen de Transformers
-        this.setId("background");
-        this.getStylesheets().add("background.css");
+        this.setId("background-optimusvsmegatron");
+        this.getStylesheets().add("backgrounds.css");
         
         //Boton para iniciar juego nuevo
         this.juegoNuevo = new Button();

@@ -1,0 +1,23 @@
+#background-planeta{
+    -fx-background-image: url("cybertron_background.jpg");
+    -fx-background-repeat: stretch;   
+    -fx-background-size: 100% 100%;
+    -fx-background-position: center center;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0); 
+}
+
+#background-personajes{
+    -fx-background-image: url("personajes_background.jpg");
+    -fx-background-repeat: stretch;   
+    -fx-background-size: 100% 100%;
+    -fx-background-position: center center;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0); 
+}
+
+#background-optimusvsmegatron{
+    -fx-background-image: url("transformers_background.jpg");
+    -fx-background-repeat: stretch;   
+    -fx-background-size: 100% 100%;
+    -fx-background-position: center center;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0); 
+}

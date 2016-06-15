@@ -6,26 +6,26 @@
 package algoformers.controlador;
 
 import algoformers.vista.ContenedorCargaDeDatos;
-import algoformers.vista.ContenedorPrincipal;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.stage.Stage;
 
 /**
  *
  * @author Matias
  */
-public class AccionComenzarJuego implements EventHandler<ActionEvent> {
+public class AccionSetearTablero implements EventHandler<ActionEvent> {
 
-    ContenedorCargaDeDatos contenedorCargaDatos;
-
-    public AccionComenzarJuego(ContenedorCargaDeDatos contenedorCargaDatos) {
-        this.contenedorCargaDatos = contenedorCargaDatos;
+    ContenedorCargaDeDatos contenedorDeCarga;
+    int dimension;
+    
+    public AccionSetearTablero(int dimension, ContenedorCargaDeDatos contenedorDeCarga) {
+        this.dimension = dimension;
+        this.contenedorDeCarga = contenedorDeCarga;
     }
 
     @Override
     public void handle(ActionEvent event) {
-        contenedorCargaDatos.seleccionDeMapa();
+        this.contenedorDeCarga.setearDimensionTablero(dimension);
     }
     
 }
