@@ -5,9 +5,10 @@
  */
 package algoformers.controlador;
 
-import algoformers.vista.VistaMenuPrincipal;
+import algoformers.vista.ContenedorPrincipal;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.stage.Stage;
 
 /**
  *
@@ -15,7 +16,10 @@ import javafx.event.EventHandler;
  */
 public class AccionComenzarJuego implements EventHandler<ActionEvent> {
 
-    public AccionComenzarJuego(VistaMenuPrincipal menu){
+    Stage stage;
+
+    public AccionComenzarJuego(Stage stage) {
+        this.stage = stage;
     }
 
     @Override

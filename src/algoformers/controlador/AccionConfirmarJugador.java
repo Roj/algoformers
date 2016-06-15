@@ -5,7 +5,8 @@
  */
 package algoformers.controlador;
 
-import algoformers.vista.VistaMenuPrincipal;
+import algoformers.vista.ContenedorCargaDeDatos;
+import algoformers.vista.ContenedorPrincipal;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.TextField;
@@ -17,16 +18,16 @@ import javafx.scene.control.TextField;
 public class AccionConfirmarJugador implements EventHandler<ActionEvent> {
     
     int jugador;
-    VistaMenuPrincipal menuPrincipal;
+    ContenedorCargaDeDatos contenedorDeCarga;
     
-    public AccionConfirmarJugador(int n, VistaMenuPrincipal menu) {
+    public AccionConfirmarJugador(int n, ContenedorCargaDeDatos contenedorDeCarga) {
         this.jugador = n;
-        this.menuPrincipal = menu;
+        this.contenedorDeCarga = contenedorDeCarga;
     }
 
     @Override
     public void handle(ActionEvent event) {
-        menuPrincipal.confirmarJugador(jugador);
+        contenedorDeCarga.confirmarJugador(jugador);
     }
     
 }

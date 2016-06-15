@@ -5,9 +5,11 @@
  */
 package algoformers.controlador;
 
-import algoformers.vista.VistaMenuPrincipal;
+import algoformers.vista.ContenedorPrincipal;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 /**
  *
@@ -15,15 +17,17 @@ import javafx.event.EventHandler;
  */
 public class AccionEmpezar implements EventHandler<ActionEvent> {
     
-    VistaMenuPrincipal menuPrincipal;
+    Stage stage;
+    Scene proximaEscena;
     
-    public AccionEmpezar(VistaMenuPrincipal menu) {
-        this.menuPrincipal = menu;
+    public AccionEmpezar(Stage stage, Scene proximaEscena) {
+        this.stage = stage;
+        this.proximaEscena = proximaEscena;
     }
 
     @Override
     public void handle(ActionEvent event) {
-        this.menuPrincipal.panelDeCargaDeDatos();
+        stage.setScene(proximaEscena);
     }
     
     
