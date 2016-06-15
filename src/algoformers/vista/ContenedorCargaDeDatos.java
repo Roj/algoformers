@@ -1,6 +1,7 @@
 package algoformers.vista;
 
 
+import algoformers.controlador.AccionJugar;
 import algoformers.controlador.AccionSetearTablero;
 import algoformers.controlador.AccionComenzarJuego;
 import algoformers.controlador.AccionConfirmarJugador;
@@ -125,6 +126,8 @@ public class ContenedorCargaDeDatos extends Contenedor {
         this.colocarBoton(this.tableroGrande,"Grande (64x64)",30,300,0);
         this.tableroGrande.setOnAction(new AccionSetearTablero(64,this));
 
+        //Cambio la accion del boton comenzar juego para que inicie el juego
+        this.comenzarJuego.setOnAction(new AccionJugar(this));
     }
 
     public void setearDimensionTablero(int dimension) {
