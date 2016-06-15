@@ -5,6 +5,11 @@ import algoformers.controlador.AccionJugar;
 import algoformers.controlador.AccionSetearTablero;
 import algoformers.controlador.AccionComenzarJuego;
 import algoformers.controlador.AccionConfirmarJugador;
+import static com.sun.javafx.fxml.expression.Expression.and;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.BooleanBinding;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -27,8 +32,9 @@ public class ContenedorCargaDeDatos extends Contenedor {
 
     String nombreJugador1;
     String nombreJugador2;
-    int tamañoTableroX;
-    int tamañoTableroY;
+    //Por default el tamaño de tablero es el mediano de 32x32
+    int tamañoTableroX = 32; 
+    int tamañoTableroY = 32;
 
     private Stage stage;
     private Button comenzarJuego;
@@ -42,6 +48,8 @@ public class ContenedorCargaDeDatos extends Contenedor {
     private Button tableroMediano;
     private Button tableroGrande;
     private Label titulo;
+    private Label indicadorDimensionTablero;
+    private BooleanBinding jugadoresConfirmados;
     
     public ContenedorCargaDeDatos(Stage stage) {
         
@@ -53,7 +61,7 @@ public class ContenedorCargaDeDatos extends Contenedor {
         this.setId("background-personajes");
         this.getStylesheets().add("backgrounds.css");
         
-        //Titulo: Nombre de jugadores
+        //Titulo: "Nombre de jugadores"
         //Se podria cambiar la tipografia para que quede más copado
         this.titulo = new Label();
         this.titulo.setText("Nombre de jugadores");
@@ -68,7 +76,6 @@ public class ContenedorCargaDeDatos extends Contenedor {
         this.comenzarJuego = new Button();
         this.colocarBoton(comenzarJuego, "Comenzar Juego", 30, 450, -300);
         this.comenzarJuego.setOnAction(new AccionComenzarJuego(this));
-//        this.comenzarJuego.setDisable(true);
         
         //Casilleros para completar nombre de jugador
         this.casilleroJugador1 = new TextField();
@@ -84,6 +91,14 @@ public class ContenedorCargaDeDatos extends Contenedor {
         this.confirmacionJugador2 = new Button();
         this.colocarBoton(this.confirmacionJugador2,"Confirmar nombre", 20,-200,100);
         this.confirmacionJugador2.setOnAction(new AccionConfirmarJugador(2,this));
+        
+        
+        //Si los dos botones estan desactivas ya se ingresaron los nombres
+//        this.jugadoresConfirmados = this.confirmacionJugador1.disableProperty().(this.confirmacionJugador2.disableProperty());
+//        this.jugadoresConfirmados.addListener(new listener(this.comenzarJuego));
+
+        this.jugadoresConfirmados = Bindings.or(this.confirmacionJugador1.disableProperty().not(),this.confirmacionJugador2.disableProperty().not());
+        this.comenzarJuego.disableProperty().bind(this.jugadoresConfirmados);
         
         //Imagenes de bando de cada jugador
         this.colocarImagen(this.logoAutobots, "logoAutobots.png",0,-100);
@@ -125,6 +140,14 @@ public class ContenedorCargaDeDatos extends Contenedor {
         this.tableroGrande = new Button();
         this.colocarBoton(this.tableroGrande,"Grande (64x64)",30,300,0);
         this.tableroGrande.setOnAction(new AccionSetearTablero(64,this));
+        
+        //Indicador de tablero seleccionado
+        this.indicadorDimensionTablero = new Label();
+        this.indicadorDimensionTablero.setId("titulo");
+        this.indicadorDimensionTablero.getStylesheets().add("texto.css");
+        this.indicadorDimensionTablero.setTranslateY(200);
+        this.getChildren().add(this.indicadorDimensionTablero);
+        this.indicadorDimensionTablero.setText(String.valueOf(this.tamañoTableroX)+"x"+String.valueOf(this.tamañoTableroY));
 
         //Cambio la accion del boton comenzar juego para que inicie el juego
         this.comenzarJuego.setOnAction(new AccionJugar(this));
@@ -134,5 +157,7 @@ public class ContenedorCargaDeDatos extends Contenedor {
         //Consideramos el tablero cuadrado
         this.tamañoTableroX = dimension;
         this.tamañoTableroY = dimension;
+        this.indicadorDimensionTablero.setText(String.valueOf(this.tamañoTableroX)+"x"+String.valueOf(this.tamañoTableroY));
+        
     }
 }
