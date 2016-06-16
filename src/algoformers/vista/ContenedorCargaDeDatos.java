@@ -35,8 +35,8 @@ public class ContenedorCargaDeDatos extends Contenedor {
     String nombreJugador1;
     String nombreJugador2;
     //Por default el tamaño de tablero es el mediano de 32x32
-    int tamañoTableroX = 32; 
-    int tamañoTableroY = 32;
+    int tamañoTableroX = 16; 
+    int tamañoTableroY = 16;
     Juego juego;
     
     private Stage stage;
