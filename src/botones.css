@@ -1,4 +1,4 @@
-#boton-juego {
+.boton-juego {
     -fx-padding: 5 22 5 22;   
     -fx-border-color: #e2e2e2;
     -fx-border-width: 2;
@@ -9,16 +9,16 @@
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 
-#boton-juego:hover {
+.boton-juego:hover {
     -fx-background-color: #3a3a3a;
 }
 
-#boton-juego:pressed, #boton-juego:default:hover:pressed {
+.boton-juego:pressed, .boton-juego:default:hover:pressed {
   -fx-background-color: white;
   -fx-text-fill: #1d1d1d;
 }
 
-#boton-juego:focused {
+.boton-juego:focused {
     -fx-border-color: white, white;
     -fx-border-width: 1, 1;
     -fx-border-style: solid, segments(1, 1);
@@ -26,18 +26,17 @@
     -fx-border-insets: 1 1 1 1, 0;
 }
 
-#boton-juego:disabled, #boton-juego:default:disabled {
+.boton-juego:disabled, .boton-juego:default:disabled {
     -fx-opacity: 0.4;
     -fx-background-color: #1d1d1d;
     -fx-text-fill: white;
 }
 
-#boton-juego:default {
+.boton-juego:default {
     -fx-background-color: -fx-focus-color;
     -fx-text-fill: #ffffff;
 }
 
-#boton-juego:default:hover {
+.boton-juego:default:hover {
     -fx-background-color: derive(-fx-focus-color,30%);
 }
-

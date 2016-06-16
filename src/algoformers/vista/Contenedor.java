@@ -31,7 +31,8 @@ public class Contenedor extends StackPane {
     }
 
     public void colocarBoton(Button boton,String titulo,int size, int X, int Y){
-        boton.setId("boton-juego");;
+//        boton.setId("boton-juego");
+        boton.getStyleClass().add("boton-juego");
         boton.setText(titulo);
         boton.getStylesheets().add("botones.css");
         boton.setStyle("-fx-font-size:"+String.valueOf(size)+"px");
@@ -41,7 +42,8 @@ public class Contenedor extends StackPane {
     }
     
     public void colocarCasillero(TextField casillero,int ancho, int X, int Y){
-        casillero.setId("text-field");
+//        casillero.setId("text-field");
+        casillero.getStyleClass().add("text-field");
         casillero.getStylesheets().add("text-field.css");
         casillero.setMaxWidth(ancho);
         this.getChildren().add(casillero);

@@ -34,11 +34,9 @@ import javafx.stage.Stage;
  */
 public class ContenedorCargaDeDatos extends Contenedor {
 
-    String nombreJugador1;
-    String nombreJugador2;
+    StringBuffer nombreJugador1 = new StringBuffer();
+    StringBuffer nombreJugador2 = new StringBuffer();
     //Por default el tamaño de tablero es el mediano de 32x32
-    int tamañoTableroX = 16; 
-    int tamañoTableroY = 16;
     Mapa mapa = new MapaChico();
     Juego juego;
     
@@ -71,7 +69,7 @@ public class ContenedorCargaDeDatos extends Contenedor {
         //Se podria cambiar la tipografia para que quede más copado
         this.titulo = new Label();
         this.titulo.setText("Nombre de jugadores");
-        this.titulo.setId("titulo");
+        this.titulo.getStyleClass().add("titulo");
         this.titulo.getStylesheets().add("texto.css");
         this.titulo.setTranslateX(-450);
         this.titulo.setTranslateY(-200);
@@ -92,11 +90,11 @@ public class ContenedorCargaDeDatos extends Contenedor {
         //Botones para confirmar nombres
         this.confirmacionJugador1 = new Button();
         this.colocarBoton(this.confirmacionJugador1,"Confirmar nombre",20,-200,-100);
-        this.confirmacionJugador1.setOnAction(new AccionConfirmarJugador(1,this));
+        this.confirmacionJugador1.setOnAction(new AccionConfirmarJugador(this.nombreJugador1,this.casilleroJugador1,this.confirmacionJugador1,this));
         
         this.confirmacionJugador2 = new Button();
         this.colocarBoton(this.confirmacionJugador2,"Confirmar nombre", 20,-200,100);
-        this.confirmacionJugador2.setOnAction(new AccionConfirmarJugador(2,this));
+        this.confirmacionJugador2.setOnAction(new AccionConfirmarJugador(this.nombreJugador2,this.casilleroJugador2,this.confirmacionJugador2,this));
         
         
         //Si los dos botones estan desactivas ya se ingresaron los nombres
@@ -109,18 +107,10 @@ public class ContenedorCargaDeDatos extends Contenedor {
         
     }
 
-    public void confirmarJugador(int jugador) {
-        //Alguno podria cambiar esto?
-        if (jugador==1){
-            this.casilleroJugador1.setEditable(false);
-            this.confirmacionJugador1.setDisable(true);
-            this.nombreJugador1 = this.casilleroJugador1.getText();
-        }
-        if (jugador==2){
-            this.casilleroJugador2.setEditable(false);
-            this.confirmacionJugador2.setDisable(true);
-            this.nombreJugador2 = this.casilleroJugador2.getText();
-        }
+    public void confirmarJugador(StringBuffer nombre, TextField casillero, Button botonConfirmacion) {
+        nombre.append(casillero.getText());
+        botonConfirmacion.setDisable(true);
+        casillero.setDisable(true);
     }
     
     public void seleccionDeMapa(){
@@ -139,23 +129,23 @@ public class ContenedorCargaDeDatos extends Contenedor {
         this.tableroChico.setOnAction(new AccionSetearTablero(new MapaChico(),this));
         this.tableroMediano = new Button();
         this.colocarBoton(this.tableroMediano,"Mediano (32x32)",30,0,0);
-        //Cambiar MapaChico por Mediano
+        //Cambiar MapaChico por MapaMediano
         this.tableroMediano.setOnAction(new AccionSetearTablero(new MapaChico(),this));
         this.tableroGrande = new Button();
-        //Cambiar MapaChico por Grande
+        //Cambiar MapaChico por MapaGrande
         this.colocarBoton(this.tableroGrande,"Grande (64x64)",30,300,0);
         this.tableroGrande.setOnAction(new AccionSetearTablero(new MapaChico(),this));
         
         //Indicador de tablero seleccionado
         this.indicadorDimensionTablero = new Label();
-        this.indicadorDimensionTablero.setId("titulo");
+        this.indicadorDimensionTablero.getStyleClass().add("titulo");
         this.indicadorDimensionTablero.getStylesheets().add("texto.css");
         this.indicadorDimensionTablero.setTranslateY(200);
         this.getChildren().add(this.indicadorDimensionTablero);
-//        this.indicadorDimensionTablero.setText(String.valueOf(this.tamañoTableroX)+"x"+String.valueOf(this.tamañoTableroY));
+        this.indicadorDimensionTablero.setText(String.valueOf(mapa.obtenerDimX())+"x"+String.valueOf(mapa.obtenerDimY()));
         
         //Creo juego y escena de juego
-        this.juego = new Juego(this.nombreJugador1,this.nombreJugador2,this.mapa);
+        this.juego = new Juego(this.nombreJugador1.toString(),this.nombreJugador2.toString(),this.mapa);
         ContenedorJuego contenedorJuego = new ContenedorJuego(this.stage, this.juego);
         Scene escenaJuego = new Scene(contenedorJuego,640,480);
         
@@ -166,7 +156,7 @@ public class ContenedorCargaDeDatos extends Contenedor {
     public void setearDimensionTablero(Mapa mapa) {
         //Consideramos el tablero cuadrado
         this.mapa = mapa;
-//        this.indicadorDimensionTablero.setText(String.valueOf(this.tamañoTableroX)+"x"+String.valueOf(this.tamañoTableroY));
+        this.indicadorDimensionTablero.setText(String.valueOf(mapa.obtenerDimX())+"x"+String.valueOf(mapa.obtenerDimY()));
         
     }
 }
