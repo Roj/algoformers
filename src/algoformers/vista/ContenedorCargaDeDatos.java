@@ -5,11 +5,13 @@ import algoformers.controlador.AccionJugar;
 import algoformers.controlador.AccionSetearTablero;
 import algoformers.controlador.AccionComenzarJuego;
 import algoformers.controlador.AccionConfirmarJugador;
+import algoformers.modelo.Juego;
 import static com.sun.javafx.fxml.expression.Expression.and;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -35,7 +37,8 @@ public class ContenedorCargaDeDatos extends Contenedor {
     //Por default el tamaño de tablero es el mediano de 32x32
     int tamañoTableroX = 32; 
     int tamañoTableroY = 32;
-
+    Juego juego;
+    
     private Stage stage;
     private Button comenzarJuego;
     private TextField casilleroJugador1;
@@ -94,9 +97,6 @@ public class ContenedorCargaDeDatos extends Contenedor {
         
         
         //Si los dos botones estan desactivas ya se ingresaron los nombres
-//        this.jugadoresConfirmados = this.confirmacionJugador1.disableProperty().(this.confirmacionJugador2.disableProperty());
-//        this.jugadoresConfirmados.addListener(new listener(this.comenzarJuego));
-
         this.jugadoresConfirmados = Bindings.or(this.confirmacionJugador1.disableProperty().not(),this.confirmacionJugador2.disableProperty().not());
         this.comenzarJuego.disableProperty().bind(this.jugadoresConfirmados);
         
@@ -148,9 +148,14 @@ public class ContenedorCargaDeDatos extends Contenedor {
         this.indicadorDimensionTablero.setTranslateY(200);
         this.getChildren().add(this.indicadorDimensionTablero);
         this.indicadorDimensionTablero.setText(String.valueOf(this.tamañoTableroX)+"x"+String.valueOf(this.tamañoTableroY));
-
+        
+        //Creo juego y escena de juego
+        this.juego = new Juego(this.nombreJugador1,this.nombreJugador2,this.tamañoTableroX,this.tamañoTableroY);
+        ContenedorJuego contenedorJuego = new ContenedorJuego(this.stage, this.juego);
+        Scene escenaJuego = new Scene(contenedorJuego,640,480);
+        
         //Cambio la accion del boton comenzar juego para que inicie el juego
-        this.comenzarJuego.setOnAction(new AccionJugar(this));
+        this.comenzarJuego.setOnAction(new AccionJugar(this.stage,escenaJuego));
     }
 
     public void setearDimensionTablero(int dimension) {

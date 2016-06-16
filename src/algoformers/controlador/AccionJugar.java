@@ -8,19 +8,26 @@ package algoformers.controlador;
 import algoformers.vista.ContenedorCargaDeDatos;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 /**
  *
  * @author Matias
  */
 public class AccionJugar implements EventHandler<ActionEvent> {
+    
+    Stage stage;
+    Scene proximaEscena;
 
-    public AccionJugar(ContenedorCargaDeDatos aThis) {
+    public AccionJugar(Stage stage, Scene proximaEscena) {
+        this.stage = stage;
+        this.proximaEscena = proximaEscena;
     }
 
     @Override
     public void handle(ActionEvent event) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.stage.setScene(proximaEscena);
     }
     
 }

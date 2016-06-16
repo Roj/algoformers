@@ -60,7 +60,7 @@ public class ContenedorJuego extends Contenedor {
         
         // Fondo temporal para el juego
         this.setId("background-personajes");
-        this.getStylesheets().add("background-personajes.css");
+        this.getStylesheets().add("backgrounds.css");
         
         this.stage = stage;                   
         
@@ -86,7 +86,8 @@ public class ContenedorJuego extends Contenedor {
         		for (Posicion pos : posiciones) {
         			if (pos.obtenerX() == i && pos.obtenerY() == j && pos.obtenerSuperficie() instanceof Tierra) {
                 		Casilla casilla = new Casilla(i, j);
-                		casilla.setPosicion(-400 + i*60, -380 + j*50);
+                		
+                                casilla.setPosicion(-400 + i*60, -380 + j*50);
                 		casilla.setTamanio(60, 50);
                 		casilla.setSuperficie(pos.obtenerSuperficie());
                 		casilla.setUbicable(tablero.obtenerUbicable(pos));
