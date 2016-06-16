@@ -9,6 +9,7 @@ import algoformers.vista.ContenedorCargaDeDatos;
 import algoformers.vista.ContenedorPrincipal;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 /**
@@ -17,17 +18,21 @@ import javafx.scene.control.TextField;
  */
 public class AccionConfirmarJugador implements EventHandler<ActionEvent> {
     
-    int jugador;
+    StringBuffer nombre;
+    TextField casillero;
+    Button confirmacion;
     ContenedorCargaDeDatos contenedorDeCarga;
     
-    public AccionConfirmarJugador(int n, ContenedorCargaDeDatos contenedorDeCarga) {
-        this.jugador = n;
+    public AccionConfirmarJugador(StringBuffer nombre, TextField casillero, Button confirmacion, ContenedorCargaDeDatos contenedorDeCarga) {
+        this.nombre = nombre;
+        this.casillero = casillero;
+        this.confirmacion = confirmacion;
         this.contenedorDeCarga = contenedorDeCarga;
     }
 
     @Override
     public void handle(ActionEvent event) {
-        contenedorDeCarga.confirmarJugador(jugador);
+        contenedorDeCarga.confirmarJugador(nombre,casillero,confirmacion);
     }
     
 }

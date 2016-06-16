@@ -1,4 +1,4 @@
-#text-field {
+.text-field {
     -fx-border-color: #e2e2e2;
     -fx-background-color: #1d1d1d;
     -fx-font-size: 12pt;
@@ -7,6 +7,6 @@
 
 }
 
-#text-field:focused {
+.text-field:focused {
     -fx-background-color: #3a3a3a;
 }
