@@ -8,11 +8,9 @@ import algoformers.vista.ContenedorJuego;
 
 public class AccionMarcarAtaque extends AccionCasilla {
 
-	Juego juego;
 	ContenedorJuego contenedorJuego;
 	
-    public AccionMarcarAtaque(ContenedorJuego contJuego, Juego juego) {
-    	this.juego = juego;
+    public AccionMarcarAtaque(ContenedorJuego contJuego) {
     	this.contenedorJuego = contJuego;
     }
 

@@ -1,5 +1,7 @@
 package algoformers.controlador;
 
+import java.util.List;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import algoformers.modelo.Juego;
@@ -23,11 +25,14 @@ public class AccionRealizarMovida implements EventHandler<ActionEvent> {
     	
     	
     	*/
+    	Casilla casillaActual = this.contenedorJuego.getCasillaActual();
+    	List<Casilla> casillasPosiblesMovimiento = this.contenedorJuego.getCasillasPosiblesMovimiento(casillaActual);
+    	
         this.contenedorJuego.pasarTurno();
         //this.contenedorJuego.cambiarEstadoCasilla();
         this.contenedorJuego.cambiarEstadoCasilla(new AccionMarcarCasilla(this.contenedorJuego, juego));
         
-    	this.contenedorJuego.dejarDeMostrarCasillasAdyascentes(this.contenedorJuego.getCasillaActual());
+    	this.contenedorJuego.dejarDeMostrarCasillas(casillasPosiblesMovimiento);
     	
     	for ( Casilla casilla : this.contenedorJuego.getCaminoMarcado()) {
     		casilla.setBlendMode(null);

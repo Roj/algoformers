@@ -46,11 +46,17 @@ public class AccionMarcarCasilla extends AccionCasilla {
         for ( Algoformer algoformer : algoformersJugadorActual ) {
         	if (ubicable == algoformer) {
         		this.contenedorJuego.crearBotonMover(false);
-        		this.contenedorJuego.crearBotonAtacar(false);
         		this.contenedorJuego.getCasillaActual().setBlendMode(null);
         		this.contenedorJuego.setCasillaActual(casilla);
         		this.contenedorJuego.crearEstadisticasAlgoformer(algoformer);       		
         		this.contenedorJuego.setAlgoformerActual(algoformer);
+        		
+        		// Habilito el boton de atacar solo si hay un enemigo cerca para atacar
+        		List<Casilla> casillasPosiblesAtaque = this.contenedorJuego.getCasillasPosiblesAtaque(casilla);
+        		
+        		if (!casillasPosiblesAtaque.isEmpty()) {
+        			this.contenedorJuego.crearBotonAtacar(false);
+        		}
         	}
         }
         

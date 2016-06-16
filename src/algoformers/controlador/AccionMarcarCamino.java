@@ -23,13 +23,16 @@ public class AccionMarcarCamino extends AccionCasilla {
     public void accion(Casilla casilla) {
     	// Obtengo los casilleros adyascentes al casillero actual
     	Casilla casillaActual = this.contenedorJuego.getCasillaActual();
-    	List<Casilla> adyascentes = this.contenedorJuego.getCasillerosPosiblesMovimiento(casillaActual);
+    	List<Casilla> adyascentes = this.contenedorJuego.getCasillasPosiblesMovimiento(casillaActual);
     	
     	if (adyascentes.contains(casilla)) {
     		this.contenedorJuego.setCasillaActual(casilla);    		
+    		
+    		List<Casilla> nuevosAdyascentes = this.contenedorJuego.getCasillasPosiblesMovimiento(casilla);
+    		
+    		this.contenedorJuego.dejarDeMostrarCasillas(adyascentes);
     		this.contenedorJuego.agregarCasillaACamino(casilla);
-    		this.contenedorJuego.dejarDeMostrarCasillasAdyascentes(casillaActual);
-    		this.contenedorJuego.mostrarCasillasAdyascentesPosibles(casilla);
+    		this.contenedorJuego.mostrarCasillas(nuevosAdyascentes);
     		// Cuando al menos alguien me marca un camino, tengo que habilitar el boton
     		this.contenedorJuego.crearBotonRealizarMovida(false);
     	}
