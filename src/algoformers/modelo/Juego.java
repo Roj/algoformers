@@ -5,6 +5,8 @@
  */
 package algoformers.modelo;
 
+import java.util.List;
+
 /**
  *
  * @author joaquintz
@@ -28,7 +30,8 @@ public class Juego {
         
         //Creacion de algoformers
         this.agregarAlgoformers();
-        //Los algoformers seran ubicados por el jugador
+        //Los algoformers seran ubicados por el tablero
+        this.posicionarAlgoformers();
     }
     private void agregarAlgoformers() {
         FabricaAlgoformers fabrica = new FabricaAlgoformers();
@@ -40,6 +43,17 @@ public class Juego {
         this.otroJugador.agregarAlgoformer(fabrica.crearMegatron());
         this.otroJugador.agregarAlgoformer(fabrica.crearBonecrusher());
         this.otroJugador.agregarAlgoformer(fabrica.crearFrenzy());
+    }
+    
+    private void posicionarAlgoformers(){
+        List<Algoformer> algoformersJugador1 = this.jugadorActual.obtenerListaAlgoformers();
+        List<Algoformer> algoformersJugador2 = this.otroJugador.obtenerListaAlgoformers();
+        int dimension = this.tablero.obtenerDimension() - 1;
+        for(int i = 0; i<3; i ++){
+            this.tablero.colocarAlgoformer(new Posicion(i,1,new Rocosa()), algoformersJugador1.get(i));
+            this.tablero.colocarAlgoformer(new Posicion(dimension - i, dimension, new Rocosa()), algoformersJugador2.get(i));
+        }
+        
     }
     
     public boolean verificarTurno(Jugador jugador) {
