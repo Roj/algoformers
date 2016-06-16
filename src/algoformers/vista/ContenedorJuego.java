@@ -23,6 +23,7 @@ import algoformers.controlador.AccionMarcarCamino;
 import algoformers.controlador.AccionMarcarCasilla;
 import algoformers.controlador.AccionMover;
 import algoformers.controlador.AccionPasarTurno;
+import algoformers.controlador.AccionRealizarMovida;
 import algoformers.controlador.AccionTocarCasilla;
 
 import java.util.ArrayList;
@@ -64,12 +65,7 @@ public class ContenedorJuego extends Contenedor {
         
         this.stage = stage;                   
         
-        // Boton para pasar turno
-		this.botonPasarTurno = new Button();
-		this.colocarBoton(botonPasarTurno, "Pasar Turno", 20, -630, -270);
-		this.botonPasarTurno.setPrefSize(170, 50);
-		this.botonPasarTurno.setOnAction(new AccionPasarTurno(this));
-        
+        this.crearBotonPasarTurno(false);
 		this.crearBotonMover(true);
         this.crearEtiquetaJugadorActual();
         this.crearTablero();        
@@ -163,8 +159,18 @@ public class ContenedorJuego extends Contenedor {
 		this.botonRealizarMovida = new Button();
 		this.colocarBoton(botonRealizarMovida, "Realizar Movida", 20, -630, -320);
 		this.botonRealizarMovida.setPrefSize(170, 50);
-		//this.botonRealizarMovida.setOnAction(new AccionRealizarMovida());
+		this.botonRealizarMovida.setOnAction(new AccionRealizarMovida(this));
         this.botonRealizarMovida.setDisable(desactivado);   	
+    }
+    
+    public void crearBotonPasarTurno(boolean desactivado) {
+        // Boton para pasar turno
+    	this.getChildren().remove(botonPasarTurno);
+		this.botonPasarTurno = new Button();
+		this.colocarBoton(botonPasarTurno, "Pasar Turno", 20, -630, -270);
+		this.botonPasarTurno.setPrefSize(170, 50);
+		this.botonPasarTurno.setOnAction(new AccionPasarTurno(this));    
+		this.botonPasarTurno.setDisable(desactivado); 
     }
     
     public void setCasillaActual(Casilla casilla) {    	
@@ -200,18 +206,16 @@ public class ContenedorJuego extends Contenedor {
         	cas.setBlendMode(null);
         }
     }    
+    public List<Casilla> getCaminoMarcado() {
+    	return this.caminoMarcado;
+    }
+    public void borrarCaminoMarcado() {
+    	this.caminoMarcado.clear();
+    }   
     public void pasarTurno() {
     	this.juego.avanzarTurno();    	
     	this.crearEtiquetaJugadorActual();   
     	
-    	this.dejarDeMostrarCasillasAdyascentes(this.casillaActual);
-    	
-    	for ( Casilla casilla : this.caminoMarcado) {
-    		casilla.setBlendMode(null);
-    	}
-    	
-    	this.cambiarEstadoCasilla();
     	this.crearBotonMover(true);
-    	this.caminoMarcado.clear();
     }
 }

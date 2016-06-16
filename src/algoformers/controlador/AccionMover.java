@@ -19,5 +19,6 @@ public class AccionMover implements EventHandler<ActionEvent> {
     	this.contenedorJuego.mostrarCasillasAdyascentes(this.contenedorJuego.getCasillaActual());
         this.contenedorJuego.crearBotonRealizarMovida(true);
         this.contenedorJuego.cambiarEstadoCasilla();
+        this.contenedorJuego.crearBotonPasarTurno(true);
     }
 }
