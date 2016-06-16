@@ -15,5 +15,5 @@ public abstract class Superficie {
     public abstract void ajustarPuntosDeMovimiento(Movimiento mov, ModoTerrestre modo);
     public abstract void ajustarPuntosDeMovimiento(Movimiento mov, ModoHumanoide modo);
     
-    public abstract int hash();
+    
 }
