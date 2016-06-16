@@ -39,8 +39,10 @@ public class Tablero {
     	superficiesAereas.add(new NebulosaDeAndromeda());
     	superficiesAereas.add(new TormentaPsionica());
     	
-    	inicializarUnTablero(superficiesTierra);
-    	inicializarUnTablero(superficiesAereas);          
+        setearMapa(superficiesTierra);
+        setearMapa(superficiesAereas);
+    	//inicializarUnTablero(superficiesTierra);
+    	//inicializarUnTablero(superficiesAereas);          
     }
     private void inicializarUnTablero(List<Superficie> superficies) {
     	Random random = new Random();    	
