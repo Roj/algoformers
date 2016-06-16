@@ -39,8 +39,8 @@ public class Tablero {
     	superficiesAereas.add(new NebulosaDeAndromeda());
     	superficiesAereas.add(new TormentaPsionica());
     	
-        setearMapa(superficiesTierra);
-        setearMapa(superficiesAereas);
+        Mapa mapa = new Mapa(this.dimX,this.dimY);
+        cargarMapa(mapa);
     	//inicializarUnTablero(superficiesTierra);
     	//inicializarUnTablero(superficiesAereas);          
     }
@@ -58,6 +58,22 @@ public class Tablero {
             }
         }     	
     }
+    private void cargarMapa(Mapa mapa){
+        mapa.setearMapa1();
+        rellenarSuperficies(mapa.getModeloTierra());
+        rellenarSuperficies(mapa.getModeloAire());    
+    }
+    
+    private void rellenarSuperficies(Superficie[][] modelo){
+        for (int i=0;i<this.dimX;i++){
+            for (int j=0;j<this.dimY;j++){            	
+                Posicion posicion = new Posicion(i,j,modelo[i][j]);                     
+                Vacio nuevoEspacio = new Vacio();
+                agregarUbicable(posicion,nuevoEspacio);
+            }
+        }
+    }
+    /*
     
     private void setearMapa(List<Superficie> superficies) {
         rellenarRocosoNube(superficies);
@@ -160,6 +176,7 @@ public class Tablero {
             }
         }
     }
+    */
     
     public void verificarReemplazable(Posicion pos, Algoformer algof) {
         Ubicable ubicableEnPosicion = this.tablero.get(pos);

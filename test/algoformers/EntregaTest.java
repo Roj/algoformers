@@ -31,7 +31,7 @@ public class EntregaTest {
     public void test01ColocarAlgoformerHumanoideYMoverSobreElTablero(){
         String nombre1 = "Juan";
         String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2,10,10);
+        Juego juego = new Juego(nombre1,nombre2,16,16);
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
         Algoformer optimus = jugador1.obtenerListaAlgoformers().get(0);
@@ -48,7 +48,7 @@ public class EntregaTest {
     public void test02AlgoformerHumanoideSeTransformaEnAmbasDirecciones() {
         String nombre1 = "Juan";
         String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2,3,3);
+        Juego juego = new Juego(nombre1,nombre2,16,16);
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
         
@@ -82,7 +82,7 @@ public class EntregaTest {
     public void test03ColocarAlgoformerAlternoYMoverSobreElTablero(){
         String nombre1 = "Juan";
         String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2,10,10);
+        Juego juego = new Juego(nombre1,nombre2,16,16);
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
         
