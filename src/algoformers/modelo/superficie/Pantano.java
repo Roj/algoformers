@@ -5,7 +5,6 @@ import algoformers.modelo.algoformer.ModoAereo;
 import algoformers.modelo.algoformer.ModoHumanoide;
 import algoformers.modelo.algoformer.ModoTerrestre;
 import algoformers.modelo.Movimiento;
-import algoformers.modelo.SuperficieNoAtravesableException;
 import algoformers.modelo.superficie.Tierra;
 
 public class Pantano extends Tierra {

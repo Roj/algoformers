@@ -1,11 +1,11 @@
 package algoformers.modelo.algoformer;
 
 import algoformers.modelo.Movimiento;
-import algoformers.modelo.NoSePuedeTransformarException;
+import algoformers.modelo.superficie.NoSePuedeTransformarException;
 import algoformers.modelo.NoSuperponibleException;
 import algoformers.modelo.ObjetivoMuyLejosException;
 import algoformers.modelo.Posicion;
-import algoformers.modelo.SuperficieNoAtravesableException;
+import algoformers.modelo.superficie.SuperficieNoAtravesableException;
 import algoformers.modelo.Ubicable;
 import algoformers.modelo.buffs.Buff;
 import java.util.HashSet;

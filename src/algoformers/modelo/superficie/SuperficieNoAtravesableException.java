@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package algoformers.modelo;
+package algoformers.modelo.superficie;
 
 /**
  *
- * @author Joaquin
+ * @author joaquintz
  */
-public class NoSePuedeTransformarException extends RuntimeException {
+public class SuperficieNoAtravesableException extends RuntimeException {
+
+    public SuperficieNoAtravesableException() {
+    }
     
 }

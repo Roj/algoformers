@@ -4,7 +4,6 @@ import algoformers.modelo.algoformer.Algoformer;
 import algoformers.modelo.algoformer.ModoAereo;
 import algoformers.modelo.algoformer.ModoHumanoide;
 import algoformers.modelo.algoformer.ModoTerrestre;
-import algoformers.modelo.SuperficieNoAtravesableException;
 
 public class Nube extends Aire {
     @Override

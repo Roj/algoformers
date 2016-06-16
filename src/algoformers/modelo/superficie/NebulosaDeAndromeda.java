@@ -5,7 +5,6 @@
  */
 package algoformers.modelo.superficie;
 
-import algoformers.modelo.SuperficieNoAtravesableException;
 import algoformers.modelo.algoformer.ModoAereo;
 import algoformers.modelo.algoformer.ModoTerrestre;
 import algoformers.modelo.algoformer.Algoformer;

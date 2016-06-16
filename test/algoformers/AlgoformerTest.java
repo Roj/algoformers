@@ -6,7 +6,7 @@ import algoformers.modelo.superficie.Nube;
 import algoformers.modelo.ObjetivoMuyLejosException;
 import algoformers.modelo.superficie.Rocosa;
 import algoformers.modelo.algoformer.FabricaAlgoformers;
-import algoformers.modelo.SuperficieNoAtravesableException;
+import algoformers.modelo.superficie.SuperficieNoAtravesableException;
 import algoformers.modelo.AtaqueInvalidoException;
 import algoformers.modelo.NoSuperponibleException;
 import algoformers.modelo.algoformer.Algoformer;
