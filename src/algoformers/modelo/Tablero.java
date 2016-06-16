@@ -57,6 +57,108 @@ public class Tablero {
         }     	
     }
     
+    private void setearMapa(List<Superficie> superficies) {
+        rellenarRocosoNube(superficies);
+        rellenarPantanoTormenta(superficies);
+        rellenarEspinaNebulosa(superficies);
+    }
+    
+    private void rellenarRocosoNube(List<Superficie> superficies){
+        for (int i=0;i<this.dimX/4;i++){
+            for (int j=0;j<this.dimY;j++){            	
+            	
+                Posicion posicion = new Posicion(i,j, superficies.get(0));                     
+                Vacio nuevoEspacio = new Vacio();
+                nuevoEspacio.establecerPosicion(posicion);
+                this.tablero.put(posicion,nuevoEspacio);
+            }
+        }
+        
+        for (int i=4;i<this.dimX;i++){
+            for (int j=0;j<this.dimY/4;j++){            	
+            	
+                Posicion posicion = new Posicion(i,j, superficies.get(0));                     
+                Vacio nuevoEspacio = new Vacio();
+                nuevoEspacio.establecerPosicion(posicion);
+                this.tablero.put(posicion,nuevoEspacio);
+            }
+        }
+        
+        for (int i=this.dimX - this.dimX/4;i<this.dimX;i++){
+            for (int j=this.dimY/4;j<this.dimY;j++){            	
+            	
+                Posicion posicion = new Posicion(i,j, superficies.get(0));                     
+                Vacio nuevoEspacio = new Vacio();
+                nuevoEspacio.establecerPosicion(posicion);
+                this.tablero.put(posicion,nuevoEspacio);
+            }
+        }
+        
+        for (int i=this.dimX/4;i<this.dimX - this.dimX/4;i++){
+            for (int j=this.dimY - this.dimY/4;j<this.dimY;j++){            	
+            	
+                Posicion posicion = new Posicion(i,j, superficies.get(0));                     
+                Vacio nuevoEspacio = new Vacio();
+                nuevoEspacio.establecerPosicion(posicion);
+                this.tablero.put(posicion,nuevoEspacio);
+            }
+        }
+    }
+    
+    private void rellenarEspinaNebulosa(List<Superficie> superficies){
+        for (int i=dimX/4;i<this.dimX/4 + this.dimX/8;i++){
+            for (int j=dimY/4;j<this.dimY - this.dimY/4;j++){            	
+            	
+                Posicion posicion = new Posicion(i,j, superficies.get(1));                     
+                Vacio nuevoEspacio = new Vacio();
+                nuevoEspacio.establecerPosicion(posicion);
+                this.tablero.put(posicion,nuevoEspacio);
+            }
+        }
+        
+        for (int i=this.dimX/4 + this.dimX/8;i<this.dimX-this.dimX/4;i++){
+            for (int j=this.dimY/4;j<this.dimY/4 + this.dimY/8;j++){            	
+            	
+                Posicion posicion = new Posicion(i,j, superficies.get(1));                     
+                Vacio nuevoEspacio = new Vacio();
+                nuevoEspacio.establecerPosicion(posicion);
+                this.tablero.put(posicion,nuevoEspacio);
+            }
+        }
+        
+        for (int i=this.dimX - this.dimX/4 - this.dimX/8;i<this.dimX-this.dimX/4;i++){
+            for (int j=this.dimY/4 + this.dimY/8 ;j<this.dimY-this.dimY/4;j++){            	
+            	
+                Posicion posicion = new Posicion(i,j, superficies.get(1));                     
+                Vacio nuevoEspacio = new Vacio();
+                nuevoEspacio.establecerPosicion(posicion);
+                this.tablero.put(posicion,nuevoEspacio);
+            }
+        }
+        
+        for (int i=this.dimX/4 + this.dimX/8;i<this.dimX - this.dimX/4 - this.dimX/8;i++){
+            for (int j=this.dimY - this.dimY/4 - this.dimY/8 ;j<this.dimY-this.dimY/4;j++){            	
+            	
+                Posicion posicion = new Posicion(i,j, superficies.get(1));                     
+                Vacio nuevoEspacio = new Vacio();
+                nuevoEspacio.establecerPosicion(posicion);
+                this.tablero.put(posicion,nuevoEspacio);
+            }
+        }
+    }
+    
+    private void rellenarPantanoTormenta(List<Superficie> superficies){
+        for (int i=this.dimX/4 + this.dimX/8;i<this.dimX - this.dimX/4 - this.dimX/8;i++){
+            for (int j=this.dimY/4 + this.dimY/8 ;j<this.dimY-this.dimY/4 - this.dimY/8;j++){            	
+            	
+                Posicion posicion = new Posicion(i,j, superficies.get(2));                     
+                Vacio nuevoEspacio = new Vacio();
+                nuevoEspacio.establecerPosicion(posicion);
+                this.tablero.put(posicion,nuevoEspacio);
+            }
+        }
+    }
+    
     public void verificarReemplazable(Posicion pos, Algoformer algof) {
         Ubicable ubicableEnPosicion = this.tablero.get(pos);
         ubicableEnPosicion.reemplazar(algof);
