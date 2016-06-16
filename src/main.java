@@ -47,7 +47,7 @@ public class main extends Application {
         stage.setWidth(width);
         stage.setHeight(height);
         stage.setResizable(false);
-        
+                
         ContenedorCargaDeDatos cargaDatos = new ContenedorCargaDeDatos(stage);
         Scene escenaCarga = new Scene(cargaDatos,640,480);
         
@@ -60,5 +60,3 @@ public class main extends Application {
     }
     
 }
-
-
