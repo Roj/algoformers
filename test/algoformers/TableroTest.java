@@ -15,6 +15,7 @@ import algoformers.modelo.NoSuperponibleException;
 import algoformers.modelo.Bonus;
 import algoformers.modelo.Algoformer;
 import algoformers.modelo.FabricaBonus;
+import algoformers.modelo.MapaChico;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -27,9 +28,9 @@ public class TableroTest {
     
     @Test
     public void testTableroEstaVacioCuandoSeInicia(){
-        Tablero tablero = new Tablero(3,3);
-        for (int i=0;i<3;i++){
-            for (int j=0;j<3;j++){
+        Tablero tablero = new Tablero(new MapaChico());
+        for (int i=0;i<16;i++){
+            for (int j=0;j<16;j++){
                 Posicion posicion = new Posicion(i,j, new Rocosa());
                 Assert.assertTrue(tablero.estaVacio(posicion));
             }
@@ -38,7 +39,7 @@ public class TableroTest {
     
     @Test
     public void testColocarAlgoformerNoEstaVacio(){
-        Tablero tablero = new Tablero(3,3);
+        Tablero tablero = new Tablero(new MapaChico());
         Posicion posicion = new Posicion(1,2, new Rocosa());
         FabricaAlgoformers fabrica = new FabricaAlgoformers();
         Algoformer optimus = fabrica.crearOptimus();
@@ -50,7 +51,7 @@ public class TableroTest {
     
     @Test
     public void testAgregarUbicableNoEstaVacio(){
-        Tablero tablero = new Tablero(3,3);
+        Tablero tablero = new Tablero(new MapaChico());
         Posicion posicion = new Posicion(1,2, new Rocosa());
         FabricaBonus fabricaBonus = new FabricaBonus();
         Bonus bonus = fabricaBonus.crearBurbujaInmaculada();
@@ -62,7 +63,7 @@ public class TableroTest {
         
     @Test
     public void testBorrarUbicableYEstaVacio(){
-        Tablero tablero = new Tablero(3,3);
+        Tablero tablero = new Tablero(new MapaChico());
         Posicion posicion = new Posicion(1,2, new Rocosa());
         FabricaBonus fabricaBonus = new FabricaBonus();
         Bonus bonus = fabricaBonus.crearBurbujaInmaculada();
@@ -77,7 +78,7 @@ public class TableroTest {
     
     @Test
     public void testEstaVacioSiHayAgregamosVacio(){
-        Tablero tablero = new Tablero(3,3);
+        Tablero tablero = new Tablero(new MapaChico());
         Posicion posicion = new Posicion(1,2, new Rocosa());
         Vacio vacio = new Vacio();
         
@@ -88,7 +89,7 @@ public class TableroTest {
     
     @Test(expected=NoSuperponibleException.class)
     public void testNoSePuedeSuperponerAlgoformers() {
-        Tablero tablero = new Tablero(3,3);
+        Tablero tablero = new Tablero(new MapaChico());
         Posicion posicion = new Posicion(1,2, new Rocosa());
         FabricaAlgoformers fabrica = new FabricaAlgoformers();
         Algoformer optimus = fabrica.crearOptimus();
@@ -102,7 +103,7 @@ public class TableroTest {
     
     @Test
     public void testBonusAdmiteSuperposicion() {
-        Tablero tablero = new Tablero(3,3);
+        Tablero tablero = new Tablero(new MapaChico());
         Posicion posicion = new Posicion(1,2, new Rocosa());
         FabricaAlgoformers fabrica = new FabricaAlgoformers();
         Algoformer optimus = fabrica.crearOptimus();

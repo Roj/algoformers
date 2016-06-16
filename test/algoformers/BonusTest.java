@@ -11,6 +11,7 @@ import algoformers.modelo.FabricaAlgoformers;
 import algoformers.modelo.Bonus;
 import algoformers.modelo.Algoformer;
 import algoformers.modelo.FabricaBonus;
+import algoformers.modelo.NoPuedeSerAtacado;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -46,12 +47,14 @@ public class BonusTest {
         
         
         Assert.assertTrue(megatron.obtenerVida()==550);
-        optimus.atacar(megatron);
+        try { optimus.atacar(megatron);
+        } catch(NoPuedeSerAtacado e) { }
         megatron.pasarTurno(); //restantes: 2-> 1
         
         
         Assert.assertTrue(megatron.obtenerVida()==550);
-        optimus.atacar(megatron);
+        try { optimus.atacar(megatron);
+        } catch(NoPuedeSerAtacado e) { }
         megatron.pasarTurno(); // restantes: 1->0. Deberia eliminarse
         
         

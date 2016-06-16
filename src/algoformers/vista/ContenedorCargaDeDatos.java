@@ -6,6 +6,8 @@ import algoformers.controlador.AccionSetearTablero;
 import algoformers.controlador.AccionComenzarJuego;
 import algoformers.controlador.AccionConfirmarJugador;
 import algoformers.modelo.Juego;
+import algoformers.modelo.Mapa;
+import algoformers.modelo.MapaChico;
 import static com.sun.javafx.fxml.expression.Expression.and;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
@@ -37,6 +39,7 @@ public class ContenedorCargaDeDatos extends Contenedor {
     //Por default el tamaño de tablero es el mediano de 32x32
     int tamañoTableroX = 16; 
     int tamañoTableroY = 16;
+    Mapa mapa = new MapaChico();
     Juego juego;
     
     private Stage stage;
@@ -133,13 +136,15 @@ public class ContenedorCargaDeDatos extends Contenedor {
         
         this.tableroChico = new Button();
         this.colocarBoton(this.tableroChico,"Chico (16x16)",30,-300,0);
-        this.tableroChico.setOnAction(new AccionSetearTablero(16,this));
+        this.tableroChico.setOnAction(new AccionSetearTablero(new MapaChico(),this));
         this.tableroMediano = new Button();
         this.colocarBoton(this.tableroMediano,"Mediano (32x32)",30,0,0);
-        this.tableroMediano.setOnAction(new AccionSetearTablero(32,this));
+        //Cambiar MapaChico por Mediano
+        this.tableroMediano.setOnAction(new AccionSetearTablero(new MapaChico(),this));
         this.tableroGrande = new Button();
+        //Cambiar MapaChico por Grande
         this.colocarBoton(this.tableroGrande,"Grande (64x64)",30,300,0);
-        this.tableroGrande.setOnAction(new AccionSetearTablero(64,this));
+        this.tableroGrande.setOnAction(new AccionSetearTablero(new MapaChico(),this));
         
         //Indicador de tablero seleccionado
         this.indicadorDimensionTablero = new Label();
@@ -147,10 +152,10 @@ public class ContenedorCargaDeDatos extends Contenedor {
         this.indicadorDimensionTablero.getStylesheets().add("texto.css");
         this.indicadorDimensionTablero.setTranslateY(200);
         this.getChildren().add(this.indicadorDimensionTablero);
-        this.indicadorDimensionTablero.setText(String.valueOf(this.tamañoTableroX)+"x"+String.valueOf(this.tamañoTableroY));
+//        this.indicadorDimensionTablero.setText(String.valueOf(this.tamañoTableroX)+"x"+String.valueOf(this.tamañoTableroY));
         
         //Creo juego y escena de juego
-        this.juego = new Juego(this.nombreJugador1,this.nombreJugador2,this.tamañoTableroX,this.tamañoTableroY);
+        this.juego = new Juego(this.nombreJugador1,this.nombreJugador2,this.mapa);
         ContenedorJuego contenedorJuego = new ContenedorJuego(this.stage, this.juego);
         Scene escenaJuego = new Scene(contenedorJuego,640,480);
         
@@ -158,11 +163,10 @@ public class ContenedorCargaDeDatos extends Contenedor {
         this.comenzarJuego.setOnAction(new AccionJugar(this.stage,escenaJuego));
     }
 
-    public void setearDimensionTablero(int dimension) {
+    public void setearDimensionTablero(Mapa mapa) {
         //Consideramos el tablero cuadrado
-        this.tamañoTableroX = dimension;
-        this.tamañoTableroY = dimension;
-        this.indicadorDimensionTablero.setText(String.valueOf(this.tamañoTableroX)+"x"+String.valueOf(this.tamañoTableroY));
+        this.mapa = mapa;
+//        this.indicadorDimensionTablero.setText(String.valueOf(this.tamañoTableroX)+"x"+String.valueOf(this.tamañoTableroY));
         
     }
 }

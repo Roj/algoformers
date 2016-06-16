@@ -5,6 +5,7 @@
  */
 package algoformers.controlador;
 
+import algoformers.modelo.Mapa;
 import algoformers.vista.ContenedorCargaDeDatos;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -16,16 +17,16 @@ import javafx.event.EventHandler;
 public class AccionSetearTablero implements EventHandler<ActionEvent> {
 
     ContenedorCargaDeDatos contenedorDeCarga;
-    int dimension;
+    Mapa mapa;
     
-    public AccionSetearTablero(int dimension, ContenedorCargaDeDatos contenedorDeCarga) {
-        this.dimension = dimension;
+    public AccionSetearTablero(Mapa mapa, ContenedorCargaDeDatos contenedorDeCarga) {
+        this.mapa = mapa;
         this.contenedorDeCarga = contenedorDeCarga;
     }
 
     @Override
     public void handle(ActionEvent event) {
-        this.contenedorDeCarga.setearDimensionTablero(dimension);
+        this.contenedorDeCarga.setearDimensionTablero(mapa);
     }
     
 }

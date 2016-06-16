@@ -20,48 +20,14 @@ public class Tablero {
     int dimX;
     int dimY;
             
-    public Tablero(int X,int Y){
+    public Tablero(Mapa mapa){
         this.tablero = new HashMap<>();
-        this.dimX = X;
-        this.dimY = Y;
-        this.inicializarTablero();
-    }
-
-    private void inicializarTablero(){    	    	
-    	List<Superficie> superficiesTierra = new ArrayList<Superficie>();
-    	List<Superficie> superficiesAereas = new ArrayList<Superficie>();
-    	
-    	superficiesTierra.add(new Rocosa());
-    	superficiesTierra.add(new Espinas());
-    	superficiesTierra.add(new Pantano());
-    	
-    	superficiesAereas.add(new Nube());
-    	superficiesAereas.add(new NebulosaDeAndromeda());
-    	superficiesAereas.add(new TormentaPsionica());
-    	
-        Mapa mapa = new Mapa(this.dimX,this.dimY);
-        cargarMapa(mapa);
-    	//inicializarUnTablero(superficiesTierra);
-    	//inicializarUnTablero(superficiesAereas);          
-    }
-    private void inicializarUnTablero(List<Superficie> superficies) {
-    	Random random = new Random();    	
-    	
-        for (int i=0;i<this.dimX;i++){
-            for (int j=0;j<this.dimY;j++){            	
-            	int numAleatorio = (int)(random.nextDouble() * superficies.size());
-            	
-                Posicion posicion = new Posicion(i,j, superficies.get(numAleatorio));                     
-                Vacio nuevoEspacio = new Vacio();
-                nuevoEspacio.establecerPosicion(posicion);
-                this.tablero.put(posicion,nuevoEspacio);
-            }
-        }     	
-    }
-    private void cargarMapa(Mapa mapa){
-        mapa.setearMapa1();
-        rellenarSuperficies(mapa.getModeloTierra());
-        rellenarSuperficies(mapa.getModeloAire());    
+        
+        this.dimX = mapa.obtenerDimX();
+        this.dimY = mapa.obtenerDimY();
+        
+        this.rellenarSuperficies(mapa.obtenerMapaAire());
+        this.rellenarSuperficies(mapa.obtenerMapaTierra());
     }
     
     private void rellenarSuperficies(Superficie[][] modelo){
@@ -74,6 +40,13 @@ public class Tablero {
         }
     }
 
+    void ubicarChispaEnElCentro() {
+        FabricaBonus fabricaBonus = new FabricaBonus();
+        Bonus chispaSuprema = fabricaBonus.crearChispaSuprema();
+        Posicion centro = new Posicion((this.dimX-1)/2, (this.dimY-1)/2, new Rocosa());
+        chispaSuprema.establecerPosicion(centro);
+        this.agregarUbicable(centro, chispaSuprema);
+    }
     public void verificarReemplazable(Posicion pos, Algoformer algof) {
         Ubicable ubicableEnPosicion = this.tablero.get(pos);
         ubicableEnPosicion.reemplazar(algof);

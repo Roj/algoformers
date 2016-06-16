@@ -15,18 +15,16 @@ public class Juego {
     private Jugador jugadorActual;
     private Jugador otroJugador;
     private Tablero tablero;
-    public Juego(String nombreJugadorA, String nombreJugadorB, int dim1, int dim2) {
-        this.tablero = new Tablero(dim1,dim2);
+    public Juego(String nombreJugadorA, String nombreJugadorB, Mapa mapa) {
+        this.tablero = new Tablero(mapa);
         
         this.jugadorActual = new Jugador(nombreJugadorA,tablero, this);
         this.otroJugador = new Jugador(nombreJugadorB,tablero, this);
      
-        FabricaBonus fabricaBonus = new FabricaBonus();
-        Bonus chispaSuprema = fabricaBonus.crearChispaSuprema();
-        Posicion centro = new Posicion((dim1-1)/2, (dim2-1)/2, new Rocosa());
-        chispaSuprema.establecerPosicion(centro);
+        tablero.ubicarChispaEnElCentro();
+        
         //Agregar chispa en el centro del tablero
-        this.tablero.agregarUbicable(centro, chispaSuprema);
+        
         
         //Creacion de algoformers
         this.agregarAlgoformers();

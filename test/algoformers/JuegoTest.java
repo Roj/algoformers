@@ -17,6 +17,7 @@ import algoformers.modelo.Posicion;
 import algoformers.modelo.buffs.ChispaSuprema;
 import algoformers.modelo.Juego;
 import algoformers.modelo.AtaqueInvalidoException;
+import algoformers.modelo.MapaChico;
 import algoformers.modelo.NoEsSuTurnoException;
 import org.junit.Assert;
 import org.junit.Test;
@@ -31,7 +32,7 @@ public class JuegoTest {
     public void testJuegoCreaConNombresCorrectos() {
         String jugador1 = "Juan";
         String jugador2 = "John";
-        Juego juego = new Juego(jugador1,jugador2,3,3);
+        Juego juego = new Juego(jugador1,jugador2,new MapaChico());
         
         Assert.assertTrue(jugador1.equals(juego.obtenerJugadorActual().obtenerNombre()));
         
@@ -43,7 +44,7 @@ public class JuegoTest {
     public void testVerificarTurnoEsElJugadorActual() {
         String jugador1 = "Juan";
         String jugador2 = "John";
-        Juego juego = new Juego(jugador1,jugador2,3,3);
+        Juego juego = new Juego(jugador1,jugador2,new MapaChico());
         
         Jugador jugadorJuan = juego.obtenerJugadorActual();
         juego.avanzarTurno();
@@ -63,7 +64,7 @@ public class JuegoTest {
     public void testVerificarTurnoLanzaExcepcionDebeLanzarExcepcion() {
         String jugador1 = "Juan";
         String jugador2 = "John";
-        Juego juego = new Juego(jugador1,jugador2,3,3);
+        Juego juego = new Juego(jugador1,jugador2,new MapaChico());
         
         Jugador jugadorJuan = juego.obtenerJugadorActual();
         juego.avanzarTurno();
@@ -74,7 +75,7 @@ public class JuegoTest {
     public void testAtacarExitosamenteCambiaTurno() {
         String nombre1 = "Juan";
         String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2,3,3);
+        Juego juego = new Juego(nombre1,nombre2,new MapaChico());
         Jugador jugador1 = juego.obtenerJugadorActual();
         Jugador jugador2 = juego.obtenerJugadorEnEspera();
         Tablero tablero = juego.obtenerTablero();
@@ -98,7 +99,7 @@ public class JuegoTest {
     public void testAtacarMuyLejosNoCambiaTurno() {
         String nombre1 = "Juan";
         String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2,30,30);
+        Juego juego = new Juego(nombre1,nombre2,new MapaChico());
         Jugador jugador1 = juego.obtenerJugadorActual();
         
         Tablero tablero = juego.obtenerTablero();
@@ -110,7 +111,7 @@ public class JuegoTest {
         Assert.assertTrue(juego.verificarTurno(jugador1));
 
         try {
-            jugador1.atacarPosicion(algoformer,new Posicion(20,1, new Rocosa()));
+            jugador1.atacarPosicion(algoformer,new Posicion(15,1, new Rocosa()));
             
             //Si esto sigue ejecutando caimos en un error
             throw new AssertionError();
@@ -124,7 +125,7 @@ public class JuegoTest {
     public void testAtacarMismoBandoNoCambiaTurno() {
         String nombre1 = "Juan";
         String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2,30,30);
+        Juego juego = new Juego(nombre1,nombre2,new MapaChico());
         Jugador jugador1 = juego.obtenerJugadorActual();
         
         Tablero tablero = juego.obtenerTablero();
@@ -146,7 +147,7 @@ public class JuegoTest {
     public void testAtacarAlgoformerEnemigoLeBajaVida() {
         String nombre1 = "Juan";
         String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2,3,3);
+        Juego juego = new Juego(nombre1,nombre2, new MapaChico());
         Jugador jugador1 = juego.obtenerJugadorActual();
         Jugador jugador2 = juego.obtenerJugadorEnEspera();
         Tablero tablero = juego.obtenerTablero();
@@ -167,7 +168,7 @@ public class JuegoTest {
     public void testAtacarAlVacioNoCambiaTurno() {
         String nombre1 = "Juan";
         String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2,30,30);
+        Juego juego = new Juego(nombre1,nombre2, new MapaChico());
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
         
@@ -191,7 +192,7 @@ public class JuegoTest {
     public void testMoverExitosamenteCambiaLaPosicion(){
         String nombre1 = "Juan";
         String nombre2 = "Jhon";
-        Juego juego = new Juego(nombre1,nombre2,3,3);
+        Juego juego = new Juego(nombre1,nombre2,new MapaChico());
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
         Posicion posicionInicial = new Posicion(1,1, new Rocosa());
@@ -215,7 +216,7 @@ public class JuegoTest {
     public void testMoverExitosamentePoneVacioEnSuViejoLugar(){
         String nombre1 = "Juan";
         String nombre2 = "Jhon";
-        Juego juego = new Juego(nombre1,nombre2,3,3);
+        Juego juego = new Juego(nombre1,nombre2,new MapaChico());
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
         Posicion posicionInicial = new Posicion(1,1, new Rocosa());
@@ -240,7 +241,7 @@ public class JuegoTest {
     public void testMoverExitosamenteCambiaJugador(){
         String nombre1 = "Juan";
         String nombre2 = "Jhon";
-        Juego juego = new Juego(nombre1,nombre2,3,3);
+        Juego juego = new Juego(nombre1,nombre2,new MapaChico());
         Jugador jugador1 = juego.obtenerJugadorActual();
         Jugador jugador2 = juego.obtenerJugadorEnEspera();
         Tablero tablero = juego.obtenerTablero();
@@ -285,7 +286,7 @@ public class JuegoTest {
     public void testMoverAPosicionConAlgoformerNoCambiaJugador(){
         String nombre1 = "Juan";
         String nombre2 = "Jhon";
-        Juego juego = new Juego(nombre1,nombre2,30,30);
+        Juego juego = new Juego(nombre1,nombre2, new MapaChico());
         Jugador jugador1 = juego.obtenerJugadorActual();
         Jugador jugador2 = juego.obtenerJugadorEnEspera();
         Tablero tablero = juego.obtenerTablero();
@@ -331,7 +332,7 @@ public class JuegoTest {
     public void testMoverAPosicionConAlgoformerNoSuperponibleException(){
         String nombre1 = "Juan";
         String nombre2 = "Jhon";
-        Juego juego = new Juego(nombre1,nombre2,30,30);
+        Juego juego = new Juego(nombre1,nombre2, new MapaChico());
         Jugador jugador1 = juego.obtenerJugadorActual();
         Jugador jugador2 = juego.obtenerJugadorEnEspera();
         Tablero tablero = juego.obtenerTablero();
@@ -352,10 +353,10 @@ public class JuegoTest {
     public void testUbicarChispaEnCentroDelTablero(){
         String nombre1 = "Juan";
         String nombre2 = "Jhon";
-        Juego juego = new Juego(nombre1,nombre2,30,30);
+        Juego juego = new Juego(nombre1,nombre2, new MapaChico());
 
         Tablero tablero = juego.obtenerTablero();
-        Ubicable chispa = tablero.obtenerUbicable(new Posicion(14, 14, new Rocosa()));
+        Ubicable chispa = tablero.obtenerUbicable(new Posicion(7, 7, new Rocosa()));
         
         Assert.assertTrue(chispa instanceof Bonus); //Debería chequearse que en particular sea la chispaSuprema
         Assert.assertTrue(((Bonus) chispa).obtenerEfecto() instanceof ChispaSuprema);
@@ -364,7 +365,7 @@ public class JuegoTest {
     public void testCambiarModoCambiaJugador(){
         String nombre1 = "Juan";
         String nombre2 = "Jhon";
-        Juego juego = new Juego(nombre1,nombre2,3,3);
+        Juego juego = new Juego(nombre1,nombre2, new MapaChico());
         Jugador jugador1 = juego.obtenerJugadorActual();
         Jugador jugador2 = juego.obtenerJugadorEnEspera();
         Tablero tablero = juego.obtenerTablero();

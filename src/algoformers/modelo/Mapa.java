@@ -13,112 +13,56 @@ import java.util.List;
  * 
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
-public class Mapa {
+public abstract class Mapa {
     int dimX;
     int dimY;
-    Superficie[][] modeloTierra;
-    Superficie[][] modeloAire;
+    Tierra[][] mapaTierra;
+    Aire[][] mapaAire;
     
-    public Mapa (int x,int y){
+    public Mapa (int x, int y){
         this.dimX = x;
         this.dimY = y;
-        this.modeloTierra = new Superficie[x][y];
-        this.modeloAire = new Superficie[x][y];
     }
-    
-    public void setearMapa1 (){
-        setearModelos();
+    public int obtenerDimX() {
+        return this.dimX;
     }
-    
-    public Superficie[][] getModeloTierra (){
-        return modeloTierra;
+    public int obtenerDimY() {
+        return this.dimY;
     }
-    
-    public Superficie[][] getModeloAire (){
-        return modeloAire;
-    }
-    
-    
-    private void setearModelos() {
-            	    	
-    	List<Superficie> superficiesTierra = new ArrayList<Superficie>();
-    	List<Superficie> superficiesAereas = new ArrayList<Superficie>();
-    	
-    	superficiesTierra.add(new Rocosa());
-    	superficiesTierra.add(new Espinas());
-    	superficiesTierra.add(new Pantano());
-    	
-    	superficiesAereas.add(new Nube());
-    	superficiesAereas.add(new NebulosaDeAndromeda());
-    	superficiesAereas.add(new TormentaPsionica());
+    public void generarMapaTierra(String[][] matriz) {
+        this.mapaTierra = new Tierra[this.dimX][this.dimY];
         
-        rellenarRocosoNube(superficiesTierra,modeloTierra);
-        rellenarPantanoTormenta(superficiesTierra,modeloTierra);
-        rellenarEspinaNebulosa(superficiesTierra,modeloTierra);
-        
-        rellenarRocosoNube(superficiesAereas,modeloAire);
-        rellenarPantanoTormenta(superficiesAereas,modeloAire);
-        rellenarEspinaNebulosa(superficiesAereas,modeloAire);
-    }
-    
-    private void rellenarRocosoNube(List<Superficie> superficies,Superficie[][] modelo){
-        for (int i=0;i<this.dimX/4;i++){
-            for (int j=0;j<this.dimY;j++){            	
-            	modelo[i][j] = superficies.get(0);
-            }
-        }
-        
-        for (int i=4;i<this.dimX;i++){
-            for (int j=0;j<this.dimY/4;j++){            	
-            	modelo[i][j] = superficies.get(0);
-            }
-        }
-        
-        for (int i=this.dimX - this.dimX/4;i<this.dimX;i++){
-            for (int j=this.dimY/4;j<this.dimY;j++){            	
-            	modelo[i][j] = superficies.get(0);
-            }
-        }
-        
-        for (int i=this.dimX/4;i<this.dimX - this.dimX/4;i++){
-            for (int j=this.dimY - this.dimY/4;j<this.dimY;j++){            	
-            	modelo[i][j] = superficies.get(0);
+        for(int i=0;i<this.dimX;i++) {
+            for(int j=0;j<this.dimY;j++) {
+                if(matriz[i][j].equals("r")) {
+                    this.mapaTierra[i][j] = new Rocosa(); 
+                } else if(matriz[i][j].equals("e")) {
+                    this.mapaTierra[i][j] = new Espinas(); 
+                } else if(matriz[i][j].equals("p")) {
+                    this.mapaTierra[i][j] = new Pantano(); 
+                }
             }
         }
     }
-    
-    private void rellenarEspinaNebulosa(List<Superficie> superficies,Superficie[][] modelo){
-        for (int i=dimX/4;i<this.dimX/4 + this.dimX/8;i++){
-            for (int j=dimY/4;j<this.dimY - this.dimY/4;j++){            	
-            	modelo[i][j] = superficies.get(1);
-            }
-        }
+    public void generarMapaAire(String[][] matriz) {
+        this.mapaAire = new Aire[this.dimX][this.dimY];
         
-        for (int i=this.dimX/4 + this.dimX/8;i<this.dimX-this.dimX/4;i++){
-            for (int j=this.dimY/4;j<this.dimY/4 + this.dimY/8;j++){
-            	modelo[i][j] = superficies.get(1);
-            }
-        }
-        
-        for (int i=this.dimX - this.dimX/4 - this.dimX/8;i<this.dimX-this.dimX/4;i++){
-            for (int j=this.dimY/4 + this.dimY/8 ;j<this.dimY-this.dimY/4;j++){            	
-            	modelo[i][j] = superficies.get(1);
-            }
-        }
-        
-        for (int i=this.dimX/4 + this.dimX/8;i<this.dimX - this.dimX/4 - this.dimX/8;i++){
-            for (int j=this.dimY - this.dimY/4 - this.dimY/8 ;j<this.dimY-this.dimY/4;j++){            	
-            	modelo[i][j] = superficies.get(1);
+        for(int i=0;i<this.dimX;i++) {
+            for(int j=0;j<this.dimY;j++) {
+                if(matriz[i][j].equals("nu")) {
+                    this.mapaAire[i][j] = new Nube(); 
+                } else if(matriz[i][j].equals("t")) {
+                    this.mapaAire[i][j] = new TormentaPsionica(); 
+                } else if(matriz[i][j].equals("ne")) {
+                    this.mapaAire[i][j] = new NebulosaDeAndromeda(); 
+                }
             }
         }
     }
-    
-    private void rellenarPantanoTormenta(List<Superficie> superficies, Superficie[][] modelo){
-        for (int i=this.dimX/4 + this.dimX/8;i<this.dimX - this.dimX/4 - this.dimX/8;i++){
-            for (int j=this.dimY/4 + this.dimY/8 ;j<this.dimY-this.dimY/4 - this.dimY/8;j++){            	
-            	modelo[i][j] = superficies.get(2);
-            }
-        }
+    public Aire[][] obtenerMapaAire() {
+        return this.mapaAire;
     }
-
+    public Tierra[][] obtenerMapaTierra() {
+        return this.mapaTierra;
+    }
 }

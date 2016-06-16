@@ -14,6 +14,7 @@ import algoformers.modelo.Espinas;
 import algoformers.modelo.Posicion;
 import algoformers.modelo.Pantano;
 import algoformers.modelo.Juego;
+import algoformers.modelo.MapaChico;
 import algoformers.modelo.NoSePuedeTransformarException;
 import algoformers.modelo.TormentaPsionica;
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class SuperficieTest {
     public void testMoverAlgoformerTerrestreSobreEspinasModoHumanoideQuitaVida() {
         String nombre1 = "Juan";
         String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2,16,16);
+        Juego juego = new Juego(nombre1,nombre2,new MapaChico());
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
         Algoformer optimus = jugador1.obtenerListaAlgoformers().get(0);
@@ -52,7 +53,7 @@ public class SuperficieTest {
     public void testMoverAlgoformerTerrestreSobreEspinasModoAlternoQuitaVida() {
         String nombre1 = "Juan";
         String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2,16,16);
+        Juego juego = new Juego(nombre1,nombre2,new MapaChico());
         Jugador jugador1 = juego.obtenerJugadorActual();
         Jugador jugador2 = juego.obtenerJugadorEnEspera();
         Tablero tablero = juego.obtenerTablero();
@@ -85,7 +86,7 @@ public class SuperficieTest {
     public void testMoverAlgoformerTerrestreSobrePantanoModoHumanoide(){
         String nombre1 = "Juan";
         String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2,16,16);
+        Juego juego = new Juego(nombre1,nombre2,new MapaChico());
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
         Algoformer optimus = jugador1.obtenerListaAlgoformers().get(0);
@@ -110,7 +111,7 @@ public class SuperficieTest {
     public void testMoverAlgoformerTerrestreSobrePantanoModoAlgoformer(){
         String nombre1 = "Juan";
         String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2,16,16);
+        Juego juego = new Juego(nombre1,nombre2,new MapaChico());
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
         Algoformer optimus = jugador1.obtenerListaAlgoformers().get(0);
@@ -148,7 +149,7 @@ public class SuperficieTest {
     public void testMoverAlgoformerTerrestreSobreRocosoPosicionFinalEsCorrecta(){
         String nombre1 = "Juan";
         String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2,16,16);
+        Juego juego = new Juego(nombre1,nombre2,new MapaChico());
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
         Algoformer optimus = jugador1.obtenerListaAlgoformers().get(0);
@@ -185,7 +186,7 @@ public class SuperficieTest {
     public void testMoverAlgoformerAereoSobreRocosoPosicionFinalEsCorrecta(){
         String nombre1 = "Juan";
         String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2,16,16);
+        Juego juego = new Juego(nombre1,nombre2,new MapaChico());
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
         Algoformer ratchet = jugador1.obtenerListaAlgoformers().get(2);
@@ -225,7 +226,7 @@ public class SuperficieTest {
     public void testMoverAlgoformerAereoSobreEspinasNoQuitaVida() {
         String nombre1 = "Juan";
         String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2,16,16);
+        Juego juego = new Juego(nombre1,nombre2,new MapaChico());
         Jugador jugador1 = juego.obtenerJugadorActual();
         Jugador jugador2 = juego.obtenerJugadorEnEspera();
         Tablero tablero = juego.obtenerTablero();
@@ -258,7 +259,7 @@ public class SuperficieTest {
     public void testMoverAlgoformerAereoSobrePantanoNoAfecta() {
         String nombre1 = "Juan";
         String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2,16,16);
+        Juego juego = new Juego(nombre1,nombre2,new MapaChico());
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
         Algoformer ratchet = jugador1.obtenerListaAlgoformers().get(2);
@@ -370,7 +371,7 @@ public class SuperficieTest {
     public void testMoverAlgoformerAereoSobreTierraLuegoAire() {
         String nombre1 = "Juan";
         String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2,16,16);
+        Juego juego = new Juego(nombre1,nombre2,new MapaChico());
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
         Algoformer ratchet = jugador1.obtenerListaAlgoformers().get(2);
@@ -405,7 +406,7 @@ public class SuperficieTest {
     public void testMoverAlgoformerHumanoideNoPuedeElevarse() {
         String nombre1 = "Juan";
         String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2,16,16);
+        Juego juego = new Juego(nombre1,nombre2,new MapaChico());
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
         Algoformer ratchet = jugador1.obtenerListaAlgoformers().get(2);
@@ -434,7 +435,7 @@ public class SuperficieTest {
     public void testMoverAlgoformerTerrestreAlternoNoPuedeElevarse() {
         String nombre1 = "Juan";
         String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2,16,16);
+        Juego juego = new Juego(nombre1,nombre2,new MapaChico());
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
         Algoformer optimus = jugador1.obtenerListaAlgoformers().get(0);

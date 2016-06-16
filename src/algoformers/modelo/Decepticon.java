@@ -14,13 +14,9 @@ public class Decepticon extends Algoformer {
             throw new AtaqueInvalidoException();
     }
     @Override
-    public void recibirAtaque(Autobot algoformer) {
-        try{
-            this.avisarABuffsAtacado();
-            vida -= algoformer.obtenerPuntosAtaque();
-        } catch (NoPuedeSerAtacado e) {
-            
-        }
-            //etc de cosas al atacar
+    public void recibirAtaque(Autobot algoformer) {        
+        this.avisarABuffsAtacado();
+        vida -= algoformer.obtenerPuntosAtaque();
+        //TODO: revisar muerte	
     }
 }

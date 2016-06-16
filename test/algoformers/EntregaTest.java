@@ -15,6 +15,7 @@ import algoformers.modelo.Rocosa;
 import algoformers.modelo.Jugador;
 import algoformers.modelo.Bonus;
 import algoformers.modelo.Algoformer;
+import algoformers.modelo.MapaChico;
 import java.util.List;
 
 import org.junit.Assert;
@@ -31,7 +32,7 @@ public class EntregaTest {
     public void test01ColocarAlgoformerHumanoideYMoverSobreElTablero(){
         String nombre1 = "Juan";
         String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2,16,16);
+        Juego juego = new Juego(nombre1,nombre2,new MapaChico());
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
         Algoformer optimus = jugador1.obtenerListaAlgoformers().get(0);
@@ -48,7 +49,7 @@ public class EntregaTest {
     public void test02AlgoformerHumanoideSeTransformaEnAmbasDirecciones() {
         String nombre1 = "Juan";
         String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2,16,16);
+        Juego juego = new Juego(nombre1,nombre2,new MapaChico());
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
         
@@ -82,7 +83,7 @@ public class EntregaTest {
     public void test03ColocarAlgoformerAlternoYMoverSobreElTablero(){
         String nombre1 = "Juan";
         String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2,16,16);
+        Juego juego = new Juego(nombre1,nombre2,new MapaChico());
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
         
@@ -103,7 +104,7 @@ public class EntregaTest {
         String nombre1 = "Juan";
         String nombre2 = "John";
         
-        Juego juego = new Juego(nombre1,nombre2,20,20);
+        Juego juego = new Juego(nombre1,nombre2,new MapaChico());
         
         Jugador jugador1 = juego.obtenerJugadorActual();
         Jugador jugador2 = juego.obtenerJugadorEnEspera();
@@ -120,15 +121,15 @@ public class EntregaTest {
         Algoformer bonecrusher = algoformersj2.get(1);
         Algoformer frenzy = algoformersj2.get(2);
         
-        Ubicable chispa = tablero.obtenerUbicable(new Posicion(9,9, new Rocosa()));
+        Ubicable chispa = tablero.obtenerUbicable(new Posicion(7,7, new Rocosa()));
                
         Posicion esquinaInferiorIzqBorde = new Posicion(0,0, new Rocosa());
         Posicion esquinaInferiorIzqSuperior = new Posicion(0,1,new Rocosa());
         Posicion esquinaInferiorIzqFrontal = new Posicion(1,0,new Rocosa());
         
-        Posicion esquinaSuperiorDerBorde = new Posicion(19,19,new Rocosa());
-        Posicion esquinaSuperiorDerInferior = new Posicion(19,18,new Rocosa());
-        Posicion esquinaSuperioDerTrasera = new Posicion(18,19,new Rocosa());
+        Posicion esquinaSuperiorDerBorde = new Posicion(15,15,new Rocosa());
+        Posicion esquinaSuperiorDerInferior = new Posicion(15,14,new Rocosa());
+        Posicion esquinaSuperioDerTrasera = new Posicion(14,15,new Rocosa());
         
         tablero.colocarAlgoformer(esquinaInferiorIzqBorde, optimus);
         tablero.colocarAlgoformer(esquinaInferiorIzqSuperior, bumblebee);
