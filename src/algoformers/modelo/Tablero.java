@@ -208,7 +208,9 @@ public class Tablero {
         Ubicable ubicable = tablero.get(posicion);
         return ubicable;
     }
-    
+    public int obtenerDimension(){
+        return dimX;
+    }
     public List<Posicion> obtenerListaDePosiciones() {
     	return new ArrayList<Posicion>(this.tablero.keySet());
     }
