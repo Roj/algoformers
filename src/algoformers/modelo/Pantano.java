@@ -13,8 +13,4 @@ public class Pantano extends Tierra {
     public void accionSobreAlgoformer(ModoAereo modo, Algoformer algof) {
         //no restar narinas
     }
-    @Override
-    public void ajustarPuntosDeMovimiento(ModoTerrestre modo, Algoformer algof) {
-        algof.modificarPuntosDeMovimiento(-2);
-    }
 }

@@ -10,15 +10,15 @@ public abstract class Tierra extends Superficie {
         return (obj instanceof Tierra);
     }
     @Override
-    public void ajustarPuntosDeMovimiento(ModoHumanoide modo, Algoformer algof) {
-        algof.modificarPuntosDeMovimiento(-1);
+    public int obtenerPuntosDeMovimientoGastados(ModoHumanoide modo) {
+        return 1;
     }
     @Override
-    public void ajustarPuntosDeMovimiento(ModoAereo modo, Algoformer algof) {
-        algof.modificarPuntosDeMovimiento(-1);
+    public int obtenerPuntosDeMovimientoGastados(ModoAereo modo) {
+        return 1;
     }
     @Override
-    public void ajustarPuntosDeMovimiento(ModoTerrestre modo, Algoformer algof) {
-        algof.modificarPuntosDeMovimiento(-1);
+    public int obtenerPuntosDeMovimientoGastados(ModoTerrestre modo) {
+        return 1;
     }
 }

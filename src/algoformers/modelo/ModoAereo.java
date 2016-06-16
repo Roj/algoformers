@@ -16,8 +16,5 @@ public class ModoAereo extends ModoAlterno {
     @Override
     public void aceptarSuperficie(Superficie sup, Algoformer algof) {
         sup.accionSobreAlgoformer(this, algof);
-    }
-    public void ajustarPuntosDeMovimiento(Superficie sup, Algoformer algof) {
-        sup.ajustarPuntosDeMovimiento(this,algof);
     }   
 }

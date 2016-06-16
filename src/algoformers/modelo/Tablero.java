@@ -165,30 +165,25 @@ public class Tablero {
         Ubicable ubicableEnPosicion = this.tablero.get(pos);
         ubicableEnPosicion.reemplazar(algof);
     }
+    
     public void colocarAlgoformer(Posicion posicion,Algoformer algoformer){
+        //Este metodo se utiliza para ubicar los algoformers inicialmente.
         this.verificarReemplazable(posicion,algoformer);
-        
         algoformer.establecerPosicion(posicion);
-        this.agregarUbicable(posicion, algoformer);
+        this.agregarUbicable(posicion, algoformer);        
     }
     
-    
-    public void moverAlgoformer(List<Posicion> posiciones,Algoformer algoformer){    	    	
-    	for (Posicion siguientePos : posiciones) {
+    public void moverAlgoformer(Posicion siguientePos,Algoformer algoformer){    	    	
+        this.verificarReemplazable(siguientePos,algoformer);
+        Posicion viejaPos = algoformer.obtenerPosicion();
+        
+        algoformer.mover(siguientePos);
 
-            this.verificarReemplazable(siguientePos,algoformer);
-            
-            Posicion viejaPos = algoformer.obtenerPosicion();
-            
-            algoformer.mover(siguientePos);
-            
-            //Si todo sale bien
-            this.agregarUbicable(siguientePos, algoformer);
-            this.borrarUbicable(viejaPos);	        
-            
-	}   	
-    	               
+        //Si todo sale bien
+        this.agregarUbicable(siguientePos, algoformer); 
+        this.borrarUbicable(viejaPos);	        
     }    
+    
     public void agregarUbicable(Posicion posicion,Ubicable nuevoUbicable){
         this.tablero.put(posicion, nuevoUbicable);
         nuevoUbicable.establecerPosicion(posicion);

@@ -12,7 +12,6 @@ public abstract class Algoformer implements Ubicable {
 
     protected String nombre;
     protected int vida;
-    protected int puntosMovimiento;
     
     protected HashSet<Buff> buffs;
     
@@ -21,8 +20,6 @@ public abstract class Algoformer implements Ubicable {
         this.modoActual = modo1;
         this.otroModo = modo2;
         this.buffs = new HashSet<>();
-        
-        this.restablecerPuntosMovimiento();
     }	
     @Override
     public void establecerPosicion(Posicion pos) {
@@ -43,12 +40,6 @@ public abstract class Algoformer implements Ubicable {
             throw new NoSePuedeTransformarException();
         }
         
-    }
-    public void setPuntosMovimiento(int num) {
-    	puntosMovimiento = num;
-    }
-    public void restablecerPuntosMovimiento() {
-    	puntosMovimiento = this.obtenerVelocidad();
     }
     public void setVida(int num) {
     	vida = num;
@@ -86,25 +77,11 @@ public abstract class Algoformer implements Ubicable {
         }
         return true;
     }
-    public boolean verificarMovida() {
-        //Obtenemos el valor en el que quedaria el algoformer
-        int puntosIniciales = this.puntosMovimiento;
-        this.modoActual.ajustarPuntosDeMovimiento(this.posicion.obtenerSuperficie(),this);
-        int puntosModificados = this.puntosMovimiento;
-        this.puntosMovimiento = puntosIniciales;
-        
-    	if (puntosModificados < 0)
-    		throw new ObjetivoMuyLejosException(); // Por ahora está esta excepcion
-    	
-    	return true;
-    }        
     public void mover(Posicion nuevaPosicion) {
         //verificacion
         this.avisarABuffsMovida();
-        this.verificarMovida();
         this.modoActual.aceptarSuperficie(nuevaPosicion.obtenerSuperficie(),this);
         //todo bien, nos cambiamos
-        this.modoActual.ajustarPuntosDeMovimiento(this.posicion.obtenerSuperficie(),this);
         this.establecerPosicion(nuevaPosicion);
     }       
 
@@ -112,20 +89,9 @@ public abstract class Algoformer implements Ubicable {
         return this.modoActual;
     }
 
-    public int obtenerPuntosDeMovimiento() {
-        return this.puntosMovimiento;
-    }
-    
-    public void modificarPuntosDeMovimiento(int i) {
-        this.puntosMovimiento = this.puntosMovimiento+i;
-    }
-    public void restablecerPuntosDeMovimiento() {
-        this.puntosMovimiento = this.modoActual.obtenerVelocidad();
-    }
     public void pasarTurno() {
         //en el futuro deberia tambien avisarle a los buffs
         this.avisarABuffsPasarTurno();
-        this.restablecerPuntosDeMovimiento();
     }
     public void agregarBuff(Buff buff) {
         if(!this.buffs.contains(buff)) {

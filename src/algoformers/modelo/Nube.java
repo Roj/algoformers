@@ -13,16 +13,5 @@ public class Nube extends Aire {
     public void accionSobreAlgoformer(ModoHumanoide modo, Algoformer algof) {
         throw new SuperficieNoAtravesableException();
     }
-    @Override
-    public void ajustarPuntosDeMovimiento(ModoHumanoide modo, Algoformer algof) {
-        algof.modificarPuntosDeMovimiento(-1);
-    }
-    @Override
-    public void ajustarPuntosDeMovimiento(ModoAereo modo, Algoformer algof) {
-        algof.modificarPuntosDeMovimiento(-1);
-    }
-    @Override
-    public void ajustarPuntosDeMovimiento(ModoTerrestre modo, Algoformer algof) {
-        algof.modificarPuntosDeMovimiento(-1);
-    }
+
 }

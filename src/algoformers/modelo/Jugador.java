@@ -40,7 +40,10 @@ public class Jugador {
     
     public void moverAPosiciones(Algoformer algof, List<Posicion> destino) {
         juego.verificarTurno(this);
-        tablero.moverAlgoformer(destino, algof);
+        
+        Movimiento mov = new Movimiento(algof,destino,tablero);
+        mov.mover();
+        
         juego.avanzarTurno();
         this.avisarAlgoformersPaseDeTurno();
     }
