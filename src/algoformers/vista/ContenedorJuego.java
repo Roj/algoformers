@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import algoformers.controlador.AccionAtacar;
 import algoformers.controlador.AccionCasilla;
 import algoformers.controlador.AccionMarcarCamino;
 import algoformers.controlador.AccionMarcarCasilla;
@@ -38,6 +39,7 @@ public class ContenedorJuego extends Contenedor {
     Stage stage;
     Button botonMover;
     Button botonPasarTurno;
+    Button botonAtacar;
     Button botonRealizarMovida;
     Juego juego;
     Label etiquetaTurnoActual;
@@ -45,7 +47,7 @@ public class ContenedorJuego extends Contenedor {
     Casilla casillaActual;
     List<Casilla> caminoMarcado = new ArrayList<Casilla>();
     AccionCasilla estadoCasilla;
-    AccionCasilla otroEstadoCasilla;
+    //AccionCasilla otroEstadoCasilla;
     Algoformer algoformerActual;
             
     int dimX = 16;
@@ -62,7 +64,7 @@ public class ContenedorJuego extends Contenedor {
         this.juego = juego;
         
         this.estadoCasilla = new AccionMarcarCasilla(this, juego);
-        this.otroEstadoCasilla = new AccionMarcarCamino(this, juego);
+        //this.otroEstadoCasilla = new AccionMarcarCamino(this, juego);
         
         // Fondo temporal para el juego
         this.setId("background-personajes");
@@ -72,6 +74,7 @@ public class ContenedorJuego extends Contenedor {
         
         this.crearBotonPasarTurno(false);
 		this.crearBotonMover(true);
+		this.crearBotonAtacar(true);
         this.crearEtiquetaJugadorActual();
         this.crearTablero();        
     }
@@ -107,7 +110,7 @@ public class ContenedorJuego extends Contenedor {
 
     }
 
-    public ArrayList<Casilla> getCasillerosAdyascentesPosibles(Casilla casilla) {
+    public ArrayList<Casilla> getCasillerosAdyascentes(Casilla casilla) {
     	ArrayList<Casilla> adyascentes = new ArrayList<Casilla>();
     	
     	int[] puntosVecinos = new int[] { 
@@ -124,12 +127,27 @@ public class ContenedorJuego extends Contenedor {
     		int vecinoX = casilla.getX() + diferenciaX;
     		int vecinoY = casilla.getY() + diferenciaY;
     		
-    		if (vecinoX >= 0 && vecinoX < dimX && vecinoY >= 0 && vecinoY < dimY
-    			&& !caminoMarcado.contains(casillas[vecinoX][vecinoY])) {
-    			try {
-    				casillas[vecinoX][vecinoY].getUbicable().reemplazar(this.algoformerActual);
+    		if (vecinoX >= 0 && vecinoX < dimX && vecinoY >= 0 && vecinoY < dimY) {
     				adyascentes.add(casillas[vecinoX][vecinoY]);  	
-    			} catch (NoSuperponibleException e) {}
+    		}
+    	}
+    	
+    	return adyascentes;
+    }
+    
+    public ArrayList<Casilla> getCasillerosPosiblesMovimiento(Casilla casilla) {
+    	ArrayList<Casilla> adyascentes = getCasillerosAdyascentes(casilla);
+    	
+    	for (Casilla casillaAdyascente : adyascentes) {
+    		try {
+    			casillaAdyascente.getUbicable().reemplazar(this.algoformerActual);
+    			
+        		if (caminoMarcado.contains(casillaAdyascente)) {
+        			adyascentes.remove(casillaAdyascente);
+        		}    		
+        		
+    		} catch (NoSuperponibleException e) {
+    			adyascentes.remove(casillaAdyascente);
     		}
     	}
     	
@@ -149,12 +167,22 @@ public class ContenedorJuego extends Contenedor {
         etiquetaTurnoActual.setTranslateY(-380);            	
     }
     
+    public void crearBotonAtacar(boolean desactivado) {
+    	// Boton para empezar a armar un camino
+    	this.getChildren().remove(botonAtacar);
+		this.botonAtacar = new Button();
+		this.colocarBoton(botonAtacar, "Atacar", 20, -630, -320);
+		this.botonAtacar.setPrefSize(170, 50);
+		this.botonAtacar.setOnAction(new AccionAtacar(this));
+        this.botonAtacar.setDisable(desactivado);   	
+    }
+    
     public void crearBotonMover(boolean desactivado) {
     	// Boton para empezar a armar un camino
     	this.getChildren().remove(botonRealizarMovida);
     	this.getChildren().remove(botonMover);
 		this.botonMover = new Button();
-		this.colocarBoton(botonMover, "Mover", 20, -630, -320);
+		this.colocarBoton(botonMover, "Mover", 20, -630, -270);
 		this.botonMover.setPrefSize(170, 50);
 		this.botonMover.setOnAction(new AccionMover(this));
         this.botonMover.setDisable(desactivado);   	
@@ -165,9 +193,9 @@ public class ContenedorJuego extends Contenedor {
     	this.getChildren().remove(botonRealizarMovida);
     	this.getChildren().remove(botonMover);
 		this.botonRealizarMovida = new Button();
-		this.colocarBoton(botonRealizarMovida, "Realizar Movida", 20, -630, -320);
+		this.colocarBoton(botonRealizarMovida, "Realizar Movida", 20, -630, -270);
 		this.botonRealizarMovida.setPrefSize(170, 50);
-		this.botonRealizarMovida.setOnAction(new AccionRealizarMovida(this));
+		this.botonRealizarMovida.setOnAction(new AccionRealizarMovida(this, this.juego));
         this.botonRealizarMovida.setDisable(desactivado);   	
     }
     
@@ -175,7 +203,7 @@ public class ContenedorJuego extends Contenedor {
         // Boton para pasar turno
     	this.getChildren().remove(botonPasarTurno);
 		this.botonPasarTurno = new Button();
-		this.colocarBoton(botonPasarTurno, "Pasar Turno", 20, -630, -270);
+		this.colocarBoton(botonPasarTurno, "Pasar Turno", 20, -630, -220);
 		this.botonPasarTurno.setPrefSize(170, 50);
 		this.botonPasarTurno.setOnAction(new AccionPasarTurno(this));    
 		this.botonPasarTurno.setDisable(desactivado); 
@@ -221,19 +249,22 @@ public class ContenedorJuego extends Contenedor {
     public AccionCasilla getEstadoCasilla() {
     	return this.estadoCasilla;
     }
-    public void cambiarEstadoCasilla() {
+    /*public void cambiarEstadoCasilla() {
         AccionCasilla aux = this.estadoCasilla;
         
         this.estadoCasilla = this.otroEstadoCasilla;
         this.otroEstadoCasilla = aux;
-    }
+    }*/
+    public void cambiarEstadoCasilla(AccionCasilla accion) {        
+        this.estadoCasilla = accion;
+    }    
     public void mostrarCasillasAdyascentesPosibles(Casilla casilla) {
-    	for ( Casilla cas : this.getCasillerosAdyascentesPosibles(casilla)) {
+    	for ( Casilla cas : this.getCasillerosPosiblesMovimiento(casilla)) {
         	cas.setBlendMode(BlendMode.GREEN);
         }
     }
     public void dejarDeMostrarCasillasAdyascentes(Casilla casilla) {
-    	for ( Casilla cas : this.getCasillerosAdyascentesPosibles(casilla)) {
+    	for ( Casilla cas : this.getCasillerosPosiblesMovimiento(casilla)) {
         	cas.setBlendMode(null);
         }
     }    
@@ -249,5 +280,6 @@ public class ContenedorJuego extends Contenedor {
     	
     	this.crearBotonPasarTurno(false);
     	this.crearBotonMover(true);
+    	this.crearBotonAtacar(true);
     }
 }

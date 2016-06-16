@@ -14,18 +14,16 @@ import algoformers.vista.ContenedorJuego;
 
 public class AccionMarcarCamino extends AccionCasilla {
 
-	Juego juego;
 	ContenedorJuego contenedorJuego;
 	
-    public AccionMarcarCamino(ContenedorJuego contJuego, Juego juego) {
-    	this.juego = juego;
+    public AccionMarcarCamino(ContenedorJuego contJuego) {
     	this.contenedorJuego = contJuego;
     }
 
     public void accion(Casilla casilla) {
     	// Obtengo los casilleros adyascentes al casillero actual
     	Casilla casillaActual = this.contenedorJuego.getCasillaActual();
-    	List<Casilla> adyascentes = this.contenedorJuego.getCasillerosAdyascentesPosibles(casillaActual);
+    	List<Casilla> adyascentes = this.contenedorJuego.getCasillerosPosiblesMovimiento(casillaActual);
     	
     	if (adyascentes.contains(casilla)) {
     		this.contenedorJuego.setCasillaActual(casilla);    		

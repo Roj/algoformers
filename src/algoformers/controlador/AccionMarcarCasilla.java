@@ -28,7 +28,8 @@ public class AccionMarcarCasilla extends AccionCasilla {
               
     	// Descomentar esto cuando existan algoformers en el tablero, comentado para testeo
         this.contenedorJuego.crearBotonMover(true);
-    	
+        this.contenedorJuego.crearBotonAtacar(true);
+        
     	this.contenedorJuego.borrarEstadisticasAlgoformer();
     	
     	List<Algoformer> algoformersJugadorActual = this.juego.obtenerJugadorActual().obtenerListaAlgoformers();
@@ -45,6 +46,7 @@ public class AccionMarcarCasilla extends AccionCasilla {
         for ( Algoformer algoformer : algoformersJugadorActual ) {
         	if (ubicable == algoformer) {
         		this.contenedorJuego.crearBotonMover(false);
+        		this.contenedorJuego.crearBotonAtacar(false);
         		this.contenedorJuego.getCasillaActual().setBlendMode(null);
         		this.contenedorJuego.setCasillaActual(casilla);
         		this.contenedorJuego.crearEstadisticasAlgoformer(algoformer);       		
