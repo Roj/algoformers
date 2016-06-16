@@ -3,8 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package algoformers.modelo;
+package algoformers.modelo.superficie;
 
+import algoformers.modelo.algoformer.ModoAereo;
+import algoformers.modelo.algoformer.ModoTerrestre;
+import algoformers.modelo.algoformer.Algoformer;
+import algoformers.modelo.algoformer.ModoHumanoide;
+import algoformers.modelo.superficie.Aire;
 import algoformers.modelo.buffs.EncadenadoEnAndromeda;
 
 /**

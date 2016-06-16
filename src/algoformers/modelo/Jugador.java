@@ -5,6 +5,7 @@
  */
 package algoformers.modelo;
 
+import algoformers.modelo.algoformer.Algoformer;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;

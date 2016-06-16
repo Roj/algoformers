@@ -3,8 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package algoformers.modelo;
+package algoformers.modelo.bonus;
 
+import algoformers.modelo.AtaqueInvalidoException;
+import algoformers.modelo.Posicion;
+import algoformers.modelo.Ubicable;
+import algoformers.modelo.algoformer.Decepticon;
+import algoformers.modelo.algoformer.Algoformer;
+import algoformers.modelo.algoformer.Autobot;
 import algoformers.modelo.buffs.Buff;
 
 /**

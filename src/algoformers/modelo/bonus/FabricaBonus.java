@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package algoformers.modelo;
+package algoformers.modelo.bonus;
 
 import algoformers.modelo.buffs.BurbujaInmaculada;
 import algoformers.modelo.buffs.DobleCañon;

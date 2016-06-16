@@ -1,8 +1,8 @@
 package algoformers;
 import algoformers.modelo.Posicion;
-import algoformers.modelo.Nube;
-import algoformers.modelo.Rocosa;
-import algoformers.modelo.Superficie;
+import algoformers.modelo.superficie.Nube;
+import algoformers.modelo.superficie.Rocosa;
+import algoformers.modelo.superficie.Superficie;
 import org.junit.Assert;
 import org.junit.Test;
 

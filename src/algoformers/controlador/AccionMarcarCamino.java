@@ -5,7 +5,7 @@ import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.effect.BlendMode;
-import algoformers.modelo.Algoformer;
+import algoformers.modelo.algoformer.Algoformer;
 import algoformers.modelo.Juego;
 import algoformers.modelo.Ubicable;
 import algoformers.modelo.Vacio;

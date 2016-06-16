@@ -1,13 +1,13 @@
 package algoformers.vista;
 
-import algoformers.modelo.Algoformer;
+import algoformers.modelo.algoformer.Algoformer;
 import algoformers.modelo.Juego;
 import algoformers.modelo.Jugador;
-import algoformers.modelo.ModoAlgoformer;
+import algoformers.modelo.algoformer.ModoAlgoformer;
 import algoformers.modelo.NoSuperponibleException;
 import algoformers.modelo.Posicion;
 import algoformers.modelo.Tablero;
-import algoformers.modelo.Tierra;
+import algoformers.modelo.superficie.Tierra;
 import algoformers.modelo.Ubicable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;

@@ -3,14 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package algoformers.modelo;
+package algoformers.modelo.algoformer;
+
+import algoformers.modelo.Movimiento;
+import algoformers.modelo.superficie.Superficie;
 
 /**
  *
  * @author joaquintz
  */
-public class ModoTerrestre extends ModoAlterno {
-    public ModoTerrestre(int puntosAtaque, int distanciaAtaque,int velocidad) {
+public class ModoAereo extends ModoAlterno {
+    public ModoAereo(int puntosAtaque, int distanciaAtaque,int velocidad) {
         super(puntosAtaque,distanciaAtaque,velocidad);
     }
     @Override

@@ -7,11 +7,11 @@ package algoformers;
 
 import algoformers.modelo.Posicion;
 import algoformers.modelo.buffs.EncadenadoException;
-import algoformers.modelo.Rocosa;
+import algoformers.modelo.superficie.Rocosa;
 import algoformers.modelo.buffs.EncadenadoEnAndromeda;
-import algoformers.modelo.FabricaAlgoformers;
+import algoformers.modelo.algoformer.FabricaAlgoformers;
 import algoformers.modelo.buffs.Buff;
-import algoformers.modelo.Algoformer;
+import algoformers.modelo.algoformer.Algoformer;
 import algoformers.modelo.buffs.Psionizado;
 import org.junit.Assert;
 import org.junit.Test;

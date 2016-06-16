@@ -1,4 +1,7 @@
-package algoformers.modelo;
+package algoformers.modelo.algoformer;
+
+import algoformers.modelo.AtaqueInvalidoException;
+import algoformers.modelo.Ubicable;
 
 public class Decepticon extends Algoformer {	
     public Decepticon(int vida, ModoAlgoformer modo1, ModoAlgoformer modo2) {

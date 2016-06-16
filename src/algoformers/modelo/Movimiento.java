@@ -5,6 +5,7 @@
  */
 package algoformers.modelo;
 
+import algoformers.modelo.algoformer.Algoformer;
 import java.util.List;
 
 /**
