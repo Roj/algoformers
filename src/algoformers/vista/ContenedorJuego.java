@@ -107,7 +107,7 @@ public class ContenedorJuego extends Contenedor {
 
     }
 
-    public ArrayList<Casilla> obtenerCasillerosAdyascentesPosibles(Casilla casilla) {
+    public ArrayList<Casilla> getCasillerosAdyascentesPosibles(Casilla casilla) {
     	ArrayList<Casilla> adyascentes = new ArrayList<Casilla>();
     	
     	int[] puntosVecinos = new int[] { 
@@ -227,13 +227,13 @@ public class ContenedorJuego extends Contenedor {
         this.estadoCasilla = this.otroEstadoCasilla;
         this.otroEstadoCasilla = aux;
     }
-    public void mostrarCasillasAdyascentes(Casilla casilla) {
-    	for ( Casilla cas : this.obtenerCasillerosAdyascentesPosibles(casilla)) {
+    public void mostrarCasillasAdyascentesPosibles(Casilla casilla) {
+    	for ( Casilla cas : this.getCasillerosAdyascentesPosibles(casilla)) {
         	cas.setBlendMode(BlendMode.GREEN);
         }
     }
     public void dejarDeMostrarCasillasAdyascentes(Casilla casilla) {
-    	for ( Casilla cas : this.obtenerCasillerosAdyascentesPosibles(casilla)) {
+    	for ( Casilla cas : this.getCasillerosAdyascentesPosibles(casilla)) {
         	cas.setBlendMode(null);
         }
     }    
