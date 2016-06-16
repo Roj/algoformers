@@ -30,7 +30,7 @@ public class Movimiento {
         for(int i=0; i < pasos.size(); i++ ) {
             if(this.movimientosDisponibles <= 0)
                 throw new ObjetivoMuyLejosException();
-            //this.movimientosDisponibles += this.algoformer.obtenerPosicion().obtenerSuperficie().obtenerPuntosDeMovimientoGastados(this.algoformer.obtenerModoActual());
+
             this.algoformer.ajustarPuntosDeMovimiento(this);
             this.tablero.moverAlgoformer(pasos.get(i),algoformer);
         }

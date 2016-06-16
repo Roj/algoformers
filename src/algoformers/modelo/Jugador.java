@@ -41,7 +41,6 @@ public class Jugador {
     
     public void moverAPosiciones(Algoformer algof, List<Posicion> destino) {
         juego.verificarTurno(this);
-        
         Movimiento mov = new Movimiento(algof,destino,tablero);
         mov.mover();
         

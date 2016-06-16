@@ -67,7 +67,7 @@ public class AlgoformerTest {
         }
         
     }
-    /*@Test(expected=ObjetivoMuyLejosException.class)
+    @Test(expected=ObjetivoMuyLejosException.class)
     public void testAtacarObjetivoLejosLanzaExcepcion() {
         FabricaAlgoformers fabrica = new FabricaAlgoformers();
     	Algoformer optimus = fabrica.crearOptimus();
@@ -82,68 +82,4 @@ public class AlgoformerTest {
     	
     	Assert.assertTrue(megatron.obtenerVida() == 500);	
     }
-    
-    @Test(expected=ObjetivoMuyLejosException.class)
-    public void testMoverObjetivoLejosLanzaExcepcion(){
-        FabricaAlgoformers fabrica = new FabricaAlgoformers();
-        Algoformer optimus = fabrica.crearOptimus();
-        
-        Posicion posicion = new Posicion(1,1, new Rocosa());
-        optimus.establecerPosicion(posicion);
-        
-        for(int i=1; i<=10; i++) {
-            Posicion nuevaPosicion = new Posicion(i,1, new Rocosa());
-            optimus.mover(nuevaPosicion);
-        }
-        Assert.assertTrue(optimus.obtenerPosicion() == posicion);
-    }
-    @Test
-    public void testMoverDisminuyePuntosDeMovimiento() {
-        FabricaAlgoformers fabrica = new FabricaAlgoformers();
-        Algoformer optimus = fabrica.crearOptimus();
-        
-        Posicion posicion = new Posicion(1,1, new Rocosa());
-        Posicion posicion2 = new Posicion(1,2, new Rocosa());
-        
-        optimus.establecerPosicion(posicion);
-        int puntosIniciales = optimus.obtenerPuntosDeMovimiento();
-        optimus.mover(posicion2);
-        
-        Assert.assertTrue(puntosIniciales > optimus.obtenerPuntosDeMovimiento());
-    }
-    @Test
-    public void testPasarTurnoRestauraPtosMovimiento() {
-        FabricaAlgoformers fabrica = new FabricaAlgoformers();
-        Algoformer optimus = fabrica.crearOptimus();
-        
-        Posicion posicion = new Posicion(1,1, new Rocosa());
-        Posicion posicion2 = new Posicion(1,2, new Rocosa());
-        
-        optimus.establecerPosicion(posicion);
-        int puntosIniciales = optimus.obtenerPuntosDeMovimiento();
-        optimus.mover(posicion2);
-        optimus.pasarTurno();
-        
-        Assert.assertEquals(puntosIniciales, optimus.obtenerPuntosDeMovimiento());
-    }
-    @Test
-    public void testMovidaInvalidaNoDisminuyePtsDeMovimiento() {
-        FabricaAlgoformers fabrica = new FabricaAlgoformers();
-        Algoformer optimus = fabrica.crearOptimus();
-        
-        Posicion posicion = new Posicion(1,1, new Rocosa());
-        Posicion posicion2 = new Posicion(1,1, new Nube());
-        
-        optimus.establecerPosicion(posicion);
-        int puntosIniciales = optimus.obtenerPuntosDeMovimiento();
-        try {
-            optimus.mover(posicion2);
-            //si llegamos acá, estamos mal
-            throw new AssertionError();
-        } catch(SuperficieNoAtravesableException e) {
-            Assert.assertEquals(puntosIniciales, optimus.obtenerPuntosDeMovimiento());        
-        }
-        
-    }
-    */
 }
