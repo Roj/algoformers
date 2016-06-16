@@ -104,4 +104,8 @@ public class Tablero {
         Ubicable ubicable = tablero.get(posicion);
         return ubicable;
     }
+    
+    public List<Posicion> obtenerListaDePosiciones() {
+    	return new ArrayList<Posicion>(this.tablero.keySet());
+    }
 }
