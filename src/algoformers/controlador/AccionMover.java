@@ -1,5 +1,7 @@
 package algoformers.controlador;
 
+import java.util.List;
+
 import algoformers.vista.Casilla;
 import algoformers.vista.ContenedorJuego;
 import javafx.event.ActionEvent;
@@ -16,9 +18,14 @@ public class AccionMover implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
-    	this.contenedorJuego.mostrarCasillasAdyascentesPosibles(this.contenedorJuego.getCasillaActual());
+    	Casilla casillaActual = this.contenedorJuego.getCasillaActual();
+    	List<Casilla> casillasPosiblesMovimiento = this.contenedorJuego.getCasillasPosiblesMovimiento(casillaActual);
+    	
+    	this.contenedorJuego.mostrarCasillas(casillasPosiblesMovimiento);
         this.contenedorJuego.crearBotonRealizarMovida(true);
-        this.contenedorJuego.cambiarEstadoCasilla();
+        //this.contenedorJuego.cambiarEstadoCasilla();
+        this.contenedorJuego.cambiarEstadoCasilla(new AccionMarcarCamino(this.contenedorJuego));
         this.contenedorJuego.crearBotonPasarTurno(true);
+        this.contenedorJuego.crearBotonAtacar(true);
     }
 }

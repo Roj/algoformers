@@ -14,24 +14,25 @@ import algoformers.vista.ContenedorJuego;
 
 public class AccionMarcarCamino extends AccionCasilla {
 
-	Juego juego;
 	ContenedorJuego contenedorJuego;
 	
-    public AccionMarcarCamino(ContenedorJuego contJuego, Juego juego) {
-    	this.juego = juego;
+    public AccionMarcarCamino(ContenedorJuego contJuego) {
     	this.contenedorJuego = contJuego;
     }
 
     public void accion(Casilla casilla) {
     	// Obtengo los casilleros adyascentes al casillero actual
     	Casilla casillaActual = this.contenedorJuego.getCasillaActual();
-    	List<Casilla> adyascentes = this.contenedorJuego.getCasillerosAdyascentesPosibles(casillaActual);
+    	List<Casilla> adyascentes = this.contenedorJuego.getCasillasPosiblesMovimiento(casillaActual);
     	
     	if (adyascentes.contains(casilla)) {
     		this.contenedorJuego.setCasillaActual(casilla);    		
+    		
+    		List<Casilla> nuevosAdyascentes = this.contenedorJuego.getCasillasPosiblesMovimiento(casilla);
+    		
+    		this.contenedorJuego.dejarDeMostrarCasillas(adyascentes);
     		this.contenedorJuego.agregarCasillaACamino(casilla);
-    		this.contenedorJuego.dejarDeMostrarCasillasAdyascentes(casillaActual);
-    		this.contenedorJuego.mostrarCasillasAdyascentesPosibles(casilla);
+    		this.contenedorJuego.mostrarCasillas(nuevosAdyascentes);
     		// Cuando al menos alguien me marca un camino, tengo que habilitar el boton
     		this.contenedorJuego.crearBotonRealizarMovida(false);
     	}

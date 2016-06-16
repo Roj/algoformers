@@ -21,15 +21,18 @@ import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import algoformers.controlador.AccionAtacar;
 import algoformers.controlador.AccionCasilla;
 import algoformers.controlador.AccionMarcarCamino;
 import algoformers.controlador.AccionMarcarCasilla;
 import algoformers.controlador.AccionMover;
 import algoformers.controlador.AccionPasarTurno;
+import algoformers.controlador.AccionRealizarAtaque;
 import algoformers.controlador.AccionRealizarMovida;
 import algoformers.controlador.AccionTocarCasilla;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -38,6 +41,8 @@ public class ContenedorJuego extends Contenedor {
     Stage stage;
     Button botonMover;
     Button botonPasarTurno;
+    Button botonAtacar;
+    Button botonRealizarAtaque;
     Button botonRealizarMovida;
     Juego juego;
     Label etiquetaTurnoActual;
@@ -45,7 +50,7 @@ public class ContenedorJuego extends Contenedor {
     Casilla casillaActual;
     List<Casilla> caminoMarcado = new ArrayList<Casilla>();
     AccionCasilla estadoCasilla;
-    AccionCasilla otroEstadoCasilla;
+    //AccionCasilla otroEstadoCasilla;
     Algoformer algoformerActual;
             
     int dimX = 16;
@@ -62,7 +67,7 @@ public class ContenedorJuego extends Contenedor {
         this.juego = juego;
         
         this.estadoCasilla = new AccionMarcarCasilla(this, juego);
-        this.otroEstadoCasilla = new AccionMarcarCamino(this, juego);
+        //this.otroEstadoCasilla = new AccionMarcarCamino(this, juego);
         
         // Fondo temporal para el juego
         this.setId("background-personajes");
@@ -72,6 +77,7 @@ public class ContenedorJuego extends Contenedor {
         
         this.crearBotonPasarTurno(false);
 		this.crearBotonMover(true);
+		this.crearBotonAtacar(true);
         this.crearEtiquetaJugadorActual();
         this.crearTablero();        
     }
@@ -107,8 +113,8 @@ public class ContenedorJuego extends Contenedor {
 
     }
 
-    public ArrayList<Casilla> getCasillerosAdyascentesPosibles(Casilla casilla) {
-    	ArrayList<Casilla> adyascentes = new ArrayList<Casilla>();
+    public List<Casilla> getCasillasAdyascentes(Casilla casilla) {
+    	List<Casilla> adyascentes = new ArrayList<Casilla>();
     	
     	int[] puntosVecinos = new int[] { 
     			-1, 0,
@@ -124,17 +130,72 @@ public class ContenedorJuego extends Contenedor {
     		int vecinoX = casilla.getX() + diferenciaX;
     		int vecinoY = casilla.getY() + diferenciaY;
     		
-    		if (vecinoX >= 0 && vecinoX < dimX && vecinoY >= 0 && vecinoY < dimY
-    			&& !caminoMarcado.contains(casillas[vecinoX][vecinoY])) {
-    			try {
-    				casillas[vecinoX][vecinoY].getUbicable().reemplazar(this.algoformerActual);
+    		if (vecinoX >= 0 && vecinoX < dimX && vecinoY >= 0 && vecinoY < dimY) {
     				adyascentes.add(casillas[vecinoX][vecinoY]);  	
-    			} catch (NoSuperponibleException e) {}
     		}
     	}
     	
     	return adyascentes;
     }
+    
+    public List<Casilla> getCasillasPosiblesMovimiento(Casilla casilla) {
+    	List<Casilla> adyascentes = getCasillasAdyascentes(casilla);
+    	
+    	for (Iterator<Casilla> iterador = adyascentes.iterator(); iterador.hasNext(); ) {
+    		Casilla casillaAdyascente = iterador.next();
+    		try {
+    			casillaAdyascente.getUbicable().reemplazar(this.algoformerActual);
+    			
+        		if (caminoMarcado.contains(casillaAdyascente)) {
+        			iterador.remove();
+        		}    		
+        		
+    		} catch (NoSuperponibleException e) {
+    			iterador.remove();
+    		}
+    	}
+    	
+    	return adyascentes;
+    }
+    
+    public List<Casilla> getCasillasPosiblesAtaque(Casilla casilla) {
+    	List<Casilla> casillasPosiblesAtaques = new ArrayList<Casilla>();
+    	    			    
+    	int distanciaAtaque = algoformerActual.obtenerDistanciaAtaque();
+    	
+    	getAdyascentesAtacables(casilla, distanciaAtaque, casillasPosiblesAtaques);
+    	//getAdyascentesAtacables(casilla, distanciaAtaque, casillasPosiblesAtaques, casilla);
+    	
+    	return casillasPosiblesAtaques;
+    }
+    private void getAdyascentesAtacables(Casilla casilla, int distanciaAtaque, List<Casilla> casillasPosiblesAtaques) {
+    	if (distanciaAtaque == 0)
+    		return;
+    	
+    	List<Casilla> adyascentes = getCasillasAdyascentes(casilla);
+    	List<Algoformer> algoformersEnemigos = this.juego.obtenerJugadorEnEspera().obtenerListaAlgoformers();
+    	  	
+    	for (Casilla adyascente : adyascentes) {
+    			if (algoformersEnemigos.contains(adyascente.getUbicable())) {
+    				casillasPosiblesAtaques.add(adyascente);
+    			}
+    			// Aca deberia incluir los bonus al igual que los algoformers
+    			getAdyascentesAtacables(adyascente, distanciaAtaque - 1, casillasPosiblesAtaques);		
+    	}
+    }    
+    /*private void getAdyascentesAtacables(Casilla casilla, int distanciaAtaque, List<Casilla> casillasPosiblesAtaques, Casilla excluir) {
+    	if (distanciaAtaque == 0)
+    		return;
+    	
+    	List<Casilla> adyascentes = getCasillasAdyascentes(casilla);
+    	
+    	for (Casilla adyascente : adyascentes) {
+			if (adyascente != excluir) {
+				casillasPosiblesAtaques.add(adyascente);
+				getAdyascentesAtacables(adyascente, distanciaAtaque - 1, casillasPosiblesAtaques, excluir);
+			}    		
+    	}
+    }*/
     
     public void crearEtiquetaJugadorActual() {
         // Etiqueta que muestra jugador actual
@@ -149,12 +210,32 @@ public class ContenedorJuego extends Contenedor {
         etiquetaTurnoActual.setTranslateY(-380);            	
     }
     
+    public void crearBotonAtacar(boolean desactivado) {
+    	// Boton para empezar a armar un camino
+    	this.getChildren().remove(botonAtacar);
+    	this.getChildren().remove(botonRealizarAtaque);
+		this.botonAtacar = new Button();
+		this.colocarBoton(botonAtacar, "Atacar", 20, -630, -320);
+		this.botonAtacar.setPrefSize(170, 50);
+		this.botonAtacar.setOnAction(new AccionAtacar(this));
+        this.botonAtacar.setDisable(desactivado);   	
+    }
+    public void crearBotonRealizarAtaque(boolean desactivado) {
+    	// Boton para empezar a armar un camino
+    	this.getChildren().remove(botonAtacar);
+    	this.getChildren().remove(botonRealizarAtaque);
+		this.botonRealizarAtaque = new Button();
+		this.colocarBoton(botonRealizarAtaque, "Realizar Ataque", 20, -630, -320);
+		this.botonRealizarAtaque.setPrefSize(170, 50);
+		this.botonRealizarAtaque.setOnAction(new AccionRealizarAtaque(this, this.juego));
+        this.botonRealizarAtaque.setDisable(desactivado);   	
+    }
     public void crearBotonMover(boolean desactivado) {
     	// Boton para empezar a armar un camino
     	this.getChildren().remove(botonRealizarMovida);
     	this.getChildren().remove(botonMover);
 		this.botonMover = new Button();
-		this.colocarBoton(botonMover, "Mover", 20, -630, -320);
+		this.colocarBoton(botonMover, "Mover", 20, -630, -270);
 		this.botonMover.setPrefSize(170, 50);
 		this.botonMover.setOnAction(new AccionMover(this));
         this.botonMover.setDisable(desactivado);   	
@@ -165,9 +246,9 @@ public class ContenedorJuego extends Contenedor {
     	this.getChildren().remove(botonRealizarMovida);
     	this.getChildren().remove(botonMover);
 		this.botonRealizarMovida = new Button();
-		this.colocarBoton(botonRealizarMovida, "Realizar Movida", 20, -630, -320);
+		this.colocarBoton(botonRealizarMovida, "Realizar Movida", 20, -630, -270);
 		this.botonRealizarMovida.setPrefSize(170, 50);
-		this.botonRealizarMovida.setOnAction(new AccionRealizarMovida(this));
+		this.botonRealizarMovida.setOnAction(new AccionRealizarMovida(this, this.juego));
         this.botonRealizarMovida.setDisable(desactivado);   	
     }
     
@@ -175,7 +256,7 @@ public class ContenedorJuego extends Contenedor {
         // Boton para pasar turno
     	this.getChildren().remove(botonPasarTurno);
 		this.botonPasarTurno = new Button();
-		this.colocarBoton(botonPasarTurno, "Pasar Turno", 20, -630, -270);
+		this.colocarBoton(botonPasarTurno, "Pasar Turno", 20, -630, -220);
 		this.botonPasarTurno.setPrefSize(170, 50);
 		this.botonPasarTurno.setOnAction(new AccionPasarTurno(this));    
 		this.botonPasarTurno.setDisable(desactivado); 
@@ -221,19 +302,22 @@ public class ContenedorJuego extends Contenedor {
     public AccionCasilla getEstadoCasilla() {
     	return this.estadoCasilla;
     }
-    public void cambiarEstadoCasilla() {
+    /*public void cambiarEstadoCasilla() {
         AccionCasilla aux = this.estadoCasilla;
         
         this.estadoCasilla = this.otroEstadoCasilla;
         this.otroEstadoCasilla = aux;
-    }
-    public void mostrarCasillasAdyascentesPosibles(Casilla casilla) {
-    	for ( Casilla cas : this.getCasillerosAdyascentesPosibles(casilla)) {
+    }*/
+    public void cambiarEstadoCasilla(AccionCasilla accion) {        
+        this.estadoCasilla = accion;
+    }    
+    public void mostrarCasillas(List<Casilla> casillas) {
+    	for ( Casilla cas : casillas) {
         	cas.setBlendMode(BlendMode.GREEN);
         }
     }
-    public void dejarDeMostrarCasillasAdyascentes(Casilla casilla) {
-    	for ( Casilla cas : this.getCasillerosAdyascentesPosibles(casilla)) {
+    public void dejarDeMostrarCasillas(List<Casilla> casillas) {
+    	for ( Casilla cas : casillas) {
         	cas.setBlendMode(null);
         }
     }    
@@ -249,5 +333,6 @@ public class ContenedorJuego extends Contenedor {
     	
     	this.crearBotonPasarTurno(false);
     	this.crearBotonMover(true);
+    	this.crearBotonAtacar(true);
     }
 }
