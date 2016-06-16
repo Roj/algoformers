@@ -25,27 +25,7 @@ public class AccionTocarCasilla implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
-    	//this.contenedorJuego.setCasillaActual(this.casilla);
     	this.contenedorJuego.getEstadoCasilla().accion(this.casilla);
-        //Ubicable ubicable = this.casilla.getUbicable();
-        // Tengo que ver si es un algoformer de una manera decente
-                
-        /*for ( Algoformer algoformer : this.juego.obtenerJugadorActual().obtenerListaAlgoformers() ) {
-        	if (ubicable == algoformer) {
-        		//this.casilla.setBlendMode(Color.ALICEBLUE); // Marcar a la casilla seleccionada
-        		this.contenedorJuego.crearBotonMover(false);
-        		this.contenedorJuego.setCasillaActual(this.casilla); 
-        		return;
-        	}
-        }*/
-        // Todo lo que no sea eso desactiva el boton de mover
-        //this.contenedorJuego.crearBotonMover(true);
-        
-       /* if (ubicable instanceof Vacio) {
-        	//this.casilla.setBlendMode(BlendMode.LIGHTEN);
-        	this.contenedorJuego.crearBotonMover(false);
-        	this.contenedorJuego.setCasillaActual(this.casilla); 
-        }*/
     }
 
 }
