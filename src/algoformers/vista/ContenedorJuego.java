@@ -176,16 +176,6 @@ public class ContenedorJuego extends Contenedor {
 		this.botonPasarTurno.setDisable(desactivado); 
     }
     
-    public void crearBotonPasarTurno(boolean desactivado) {
-        // Boton para pasar turno
-    	this.getChildren().remove(botonPasarTurno);
-		this.botonPasarTurno = new Button();
-		this.colocarBoton(botonPasarTurno, "Pasar Turno", 20, -630, -270);
-		this.botonPasarTurno.setPrefSize(170, 50);
-		this.botonPasarTurno.setOnAction(new AccionPasarTurno(this));    
-		this.botonPasarTurno.setDisable(desactivado); 
-    }
-    
     public void crearEstadisticasAlgoformer(Algoformer algoformer) {
     	etiquetaEstadisticasAlgoformer = new Label();
     	etiquetaEstadisticasAlgoformer.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
