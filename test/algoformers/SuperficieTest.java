@@ -26,7 +26,7 @@ public class SuperficieTest {
     public void testMoverAlgoformerTerrestreSobreEspinasModoHumanoideQuitaVida() {
         String nombre1 = "Juan";
         String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2,10,10);
+        Juego juego = new Juego(nombre1,nombre2,16,16);
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
         Algoformer optimus = jugador1.obtenerListaAlgoformers().get(0);
@@ -52,7 +52,7 @@ public class SuperficieTest {
     public void testMoverAlgoformerTerrestreSobreEspinasModoAlternoQuitaVida() {
         String nombre1 = "Juan";
         String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2,10,10);
+        Juego juego = new Juego(nombre1,nombre2,16,16);
         Jugador jugador1 = juego.obtenerJugadorActual();
         Jugador jugador2 = juego.obtenerJugadorEnEspera();
         Tablero tablero = juego.obtenerTablero();
@@ -85,7 +85,7 @@ public class SuperficieTest {
     public void testMoverAlgoformerTerrestreSobrePantanoModoHumanoide(){
         String nombre1 = "Juan";
         String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2,10,10);
+        Juego juego = new Juego(nombre1,nombre2,16,16);
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
         Algoformer optimus = jugador1.obtenerListaAlgoformers().get(0);
@@ -110,7 +110,7 @@ public class SuperficieTest {
     public void testMoverAlgoformerTerrestreSobrePantanoModoAlgoformer(){
         String nombre1 = "Juan";
         String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2,10,10);
+        Juego juego = new Juego(nombre1,nombre2,16,16);
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
         Algoformer optimus = jugador1.obtenerListaAlgoformers().get(0);
@@ -120,7 +120,7 @@ public class SuperficieTest {
         tablero.colocarAlgoformer(pos1, optimus);
 
         optimus.cambiarModo(); 
-        optimus.restablecerPuntosDeMovimiento();
+        //optimus.restablecerPuntosDeMovimiento();
 
         Assert.assertTrue(optimus.obtenerPosicion() == pos1);
 
@@ -148,7 +148,7 @@ public class SuperficieTest {
     public void testMoverAlgoformerTerrestreSobreRocosoPosicionFinalEsCorrecta(){
         String nombre1 = "Juan";
         String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2,10,10);
+        Juego juego = new Juego(nombre1,nombre2,16,16);
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
         Algoformer optimus = jugador1.obtenerListaAlgoformers().get(0);
@@ -158,7 +158,7 @@ public class SuperficieTest {
         tablero.colocarAlgoformer(pos1, optimus);
 
         optimus.cambiarModo(); 
-        optimus.restablecerPuntosDeMovimiento();
+        //optimus.restablecerPuntosDeMovimiento();
 
         Assert.assertTrue(optimus.obtenerPosicion() == pos1);
 
@@ -175,7 +175,6 @@ public class SuperficieTest {
         
         try {
             jugador1.moverAPosiciones(optimus, posiciones);
-            
             //no deberiamos llegar aca
             throw new AssertionError();
         } catch (ObjetivoMuyLejosException e){
@@ -186,7 +185,7 @@ public class SuperficieTest {
     public void testMoverAlgoformerAereoSobreRocosoPosicionFinalEsCorrecta(){
         String nombre1 = "Juan";
         String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2,15,15);
+        Juego juego = new Juego(nombre1,nombre2,16,16);
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
         Algoformer ratchet = jugador1.obtenerListaAlgoformers().get(2);
@@ -196,7 +195,7 @@ public class SuperficieTest {
         tablero.colocarAlgoformer(pos1, ratchet);
 
         ratchet.cambiarModo(); //cambio a modo aereo
-        ratchet.restablecerPuntosDeMovimiento(); //actualizo ptos de mov
+        //ratchet.restablecerPuntosDeMovimiento(); //actualizo ptos de mov
 
         Assert.assertTrue(ratchet.obtenerPosicion() == pos1);
 
@@ -226,7 +225,7 @@ public class SuperficieTest {
     public void testMoverAlgoformerAereoSobreEspinasNoQuitaVida() {
         String nombre1 = "Juan";
         String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2,10,10);
+        Juego juego = new Juego(nombre1,nombre2,16,16);
         Jugador jugador1 = juego.obtenerJugadorActual();
         Jugador jugador2 = juego.obtenerJugadorEnEspera();
         Tablero tablero = juego.obtenerTablero();
@@ -259,7 +258,7 @@ public class SuperficieTest {
     public void testMoverAlgoformerAereoSobrePantanoNoAfecta() {
         String nombre1 = "Juan";
         String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2,10,10);
+        Juego juego = new Juego(nombre1,nombre2,16,16);
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
         Algoformer ratchet = jugador1.obtenerListaAlgoformers().get(2);
@@ -270,7 +269,7 @@ public class SuperficieTest {
         tablero.colocarAlgoformer(pos1, ratchet);
 
         ratchet.cambiarModo(); 
-        ratchet.restablecerPuntosDeMovimiento(); //actualizo los ptos de movimiento
+        //ratchet.restablecerPuntosDeMovimiento(); //actualizo los ptos de movimiento
         
         Assert.assertTrue(ratchet.obtenerPosicion() == pos1);
         
@@ -294,7 +293,7 @@ public class SuperficieTest {
         Algoformer ratchet = fabrica.crearRatchet();
         ratchet.establecerPosicion(new Posicion(1,1, new Rocosa()));
         ratchet.cambiarModo(); //F22 raptor
-        ratchet.restablecerPuntosDeMovimiento(); //actualizo los puntos
+        //ratchet.restablecerPuntosDeMovimiento(); //actualizo los puntos
         Posicion pos1 = new Posicion(1, 1, new Rocosa());
         Posicion pos2 = new Posicion(1, 1, new TormentaPsionica());
         Posicion pos3 = new Posicion(1, 2, new TormentaPsionica());
@@ -371,7 +370,7 @@ public class SuperficieTest {
     public void testMoverAlgoformerAereoSobreTierraLuegoAire() {
         String nombre1 = "Juan";
         String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2,10,10);
+        Juego juego = new Juego(nombre1,nombre2,16,16);
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
         Algoformer ratchet = jugador1.obtenerListaAlgoformers().get(2);
@@ -382,7 +381,7 @@ public class SuperficieTest {
         tablero.colocarAlgoformer(pos1, ratchet);
 
         ratchet.cambiarModo(); 
-        ratchet.restablecerPuntosDeMovimiento();
+        //ratchet.restablecerPuntosDeMovimiento();
 
         Assert.assertTrue(ratchet.obtenerPosicion() == pos1);
 
@@ -406,7 +405,7 @@ public class SuperficieTest {
     public void testMoverAlgoformerHumanoideNoPuedeElevarse() {
         String nombre1 = "Juan";
         String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2,10,10);
+        Juego juego = new Juego(nombre1,nombre2,16,16);
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
         Algoformer ratchet = jugador1.obtenerListaAlgoformers().get(2);
@@ -435,7 +434,7 @@ public class SuperficieTest {
     public void testMoverAlgoformerTerrestreAlternoNoPuedeElevarse() {
         String nombre1 = "Juan";
         String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2,10,10);
+        Juego juego = new Juego(nombre1,nombre2,16,16);
         Jugador jugador1 = juego.obtenerJugadorActual();
         Tablero tablero = juego.obtenerTablero();
         Algoformer optimus = jugador1.obtenerListaAlgoformers().get(0);
@@ -448,7 +447,7 @@ public class SuperficieTest {
         Assert.assertTrue(optimus.obtenerPosicion() == pos1);
 
         optimus.cambiarModo();
-        optimus.restablecerPuntosDeMovimiento();
+        //optimus.restablecerPuntosDeMovimiento();
         
         ArrayList<Posicion> posiciones = new ArrayList<Posicion>();
         

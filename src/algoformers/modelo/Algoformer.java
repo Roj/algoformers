@@ -114,7 +114,9 @@ public abstract class Algoformer implements Ubicable {
             actual.pasarTurno(this);
         }
     }
-    
+    public void ajustarPuntosDeMovimiento(Movimiento mov) {
+        this.modoActual.ajustarPuntosDeMovimiento(mov,this.posicion.obtenerSuperficie());
+    }
     public void avisarABuffsAtacado(){
         for(Buff actual: this.buffs) {
             actual.avisarAtaque(this);

@@ -31,7 +31,7 @@ public class Juego {
         //Creacion de algoformers
         this.agregarAlgoformers();
         //Los algoformers seran ubicados por el tablero
-        this.posicionarAlgoformers();
+        //this.posicionarAlgoformers();
     }
     private void agregarAlgoformers() {
         FabricaAlgoformers fabrica = new FabricaAlgoformers();

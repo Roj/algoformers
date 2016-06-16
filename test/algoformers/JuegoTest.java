@@ -379,7 +379,7 @@ public class JuegoTest {
         Assert.assertTrue(juego.verificarTurno(jugador2));        
     }    
     
-    @Test
+    /*@Test
     public void testAlHacerJugadaSeRestauranPuntosDeMovimiento(){
         String nombre1 = "Juan";
         String nombre2 = "Jhon";
@@ -402,5 +402,5 @@ public class JuegoTest {
         jugador1.moverAPosiciones(algoformer1, posiciones);
         Assert.assertEquals(cantidadMovimientosIniciales,algoformer1.obtenerPuntosDeMovimiento());
     
-    }
+    }*/
 }

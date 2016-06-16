@@ -28,4 +28,5 @@ public abstract class ModoAlgoformer {
         this.velocidad = nuevaVelocidad;
     }
     public abstract void aceptarSuperficie(Superficie sup, Algoformer algof);
+    public abstract void ajustarPuntosDeMovimiento(Movimiento mov, Superficie sup);
 }
