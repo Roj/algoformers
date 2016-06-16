@@ -1,11 +1,13 @@
 package algoformers.vista;
 
+import algoformers.modelo.Algoformer;
 import algoformers.modelo.Juego;
 import algoformers.modelo.Jugador;
 import algoformers.modelo.ModoAlgoformer;
 import algoformers.modelo.Posicion;
 import algoformers.modelo.Tablero;
 import algoformers.modelo.Tierra;
+import algoformers.modelo.Ubicable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -38,6 +40,7 @@ public class ContenedorJuego extends Contenedor {
     Button botonRealizarMovida;
     Juego juego;
     Label etiquetaTurnoActual;
+    Label etiquetaEstadisticasAlgoformer;
     Casilla casillaActual;
     List<Casilla> caminoMarcado = new ArrayList<Casilla>();
     AccionCasilla estadoCasilla;
@@ -173,6 +176,24 @@ public class ContenedorJuego extends Contenedor {
 		this.botonPasarTurno.setDisable(desactivado); 
     }
     
+    public void crearEstadisticasAlgoformer(Algoformer algoformer) {
+    	etiquetaEstadisticasAlgoformer = new Label();
+    	etiquetaEstadisticasAlgoformer.setFont(Font.font("Tahoma", FontWeight.BOLD, 13));
+
+    	etiquetaEstadisticasAlgoformer.setText(
+        		"Vida: " + String.valueOf(algoformer.obtenerVida()) + "\n" +
+        		"Ataque: " + String.valueOf(algoformer.obtenerPuntosAtaque()) + "\n" +
+        		"Velocidad: " + String.valueOf(algoformer.obtenerVelocidad()) + "\n" +
+        		"Dist. Ataque: " + String.valueOf(algoformer.obtenerDistanciaAtaque()) + "\n"
+        );
+    	etiquetaEstadisticasAlgoformer.setTextFill(Color.web("#FFFFFF"));        
+        this.getChildren().add(etiquetaEstadisticasAlgoformer);
+        etiquetaEstadisticasAlgoformer.setTranslateX(-620);
+        etiquetaEstadisticasAlgoformer.setTranslateY(-200);      	
+    }
+    public void borrarEstadisticasAlgoformer() {
+    	this.getChildren().remove(etiquetaEstadisticasAlgoformer);
+    }
     public void setCasillaActual(Casilla casilla) {    	
     	this.casillaActual = casilla;
     	this.casillaActual.setBlendMode(BlendMode.LIGHTEN);

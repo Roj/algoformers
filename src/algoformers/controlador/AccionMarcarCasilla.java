@@ -1,5 +1,7 @@
 package algoformers.controlador;
 
+import java.util.List;
+
 import algoformers.modelo.Algoformer;
 import algoformers.modelo.Juego;
 import algoformers.modelo.Tablero;
@@ -23,18 +25,31 @@ public class AccionMarcarCasilla extends AccionCasilla {
     @Override
     public void accion(Casilla casilla) {
     	Ubicable ubicable = casilla.getUbicable();
-                
-        for ( Algoformer algoformer : this.juego.obtenerJugadorActual().obtenerListaAlgoformers() ) {
+              
+    	// Descomentar esto cuando existan algoformers en el tablero, comentado para testeo
+        //this.contenedorJuego.crearBotonMover(true);
+    	
+    	this.contenedorJuego.borrarEstadisticasAlgoformer();
+    	
+    	List<Algoformer> algoformersJugadorActual = this.juego.obtenerJugadorActual().obtenerListaAlgoformers();
+    	List<Algoformer> algoformersJugadorEnEspera = this.juego.obtenerJugadorEnEspera().obtenerListaAlgoformers();
+    	
+        for ( Algoformer algoformer : algoformersJugadorEnEspera ) {
+        	if (ubicable == algoformer) {
+        		this.contenedorJuego.getCasillaActual().setBlendMode(null);
+        		this.contenedorJuego.setCasillaActual(casilla);
+        		this.contenedorJuego.crearEstadisticasAlgoformer(algoformer);
+        	}
+        }         
+        
+        for ( Algoformer algoformer : algoformersJugadorActual ) {
         	if (ubicable == algoformer) {
         		this.contenedorJuego.crearBotonMover(false);
         		this.contenedorJuego.getCasillaActual().setBlendMode(null);
         		this.contenedorJuego.setCasillaActual(casilla);
-        		return;
+        		this.contenedorJuego.crearEstadisticasAlgoformer(algoformer);
         	}
         }
-        
-        // Todo lo que no sea eso desactiva el boton de mover
-        //this.contenedorJuego.crearBotonMover(true);
         
         //Esto es para testear unicamente
         if (ubicable instanceof Vacio) {
