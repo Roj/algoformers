@@ -4,8 +4,16 @@
  * and open the template in the editor.
  */
 
-package algoformers.modelo;
+package algoformers.modelo.mapa;
 
+import algoformers.modelo.superficie.NebulosaDeAndromeda;
+import algoformers.modelo.superficie.Pantano;
+import algoformers.modelo.superficie.Tierra;
+import algoformers.modelo.superficie.Aire;
+import algoformers.modelo.superficie.Nube;
+import algoformers.modelo.superficie.Espinas;
+import algoformers.modelo.superficie.TormentaPsionica;
+import algoformers.modelo.superficie.Rocosa;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -5,6 +5,7 @@
  */
 package algoformers.modelo;
 
+import algoformers.modelo.superficie.Superficie;
 import java.util.Objects;
 
 /**

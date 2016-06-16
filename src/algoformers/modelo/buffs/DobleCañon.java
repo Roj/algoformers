@@ -5,7 +5,7 @@
  */
 package algoformers.modelo.buffs;
 
-import algoformers.modelo.Algoformer;
+import algoformers.modelo.algoformer.Algoformer;
 
 /**
  *

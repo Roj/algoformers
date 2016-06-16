@@ -1,4 +1,4 @@
-package algoformers.modelo;
+package algoformers.modelo.algoformer;
 
 public class FabricaAlgoformers {
     public Algoformer crearOptimus() {	

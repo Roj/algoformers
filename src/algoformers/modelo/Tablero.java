@@ -5,6 +5,12 @@
  */
 package algoformers.modelo;
 
+import algoformers.modelo.bonus.Bonus;
+import algoformers.modelo.bonus.FabricaBonus;
+import algoformers.modelo.algoformer.Algoformer;
+import algoformers.modelo.mapa.Mapa;
+import algoformers.modelo.superficie.Superficie;
+import algoformers.modelo.superficie.Rocosa;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;

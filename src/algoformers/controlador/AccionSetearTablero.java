@@ -5,7 +5,7 @@
  */
 package algoformers.controlador;
 
-import algoformers.modelo.Mapa;
+import algoformers.modelo.mapa.Mapa;
 import algoformers.vista.ContenedorCargaDeDatos;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

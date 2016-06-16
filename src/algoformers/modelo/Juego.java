@@ -5,6 +5,10 @@
  */
 package algoformers.modelo;
 
+import algoformers.modelo.algoformer.FabricaAlgoformers;
+import algoformers.modelo.algoformer.Algoformer;
+import algoformers.modelo.mapa.Mapa;
+import algoformers.modelo.superficie.Rocosa;
 import java.util.List;
 
 /**

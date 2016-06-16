@@ -1,13 +1,13 @@
 package algoformers.vista;
 
 import algoformers.controlador.AccionMarcarCasilla;
-import algoformers.modelo.Algoformer;
-import algoformers.modelo.Bonus;
-import algoformers.modelo.Espinas;
-import algoformers.modelo.Pantano;
+import algoformers.modelo.algoformer.Algoformer;
+import algoformers.modelo.bonus.Bonus;
+import algoformers.modelo.superficie.Espinas;
+import algoformers.modelo.superficie.Pantano;
 import algoformers.modelo.Posicion;
-import algoformers.modelo.Rocosa;
-import algoformers.modelo.Superficie;
+import algoformers.modelo.superficie.Rocosa;
+import algoformers.modelo.superficie.Superficie;
 import algoformers.modelo.Tablero;
 import algoformers.modelo.Ubicable;
 import algoformers.modelo.Vacio;

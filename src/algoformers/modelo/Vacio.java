@@ -5,6 +5,10 @@
  */
 package algoformers.modelo;
 
+import algoformers.modelo.algoformer.Decepticon;
+import algoformers.modelo.algoformer.Algoformer;
+import algoformers.modelo.algoformer.Autobot;
+
 /**
  *
  * @author Matias

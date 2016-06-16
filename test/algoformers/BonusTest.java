@@ -6,11 +6,11 @@
 package algoformers;
 
 import algoformers.modelo.Posicion;
-import algoformers.modelo.Rocosa;
-import algoformers.modelo.FabricaAlgoformers;
-import algoformers.modelo.Bonus;
-import algoformers.modelo.Algoformer;
-import algoformers.modelo.FabricaBonus;
+import algoformers.modelo.superficie.Rocosa;
+import algoformers.modelo.algoformer.FabricaAlgoformers;
+import algoformers.modelo.bonus.Bonus;
+import algoformers.modelo.algoformer.Algoformer;
+import algoformers.modelo.bonus.FabricaBonus;
 import algoformers.modelo.NoPuedeSerAtacado;
 import org.junit.After;
 import org.junit.AfterClass;

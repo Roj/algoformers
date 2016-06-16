@@ -11,11 +11,11 @@ import algoformers.modelo.Tablero;
 import algoformers.modelo.buffs.ChispaSuprema;
 import algoformers.modelo.Ubicable;
 import algoformers.modelo.Juego;
-import algoformers.modelo.Rocosa;
+import algoformers.modelo.superficie.Rocosa;
 import algoformers.modelo.Jugador;
-import algoformers.modelo.Bonus;
-import algoformers.modelo.Algoformer;
-import algoformers.modelo.MapaChico;
+import algoformers.modelo.bonus.Bonus;
+import algoformers.modelo.algoformer.Algoformer;
+import algoformers.modelo.mapa.MapaChico;
 import java.util.List;
 
 import org.junit.Assert;
