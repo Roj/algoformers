@@ -27,7 +27,7 @@ public class AccionMarcarCasilla extends AccionCasilla {
     	Ubicable ubicable = casilla.getUbicable();
               
     	// Descomentar esto cuando existan algoformers en el tablero, comentado para testeo
-        //this.contenedorJuego.crearBotonMover(true);
+        this.contenedorJuego.crearBotonMover(true);
     	
     	this.contenedorJuego.borrarEstadisticasAlgoformer();
     	
@@ -47,16 +47,17 @@ public class AccionMarcarCasilla extends AccionCasilla {
         		this.contenedorJuego.crearBotonMover(false);
         		this.contenedorJuego.getCasillaActual().setBlendMode(null);
         		this.contenedorJuego.setCasillaActual(casilla);
-        		this.contenedorJuego.crearEstadisticasAlgoformer(algoformer);
+        		this.contenedorJuego.crearEstadisticasAlgoformer(algoformer);       		
+        		this.contenedorJuego.setAlgoformerActual(algoformer);
         	}
         }
         
         //Esto es para testear unicamente
-        if (ubicable instanceof Vacio) {
+        /*if (ubicable instanceof Vacio) {
         	this.contenedorJuego.crearBotonMover(false);
         	this.contenedorJuego.getCasillaActual().setBlendMode(null);
         	this.contenedorJuego.setCasillaActual(casilla);
-        }
+        }*/
     }
 
 }

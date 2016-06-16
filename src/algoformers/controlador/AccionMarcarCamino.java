@@ -25,7 +25,7 @@ public class AccionMarcarCamino extends AccionCasilla {
     public void accion(Casilla casilla) {
     	// Obtengo los casilleros adyascentes al casillero actual
     	Casilla casillaActual = this.contenedorJuego.getCasillaActual();
-    	List<Casilla> adyascentes = this.contenedorJuego.obtenerCasillerosAdyascentes(casillaActual);
+    	List<Casilla> adyascentes = this.contenedorJuego.obtenerCasillerosAdyascentesPosibles(casillaActual);
     	
     	if (adyascentes.contains(casilla)) {
     		this.contenedorJuego.setCasillaActual(casilla);    		
