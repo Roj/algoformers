@@ -2,7 +2,7 @@ package algoformers.controlador;
 
 import java.util.List;
 
-import algoformers.modelo.Juego;
+import algoformers.modelo.juego.Juego;
 import algoformers.vista.Casilla;
 import algoformers.vista.ContenedorJuego;
 

@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package algoformers.modelo;
+package algoformers.modelo.juego;
 
 /**
  *
  * @author joaquintz
  */
-public class NoSuperponibleException extends RuntimeException {
+public class NoEsSuTurnoException extends RuntimeException {
+
+    public NoEsSuTurnoException() {
+    }
     
 }

@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package algoformers.modelo;
+package algoformers.modelo.juego;
 
 /**
  *
- * @author Matias
+ * @author joaquintz
  */
-public class NoPuedeSerAtacado extends RuntimeException {
-
-    public NoPuedeSerAtacado() {
-    }
+public class ObjetivoMuyLejosException extends RuntimeException {
     
 }

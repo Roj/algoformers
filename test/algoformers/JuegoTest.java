@@ -1,19 +1,19 @@
 package algoformers;
 
-import algoformers.modelo.Tablero;
+import algoformers.modelo.juego.Tablero;
 import algoformers.modelo.Ubicable;
-import algoformers.modelo.ObjetivoMuyLejosException;
+import algoformers.modelo.juego.ObjetivoMuyLejosException;
 import algoformers.modelo.superficie.Rocosa;
-import algoformers.modelo.Jugador;
-import algoformers.modelo.NoSuperponibleException;
+import algoformers.modelo.juego.Jugador;
+import algoformers.modelo.juego.NoSuperponibleException;
 import algoformers.modelo.bonus.Bonus;
 import algoformers.modelo.algoformer.Algoformer;
 import algoformers.modelo.Posicion;
 import algoformers.modelo.buffs.ChispaSuprema;
-import algoformers.modelo.Juego;
-import algoformers.modelo.AtaqueInvalidoException;
+import algoformers.modelo.juego.Juego;
+import algoformers.modelo.juego.AtaqueInvalidoException;
 import algoformers.modelo.mapa.MapaChico;
-import algoformers.modelo.NoEsSuTurnoException;
+import algoformers.modelo.juego.NoEsSuTurnoException;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -4,7 +4,7 @@ import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import algoformers.modelo.Juego;
+import algoformers.modelo.juego.Juego;
 import algoformers.vista.Casilla;
 import algoformers.vista.ContenedorJuego;
 

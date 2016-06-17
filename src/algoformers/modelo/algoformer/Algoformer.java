@@ -1,9 +1,9 @@
 package algoformers.modelo.algoformer;
 
-import algoformers.modelo.Movimiento;
+import algoformers.modelo.juego.Movimiento;
 import algoformers.modelo.superficie.NoSePuedeTransformarException;
-import algoformers.modelo.NoSuperponibleException;
-import algoformers.modelo.ObjetivoMuyLejosException;
+import algoformers.modelo.juego.NoSuperponibleException;
+import algoformers.modelo.juego.ObjetivoMuyLejosException;
 import algoformers.modelo.Posicion;
 import algoformers.modelo.superficie.SuperficieNoAtravesableException;
 import algoformers.modelo.Ubicable;

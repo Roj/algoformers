@@ -3,12 +3,12 @@ package algoformers;
 
 import algoformers.modelo.Posicion;
 import algoformers.modelo.superficie.Nube;
-import algoformers.modelo.ObjetivoMuyLejosException;
+import algoformers.modelo.juego.ObjetivoMuyLejosException;
 import algoformers.modelo.superficie.Rocosa;
 import algoformers.modelo.algoformer.FabricaAlgoformers;
 import algoformers.modelo.superficie.SuperficieNoAtravesableException;
-import algoformers.modelo.AtaqueInvalidoException;
-import algoformers.modelo.NoSuperponibleException;
+import algoformers.modelo.juego.AtaqueInvalidoException;
+import algoformers.modelo.juego.NoSuperponibleException;
 import algoformers.modelo.algoformer.Algoformer;
 import org.junit.Assert;
 import org.junit.Test;

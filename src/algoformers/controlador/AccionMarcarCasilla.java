@@ -3,8 +3,8 @@ package algoformers.controlador;
 import java.util.List;
 
 import algoformers.modelo.algoformer.Algoformer;
-import algoformers.modelo.Juego;
-import algoformers.modelo.Tablero;
+import algoformers.modelo.juego.Juego;
+import algoformers.modelo.juego.Tablero;
 import algoformers.modelo.Ubicable;
 import algoformers.modelo.Vacio;
 import algoformers.vista.Casilla;

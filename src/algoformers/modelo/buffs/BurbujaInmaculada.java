@@ -5,7 +5,6 @@
  */
 package algoformers.modelo.buffs;
 
-import algoformers.modelo.NoPuedeSerAtacado;
 import algoformers.modelo.algoformer.Algoformer;
 
 /**

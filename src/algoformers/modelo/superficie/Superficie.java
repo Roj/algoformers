@@ -4,7 +4,7 @@ import algoformers.modelo.algoformer.Algoformer;
 import algoformers.modelo.algoformer.ModoAereo;
 import algoformers.modelo.algoformer.ModoHumanoide;
 import algoformers.modelo.algoformer.ModoTerrestre;
-import algoformers.modelo.Movimiento;
+import algoformers.modelo.juego.Movimiento;
 
 public abstract class Superficie {
     public abstract void accionSobreAlgoformer(ModoAereo modo, Algoformer algof);
