@@ -124,28 +124,20 @@ public class EntregaTest {
         Ubicable chispa = tablero.obtenerUbicable(new Posicion(7,7, new Rocosa()));
                
         Posicion esquinaInferiorIzqBorde = new Posicion(0,0, new Rocosa());
-        Posicion esquinaInferiorIzqSuperior = new Posicion(0,1,new Rocosa());
-        Posicion esquinaInferiorIzqFrontal = new Posicion(1,0,new Rocosa());
+        Posicion esquinaInferiorIzqSuperior = new Posicion(1,0,new Rocosa());
+        Posicion esquinaInferiorIzqFrontal = new Posicion(2,0,new Rocosa());
         
         Posicion esquinaSuperiorDerBorde = new Posicion(15,15,new Rocosa());
-        Posicion esquinaSuperiorDerInferior = new Posicion(15,14,new Rocosa());
-        Posicion esquinaSuperioDerTrasera = new Posicion(14,15,new Rocosa());
+        Posicion esquinaSuperiorDerInferior = new Posicion(14,15,new Rocosa());
+        Posicion esquinaSuperioDerTrasera = new Posicion(13,15,new Rocosa());
         
-        tablero.colocarAlgoformer(esquinaInferiorIzqBorde, optimus);
-        tablero.colocarAlgoformer(esquinaInferiorIzqSuperior, bumblebee);
-        tablero.colocarAlgoformer(esquinaInferiorIzqFrontal, ratchet);
+        Assert.assertEquals(optimus.obtenerPosicion(),esquinaInferiorIzqBorde);
+        Assert.assertEquals(bumblebee.obtenerPosicion(),esquinaInferiorIzqSuperior);
+        Assert.assertEquals(ratchet.obtenerPosicion(),esquinaInferiorIzqFrontal);
         
-        tablero.colocarAlgoformer(esquinaSuperiorDerBorde, megatron);
-        tablero.colocarAlgoformer(esquinaSuperiorDerInferior, bonecrusher);
-        tablero.colocarAlgoformer(esquinaSuperioDerTrasera, frenzy);
-        
-        Assert.assertTrue(optimus.obtenerPosicion() == esquinaInferiorIzqBorde);
-        Assert.assertTrue(bumblebee.obtenerPosicion() == esquinaInferiorIzqSuperior);
-        Assert.assertTrue(ratchet.obtenerPosicion() == esquinaInferiorIzqFrontal);
-        
-        Assert.assertTrue(megatron.obtenerPosicion() == esquinaSuperiorDerBorde);
-        Assert.assertTrue(bonecrusher.obtenerPosicion() == esquinaSuperiorDerInferior);
-        Assert.assertTrue(frenzy.obtenerPosicion() == esquinaSuperioDerTrasera);     
+        Assert.assertEquals(megatron.obtenerPosicion(),esquinaSuperiorDerBorde);
+        Assert.assertEquals(bonecrusher.obtenerPosicion(),esquinaSuperiorDerInferior);
+        Assert.assertEquals(frenzy.obtenerPosicion(),esquinaSuperioDerTrasera);     
         
         Assert.assertTrue(chispa instanceof Bonus);
         Assert.assertTrue(((Bonus) chispa).obtenerEfecto() instanceof ChispaSuprema);
