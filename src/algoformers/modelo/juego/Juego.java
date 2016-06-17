@@ -34,7 +34,7 @@ public class Juego {
         //Creacion de algoformers
         this.agregarAlgoformers();
         //Los algoformers seran ubicados por el tablero
-        //this.posicionarAlgoformers();
+        this.posicionarAlgoformers();
     }
     private void agregarAlgoformers() {
         FabricaAlgoformers fabrica = new FabricaAlgoformers();
@@ -53,7 +53,7 @@ public class Juego {
         List<Algoformer> algoformersJugador2 = this.otroJugador.obtenerListaAlgoformers();
         int dimension = this.tablero.obtenerDimension() - 1;
         for(int i = 0; i<3; i ++){
-            this.tablero.colocarAlgoformer(new Posicion(i,1,new Rocosa()), algoformersJugador1.get(i));
+            this.tablero.colocarAlgoformer(new Posicion(i,0,new Rocosa()), algoformersJugador1.get(i));
             this.tablero.colocarAlgoformer(new Posicion(dimension - i, dimension, new Rocosa()), algoformersJugador2.get(i));
         }
         

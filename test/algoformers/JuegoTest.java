@@ -264,7 +264,6 @@ public class JuegoTest {
         Tablero tablero = juego.obtenerTablero();
         Posicion posicionInicial = new Posicion(0,0, new Rocosa());
         Algoformer algoformer1 = jugador1.obtenerListaAlgoformers().get(0);
-        tablero.colocarAlgoformer(posicionInicial,algoformer1);
         
         Assert.assertTrue(juego.verificarTurno(jugador1));
         
@@ -329,7 +328,6 @@ public class JuegoTest {
         Algoformer algoformer = jugador1.obtenerListaAlgoformers().get(0);
         Posicion posicionInicial = new Posicion(0,0, new Rocosa());
         
-        tablero.colocarAlgoformer(posicionInicial,algoformer);
         
         ArrayList<Posicion> pasos = new ArrayList<>();
         
@@ -410,7 +408,6 @@ public class JuegoTest {
         Algoformer algoformerEnemigo = jugador2.obtenerListaAlgoformers().get(0);
         Posicion posicionInicial = new Posicion(0,0, new Rocosa());
         
-        tablero.colocarAlgoformer(posicionInicial,algoformer);
         
         ArrayList<Posicion> pasos = new ArrayList<>();
         
