@@ -11,12 +11,17 @@ import algoformers.modelo.superficie.Tierra;
 import algoformers.modelo.Ubicable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.BlendMode;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -39,6 +44,8 @@ import java.util.List;
 public class ContenedorJuego extends Contenedor {
 	
     Stage stage;
+    ScrollPane scroll;   
+    GridPane grilla;
     Button botonMover;
     Button botonPasarTurno;
     Button botonAtacar;
@@ -68,20 +75,31 @@ public class ContenedorJuego extends Contenedor {
         
         this.estadoCasilla = new AccionMarcarCasilla(this, juego);
         //this.otroEstadoCasilla = new AccionMarcarCamino(this, juego);
-        
+                
         // Fondo temporal para el juego
         this.setId("background-personajes");
         this.getStylesheets().add("backgrounds.css");
         
         this.stage = stage;                   
         
+        this.grilla = new GridPane();
+        
+        this.crearScroll();
         this.crearBotonPasarTurno(false);
 		this.crearBotonMover(true);
 		this.crearBotonAtacar(true);
         this.crearEtiquetaJugadorActual();
         this.crearTablero();        
+
+        //this.getChildren().add(this.grilla);
     }
-    
+    private void crearScroll() {
+        this.scroll = new ScrollPane();
+        //this.scroll.setVmax();
+        this.scroll.setPrefSize(100, 100);
+        this.scroll.setContent(this.grilla);
+        this.getChildren().add(this.scroll);
+    }
     private void crearTablero() {    
     	// Por ahora crea un tablero de tierra unicamente
     	Tablero tablero = this.juego.obtenerTablero();
@@ -94,15 +112,15 @@ public class ContenedorJuego extends Contenedor {
         			if (pos.obtenerX() == i && pos.obtenerY() == j && pos.obtenerSuperficie() instanceof Tierra) {
                 		Casilla casilla = new Casilla(i, j);
                 		
-                                casilla.setPosicion(-400 + i*60, -380 + j*50);
-                		casilla.setTamanio(60, 50);
+                        //casilla.setPosicion(-400 + i*60, -380 + j*50);
+                		casilla.setTamanio(120, 100);
                 		casilla.setSuperficie(pos.obtenerSuperficie());
                 		casilla.setUbicable(tablero.obtenerUbicable(pos));
                 		casillas[i][j] = casilla;     
                 		
                 		casilla.setOnAction(new AccionTocarCasilla(this, casilla, this.juego, i, j));
-                		this.getChildren().add(casilla);
-                		
+                		//this.getChildren().add(casilla);
+                		this.grilla.add(casilla, i, j);
                 		// Necesito hacer esto para el metodo setCasillaActual
                 		this.casillaActual = casilla;
         			}
