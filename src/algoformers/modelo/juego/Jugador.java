@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package algoformers.modelo;
+package algoformers.modelo.juego;
 
+import algoformers.modelo.Posicion;
 import algoformers.modelo.algoformer.Algoformer;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -41,7 +42,6 @@ public class Jugador {
     
     public void moverAPosiciones(Algoformer algof, List<Posicion> destino) {
         juego.verificarTurno(this);
-        
         Movimiento mov = new Movimiento(algof,destino,tablero);
         mov.mover();
         

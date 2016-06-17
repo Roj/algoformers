@@ -5,7 +5,7 @@ import algoformers.controlador.AccionJugar;
 import algoformers.controlador.AccionSetearTablero;
 import algoformers.controlador.AccionComenzarJuego;
 import algoformers.controlador.AccionConfirmarJugador;
-import algoformers.modelo.Juego;
+import algoformers.modelo.juego.Juego;
 import algoformers.modelo.mapa.Mapa;
 import algoformers.modelo.mapa.MapaChico;
 import static com.sun.javafx.fxml.expression.Expression.and;

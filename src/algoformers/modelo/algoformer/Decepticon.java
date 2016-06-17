@@ -1,6 +1,6 @@
 package algoformers.modelo.algoformer;
 
-import algoformers.modelo.AtaqueInvalidoException;
+import algoformers.modelo.juego.AtaqueInvalidoException;
 import algoformers.modelo.Ubicable;
 
 public class Decepticon extends Algoformer {	

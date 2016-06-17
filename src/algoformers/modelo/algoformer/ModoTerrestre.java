@@ -5,7 +5,7 @@
  */
 package algoformers.modelo.algoformer;
 
-import algoformers.modelo.Movimiento;
+import algoformers.modelo.juego.Movimiento;
 import algoformers.modelo.superficie.Superficie;
 
 /**

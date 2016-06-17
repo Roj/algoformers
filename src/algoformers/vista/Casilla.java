@@ -8,7 +8,7 @@ import algoformers.modelo.superficie.Pantano;
 import algoformers.modelo.Posicion;
 import algoformers.modelo.superficie.Rocosa;
 import algoformers.modelo.superficie.Superficie;
-import algoformers.modelo.Tablero;
+import algoformers.modelo.juego.Tablero;
 import algoformers.modelo.Ubicable;
 import algoformers.modelo.Vacio;
 import algoformers.modelo.buffs.ChispaSuprema;

@@ -42,7 +42,6 @@ public class Posicion {
         int hash = 7;
         hash = 97 * hash + this.X;
         hash = 97 * hash + this.Y;
-        hash = 97 * hash + this.superficie.hash();
         return hash;
     }
 

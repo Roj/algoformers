@@ -1,4 +1,4 @@
-package algoformers.modelo;
+package algoformers.modelo.juego;
 
 public class AtaqueInvalidoException extends RuntimeException {
 

@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package algoformers.modelo;
+package algoformers.modelo.juego;
 
+import algoformers.modelo.Posicion;
 import algoformers.modelo.algoformer.Algoformer;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class Movimiento {
         for(int i=0; i < pasos.size(); i++ ) {
             if(this.movimientosDisponibles <= 0)
                 throw new ObjetivoMuyLejosException();
-            //this.movimientosDisponibles += this.algoformer.obtenerPosicion().obtenerSuperficie().obtenerPuntosDeMovimientoGastados(this.algoformer.obtenerModoActual());
+
             this.algoformer.ajustarPuntosDeMovimiento(this);
             this.tablero.moverAlgoformer(pasos.get(i),algoformer);
         }

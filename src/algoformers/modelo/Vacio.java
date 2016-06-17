@@ -5,6 +5,7 @@
  */
 package algoformers.modelo;
 
+import algoformers.modelo.juego.AtaqueInvalidoException;
 import algoformers.modelo.algoformer.Decepticon;
 import algoformers.modelo.algoformer.Algoformer;
 import algoformers.modelo.algoformer.Autobot;

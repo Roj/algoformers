@@ -11,7 +11,7 @@ import algoformers.modelo.algoformer.FabricaAlgoformers;
 import algoformers.modelo.bonus.Bonus;
 import algoformers.modelo.algoformer.Algoformer;
 import algoformers.modelo.bonus.FabricaBonus;
-import algoformers.modelo.NoPuedeSerAtacado;
+import algoformers.modelo.buffs.NoPuedeSerAtacado;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;

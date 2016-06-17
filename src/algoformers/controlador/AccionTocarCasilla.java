@@ -3,7 +3,7 @@ package algoformers.controlador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import algoformers.modelo.algoformer.Algoformer;
-import algoformers.modelo.Juego;
+import algoformers.modelo.juego.Juego;
 import algoformers.modelo.Ubicable;
 import algoformers.modelo.Vacio;
 import algoformers.vista.Casilla;

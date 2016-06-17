@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package algoformers.modelo;
+package algoformers.modelo.buffs;
 
 /**
  *
- * @author joaquintz
+ * @author Matias
  */
-public class NoEsSuTurnoException extends RuntimeException {
+public class NoPuedeSerAtacado extends RuntimeException {
 
-    public NoEsSuTurnoException() {
+    public NoPuedeSerAtacado() {
     }
     
 }

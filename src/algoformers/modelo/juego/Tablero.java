@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package algoformers.modelo;
+package algoformers.modelo.juego;
 
+import algoformers.modelo.Posicion;
+import algoformers.modelo.Ubicable;
+import algoformers.modelo.Vacio;
 import algoformers.modelo.bonus.Bonus;
 import algoformers.modelo.bonus.FabricaBonus;
 import algoformers.modelo.algoformer.Algoformer;

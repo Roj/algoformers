@@ -3,13 +3,10 @@ package algoformers.modelo.superficie;
 import algoformers.modelo.algoformer.ModoAereo;
 import algoformers.modelo.algoformer.ModoHumanoide;
 import algoformers.modelo.algoformer.ModoTerrestre;
-import algoformers.modelo.Movimiento;
+import algoformers.modelo.juego.Movimiento;
 
 public abstract class Tierra extends Superficie { 
-    @Override
-    public int hash(){
-        return 1;
-    }
+    
     @Override
     public boolean equals(Object obj) {
         return (obj instanceof Tierra);

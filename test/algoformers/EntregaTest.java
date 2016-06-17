@@ -7,12 +7,12 @@
 package algoformers;
 
 import algoformers.modelo.Posicion;
-import algoformers.modelo.Tablero;
+import algoformers.modelo.juego.Tablero;
 import algoformers.modelo.buffs.ChispaSuprema;
 import algoformers.modelo.Ubicable;
-import algoformers.modelo.Juego;
+import algoformers.modelo.juego.Juego;
 import algoformers.modelo.superficie.Rocosa;
-import algoformers.modelo.Jugador;
+import algoformers.modelo.juego.Jugador;
 import algoformers.modelo.bonus.Bonus;
 import algoformers.modelo.algoformer.Algoformer;
 import algoformers.modelo.mapa.MapaChico;

@@ -8,10 +8,10 @@ package algoformers;
 
 import algoformers.modelo.Posicion;
 import algoformers.modelo.Vacio;
-import algoformers.modelo.Tablero;
+import algoformers.modelo.juego.Tablero;
 import algoformers.modelo.superficie.Rocosa;
 import algoformers.modelo.algoformer.FabricaAlgoformers;
-import algoformers.modelo.NoSuperponibleException;
+import algoformers.modelo.juego.NoSuperponibleException;
 import algoformers.modelo.bonus.Bonus;
 import algoformers.modelo.algoformer.Algoformer;
 import algoformers.modelo.bonus.FabricaBonus;
