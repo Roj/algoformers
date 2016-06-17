@@ -6,8 +6,8 @@
 package algoformers.modelo.bonus;
 
 import algoformers.modelo.juego.AtaqueInvalidoException;
-import algoformers.modelo.Posicion;
-import algoformers.modelo.Ubicable;
+import algoformers.modelo.tablero.Posicion;
+import algoformers.modelo.tablero.Ubicable;
 import algoformers.modelo.algoformer.Decepticon;
 import algoformers.modelo.algoformer.Algoformer;
 import algoformers.modelo.algoformer.Autobot;

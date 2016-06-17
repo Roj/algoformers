@@ -5,7 +5,7 @@
  */
 package algoformers.modelo.juego;
 
-import algoformers.modelo.Posicion;
+import algoformers.modelo.tablero.Posicion;
 import algoformers.modelo.algoformer.Algoformer;
 import java.util.ArrayList;
 import java.util.Iterator;

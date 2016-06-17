@@ -1,7 +1,7 @@
 package algoformers.modelo.algoformer;
 
 import algoformers.modelo.juego.AtaqueInvalidoException;
-import algoformers.modelo.Ubicable;
+import algoformers.modelo.tablero.Ubicable;
 
 public class Decepticon extends Algoformer {	
     public Decepticon(int vida, ModoAlgoformer modo1, ModoAlgoformer modo2) {

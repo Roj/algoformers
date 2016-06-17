@@ -4,9 +4,9 @@ import algoformers.modelo.juego.Movimiento;
 import algoformers.modelo.superficie.NoSePuedeTransformarException;
 import algoformers.modelo.juego.NoSuperponibleException;
 import algoformers.modelo.juego.ObjetivoMuyLejosException;
-import algoformers.modelo.Posicion;
+import algoformers.modelo.tablero.Posicion;
 import algoformers.modelo.superficie.SuperficieNoAtravesableException;
-import algoformers.modelo.Ubicable;
+import algoformers.modelo.tablero.Ubicable;
 import algoformers.modelo.buffs.Buff;
 import java.util.HashSet;
 

@@ -6,10 +6,10 @@
 
 package algoformers;
 
-import algoformers.modelo.Posicion;
+import algoformers.modelo.tablero.Posicion;
 import algoformers.modelo.juego.Tablero;
 import algoformers.modelo.buffs.ChispaSuprema;
-import algoformers.modelo.Ubicable;
+import algoformers.modelo.tablero.Ubicable;
 import algoformers.modelo.juego.Juego;
 import algoformers.modelo.superficie.Rocosa;
 import algoformers.modelo.juego.Jugador;

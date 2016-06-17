@@ -1,7 +1,7 @@
 
 package algoformers;
 
-import algoformers.modelo.Posicion;
+import algoformers.modelo.tablero.Posicion;
 import algoformers.modelo.superficie.Nube;
 import algoformers.modelo.juego.ObjetivoMuyLejosException;
 import algoformers.modelo.superficie.Rocosa;

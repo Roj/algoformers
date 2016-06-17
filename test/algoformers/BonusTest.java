@@ -5,7 +5,7 @@
  */
 package algoformers;
 
-import algoformers.modelo.Posicion;
+import algoformers.modelo.tablero.Posicion;
 import algoformers.modelo.superficie.Rocosa;
 import algoformers.modelo.algoformer.FabricaAlgoformers;
 import algoformers.modelo.bonus.Bonus;

@@ -5,9 +5,9 @@
  */
 package algoformers.modelo.juego;
 
-import algoformers.modelo.Posicion;
-import algoformers.modelo.Ubicable;
-import algoformers.modelo.Vacio;
+import algoformers.modelo.tablero.Posicion;
+import algoformers.modelo.tablero.Ubicable;
+import algoformers.modelo.tablero.Vacio;
 import algoformers.modelo.bonus.Bonus;
 import algoformers.modelo.bonus.FabricaBonus;
 import algoformers.modelo.algoformer.Algoformer;

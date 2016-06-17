@@ -7,8 +7,8 @@ import javafx.event.EventHandler;
 import javafx.scene.effect.BlendMode;
 import algoformers.modelo.algoformer.Algoformer;
 import algoformers.modelo.juego.Juego;
-import algoformers.modelo.Ubicable;
-import algoformers.modelo.Vacio;
+import algoformers.modelo.tablero.Ubicable;
+import algoformers.modelo.tablero.Vacio;
 import algoformers.vista.Casilla;
 import algoformers.vista.ContenedorJuego;
 

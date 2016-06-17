@@ -11,7 +11,7 @@ import algoformers.modelo.algoformer.FabricaAlgoformers;
 import algoformers.modelo.superficie.SuperficieNoAtravesableException;
 import algoformers.modelo.algoformer.Algoformer;
 import algoformers.modelo.superficie.Espinas;
-import algoformers.modelo.Posicion;
+import algoformers.modelo.tablero.Posicion;
 import algoformers.modelo.superficie.Pantano;
 import algoformers.modelo.juego.Juego;
 import algoformers.modelo.mapa.MapaChico;
