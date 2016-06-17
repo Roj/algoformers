@@ -14,8 +14,35 @@ import algoformers.modelo.algoformer.Algoformer;
 public class DobleCañon implements Buff{
     
     protected int turnosRestantes;
+    private int UID = 1122233;
+    
     public DobleCañon() {
         this.turnosRestantes = 3;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + this.UID;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DobleCañon other = (DobleCañon) obj;
+        if (this.UID != other.UID) {
+            return false;
+        }
+        return true;
     }
     
     @Override

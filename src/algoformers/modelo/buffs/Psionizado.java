@@ -13,7 +13,7 @@ import algoformers.modelo.buffs.Buff;
  * @author joaquintz
  */
 public class Psionizado implements Buff {
-
+    private int UID = 4444444;
     public Psionizado() {
     }
     @Override
@@ -31,20 +31,36 @@ public class Psionizado implements Buff {
         int nuevoAtaque = (int) (algof.obtenerModoActual().obtenerPuntosAtaque()*0.6);
         algof.obtenerModoActual().establecerPuntosAtaque(nuevoAtaque);
     }
-    @Override
-    public boolean equals(Object obj) {
-        return (obj instanceof Psionizado);
-    }
+
     @Override
     public int hashCode() {
-        //solo es necesario que los buffs sean equivalentes entre si
-        //i.e. Psionizado es igual a cualquier otro Psionizado,
-        //pero no a un buff de otro tipo
-        return 0; 
+        int hash = 7;
+        hash = 97 * hash + this.UID;
+        return hash;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Psionizado other = (Psionizado) obj;
+        if (this.UID != other.UID) {
+            return false;
+        }
+        return true;
+    }
+    
     @Override
     public void pasarTurno(Algoformer algoformer) {
         //es permanente, no hace nada con los turnos
     }
+    
     
 }

@@ -12,7 +12,32 @@ import algoformers.modelo.algoformer.Algoformer;
  * @author Matias
  */
 public class Flash implements Buff {
+    private int UID = 123123123;
 
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 37 * hash + this.UID;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Flash other = (Flash) obj;
+        if (this.UID != other.UID) {
+            return false;
+        }
+        return true;
+    }
     protected int turnosRestantes;
     public Flash() {
         this.turnosRestantes = 3;

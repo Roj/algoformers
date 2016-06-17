@@ -105,8 +105,6 @@ public abstract class Algoformer implements Ubicable {
             this.buffs.add(buff);
             buff.accionSobreAlgoformer(this);
         }
-        
-        
     }
     public void borrarBuff(Buff buff) {
         this.buffs.remove(buff);

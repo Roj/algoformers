@@ -13,7 +13,33 @@ import algoformers.modelo.algoformer.Algoformer;
  */
 public class BurbujaInmaculada implements Buff {
     protected int turnosRestantes;
-    protected int vidaAlgoformer;
+    private int UID = 7788899;
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 97 * hash + this.UID;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final BurbujaInmaculada other = (BurbujaInmaculada) obj;
+        if (this.UID != other.UID) {
+            return false;
+        }
+        return true;
+    }
+    
     public BurbujaInmaculada() {
         this.turnosRestantes = 2;
     }
@@ -23,10 +49,8 @@ public class BurbujaInmaculada implements Buff {
         //no es afectado por movimientos
     }
 
-
     @Override
     public void accionSobreAlgoformer(Algoformer algof) {
-        this.vidaAlgoformer = algof.obtenerVida();
     }
 
     @Override
@@ -41,7 +65,5 @@ public class BurbujaInmaculada implements Buff {
     public void avisarAtaque(Algoformer algof) {
         throw new NoPuedeSerAtacado();
     }
-
-    
     
 }
