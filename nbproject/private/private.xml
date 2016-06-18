@@ -3,13 +3,42 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Joaquin/Desktop/algoformers/algoformers2/test/algoformers/SuperficieTest.java</file>
-            <file>file:/C:/Users/Joaquin/Desktop/algoformers/algoformers2/src/algoformers/modelo/Juego.java</file>
-            <file>file:/C:/Users/Joaquin/Desktop/algoformers/algoformers2/src/algoformers/modelo/Tablero.java</file>
-            <file>file:/C:/Users/Joaquin/Desktop/algoformers/algoformers2/test/algoformers/FabricaTest.java</file>
-            <file>file:/C:/Users/Joaquin/Desktop/algoformers/algoformers2/src/algoformers/modelo/Algoformer.java</file>
-            <file>file:/C:/Users/Joaquin/Desktop/algoformers/algoformers2/test/algoformers/BuffTest.java</file>
-            <file>file:/C:/Users/Joaquin/Desktop/algoformers/algoformers2/test/algoformers/EntregaTest.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/modelo/mapa/MapaChico.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/modelo/buffs/EncadenadoException.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/modelo/buffs/DobleCañon.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/modelo/juego/Tablero.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/modelo/buffs/Buff.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/modelo/juego/Jugador.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/modelo/mapa/Mapa.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/modelo/tablero/Vacio.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/modelo/superficie/Tierra.java</file>
+            <file>file:/home/joaquintz/algoformers/test/algoformers/TableroTest.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/modelo/superficie/Superficie.java</file>
+            <file>file:/home/joaquintz/algoformers/test/algoformers/PosicionTest.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/modelo/buffs/Flash.java</file>
+            <file>file:/home/joaquintz/algoformers/test/algoformers/JuegoTest.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/modelo/superficie/Espinas.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/modelo/tablero/Ubicable.java</file>
+            <file>file:/home/joaquintz/algoformers/test/algoformers/BonusTest.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/modelo/superficie/Aire.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/modelo/algoformer/FabricaAlgoformers.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/modelo/juego/Movimiento.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/modelo/juego/NoEsSuTurnoException.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/modelo/buffs/BurbujaInmaculada.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/modelo/buffs/Psionizado.java</file>
+            <file>file:/home/joaquintz/algoformers/test/algoformers/FabricaTest.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/modelo/buffs/EncadenadoEnAndromeda.java</file>
+            <file>file:/home/joaquintz/algoformers/test/algoformers/EntregaTest.java</file>
+            <file>file:/home/joaquintz/algoformers/test/algoformers/AlgoformerTest.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/modelo/buffs/ChispaSuprema.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/modelo/juego/Juego.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/modelo/algoformer/Algoformer.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/modelo/juego/NoSuperponibleException.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/modelo/tablero/Posicion.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/modelo/buffs/NoPuedeSerAtacado.java</file>
+            <file>file:/home/joaquintz/algoformers/test/algoformers/SuperficieTest.java</file>
+            <file>file:/home/joaquintz/algoformers/src/algoformers/modelo/juego/ObjetivoMuyLejosException.java</file>
+            <file>file:/home/joaquintz/algoformers/test/algoformers/BuffTest.java</file>
         </group>
     </open-files>
 </project-private>

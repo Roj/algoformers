@@ -6,6 +6,7 @@
 package algoformers.modelo.buffs;
 
 import algoformers.modelo.algoformer.Algoformer;
+import java.util.Iterator;
 
 /**
  *
@@ -15,5 +16,5 @@ public interface Buff {
     public void avisarAtaque(Algoformer algof);
     public void avisarMovimiento(Algoformer algof);
     public void accionSobreAlgoformer(Algoformer algof);
-    public void pasarTurno(Algoformer algoformer);
+    public void pasarTurno(Algoformer algoformer, Iterator iter);
 }

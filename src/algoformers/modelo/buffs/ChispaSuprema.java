@@ -1,6 +1,7 @@
 package algoformers.modelo.buffs;
 
 import algoformers.modelo.algoformer.Algoformer;
+import java.util.Iterator;
 
 public class ChispaSuprema implements Buff {
   
@@ -21,7 +22,7 @@ public class ChispaSuprema implements Buff {
     }
 
     @Override
-    public void pasarTurno(Algoformer algoformer) {
+    public void pasarTurno(Algoformer algoformer, Iterator iter) {
         //no se utiliza en la chispa suprema
     }
 	

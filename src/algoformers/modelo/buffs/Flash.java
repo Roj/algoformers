@@ -6,6 +6,7 @@
 package algoformers.modelo.buffs;
 
 import algoformers.modelo.algoformer.Algoformer;
+import java.util.Iterator;
 
 /**
  *
@@ -61,11 +62,12 @@ public class Flash implements Buff {
     }
 
     @Override
-    public void pasarTurno(Algoformer algoformer) {
+    public void pasarTurno(Algoformer algoformer,Iterator iter) {
         this.turnosRestantes -= 1;
         if (this.turnosRestantes <=0) {
             int velocidad = (int) (algoformer.obtenerModoActual().obtenerVelocidad()/3);
             algoformer.obtenerModoActual().establecerVelocidad(velocidad);
-            algoformer.borrarBuff(this);
-        }    }
+            iter.remove();
+        }    
+    }
 }

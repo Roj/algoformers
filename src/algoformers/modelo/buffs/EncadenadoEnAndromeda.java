@@ -6,6 +6,7 @@
 package algoformers.modelo.buffs;
 
 import algoformers.modelo.algoformer.Algoformer;
+import java.util.Iterator;
 
 /**
  *
@@ -60,10 +61,10 @@ public class EncadenadoEnAndromeda implements Buff {
     }
 
     @Override
-    public void pasarTurno(Algoformer algoformer) {
+    public void pasarTurno(Algoformer algoformer, Iterator iter) {
         this.turnosRestantes -= 1;
         if (this.turnosRestantes <=0) {
-            algoformer.borrarBuff(this);
+            iter.remove();
         }
     }
     

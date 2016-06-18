@@ -6,6 +6,7 @@
 package algoformers.modelo.buffs;
 
 import algoformers.modelo.algoformer.Algoformer;
+import java.util.Iterator;
 
 /**
  *
@@ -61,14 +62,13 @@ public class DobleCañon implements Buff{
         int nuevoAtaque = (int) (algof.obtenerModoActual().obtenerPuntosAtaque()*2);
         algof.obtenerModoActual().establecerPuntosAtaque(nuevoAtaque);
     }
-
     @Override
-    public void pasarTurno(Algoformer algoformer) {
+    public void pasarTurno(Algoformer algoformer, Iterator iter) {
         this.turnosRestantes -= 1;
         if (this.turnosRestantes <=0) {
             int ataque = (int) (algoformer.obtenerModoActual().obtenerPuntosAtaque()/2);
             algoformer.obtenerModoActual().establecerPuntosAtaque(ataque);
-            algoformer.borrarBuff(this);
+            iter.remove();
         }
     }
 

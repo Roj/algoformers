@@ -9,6 +9,7 @@ import algoformers.modelo.superficie.SuperficieNoAtravesableException;
 import algoformers.modelo.tablero.Ubicable;
 import algoformers.modelo.buffs.Buff;
 import java.util.HashSet;
+import java.util.Iterator;
 
 
 public abstract class Algoformer implements Ubicable {
@@ -97,7 +98,6 @@ public abstract class Algoformer implements Ubicable {
     }
 
     public void pasarTurno() {
-        //en el futuro deberia tambien avisarle a los buffs
         this.avisarABuffsPasarTurno();
     }
     public void agregarBuff(Buff buff) {
@@ -115,8 +115,10 @@ public abstract class Algoformer implements Ubicable {
         }
     }
     public void avisarABuffsPasarTurno() {
-        for(Buff actual: this.buffs) {
-            actual.pasarTurno(this);
+        Iterator iter = this.buffs.iterator();
+        while(iter.hasNext()) {
+            Buff actual = (Buff) iter.next();
+            actual.pasarTurno(this,iter);
         }
     }
     public void ajustarPuntosDeMovimiento(Movimiento mov) {

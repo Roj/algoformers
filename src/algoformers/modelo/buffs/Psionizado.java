@@ -7,6 +7,7 @@ package algoformers.modelo.buffs;
 
 import algoformers.modelo.algoformer.Algoformer;
 import algoformers.modelo.buffs.Buff;
+import java.util.Iterator;
 
 /**
  *
@@ -58,7 +59,7 @@ public class Psionizado implements Buff {
     }
     
     @Override
-    public void pasarTurno(Algoformer algoformer) {
+    public void pasarTurno(Algoformer algoformer,Iterator iter) {
         //es permanente, no hace nada con los turnos
     }
     
