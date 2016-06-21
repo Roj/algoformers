@@ -61,6 +61,7 @@ public class ContenedorJuego extends Contenedor {
     Label etiquetaTurnoActual;
     Label etiquetaEstadisticasAlgoformer;
     Casilla casillaActual;
+    Casilla casillaInicialMovimiento;
     List<Casilla> caminoMarcado = new ArrayList<Casilla>();
     AccionCasilla estadoCasilla;
     //AccionCasilla otroEstadoCasilla;
@@ -293,7 +294,7 @@ public class ContenedorJuego extends Contenedor {
 		this.botonPasarTurno = new Button();
 		this.colocarBoton(botonPasarTurno, "Pasar Turno", 20, -630, -220);
 		this.botonPasarTurno.setPrefSize(170, 50);
-		this.botonPasarTurno.setOnAction(new AccionPasarTurno(this));    
+		this.botonPasarTurno.setOnAction(new AccionPasarTurno(this, this.juego));    
 		this.botonPasarTurno.setDisable(desactivado); 
     }
     
@@ -367,11 +368,19 @@ public class ContenedorJuego extends Contenedor {
         
     }   
     public void pasarTurno() {
-    	this.juego.avanzarTurno();    	
+    	//this.juego.avanzarTurno();    	
     	this.crearEtiquetaJugadorActual(); 
     	
+    	//this.casillaActual.setBlendMode(null);
     	this.crearBotonPasarTurno(false);
     	this.crearBotonMover(true);
     	this.crearBotonAtacar(true);
+    }
+    
+    public void setCasillaInicioMovimiento(Casilla cas) {
+    	this.casillaInicialMovimiento = cas;
+    }
+    public Casilla getCasillaInicioMovimiento() {
+    	return this.casillaInicialMovimiento;
     }
 }

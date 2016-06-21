@@ -31,6 +31,7 @@ public class Casilla extends Button {
 	int y;
         Superficie superficie;
 	String txt;
+	Posicion posicion;
 	Ubicable ubicable;
 	
 	public Casilla(int X, int Y) {
@@ -47,7 +48,7 @@ public class Casilla extends Button {
 	public int getY() {
 		return this.y;
 	}
-	public void setPosicion(int posX, int posY) {
+	public void setCoordenadas(int posX, int posY) {
 	    this.setTranslateX(posX);
 	    this.setTranslateY(posY);			
 	}
@@ -57,7 +58,7 @@ public class Casilla extends Button {
 	}
 	
 	public void setSuperficie(Superficie sup) {
-		// Todo esto es para testeo
+
                 this.superficie = sup;
                 this.setSuperficie();
         }

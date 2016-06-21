@@ -65,4 +65,8 @@ public class Jugador {
     public String obtenerNombre() {
         return this.nombre;
     }
+    
+    public void pasarTurno() {
+    	juego.avanzarTurno();
+    }
 }

@@ -1,10 +1,18 @@
 package algoformers.controlador;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.effect.BlendMode;
+import algoformers.modelo.algoformer.Algoformer;
 import algoformers.modelo.juego.Juego;
+import algoformers.modelo.juego.ObjetivoMuyLejosException;
+import algoformers.modelo.superficie.SuperficieNoAtravesableException;
+import algoformers.modelo.tablero.Posicion;
+import algoformers.modelo.tablero.Ubicable;
+import algoformers.modelo.tablero.Vacio;
 import algoformers.vista.Casilla;
 import algoformers.vista.ContenedorJuego;
 
@@ -20,12 +28,41 @@ public class AccionRealizarMovida implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
-    	/* Todo lo de mover al algoformer
-    	
-    	
-    	
-    	*/
+    	// Todo lo de mover al algoformer
+    	List<Casilla> caminoMarcado = this.contenedorJuego.getCaminoMarcado();
+    	List<Posicion> caminoAlgoformer = new ArrayList<Posicion>();
     	Casilla casillaActual = this.contenedorJuego.getCasillaActual();
+    	Casilla casillaInicioMov = this.contenedorJuego.getCasillaInicioMovimiento();
+    	Algoformer algActual = this.contenedorJuego.getAlgoformerActual();
+    	
+    	for (Casilla casillaCamino : caminoMarcado) {
+    		caminoAlgoformer.add(casillaCamino.getUbicable().obtenerPosicion());
+    	}
+    	
+    	try {
+    		this.juego.obtenerJugadorActual().moverAPosiciones(algActual, caminoAlgoformer);
+    	
+    		Ubicable aux = casillaActual.getUbicable();
+    		casillaActual.setUbicable(casillaInicioMov.getUbicable());
+    		casillaInicioMov.setUbicable(aux);
+    		casillaInicioMov.getStyleClass().remove("Optimus");
+    	} catch (ObjetivoMuyLejosException|SuperficieNoAtravesableException e) {
+    		Posicion posFinalAlgoformer = algActual.obtenerPosicion();
+    		
+    		for (Casilla casilla : caminoMarcado) {
+    			if (casilla.getX() == posFinalAlgoformer.obtenerX() &&
+    				casilla.getY() == posFinalAlgoformer.obtenerY()) {
+    	    		Ubicable aux = casilla.getUbicable();
+    	    		casilla.setUbicable(casillaInicioMov.getUbicable());
+    	    		casillaInicioMov.setUbicable(aux);   				
+    	    		casillaInicioMov.getStyleClass().remove("Optimus");
+    	    		
+    	    		// esto es feo
+    	    		this.juego.avanzarTurno();
+    			}    				
+    		}
+    	}
+    	
     	List<Casilla> casillasPosiblesMovimiento = this.contenedorJuego.getCasillasPosiblesMovimiento(casillaActual);
     	
         this.contenedorJuego.pasarTurno();
@@ -35,6 +72,7 @@ public class AccionRealizarMovida implements EventHandler<ActionEvent> {
     	this.contenedorJuego.dejarDeMostrarCasillas(casillasPosiblesMovimiento);
     	
     	this.contenedorJuego.borrarCaminoMarcado();  
+    	casillaInicioMov.setBlendMode(null);
     }
     
 }
