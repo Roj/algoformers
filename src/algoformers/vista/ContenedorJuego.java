@@ -55,6 +55,7 @@ public class ContenedorJuego extends Contenedor {
     Label etiquetaTurnoActual;
     Label etiquetaEstadisticasAlgoformer;
     Casilla casillaActual;
+    Casilla casillaInicialMovimiento;
     List<Casilla> caminoMarcado = new ArrayList<Casilla>();
     AccionCasilla estadoCasilla;
     //AccionCasilla otroEstadoCasilla;
@@ -112,7 +113,7 @@ public class ContenedorJuego extends Contenedor {
         			if (pos.obtenerX() == i && pos.obtenerY() == j && pos.obtenerSuperficie() instanceof Tierra) {
                 		Casilla casilla = new Casilla(i, j);
                 		
-                        //casilla.setPosicion(-400 + i*60, -380 + j*50);
+                        casilla.setPosicion(pos);
                 		casilla.setTamanio(120, 100);
                 		casilla.setSuperficie(pos.obtenerSuperficie());
                 		casilla.setUbicable(tablero.obtenerUbicable(pos));
@@ -349,8 +350,16 @@ public class ContenedorJuego extends Contenedor {
     	this.juego.avanzarTurno();    	
     	this.crearEtiquetaJugadorActual(); 
     	
+    	this.casillaActual.setBlendMode(null);
     	this.crearBotonPasarTurno(false);
     	this.crearBotonMover(true);
     	this.crearBotonAtacar(true);
+    }
+    
+    public void setCasillaInicioMovimiento(Casilla cas) {
+    	this.casillaInicialMovimiento = cas;
+    }
+    public Casilla getCasillaInicioMovimiento() {
+    	return this.casillaInicialMovimiento;
     }
 }

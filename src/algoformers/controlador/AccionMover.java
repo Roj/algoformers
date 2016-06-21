@@ -27,5 +27,7 @@ public class AccionMover implements EventHandler<ActionEvent> {
         this.contenedorJuego.cambiarEstadoCasilla(new AccionMarcarCamino(this.contenedorJuego));
         this.contenedorJuego.crearBotonPasarTurno(true);
         this.contenedorJuego.crearBotonAtacar(true);
+        
+        this.contenedorJuego.setCasillaInicioMovimiento(casillaActual);
     }
 }
