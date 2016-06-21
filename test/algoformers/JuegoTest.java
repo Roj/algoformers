@@ -1,6 +1,6 @@
 package algoformers;
 
-import algoformers.modelo.juego.Tablero;
+import algoformers.modelo.tablero.Tablero;
 import algoformers.modelo.tablero.Ubicable;
 import algoformers.modelo.juego.ObjetivoMuyLejosException;
 import algoformers.modelo.superficie.Rocosa;

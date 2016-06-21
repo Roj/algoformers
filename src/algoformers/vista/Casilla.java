@@ -68,9 +68,7 @@ public class Casilla extends Button {
 	}
         
         public void setUbicable(Algoformer algoformer){
-            //Hay que encontrar una forma de identificar que tipo de algoformer es
-            //Se crean con fabrica y no se diferencian
-            this.getStyleClass().add("Optimus");
+            this.getStyleClass().add(algoformer.getStyle());
             txt += "- A";
             this.setText(txt);
         }
