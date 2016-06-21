@@ -9,6 +9,7 @@ import algoformers.modelo.juego.AtaqueInvalidoException;
 import algoformers.modelo.algoformer.Decepticon;
 import algoformers.modelo.algoformer.Algoformer;
 import algoformers.modelo.algoformer.Autobot;
+import algoformers.vista.Casilla;
 
 /**
  *
@@ -40,6 +41,12 @@ public class Vacio implements Ubicable {
     public void recibirAtaque(Decepticon algoformer){
         //Metodo vacio
     	throw new AtaqueInvalidoException();
+    }
+
+    //Double dispatch
+    @Override
+    public void setUbicable(Casilla casilla) {
+        casilla.setUbicable(this);
     }
     
 }

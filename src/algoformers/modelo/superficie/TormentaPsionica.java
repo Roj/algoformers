@@ -10,6 +10,7 @@ import algoformers.modelo.algoformer.ModoAereo;
 import algoformers.modelo.algoformer.ModoHumanoide;
 import algoformers.modelo.algoformer.ModoTerrestre;
 import algoformers.modelo.buffs.Psionizado;
+import algoformers.vista.Casilla;
 
 /**
  *
@@ -35,4 +36,8 @@ public class TormentaPsionica extends Aire {
     public void accionSobreAlgoformer(ModoHumanoide modo, Algoformer algof) {
         throw new SuperficieNoAtravesableException();
     }
+    public void setSuperficie(Casilla casilla) {
+        casilla.setSuperficie(this);
+    }
+
 }

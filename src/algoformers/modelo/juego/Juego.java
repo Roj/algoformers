@@ -5,6 +5,7 @@
  */
 package algoformers.modelo.juego;
 
+import algoformers.modelo.tablero.Tablero;
 import algoformers.modelo.tablero.Posicion;
 import algoformers.modelo.algoformer.FabricaAlgoformers;
 import algoformers.modelo.algoformer.Algoformer;

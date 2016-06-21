@@ -7,6 +7,7 @@ package algoformers.modelo.buffs;
 
 import algoformers.modelo.algoformer.Algoformer;
 import algoformers.modelo.buffs.Buff;
+import algoformers.vista.Casilla;
 import java.util.Iterator;
 
 /**
@@ -61,6 +62,11 @@ public class Psionizado implements Buff {
     @Override
     public void pasarTurno(Algoformer algoformer,Iterator iter) {
         //es permanente, no hace nada con los turnos
+    }
+
+    @Override
+    public void setEfecto(Casilla casilla) {
+        //No se implementa porque no es un bonus, no se visualiza
     }
     
     

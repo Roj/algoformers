@@ -8,6 +8,7 @@ import algoformers.modelo.tablero.Posicion;
 import algoformers.modelo.superficie.SuperficieNoAtravesableException;
 import algoformers.modelo.tablero.Ubicable;
 import algoformers.modelo.buffs.Buff;
+import algoformers.vista.Casilla;
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -128,6 +129,11 @@ public abstract class Algoformer implements Ubicable {
         for(Buff actual: this.buffs) {
             actual.avisarAtaque(this);
         }
+    }
+    
+    //Double dispatch
+    public void setUbicable(Casilla casilla) {
+        casilla.setUbicable(this);
     }
     
 }

@@ -6,6 +6,7 @@
 package algoformers.modelo.buffs;
 
 import algoformers.modelo.algoformer.Algoformer;
+import algoformers.vista.Casilla;
 import java.util.Iterator;
 
 /**
@@ -17,4 +18,5 @@ public interface Buff {
     public void avisarMovimiento(Algoformer algof);
     public void accionSobreAlgoformer(Algoformer algof);
     public void pasarTurno(Algoformer algoformer, Iterator iter);
+    public void setEfecto(Casilla casilla);
 }

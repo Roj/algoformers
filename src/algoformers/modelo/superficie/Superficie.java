@@ -5,6 +5,7 @@ import algoformers.modelo.algoformer.ModoAereo;
 import algoformers.modelo.algoformer.ModoHumanoide;
 import algoformers.modelo.algoformer.ModoTerrestre;
 import algoformers.modelo.juego.Movimiento;
+import algoformers.vista.Casilla;
 
 public abstract class Superficie {
     public abstract void accionSobreAlgoformer(ModoAereo modo, Algoformer algof);
@@ -14,6 +15,8 @@ public abstract class Superficie {
     public abstract void ajustarPuntosDeMovimiento(Movimiento mov, ModoAereo modo);
     public abstract void ajustarPuntosDeMovimiento(Movimiento mov, ModoTerrestre modo);
     public abstract void ajustarPuntosDeMovimiento(Movimiento mov, ModoHumanoide modo);
+
+    public abstract void setSuperficie(Casilla casilla);
     
     
 }

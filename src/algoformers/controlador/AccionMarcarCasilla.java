@@ -4,7 +4,7 @@ import java.util.List;
 
 import algoformers.modelo.algoformer.Algoformer;
 import algoformers.modelo.juego.Juego;
-import algoformers.modelo.juego.Tablero;
+import algoformers.modelo.tablero.Tablero;
 import algoformers.modelo.tablero.Ubicable;
 import algoformers.modelo.tablero.Vacio;
 import algoformers.vista.Casilla;
@@ -37,7 +37,8 @@ public class AccionMarcarCasilla extends AccionCasilla {
     	
         for ( Algoformer algoformer : algoformersJugadorEnEspera ) {
         	if (ubicable == algoformer) {
-        		this.contenedorJuego.getCasillaActual().setBlendMode(null);
+                        this.contenedorJuego.getCasillaActual().getStyleClass().remove("CasillaActual");
+        		this.contenedorJuego.getCasillaActual().setSuperficie();
         		this.contenedorJuego.setCasillaActual(casilla);
         		this.contenedorJuego.crearEstadisticasAlgoformer(algoformer);
         	}
@@ -46,7 +47,8 @@ public class AccionMarcarCasilla extends AccionCasilla {
         for ( Algoformer algoformer : algoformersJugadorActual ) {
         	if (ubicable == algoformer) {
         		this.contenedorJuego.crearBotonMover(false);
-        		this.contenedorJuego.getCasillaActual().setBlendMode(null);
+                        this.contenedorJuego.getCasillaActual().getStyleClass().add("CasillaActual");
+        		this.contenedorJuego.getCasillaActual().setSuperficie();
         		this.contenedorJuego.setCasillaActual(casilla);
         		this.contenedorJuego.crearEstadisticasAlgoformer(algoformer);       		
         		this.contenedorJuego.setAlgoformerActual(algoformer);

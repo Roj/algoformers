@@ -6,6 +6,7 @@
 package algoformers.modelo.buffs;
 
 import algoformers.modelo.algoformer.Algoformer;
+import algoformers.vista.Casilla;
 import java.util.Iterator;
 
 /**
@@ -65,6 +66,10 @@ public class BurbujaInmaculada implements Buff {
     @Override
     public void avisarAtaque(Algoformer algof) {
         throw new NoPuedeSerAtacado();
+    }
+
+    public void setEfecto(Casilla casilla) {
+        casilla.setEfecto(this);
     }
     
 }

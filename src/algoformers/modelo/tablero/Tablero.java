@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package algoformers.modelo.juego;
+package algoformers.modelo.tablero;
 
 import algoformers.modelo.tablero.Posicion;
 import algoformers.modelo.tablero.Ubicable;
@@ -49,7 +49,7 @@ public class Tablero {
         }
     }
 
-    void ubicarChispaEnElCentro() {
+    public void ubicarChispaEnElCentro() {
         FabricaBonus fabricaBonus = new FabricaBonus();
         Bonus chispaSuprema = fabricaBonus.crearChispaSuprema();
         Posicion centro = new Posicion((this.dimX-1)/2, (this.dimY-1)/2, new Rocosa());

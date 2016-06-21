@@ -6,7 +6,7 @@ import algoformers.modelo.juego.Jugador;
 import algoformers.modelo.algoformer.ModoAlgoformer;
 import algoformers.modelo.juego.NoSuperponibleException;
 import algoformers.modelo.tablero.Posicion;
-import algoformers.modelo.juego.Tablero;
+import algoformers.modelo.tablero.Tablero;
 import algoformers.modelo.superficie.Tierra;
 import algoformers.modelo.tablero.Ubicable;
 import javafx.scene.control.Label;
@@ -35,10 +35,16 @@ import algoformers.controlador.AccionPasarTurno;
 import algoformers.controlador.AccionRealizarAtaque;
 import algoformers.controlador.AccionRealizarMovida;
 import algoformers.controlador.AccionTocarCasilla;
+import algoformers.modelo.superficie.Aire;
+import algoformers.modelo.superficie.Superficie;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import javafx.event.EventHandler;
+import javafx.geometry.Pos;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
 
 
 public class ContenedorJuego extends Contenedor {
@@ -64,14 +70,16 @@ public class ContenedorJuego extends Contenedor {
     int dimX = 16;
     int dimY = 16;
     
-    private Casilla[][] casillas;
+    private Casilla[][] casillas_tierra;
+    private Casilla[][] casillas_aire;
     
     public ContenedorJuego(Stage stage, Juego juego) {
         
         super();
         
-        casillas = new Casilla[dimX][dimY];
-                
+        casillas_tierra = new Casilla[dimX][dimY];
+        casillas_aire = new Casilla[dimX][dimY];
+        
         this.juego = juego;
         
         this.estadoCasilla = new AccionMarcarCasilla(this, juego);
@@ -87,8 +95,8 @@ public class ContenedorJuego extends Contenedor {
         
         this.crearScroll();
         this.crearBotonPasarTurno(false);
-		this.crearBotonMover(true);
-		this.crearBotonAtacar(true);
+	this.crearBotonMover(true);
+	this.crearBotonAtacar(true);
         this.crearEtiquetaJugadorActual();
         this.crearTablero();        
 
@@ -98,6 +106,7 @@ public class ContenedorJuego extends Contenedor {
         this.scroll = new ScrollPane();
         //this.scroll.setVmax();
         this.scroll.setPrefSize(100, 100);
+        this.scroll.setMaxSize(1000, 700);
         this.scroll.setContent(this.grilla);
         this.getChildren().add(this.scroll);
     }
@@ -105,36 +114,36 @@ public class ContenedorJuego extends Contenedor {
     	// Por ahora crea un tablero de tierra unicamente
     	Tablero tablero = this.juego.obtenerTablero();
     	List<Posicion> posiciones = tablero.obtenerListaDePosiciones();
-    	
-        for (int i = 0; i < dimX; i++) {
-        	for (int j = 0; j < dimY; j++) {       		
-        		
-        		for (Posicion pos : posiciones) {
-        			if (pos.obtenerX() == i && pos.obtenerY() == j && pos.obtenerSuperficie() instanceof Tierra) {
-                		Casilla casilla = new Casilla(i, j);
-                		
-                        casilla.setPosicion(pos);
-                		casilla.setTamanio(120, 100);
-                		casilla.setSuperficie(pos.obtenerSuperficie());
-                		casilla.setUbicable(tablero.obtenerUbicable(pos));
-                		casillas[i][j] = casilla;     
-                		
-                		casilla.setOnAction(new AccionTocarCasilla(this, casilla, this.juego, i, j));
-                		//this.getChildren().add(casilla);
-                		this.grilla.add(casilla, i, j);
-                		// Necesito hacer esto para el metodo setCasillaActual
-                		this.casillaActual = casilla;
-        			}
-        		}
-
-        	}
-        }
-
+        
+        
+        this.grilla.setGridLinesVisible(true);
+        
+        for (Posicion pos : posiciones) {
+            Casilla casilla = new Casilla(pos.obtenerX(),pos.obtenerY());
+            casilla.setTamanio(120, 100);
+            casilla.setSuperficie(pos.obtenerSuperficie());
+            casilla.setUbicable(tablero.obtenerUbicable(pos));
+            if (pos.obtenerSuperficie() instanceof Tierra){
+                casillas_tierra[pos.obtenerX()][pos.obtenerY()] = casilla;
+                this.grilla.add(casilla,pos.obtenerX(),pos.obtenerY());
+                //Minimizado
+                casilla.setTamanio(60, 50);
+                casilla.setTranslateY(-25);
+            }
+            else{
+                casillas_aire[pos.obtenerX()][pos.obtenerY()] = casilla;
+                this.grilla.add(casilla,pos.obtenerX(),pos.obtenerY());
+            }
+            casilla.setOnAction(new AccionTocarCasilla(this, casilla, this.juego, pos.obtenerX(), pos.obtenerY()));
+            // Necesito hacer esto para el metodo setCasillaActual
+            this.casillaActual = casilla;
+        }  
     }
 
     public List<Casilla> getCasillasAdyascentes(Casilla casilla) {
     	List<Casilla> adyascentes = new ArrayList<Casilla>();
-    	
+    	Casilla[][] casillas = new Casilla[dimX][dimY];
+        
     	int[] puntosVecinos = new int[] { 
     			-1, 0,
     			1, 0,
@@ -143,14 +152,22 @@ public class ContenedorJuego extends Contenedor {
     	};
     	
     	for (int i = 0; i < puntosVecinos.length; i++) {
-    		int diferenciaX = puntosVecinos[i];
+                if (casillas_tierra[casilla.getX()][casilla.getY()] == casilla){
+                    casillas = casillas_tierra;
+                }
+                if (casillas_aire[casilla.getX()][casilla.getY()] == casilla){
+                    casillas = casillas_aire;
+                }
+                
+                int diferenciaX = puntosVecinos[i];
     		int diferenciaY = puntosVecinos[++i];
     		
     		int vecinoX = casilla.getX() + diferenciaX;
     		int vecinoY = casilla.getY() + diferenciaY;
     		
     		if (vecinoX >= 0 && vecinoX < dimX && vecinoY >= 0 && vecinoY < dimY) {
-    				adyascentes.add(casillas[vecinoX][vecinoY]);  	
+//cambiar
+                        adyascentes.add(casillas[vecinoX][vecinoY]);  	
     		}
     	}
     	
@@ -277,7 +294,7 @@ public class ContenedorJuego extends Contenedor {
 		this.botonPasarTurno = new Button();
 		this.colocarBoton(botonPasarTurno, "Pasar Turno", 20, -630, -220);
 		this.botonPasarTurno.setPrefSize(170, 50);
-		this.botonPasarTurno.setOnAction(new AccionPasarTurno(this));    
+		this.botonPasarTurno.setOnAction(new AccionPasarTurno(this, this.juego));    
 		this.botonPasarTurno.setDisable(desactivado); 
     }
     
@@ -300,8 +317,9 @@ public class ContenedorJuego extends Contenedor {
     	this.getChildren().remove(etiquetaEstadisticasAlgoformer);
     }
     public void setCasillaActual(Casilla casilla) {    	
-    	this.casillaActual = casilla;
-    	this.casillaActual.setBlendMode(BlendMode.LIGHTEN);
+        this.casillaActual.getStyleClass().remove("CasillaActual");
+        this.casillaActual = casilla;
+        this.casillaActual.getStyleClass().add("CasillaActual");
     }
     
     public Casilla getCasillaActual() {
@@ -315,7 +333,7 @@ public class ContenedorJuego extends Contenedor {
     }
     public void agregarCasillaACamino(Casilla casilla) {
     	caminoMarcado.add(casilla);
-    	casilla.setBlendMode(BlendMode.DIFFERENCE);
+        casilla.getStyleClass().add("CasillaCamino");
     }
     
     public AccionCasilla getEstadoCasilla() {
@@ -331,26 +349,29 @@ public class ContenedorJuego extends Contenedor {
         this.estadoCasilla = accion;
     }    
     public void mostrarCasillas(List<Casilla> casillas) {
-    	for ( Casilla cas : casillas) {
-        	cas.setBlendMode(BlendMode.GREEN);
+    	for ( Casilla casilla : casillas) {
+            casilla.getStyleClass().add("CasillaMostrar");
         }
     }
     public void dejarDeMostrarCasillas(List<Casilla> casillas) {
-    	for ( Casilla cas : casillas) {
-        	cas.setBlendMode(null);
+    	for ( Casilla casilla : casillas) {
+                casilla.getStyleClass().removeAll("CasillaMostrar","CasillaCamino","CasillaActual");
+                casilla.setSuperficie();
         }
     }    
     public List<Casilla> getCaminoMarcado() {
     	return this.caminoMarcado;
     }
     public void borrarCaminoMarcado() {
-    	this.caminoMarcado.clear();
+    	this.dejarDeMostrarCasillas(this.caminoMarcado);
+        this.caminoMarcado.clear();
+        
     }   
     public void pasarTurno() {
-    	this.juego.avanzarTurno();    	
+    	//this.juego.avanzarTurno();    	
     	this.crearEtiquetaJugadorActual(); 
     	
-    	this.casillaActual.setBlendMode(null);
+    	//this.casillaActual.setBlendMode(null);
     	this.crearBotonPasarTurno(false);
     	this.crearBotonMover(true);
     	this.crearBotonAtacar(true);

@@ -9,8 +9,10 @@ import javafx.scene.effect.BlendMode;
 import algoformers.modelo.algoformer.Algoformer;
 import algoformers.modelo.juego.Juego;
 import algoformers.modelo.juego.ObjetivoMuyLejosException;
+import algoformers.modelo.superficie.SuperficieNoAtravesableException;
 import algoformers.modelo.tablero.Posicion;
 import algoformers.modelo.tablero.Ubicable;
+import algoformers.modelo.tablero.Vacio;
 import algoformers.vista.Casilla;
 import algoformers.vista.ContenedorJuego;
 
@@ -34,17 +36,31 @@ public class AccionRealizarMovida implements EventHandler<ActionEvent> {
     	Algoformer algActual = this.contenedorJuego.getAlgoformerActual();
     	
     	for (Casilla casillaCamino : caminoMarcado) {
-    		caminoAlgoformer.add(casillaCamino.getPosicion());
+    		caminoAlgoformer.add(casillaCamino.getUbicable().obtenerPosicion());
     	}
     	
     	try {
     		this.juego.obtenerJugadorActual().moverAPosiciones(algActual, caminoAlgoformer);
     	
     		Ubicable aux = casillaActual.getUbicable();
+    		casillaActual.setUbicable(casillaInicioMov.getUbicable());
     		casillaInicioMov.setUbicable(aux);
-    		casillaActual.setUbicable(algActual);
-    	} catch (ObjetivoMuyLejosException e) {
-    		System.out.println("Fuera de rango");
+    		casillaInicioMov.getStyleClass().remove("Optimus");
+    	} catch (ObjetivoMuyLejosException|SuperficieNoAtravesableException e) {
+    		Posicion posFinalAlgoformer = algActual.obtenerPosicion();
+    		
+    		for (Casilla casilla : caminoMarcado) {
+    			if (casilla.getX() == posFinalAlgoformer.obtenerX() &&
+    				casilla.getY() == posFinalAlgoformer.obtenerY()) {
+    	    		Ubicable aux = casilla.getUbicable();
+    	    		casilla.setUbicable(casillaInicioMov.getUbicable());
+    	    		casillaInicioMov.setUbicable(aux);   				
+    	    		casillaInicioMov.getStyleClass().remove("Optimus");
+    	    		
+    	    		// esto es feo
+    	    		this.juego.avanzarTurno();
+    			}    				
+    		}
     	}
     	
     	List<Casilla> casillasPosiblesMovimiento = this.contenedorJuego.getCasillasPosiblesMovimiento(casillaActual);
@@ -54,10 +70,6 @@ public class AccionRealizarMovida implements EventHandler<ActionEvent> {
         this.contenedorJuego.cambiarEstadoCasilla(new AccionMarcarCasilla(this.contenedorJuego, juego));
         
     	this.contenedorJuego.dejarDeMostrarCasillas(casillasPosiblesMovimiento);
-    	
-    	for ( Casilla casilla : caminoMarcado) {
-    		casilla.setBlendMode(null);
-    	}
     	
     	this.contenedorJuego.borrarCaminoMarcado();  
     	casillaInicioMov.setBlendMode(null);
