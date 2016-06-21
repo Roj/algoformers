@@ -300,15 +300,17 @@ public class ContenedorJuego extends Contenedor {
     
     public void crearEstadisticasAlgoformer(Algoformer algoformer) {
     	etiquetaEstadisticasAlgoformer = new Label();
-    	etiquetaEstadisticasAlgoformer.setFont(Font.font("Tahoma", FontWeight.BOLD, 18));
-
+//    	etiquetaEstadisticasAlgoformer.setFont(Font.font("Tahoma", FontWeight.BOLD, 18));
+        etiquetaEstadisticasAlgoformer.getStyleClass().add("texto");
+        etiquetaEstadisticasAlgoformer.getStylesheets().add("texto.css");
     	etiquetaEstadisticasAlgoformer.setText(
+                        "Nombre: " + algoformer.getName() + "\n" +
         		"Vida: " + String.valueOf(algoformer.obtenerVida()) + "\n" +
         		"Ataque: " + String.valueOf(algoformer.obtenerPuntosAtaque()) + "\n" +
         		"Velocidad: " + String.valueOf(algoformer.obtenerVelocidad()) + "\n" +
         		"Dist. Ataque: " + String.valueOf(algoformer.obtenerDistanciaAtaque()) + "\n"
         );
-    	etiquetaEstadisticasAlgoformer.setTextFill(Color.web("#F8FF15"));        
+//    	etiquetaEstadisticasAlgoformer.setTextFill(Color.web("#F8FF15"));        
         this.getChildren().add(etiquetaEstadisticasAlgoformer);
         etiquetaEstadisticasAlgoformer.setTranslateX(-620);
         etiquetaEstadisticasAlgoformer.setTranslateY(0);      	
@@ -358,7 +360,7 @@ public class ContenedorJuego extends Contenedor {
                 casilla.getStyleClass().removeAll("CasillaMostrar","CasillaCamino","CasillaActual");
                 casilla.setSuperficie();
         }
-    }    
+    }
     public List<Casilla> getCaminoMarcado() {
     	return this.caminoMarcado;
     }

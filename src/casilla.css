@@ -51,6 +51,26 @@
     -fx-background-image: url("optimus.png");
     -fx-background-size: stretch;
 }
+.Ratchet{
+    -fx-background-image: url("ratchet.png");
+    -fx-background-size: stretch;
+}
+.Bumblebee{
+    -fx-background-image: url("bumblebee.png");
+    -fx-background-size: stretch;
+}
+.Megatron{
+    -fx-background-image: url("megatron.png");
+    -fx-background-size: stretch;
+}
+.Frenzy{
+    -fx-background-image: url("frenzy.png");
+    -fx-background-size: stretch;
+}
+.Bonecrusher{
+    -fx-background-image: url("bonecrusher.png");
+    -fx-background-size: stretch;
+}
 .Flash{
     -fx-background-image:url("flash");
     -fx-background-size: stretch;

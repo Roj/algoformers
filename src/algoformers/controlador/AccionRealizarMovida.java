@@ -45,7 +45,7 @@ public class AccionRealizarMovida implements EventHandler<ActionEvent> {
     		Ubicable aux = casillaActual.getUbicable();
     		casillaActual.setUbicable(casillaInicioMov.getUbicable());
     		casillaInicioMov.setUbicable(aux);
-    		casillaInicioMov.getStyleClass().remove("Optimus");
+    		casillaInicioMov.getStyleClass().remove(algActual.getStyle());
     	} catch (ObjetivoMuyLejosException|SuperficieNoAtravesableException e) {
     		Posicion posFinalAlgoformer = algActual.obtenerPosicion();
     		
@@ -55,7 +55,7 @@ public class AccionRealizarMovida implements EventHandler<ActionEvent> {
     	    		Ubicable aux = casilla.getUbicable();
     	    		casilla.setUbicable(casillaInicioMov.getUbicable());
     	    		casillaInicioMov.setUbicable(aux);   				
-    	    		casillaInicioMov.getStyleClass().remove("Optimus");
+    	    		casilla.getStyleClass().remove(algActual.getStyle());
     	    		
     	    		// esto es feo
     	    		this.juego.avanzarTurno();

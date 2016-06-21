@@ -133,4 +133,5 @@ public class Casilla extends Button {
             this.getStyleClass().add("NebulosaDeAndromeda");
         }
 
+
     }
