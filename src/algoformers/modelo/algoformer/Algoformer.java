@@ -9,6 +9,7 @@ import algoformers.modelo.superficie.SuperficieNoAtravesableException;
 import algoformers.modelo.tablero.Ubicable;
 import algoformers.modelo.buffs.Buff;
 import algoformers.vista.Casilla;
+import algoformers.vista.VistaAlgoformer;
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -22,13 +23,15 @@ public abstract class Algoformer implements Ubicable {
     protected String nombre;
     protected int vida;
     
+    protected VistaAlgoformer vistaAlgoformer;
     protected HashSet<Buff> buffs;
     
-    public Algoformer(int vida, ModoAlgoformer modo1, ModoAlgoformer modo2) {
+    public Algoformer(int vida, ModoAlgoformer modo1, ModoAlgoformer modo2, VistaAlgoformer vista) {
         this.vida = vida;
         this.modoActual = modo1;
         this.otroModo = modo2;
         this.buffs = new HashSet<>();
+        this.vistaAlgoformer = vista;
     }	
     @Override
     public void establecerPosicion(Posicion pos) {
@@ -135,5 +138,12 @@ public abstract class Algoformer implements Ubicable {
     public void setUbicable(Casilla casilla) {
         casilla.setUbicable(this);
     }
+ 
+    public String getStyle(){
+        return this.vistaAlgoformer.getStyle();
+    }
     
+    public String getName(){
+        return this.vistaAlgoformer.getName();
+    }
 }

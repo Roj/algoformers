@@ -1,11 +1,14 @@
 package algoformers.modelo.algoformer;
 
+import algoformers.vista.VistaAlgoformer;
+
 public class FabricaAlgoformers {
     public Algoformer crearOptimus() {	
         ModoAlgoformer humanoide = new ModoHumanoide(50,2,2);
         ModoAlgoformer alterno = new ModoTerrestre(15,4,5);
         
-        Algoformer optimus = new Autobot(500,humanoide,alterno);
+        VistaAlgoformer vistaOptimus = new VistaAlgoformer("Optimus","Optimus");
+        Algoformer optimus = new Autobot(500,humanoide,alterno,vistaOptimus);
         
         return optimus;
     }
@@ -13,7 +16,8 @@ public class FabricaAlgoformers {
         ModoAlgoformer humanoide = new ModoHumanoide(40,1,2);
         ModoAlgoformer alterno = new ModoTerrestre(20,3,5);
         
-        Algoformer bambelbi = new Autobot(350,humanoide,alterno);
+        VistaAlgoformer vistaBumblebee = new VistaAlgoformer("Bumblebee","Bumblebee");
+        Algoformer bambelbi = new Autobot(350,humanoide,alterno,vistaBumblebee);
         
         return bambelbi;
     }
@@ -21,7 +25,8 @@ public class FabricaAlgoformers {
         ModoAlgoformer humanoide = new ModoHumanoide(5,5,1);
         ModoAlgoformer alterno = new ModoAereo(35,2,8);
         
-        Algoformer ratchet = new Autobot(150,humanoide,alterno);
+        VistaAlgoformer vistaRatchet = new VistaAlgoformer("Ratchet","Ratchet");
+        Algoformer ratchet = new Autobot(150,humanoide,alterno,vistaRatchet);
         
         return ratchet;
     }
@@ -31,7 +36,8 @@ public class FabricaAlgoformers {
         ModoAlgoformer humanoide = new ModoHumanoide(10,3,1);
         ModoAlgoformer alterno = new ModoAereo(55,2,8);
         
-        Algoformer megatron = new Decepticon(550,humanoide,alterno);
+        VistaAlgoformer vistaMegatron = new VistaAlgoformer("Megatron","Megatron");
+        Algoformer megatron = new Decepticon(550,humanoide,alterno,vistaMegatron);
         
         return megatron;
     }	
@@ -41,7 +47,8 @@ public class FabricaAlgoformers {
         ModoAlgoformer humanoide = new ModoHumanoide(30,3,1);
         ModoAlgoformer alterno = new ModoTerrestre(30,3,8);
         
-        Algoformer boncrasher = new Decepticon(200,humanoide,alterno);
+        VistaAlgoformer vistaBonecrusher = new VistaAlgoformer("Bonecrusher","Bonecrusher");
+        Algoformer boncrasher = new Decepticon(200,humanoide,alterno,vistaBonecrusher);
         
         return boncrasher;
     }	
@@ -51,7 +58,8 @@ public class FabricaAlgoformers {
         ModoAlgoformer humanoide = new ModoHumanoide(10,5,2);
         ModoAlgoformer alterno = new ModoTerrestre(25,2,6);
         
-        Algoformer frenzy = new Decepticon(400,humanoide,alterno);
+        VistaAlgoformer vistaFrenzy = new VistaAlgoformer("Frenzy","Frenzy");
+        Algoformer frenzy = new Decepticon(400,humanoide,alterno,vistaFrenzy);
         
         return frenzy;
     }	
