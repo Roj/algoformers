@@ -2,7 +2,7 @@ package algoformers;
 
 import algoformers.modelo.superficie.Nube;
 import algoformers.modelo.buffs.EncadenadoException;
-import algoformers.modelo.juego.Tablero;
+import algoformers.modelo.tablero.Tablero;
 import algoformers.modelo.juego.ObjetivoMuyLejosException;
 import algoformers.modelo.superficie.NebulosaDeAndromeda;
 import algoformers.modelo.superficie.Rocosa;

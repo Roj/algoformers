@@ -8,7 +8,7 @@ package algoformers;
 
 import algoformers.modelo.tablero.Posicion;
 import algoformers.modelo.tablero.Vacio;
-import algoformers.modelo.juego.Tablero;
+import algoformers.modelo.tablero.Tablero;
 import algoformers.modelo.superficie.Rocosa;
 import algoformers.modelo.algoformer.FabricaAlgoformers;
 import algoformers.modelo.juego.NoSuperponibleException;
