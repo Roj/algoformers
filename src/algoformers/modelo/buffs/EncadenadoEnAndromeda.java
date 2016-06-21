@@ -6,6 +6,7 @@
 package algoformers.modelo.buffs;
 
 import algoformers.modelo.algoformer.Algoformer;
+import algoformers.vista.Casilla;
 import java.util.Iterator;
 
 /**
@@ -67,5 +68,11 @@ public class EncadenadoEnAndromeda implements Buff {
             iter.remove();
         }
     }
+
+    @Override
+    public void setEfecto(Casilla casilla) {
+        //No se implementa porque no es un bonus, no se visualiza
+    }
+    
     
 }

@@ -2,6 +2,7 @@ package algoformers.modelo.algoformer;
 
 import algoformers.modelo.juego.AtaqueInvalidoException;
 import algoformers.modelo.tablero.Ubicable;
+import algoformers.vista.Casilla;
 
 public class Autobot extends Algoformer {	
     public Autobot(int vida, ModoAlgoformer modo1, ModoAlgoformer modo2) {
@@ -21,4 +22,5 @@ public class Autobot extends Algoformer {
         vida -= algoformer.obtenerPuntosAtaque();
         //TODO: revisar muerte	
     }
+   
 }

@@ -12,6 +12,7 @@ import algoformers.modelo.algoformer.Decepticon;
 import algoformers.modelo.algoformer.Algoformer;
 import algoformers.modelo.algoformer.Autobot;
 import algoformers.modelo.buffs.Buff;
+import algoformers.vista.Casilla;
 
 /**
  *
@@ -55,4 +56,10 @@ public class Bonus implements Ubicable {
         return this.buffer;
     }
         
+    //Double dispatch
+    @Override
+    public void setUbicable(Casilla casilla) {
+        casilla.setUbicable(this);
+    }
+    
 }

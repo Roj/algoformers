@@ -4,6 +4,7 @@ import algoformers.modelo.algoformer.Algoformer;
 import algoformers.modelo.algoformer.ModoAereo;
 import algoformers.modelo.algoformer.ModoHumanoide;
 import algoformers.modelo.algoformer.ModoTerrestre;
+import algoformers.vista.Casilla;
 
 public class Rocosa extends Tierra {
     @Override
@@ -18,4 +19,8 @@ public class Rocosa extends Tierra {
     public void accionSobreAlgoformer(ModoHumanoide modo, Algoformer algof) {
 
     }
+    public void setSuperficie(Casilla casilla) {
+        casilla.setSuperficie(this);
+    }
+
 }

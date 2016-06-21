@@ -6,6 +6,7 @@ import algoformers.modelo.algoformer.ModoHumanoide;
 import algoformers.modelo.algoformer.ModoTerrestre;
 import algoformers.modelo.juego.Movimiento;
 import algoformers.modelo.superficie.Tierra;
+import algoformers.vista.Casilla;
 
 public class Pantano extends Tierra {
     @Override
@@ -32,5 +33,9 @@ public class Pantano extends Tierra {
     public void ajustarPuntosDeMovimiento(Movimiento mov, ModoHumanoide modo) {
         mov.modificarPuntosDeMovimiento(-1);
     }
+    public void setSuperficie(Casilla casilla) {
+        casilla.setSuperficie(this);
+    }
+
     
 }

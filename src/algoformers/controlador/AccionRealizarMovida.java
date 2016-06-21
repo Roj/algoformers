@@ -34,10 +34,6 @@ public class AccionRealizarMovida implements EventHandler<ActionEvent> {
         
     	this.contenedorJuego.dejarDeMostrarCasillas(casillasPosiblesMovimiento);
     	
-    	for ( Casilla casilla : this.contenedorJuego.getCaminoMarcado()) {
-    		casilla.setBlendMode(null);
-    	}
-    	
     	this.contenedorJuego.borrarCaminoMarcado();  
     }
     

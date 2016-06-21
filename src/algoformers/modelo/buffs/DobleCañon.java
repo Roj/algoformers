@@ -6,6 +6,7 @@
 package algoformers.modelo.buffs;
 
 import algoformers.modelo.algoformer.Algoformer;
+import algoformers.vista.Casilla;
 import java.util.Iterator;
 
 /**
@@ -70,6 +71,11 @@ public class DobleCañon implements Buff{
             algoformer.obtenerModoActual().establecerPuntosAtaque(ataque);
             iter.remove();
         }
+    }
+
+    @Override
+    public void setEfecto(Casilla casilla) {
+        casilla.setEfecto(this);
     }
 
 }

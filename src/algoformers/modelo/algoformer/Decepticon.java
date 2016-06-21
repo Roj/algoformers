@@ -22,4 +22,5 @@ public class Decepticon extends Algoformer {
         vida -= algoformer.obtenerPuntosAtaque();
         //TODO: revisar muerte	
     }
+    
 }

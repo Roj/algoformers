@@ -6,6 +6,7 @@
 package algoformers.modelo.buffs;
 
 import algoformers.modelo.algoformer.Algoformer;
+import algoformers.vista.Casilla;
 import java.util.Iterator;
 
 /**
@@ -69,5 +70,10 @@ public class Flash implements Buff {
             algoformer.obtenerModoActual().establecerVelocidad(velocidad);
             iter.remove();
         }    
+    }
+
+    @Override
+    public void setEfecto(Casilla casilla) {
+        casilla.setEfecto(this);
     }
 }

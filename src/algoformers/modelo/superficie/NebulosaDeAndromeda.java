@@ -11,6 +11,7 @@ import algoformers.modelo.algoformer.Algoformer;
 import algoformers.modelo.algoformer.ModoHumanoide;
 import algoformers.modelo.superficie.Aire;
 import algoformers.modelo.buffs.EncadenadoEnAndromeda;
+import algoformers.vista.Casilla;
 
 /**
  *
@@ -30,4 +31,9 @@ public class NebulosaDeAndromeda extends Aire {
     public void accionSobreAlgoformer(ModoHumanoide modo, Algoformer algof) {
         throw new SuperficieNoAtravesableException();
     }
+    
+    public void setSuperficie(Casilla casilla) {
+        casilla.setSuperficie(this);
+    }
+
 }

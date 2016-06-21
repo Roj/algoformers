@@ -8,6 +8,7 @@ package algoformers.modelo.tablero;
 import algoformers.modelo.algoformer.Decepticon;
 import algoformers.modelo.algoformer.Algoformer;
 import algoformers.modelo.algoformer.Autobot;
+import algoformers.vista.Casilla;
 
 /**
  *
@@ -23,5 +24,8 @@ public interface Ubicable {
     public void recibirAtaque(Autobot algoformer);
     
     public void recibirAtaque(Decepticon algoformer);
+
+    //Para el double dispatch
+    public void setUbicable(Casilla casilla);
 }
 
