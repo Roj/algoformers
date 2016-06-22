@@ -27,6 +27,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import algoformers.controlador.AccionAtacar;
+import algoformers.controlador.AccionCambiarModo;
 import algoformers.controlador.AccionCasilla;
 import algoformers.controlador.AccionMarcarCamino;
 import algoformers.controlador.AccionMarcarCasilla;
@@ -57,6 +58,7 @@ public class ContenedorJuego extends Contenedor {
     Button botonAtacar;
     Button botonRealizarAtaque;
     Button botonRealizarMovida;
+    Button botonCambiarModo;
     Juego juego;
     Label etiquetaTurnoActual;
     Label etiquetaEstadisticasAlgoformer;
@@ -97,6 +99,7 @@ public class ContenedorJuego extends Contenedor {
         this.crearBotonPasarTurno(false);
 	this.crearBotonMover(true);
 	this.crearBotonAtacar(true);
+        this.crearBotonCambiarModo(true);
         this.crearEtiquetaJugadorActual();
         this.crearTablero();        
 
@@ -288,11 +291,21 @@ public class ContenedorJuego extends Contenedor {
         this.botonRealizarMovida.setDisable(desactivado);   	
     }
     
+    public void crearBotonCambiarModo(boolean desactivado) {
+    	// Boton para mover al algoformer
+    	this.getChildren().remove(botonCambiarModo);
+		this.botonCambiarModo = new Button();
+		this.colocarBoton(botonCambiarModo, "Cambiar Modo", 20, -630, -220);
+		this.botonCambiarModo.setPrefSize(170, 50);
+		this.botonCambiarModo.setOnAction(new AccionCambiarModo(this, this.juego));
+        this.botonCambiarModo.setDisable(desactivado);   	
+    }
+    
     public void crearBotonPasarTurno(boolean desactivado) {
         // Boton para pasar turno
     	this.getChildren().remove(botonPasarTurno);
 		this.botonPasarTurno = new Button();
-		this.colocarBoton(botonPasarTurno, "Pasar Turno", 20, -630, -220);
+		this.colocarBoton(botonPasarTurno, "Pasar Turno", 20, -630, -170);
 		this.botonPasarTurno.setPrefSize(170, 50);
 		this.botonPasarTurno.setOnAction(new AccionPasarTurno(this, this.juego));    
 		this.botonPasarTurno.setDisable(desactivado); 

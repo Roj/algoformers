@@ -46,6 +46,7 @@ public class AccionMarcarCasilla extends AccionCasilla {
         for ( Algoformer algoformer : algoformersJugadorActual ) {
         	if (ubicable == algoformer) {
         		this.contenedorJuego.crearBotonMover(false);
+                        this.contenedorJuego.crearBotonCambiarModo(false);
         		this.contenedorJuego.getCasillaActual().setSuperficie();
         		this.contenedorJuego.setCasillaActual(casilla);
         		this.contenedorJuego.crearEstadisticasAlgoformer(algoformer);       		
