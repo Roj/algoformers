@@ -27,6 +27,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import algoformers.controlador.AccionAtacar;
+import algoformers.controlador.AccionCambiarModo;
 import algoformers.controlador.AccionCasilla;
 import algoformers.controlador.AccionMarcarCamino;
 import algoformers.controlador.AccionMarcarCasilla;
@@ -37,6 +38,7 @@ import algoformers.controlador.AccionRealizarMovida;
 import algoformers.controlador.AccionTocarCasilla;
 import algoformers.modelo.superficie.Aire;
 import algoformers.modelo.superficie.Superficie;
+import algoformers.modelo.superficie.SuperficieNoAtravesableException;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -57,6 +59,7 @@ public class ContenedorJuego extends Contenedor {
     Button botonAtacar;
     Button botonRealizarAtaque;
     Button botonRealizarMovida;
+    Button botonCambiarModo;
     Juego juego;
     Label etiquetaTurnoActual;
     Label etiquetaEstadisticasAlgoformer;
@@ -97,6 +100,7 @@ public class ContenedorJuego extends Contenedor {
         this.crearBotonPasarTurno(false);
 	this.crearBotonMover(true);
 	this.crearBotonAtacar(true);
+        this.crearBotonCambiarModo(true);
         this.crearEtiquetaJugadorActual();
         this.crearTablero();        
 
@@ -119,9 +123,8 @@ public class ContenedorJuego extends Contenedor {
         this.grilla.setGridLinesVisible(true);
         
         for (Posicion pos : posiciones) {
-            Casilla casilla = new Casilla(pos.obtenerX(),pos.obtenerY());
+            Casilla casilla = new Casilla(pos.obtenerX(),pos.obtenerY(),pos.obtenerSuperficie());
             casilla.setTamanio(120, 100);
-            casilla.setSuperficie(pos.obtenerSuperficie());
             casilla.setUbicable(tablero.obtenerUbicable(pos));
             if (pos.obtenerSuperficie() instanceof Aire){
                 casillas_aire[pos.obtenerX()][pos.obtenerY()] = casilla;
@@ -145,9 +148,21 @@ public class ContenedorJuego extends Contenedor {
         }  
     }
 
-    public List<Casilla> getCasillasAdyascentes(Casilla casilla) {
-    	List<Casilla> adyascentes = new ArrayList<Casilla>();
+    public List<Casilla> getCasillasAdyacentes(Casilla casilla) {
+    	List<Casilla> adyacentes = new ArrayList<Casilla>();
     	Casilla[][] casillas = new Casilla[dimX][dimY];
+        int coordX = casilla.getX();
+        int coordY = casilla.getY();
+        
+        //Agrego a adyacentes la casilla en misma posicion y otra superficie
+        if (casillas_tierra[coordX][coordY] == casilla){
+                    casillas = casillas_tierra;
+                    adyacentes.add(casillas_aire[coordX][coordY]);
+                }
+        if (casillas_aire[casilla.getX()][casilla.getY()] == casilla){
+                    casillas = casillas_aire;
+                    adyacentes.add(casillas_tierra[coordX][coordY]);
+        }
         
     	int[] puntosVecinos = new int[] { 
     			-1, 0,
@@ -157,13 +172,6 @@ public class ContenedorJuego extends Contenedor {
     	};
     	
     	for (int i = 0; i < puntosVecinos.length; i++) {
-                if (casillas_tierra[casilla.getX()][casilla.getY()] == casilla){
-                    casillas = casillas_tierra;
-                }
-                if (casillas_aire[casilla.getX()][casilla.getY()] == casilla){
-                    casillas = casillas_aire;
-                }
-                
                 int diferenciaX = puntosVecinos[i];
     		int diferenciaY = puntosVecinos[++i];
     		
@@ -172,31 +180,36 @@ public class ContenedorJuego extends Contenedor {
     		
     		if (vecinoX >= 0 && vecinoX < dimX && vecinoY >= 0 && vecinoY < dimY) {
 //cambiar
-                        adyascentes.add(casillas[vecinoX][vecinoY]);  	
+                        adyacentes.add(casillas[vecinoX][vecinoY]);  	
     		}
     	}
     	
-    	return adyascentes;
+    	return adyacentes;
     }
-    
     public List<Casilla> getCasillasPosiblesMovimiento(Casilla casilla) {
-    	List<Casilla> adyascentes = getCasillasAdyascentes(casilla);
-    	
-    	for (Iterator<Casilla> iterador = adyascentes.iterator(); iterador.hasNext(); ) {
-    		Casilla casillaAdyascente = iterador.next();
+    	List<Casilla> adyacentes = getCasillasAdyacentes(casilla);
+    	Algoformer algoformerActual = this.getAlgoformerActual();
+        
+    	for (Iterator<Casilla> iterador = adyacentes.iterator(); iterador.hasNext(); ) {
+    		Casilla casillaAdyacente = iterador.next();
     		try {
-    			casillaAdyascente.getUbicable().reemplazar(this.algoformerActual);
-    			
-        		if (caminoMarcado.contains(casillaAdyascente)) {
+//    			casillaAdyacente.getUbicable().reemplazar(this.algoformerActual);
+                        casillaAdyacente.getUbicable().puedeSerReemplazado();
+                        Superficie superficieAdyacente = casillaAdyacente.getSuperficie();
+                        algoformerActual.puedeAtravesarSuperficie(superficieAdyacente);
+                        
+        		if (caminoMarcado.contains(casillaAdyacente)) {
         			iterador.remove();
         		}    		
         		
     		} catch (NoSuperponibleException e) {
     			iterador.remove();
-    		}
+                } catch (SuperficieNoAtravesableException e) {
+                        iterador.remove();
+                }
     	}
     	
-    	return adyascentes;
+    	return adyacentes;
     }
     
     public List<Casilla> getCasillasPosiblesAtaque(Casilla casilla) {
@@ -204,36 +217,36 @@ public class ContenedorJuego extends Contenedor {
     	    			    
     	int distanciaAtaque = algoformerActual.obtenerDistanciaAtaque();
     	
-    	getAdyascentesAtacables(casilla, distanciaAtaque, casillasPosiblesAtaques);
-    	//getAdyascentesAtacables(casilla, distanciaAtaque, casillasPosiblesAtaques, casilla);
+    	getAdyacentesAtacables(casilla, distanciaAtaque, casillasPosiblesAtaques);
+    	//getAdyacentesAtacables(casilla, distanciaAtaque, casillasPosiblesAtaques, casilla);
     	
     	return casillasPosiblesAtaques;
     }
-    private void getAdyascentesAtacables(Casilla casilla, int distanciaAtaque, List<Casilla> casillasPosiblesAtaques) {
+    private void getAdyacentesAtacables(Casilla casilla, int distanciaAtaque, List<Casilla> casillasPosiblesAtaques) {
     	if (distanciaAtaque == 0)
     		return;
     	
-    	List<Casilla> adyascentes = getCasillasAdyascentes(casilla);
+    	List<Casilla> adyacentes = getCasillasAdyacentes(casilla);
     	List<Algoformer> algoformersEnemigos = this.juego.obtenerJugadorEnEspera().obtenerListaAlgoformers();
     	  	
-    	for (Casilla adyascente : adyascentes) {
+    	for (Casilla adyascente : adyacentes) {
     			if (algoformersEnemigos.contains(adyascente.getUbicable())) {
     				casillasPosiblesAtaques.add(adyascente);
     			}
     			// Aca deberia incluir los bonus al igual que los algoformers
-    			getAdyascentesAtacables(adyascente, distanciaAtaque - 1, casillasPosiblesAtaques);		
+    			getAdyacentesAtacables(adyascente, distanciaAtaque - 1, casillasPosiblesAtaques);		
     	}
     }    
-    /*private void getAdyascentesAtacables(Casilla casilla, int distanciaAtaque, List<Casilla> casillasPosiblesAtaques, Casilla excluir) {
+    /*private void getAdyacentesAtacables(Casilla casilla, int distanciaAtaque, List<Casilla> casillasPosiblesAtaques, Casilla excluir) {
     	if (distanciaAtaque == 0)
     		return;
     	
-    	List<Casilla> adyascentes = getCasillasAdyascentes(casilla);
+    	List<Casilla> adyacentes = getCasillasAdyacentes(casilla);
     	
-    	for (Casilla adyascente : adyascentes) {
+    	for (Casilla adyascente : adyacentes) {
 			if (adyascente != excluir) {
 				casillasPosiblesAtaques.add(adyascente);
-				getAdyascentesAtacables(adyascente, distanciaAtaque - 1, casillasPosiblesAtaques, excluir);
+				getAdyacentesAtacables(adyascente, distanciaAtaque - 1, casillasPosiblesAtaques, excluir);
 			}    		
     	}
     }*/
@@ -293,11 +306,21 @@ public class ContenedorJuego extends Contenedor {
         this.botonRealizarMovida.setDisable(desactivado);   	
     }
     
+    public void crearBotonCambiarModo(boolean desactivado) {
+    	// Boton para mover al algoformer
+    	this.getChildren().remove(botonCambiarModo);
+		this.botonCambiarModo = new Button();
+		this.colocarBoton(botonCambiarModo, "Cambiar Modo", 20, -630, -220);
+		this.botonCambiarModo.setPrefSize(170, 50);
+		this.botonCambiarModo.setOnAction(new AccionCambiarModo(this, this.juego));
+        this.botonCambiarModo.setDisable(desactivado);   	
+    }
+    
     public void crearBotonPasarTurno(boolean desactivado) {
         // Boton para pasar turno
     	this.getChildren().remove(botonPasarTurno);
 		this.botonPasarTurno = new Button();
-		this.colocarBoton(botonPasarTurno, "Pasar Turno", 20, -630, -220);
+		this.colocarBoton(botonPasarTurno, "Pasar Turno", 20, -630, -170);
 		this.botonPasarTurno.setPrefSize(170, 50);
 		this.botonPasarTurno.setOnAction(new AccionPasarTurno(this, this.juego));    
 		this.botonPasarTurno.setDisable(desactivado); 
@@ -305,7 +328,6 @@ public class ContenedorJuego extends Contenedor {
     
     public void crearEstadisticasAlgoformer(Algoformer algoformer) {
     	etiquetaEstadisticasAlgoformer = new Label();
-//    	etiquetaEstadisticasAlgoformer.setFont(Font.font("Tahoma", FontWeight.BOLD, 18));
         etiquetaEstadisticasAlgoformer.getStyleClass().add("texto");
         etiquetaEstadisticasAlgoformer.getStylesheets().add("texto.css");
     	etiquetaEstadisticasAlgoformer.setText(
@@ -315,7 +337,6 @@ public class ContenedorJuego extends Contenedor {
         		"Velocidad: " + String.valueOf(algoformer.obtenerVelocidad()) + "\n" +
         		"Dist. Ataque: " + String.valueOf(algoformer.obtenerDistanciaAtaque()) + "\n"
         );
-//    	etiquetaEstadisticasAlgoformer.setTextFill(Color.web("#F8FF15"));        
         this.getChildren().add(etiquetaEstadisticasAlgoformer);
         etiquetaEstadisticasAlgoformer.setTranslateX(-620);
         etiquetaEstadisticasAlgoformer.setTranslateY(0);      	

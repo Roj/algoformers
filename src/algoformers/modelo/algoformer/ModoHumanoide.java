@@ -16,4 +16,9 @@ public class ModoHumanoide extends ModoAlgoformer {
     public void ajustarPuntosDeMovimiento(Movimiento mov, Superficie sup) {
         sup.ajustarPuntosDeMovimiento(mov,this);
     }
+
+    @Override
+    public void puedeAtravesarSuperficie(Superficie superficie) {
+        superficie.puedeSerAtravesada(this);
+    }
 }

@@ -36,4 +36,19 @@ public class NebulosaDeAndromeda extends Aire {
         casilla.setSuperficie(this);
     }
 
+    @Override
+    public void puedeSerAtravesada(ModoAereo modo) {
+        //Puede atravesar nebulosa
+    }
+
+    @Override
+    public void puedeSerAtravesada(ModoTerrestre modo) {
+        throw new SuperficieNoAtravesableException();
+    }
+
+    @Override
+    public void puedeSerAtravesada(ModoHumanoide modo) {
+        throw new SuperficieNoAtravesableException();
+    }
+
 }

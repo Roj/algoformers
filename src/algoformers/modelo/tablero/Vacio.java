@@ -48,5 +48,10 @@ public class Vacio implements Ubicable {
     public void setUbicable(Casilla casilla) {
         casilla.setUbicable(this);
     }
+
+    @Override
+    public void puedeSerReemplazado() {
+        //Puede ser reemplazado
+    }
     
 }

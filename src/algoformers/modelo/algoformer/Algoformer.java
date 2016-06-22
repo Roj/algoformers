@@ -8,6 +8,7 @@ import algoformers.modelo.tablero.Posicion;
 import algoformers.modelo.superficie.SuperficieNoAtravesableException;
 import algoformers.modelo.tablero.Ubicable;
 import algoformers.modelo.buffs.Buff;
+import algoformers.modelo.superficie.Superficie;
 import algoformers.vista.Casilla;
 import algoformers.vista.VistaAlgoformer;
 import java.util.HashSet;
@@ -45,9 +46,11 @@ public abstract class Algoformer implements Ubicable {
         ModoAlgoformer aux = this.modoActual;
         //verificamos que la nueva superficie acepte la superficie
         try {
-            this.otroModo.aceptarSuperficie(this.posicion.obtenerSuperficie(), this);
+
+            this.modoActual.aceptarSuperficie(this.posicion.obtenerSuperficie(), this);
             this.modoActual = this.otroModo;
             this.otroModo = aux;
+            this.vistaAlgoformer.cambiarStyle();
         } catch (SuperficieNoAtravesableException e) {
             throw new NoSePuedeTransformarException();
         }
@@ -92,7 +95,7 @@ public abstract class Algoformer implements Ubicable {
     public void mover(Posicion nuevaPosicion) {
         //verificacion
         this.avisarABuffsMovida();
-        this.modoActual.aceptarSuperficie(nuevaPosicion.obtenerSuperficie(),this);
+        this.modoActual.aceptarSuperficie(nuevaPosicion.obtenerSuperficie(), this);
         //todo bien, nos cambiamos
         this.establecerPosicion(nuevaPosicion);
     }       
@@ -146,4 +149,9 @@ public abstract class Algoformer implements Ubicable {
     public String getName(){
         return this.vistaAlgoformer.getName();
     }
+    
+    public void puedeAtravesarSuperficie(Superficie superficie){
+        this.modoActual.puedeAtravesarSuperficie(superficie);
+    }
+
 }

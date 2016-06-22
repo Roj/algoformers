@@ -34,7 +34,7 @@ public class AccionMarcarCasilla extends AccionCasilla {
     	
     	List<Algoformer> algoformersJugadorActual = this.juego.obtenerJugadorActual().obtenerListaAlgoformers();
     	List<Algoformer> algoformersJugadorEnEspera = this.juego.obtenerJugadorEnEspera().obtenerListaAlgoformers();
-    	
+        
         for ( Algoformer algoformer : algoformersJugadorEnEspera ) {
         	if (ubicable == algoformer) {
         		this.contenedorJuego.getCasillaActual().setSuperficie();
@@ -46,6 +46,7 @@ public class AccionMarcarCasilla extends AccionCasilla {
         for ( Algoformer algoformer : algoformersJugadorActual ) {
         	if (ubicable == algoformer) {
         		this.contenedorJuego.crearBotonMover(false);
+                        this.contenedorJuego.crearBotonCambiarModo(false);
         		this.contenedorJuego.getCasillaActual().setSuperficie();
         		this.contenedorJuego.setCasillaActual(casilla);
         		this.contenedorJuego.crearEstadisticasAlgoformer(algoformer);       		

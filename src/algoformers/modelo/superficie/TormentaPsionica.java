@@ -40,4 +40,19 @@ public class TormentaPsionica extends Aire {
         casilla.setSuperficie(this);
     }
 
+    @Override
+    public void puedeSerAtravesada(ModoAereo modo) {
+        //Puede atravesar tormenta
+    }
+
+    @Override
+    public void puedeSerAtravesada(ModoTerrestre modo) {
+        throw new SuperficieNoAtravesableException();
+    }
+
+    @Override
+    public void puedeSerAtravesada(ModoHumanoide modo) {
+        throw new SuperficieNoAtravesableException();
+    }
+
 }

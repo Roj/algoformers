@@ -21,6 +21,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import static com.sun.javafx.fxml.expression.Expression.and;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
