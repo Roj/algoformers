@@ -123,16 +123,21 @@ public class ContenedorJuego extends Contenedor {
             casilla.setTamanio(120, 100);
             casilla.setSuperficie(pos.obtenerSuperficie());
             casilla.setUbicable(tablero.obtenerUbicable(pos));
-            if (pos.obtenerSuperficie() instanceof Tierra){
-                casillas_tierra[pos.obtenerX()][pos.obtenerY()] = casilla;
+            if (pos.obtenerSuperficie() instanceof Aire){
+                casillas_aire[pos.obtenerX()][pos.obtenerY()] = casilla;
                 this.grilla.add(casilla,pos.obtenerX(),pos.obtenerY());
                 //Minimizado
                 casilla.setTamanio(60, 50);
                 casilla.setTranslateY(-25);
+                casilla.getStyleClass().add("Minimizado");
+                casilla.toFront();
             }
             else{
-                casillas_aire[pos.obtenerX()][pos.obtenerY()] = casilla;
+                casillas_tierra[pos.obtenerX()][pos.obtenerY()] = casilla;
                 this.grilla.add(casilla,pos.obtenerX(),pos.obtenerY());
+                //Maximizado
+                casilla.getStyleClass().add("Maximizado");
+                casilla.toBack();
             }
             casilla.setOnAction(new AccionTocarCasilla(this, casilla, this.juego, pos.obtenerX(), pos.obtenerY()));
             // Necesito hacer esto para el metodo setCasillaActual
