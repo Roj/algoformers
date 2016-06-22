@@ -48,15 +48,15 @@ public class AccionRealizarMovida implements EventHandler<ActionEvent> {
     		casillaInicioMov.getStyleClass().remove(algActual.getStyle());
     	} catch (ObjetivoMuyLejosException|SuperficieNoAtravesableException e) {
     		Posicion posFinalAlgoformer = algActual.obtenerPosicion();
-    		
+    		Casilla casillaAnterior = casillaInicioMov;
     		for (Casilla casilla : caminoMarcado) {
     			if (casilla.getX() == posFinalAlgoformer.obtenerX() &&
     				casilla.getY() == posFinalAlgoformer.obtenerY()) {
     	    		Ubicable aux = casilla.getUbicable();
     	    		casilla.setUbicable(casillaInicioMov.getUbicable());
     	    		casillaInicioMov.setUbicable(aux);   				
-    	    		casilla.getStyleClass().remove(algActual.getStyle());
-    	    		
+    	    		casillaAnterior.getStyleClass().remove(algActual.getStyle());
+    	    		casillaAnterior = casilla;
     	    		// esto es feo
     	    		this.juego.avanzarTurno();
     			}    				
