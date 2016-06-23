@@ -1,6 +1,7 @@
 package algoformers.modelo.algoformer;
 
 import algoformers.modelo.juego.AtaqueInvalidoException;
+import algoformers.modelo.juego.NoSuperponibleException;
 import algoformers.modelo.tablero.Ubicable;
 import algoformers.vista.VistaAlgoformer;
 
@@ -22,6 +23,11 @@ public class Decepticon extends Algoformer {
         this.avisarABuffsAtacado();
         vida -= algoformer.obtenerPuntosAtaque();
         //TODO: revisar muerte	
+    }
+
+    @Override
+    public void puedeSerReemplazado() {
+        throw new NoSuperponibleException();
     }
     
 }

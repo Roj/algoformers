@@ -23,4 +23,19 @@ public class Rocosa extends Tierra {
         casilla.setSuperficie(this);
     }
 
+    @Override
+    public void puedeSerAtravesada(ModoAereo modo) {
+        //Puede sobrevolar rocosa
+    }
+
+    @Override
+    public void puedeSerAtravesada(ModoTerrestre modo) {
+        //Puede atravesar rocosa
+    }
+
+    @Override
+    public void puedeSerAtravesada(ModoHumanoide modo) {
+        //Puede atravesar rocosa
+    }
+
 }

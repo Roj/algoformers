@@ -29,8 +29,11 @@ public class AccionCambiarModo implements EventHandler<ActionEvent>{
 
         @Override
     public void handle(ActionEvent event) {
-    	Algoformer algActual = this.contenedorJuego.getAlgoformerActual();
-    	algActual.cambiarModo();
+    	Algoformer algActual = this.contenedorJuego.getAlgoformerActual(); 
+        Casilla casillaActual = this.contenedorJuego.getCasillaActual();
+        casillaActual.getStyleClass().remove(algActual.getStyle());
+        algActual.cambiarModo();
+        casillaActual.getStyleClass().add(algActual.getStyle());
         this.contenedorJuego.crearBotonPasarTurno(true);
         this.contenedorJuego.crearBotonAtacar(true);
         this.contenedorJuego.crearBotonMover(true);
@@ -38,6 +41,7 @@ public class AccionCambiarModo implements EventHandler<ActionEvent>{
         this.contenedorJuego.crearBotonCombinarAlgos(true);
         this.contenedorJuego.borrarEstadisticasAlgoformer();
         this.contenedorJuego.crearEstadisticasAlgoformer(algActual);
+
         this.juego.avanzarTurno();
         this.contenedorJuego.pasarTurno();
         

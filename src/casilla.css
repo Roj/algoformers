@@ -47,39 +47,56 @@
 .CasillaMostrar{
     -fx-background-color:#37ec43;
 }
-.Optimus{
+.OptimusHumanoide{
     -fx-background-image: url("optimus.png");
-    -fx-background-size: stretch;
 }
-.Ratchet{
+.OptimusAlterno{
+    -fx-background-image: url("optimusAlterno.png");
+}
+.RatchetHumanoide{
     -fx-background-image: url("ratchet.png");
-    -fx-background-size: stretch;
 }
-.Bumblebee{
+.RatchetAlterno{
+    -fx-background-image: url("ratchetAlterno.png");
+}
+.BumblebeeHumanoide{
     -fx-background-image: url("bumblebee.png");
-    -fx-background-size: stretch;
 }
-.Megatron{
+.BumblebeeAlterno{
+    -fx-background-image: url("bumblebeeAlterno.png");
+}
+.MegatronHumanoide{
     -fx-background-image: url("megatron.png");
-    -fx-background-size: stretch;
 }
-.Frenzy{
+.MegatronAlterno{
+    -fx-background-image: url("megatronAlterno.png");
+}
+.FrenzyHumanoide{
     -fx-background-image: url("frenzy.png");
-    -fx-background-size: stretch;
 }
-.Bonecrusher{
+.FrenzyAlterno{
+    -fx-background-image: url("frenzyAlterno.png");
+}
+.BonecrusherHumanoide{
     -fx-background-image: url("bonecrusher.png");
-    -fx-background-size: stretch;
+}
+.BonecrusherAlterno{
+    -fx-background-image: url("bonecrusherAlterno.png");
 }
 .Flash{
     -fx-background-image:url("flash");
-    -fx-background-size: stretch;
 }
 .BurbujaInmaculada{
     -fx-background-image:url("burbujas");
-    -fx-background-size: stretch;
 }
 .DobleCañon{
     -fx-background-image:url("cañon");
+}
+.Maximizado{
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 50% 50%;
+    -fx-background-position: right bottom;
+}
+.Minimizado{
     -fx-background-size: stretch;
 }

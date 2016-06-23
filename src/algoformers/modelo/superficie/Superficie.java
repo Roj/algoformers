@@ -2,6 +2,7 @@ package algoformers.modelo.superficie;
 
 import algoformers.modelo.algoformer.Algoformer;
 import algoformers.modelo.algoformer.ModoAereo;
+import algoformers.modelo.algoformer.ModoAlgoformer;
 import algoformers.modelo.algoformer.ModoHumanoide;
 import algoformers.modelo.algoformer.ModoTerrestre;
 import algoformers.modelo.juego.Movimiento;
@@ -17,6 +18,9 @@ public abstract class Superficie {
     public abstract void ajustarPuntosDeMovimiento(Movimiento mov, ModoHumanoide modo);
 
     public abstract void setSuperficie(Casilla casilla);
-    
+
+    public abstract void puedeSerAtravesada(ModoAereo modo);
+    public abstract void puedeSerAtravesada(ModoTerrestre modo);
+    public abstract void puedeSerAtravesada(ModoHumanoide modo);    
     
 }

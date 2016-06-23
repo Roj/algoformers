@@ -12,19 +12,26 @@ package algoformers.vista;
 public class VistaAlgoformer{
 
     String nombre;
-    String style;
+    String styleModoActual;
+    String styleOtroModo;
     
-    public VistaAlgoformer(String nombre,String style){
+    public VistaAlgoformer(String nombre,String styleActual,String styleOtro){
         this.nombre = nombre;
-        this.style = style;
+        this.styleModoActual = styleActual;
+        this.styleOtroModo = styleOtro;
     }
     
     public String getStyle() {
-        return this.style;
+        return this.styleModoActual;
     }
     
     public String getName() {
         return this.nombre;
     }
     
+    public void cambiarStyle(){
+        String aux = this.styleModoActual;
+        this.styleModoActual = this.styleOtroModo;
+        this.styleOtroModo = aux;
+    }
 }

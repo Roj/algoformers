@@ -32,4 +32,6 @@ public abstract class ModoAlgoformer {
     }
     public abstract void aceptarSuperficie(Superficie sup, Algoformer algof);
     public abstract void ajustarPuntosDeMovimiento(Movimiento mov, Superficie sup);
+
+    public abstract void puedeAtravesarSuperficie(Superficie superficie);
 }

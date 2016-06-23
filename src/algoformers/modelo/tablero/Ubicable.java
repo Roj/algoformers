@@ -27,5 +27,7 @@ public interface Ubicable {
 
     //Para el double dispatch
     public void setUbicable(Casilla casilla);
+
+    public abstract void puedeSerReemplazado();
 }
 

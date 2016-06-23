@@ -37,5 +37,20 @@ public class Pantano extends Tierra {
         casilla.setSuperficie(this);
     }
 
+    @Override
+    public void puedeSerAtravesada(ModoAereo modo) {
+        //Puede sobrevolar pantano
+    }
+
+    @Override
+    public void puedeSerAtravesada(ModoTerrestre modo) {
+        //Puede atravesar pantano
+    }
+
+    @Override
+    public void puedeSerAtravesada(ModoHumanoide modo) {
+        throw new SuperficieNoAtravesableException();
+    }
+
     
 }

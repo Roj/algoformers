@@ -35,7 +35,7 @@ public class AccionMarcarCasilla extends AccionCasilla {
     	
     	List<Algoformer> algoformersJugadorActual = this.juego.obtenerJugadorActual().obtenerListaAlgoformers();
     	List<Algoformer> algoformersJugadorEnEspera = this.juego.obtenerJugadorEnEspera().obtenerListaAlgoformers();
-    	
+        
         for ( Algoformer algoformer : algoformersJugadorEnEspera ) {
         	if (ubicable == algoformer) {
         		this.contenedorJuego.getCasillaActual().setSuperficie();

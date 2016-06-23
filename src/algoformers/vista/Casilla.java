@@ -27,26 +27,23 @@ import javafx.scene.shape.Rectangle;
 
 public class Casilla extends Button {
 	
-	int x;
-	int y;
-        Superficie superficie;
 	String txt;
 	Posicion posicion;
 	Ubicable ubicable;
 	
-	public Casilla(int X, int Y) {
+	public Casilla(int X, int Y,Superficie sup) {
             this.getStylesheets().add("casilla.css");
 		txt = String.valueOf(X) + " - " +String.valueOf(Y);
             
-	    this.x = X;
-	    this.y = Y;
+            this.posicion = new Posicion(X,Y,sup);
+            this.setSuperficie();
 	    	    
 	}
 	public int getX() {
-		return this.x;
+		return this.posicion.obtenerX();
 	}
 	public int getY() {
-		return this.y;
+		return this.posicion.obtenerY();
 	}
 	public void setCoordenadas(int posX, int posY) {
 	    this.setTranslateX(posX);
@@ -56,12 +53,6 @@ public class Casilla extends Button {
 	public void setTamanio(int tamX, int tamY) {
 		this.setPrefSize(tamX, tamY);
 	}
-	
-	public void setSuperficie(Superficie sup) {
-
-                this.superficie = sup;
-                this.setSuperficie();
-        }
 
 	public void setUbicable(Ubicable ubi) {
 		this.ubicable = ubi;
@@ -108,11 +99,14 @@ public class Casilla extends Button {
 	public Ubicable getUbicable() {
 		return this.ubicable;
 	}
-
+        
+        public Superficie getSuperficie() {
+            return this.posicion.obtenerSuperficie();
+        }
 
         //Double Dispatch para setear superficie
         public void setSuperficie(){            
-            this.superficie.setSuperficie(this);
+            this.posicion.obtenerSuperficie().setSuperficie(this);
         }
         public void setSuperficie(Rocosa rocosa){
             this.getStyleClass().add("Rocosa");
