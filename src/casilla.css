@@ -1,39 +1,39 @@
 .Rocosa{
     -fx-background-color: #877039;
-    -fx-border-width: 0.5;
-    -fx-border-color:#ffffff;
+/*    -fx-border-width: 0.5;
+    -fx-border-color:#ffffff;*/
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 
 .Pantano {
     -fx-background-color: #669024;
-    -fx-border-width: 0.5;
-    -fx-border-color:#ffffff;
+/*    -fx-border-width: 0.5;
+    -fx-border-color:#ffffff;*/
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 
 .Espina {
     -fx-background-color: #eddc10;
-    -fx-border-width: 0.5;
-    -fx-border-color:#ffffff;
+/*    -fx-border-width: 0.5;
+    -fx-border-color:#ffffff;*/
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 .Nube {
     -fx-background-color:#6fd3f5;
-    -fx-border-width: 0.5;
-    -fx-border-color:#ffffff;
+/*    -fx-border-width: 0.5;
+    -fx-border-color:#ffffff;*/
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 .NebulosaDeAndromeda {
     -fx-background-color:#95b5c0;
-    -fx-border-width: 0.5;
-    -fx-border-color:#ffffff;
+/*    -fx-border-width: 0.5;
+    -fx-border-color:#ffffff;*/
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 .TormentaPsionica {
     -fx-background-color:#606364;
-    -fx-border-width: 0.5;
-    -fx-border-color:#ffffff;
+/*    -fx-border-width: 0.5;
+    -fx-border-color:#ffffff;*/
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 .CasillaCamino{
@@ -95,7 +95,7 @@
 .BurbujaInmaculada{
     -fx-background-image:url("burbujas.png");
 }
-.DobleCañon{
+.DobleCanon{
     -fx-background-image:url("cañon.png");
 }
 .Maximizado{
@@ -105,4 +105,5 @@
 }
 .Minimizado{
     -fx-background-size: stretch;
+    -fx-background-opacity: 0.5;
 }

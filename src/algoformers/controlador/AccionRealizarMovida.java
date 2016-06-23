@@ -44,7 +44,7 @@ public class AccionRealizarMovida implements EventHandler<ActionEvent> {
     	
     		Ubicable aux = casillaActual.getUbicable();
     		casillaActual.setUbicable(casillaInicioMov.getUbicable());
-    		casillaInicioMov.setUbicable(aux);
+                casillaActual.getStyleClass().remove(aux.getClass());
     		casillaInicioMov.getStyleClass().remove(algActual.getStyle());
     	} catch (ObjetivoMuyLejosException|SuperficieNoAtravesableException e) {
     		Posicion posFinalAlgoformer = algActual.obtenerPosicion();

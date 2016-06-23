@@ -33,21 +33,21 @@ public class Tablero {
         this.tablero = new HashMap<>();
         
         this.dimX = mapa.obtenerDimX();
-        this.dimY = mapa.obtenerDimY();
-        
-        this.rellenarSuperficies(mapa.obtenerMapaAire());
-        this.rellenarSuperficies(mapa.obtenerMapaTierra());
+        this.dimY = mapa.obtenerDimY();    
+        this.rellenarSuperficies(mapa.obtenerMapaAire(),mapa.obtenerMapaUbicablesAire());
+        this.rellenarSuperficies(mapa.obtenerMapaTierra(),mapa.obtenerMapaUbicablesTierra());
     }
     
-    private void rellenarSuperficies(Superficie[][] modelo){
+    private void rellenarSuperficies(Superficie[][] modelo,Ubicable[][] ubicables ){
         for (int i=0;i<this.dimX;i++){
             for (int j=0;j<this.dimY;j++){            	
                 Posicion posicion = new Posicion(i,j,modelo[i][j]);                     
-                Vacio nuevoEspacio = new Vacio();
+                Ubicable nuevoEspacio = ubicables[i][j];
                 agregarUbicable(posicion,nuevoEspacio);
             }
         }
     }
+    
 
     public void ubicarChispaEnElCentro() {
         FabricaBonus fabricaBonus = new FabricaBonus();
@@ -105,4 +105,6 @@ public class Tablero {
     public List<Posicion> obtenerListaDePosiciones() {
     	return new ArrayList<Posicion>(this.tablero.keySet());
     }
+
+
 }

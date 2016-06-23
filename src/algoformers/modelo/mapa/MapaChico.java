@@ -48,9 +48,47 @@ public class MapaChico extends Mapa {
                              {"nu","nu","nu","nu","nu","nu","nu","nu","nu","nu","nu","nu","nu","nu","nu","nu"},
                              
         };
+        String[][] ubicablesTierra = {  {"v","v","v","v","v","v","v","v","v","v","v","v","v","v","v","v"},
+                                        {"v","v","f","v","v","v","v","v","v","v","v","v","v","v","v","v"},
+                                        {"v","v","v","v","v","v","f","v","v","v","v","v","b","v","v","v"},
+                                        {"v","v","v","v","v","v","v","b","v","v","v","v","v","v","v","v"},
+                                        {"v","v","dc","v","v","v","v","v","v","v","v","v","v","v","v","v"},
+                                        {"v","v","v","v","v","v","v","v","v","v","v","v","dc","v","v","v"},
+                                        {"v","v","v","v","v","dc","v","v","v","v","v","v","v","v","v","v"},
+                                        {"v","v","f","v","v","v","v","v","v","v","v","v","v","v","v","v"},
+                                        {"v","v","v","v","v","v","v","v","b","v","v","v","v","v","v","v"},
+                                        {"v","v","v","v","v","v","v","v","v","v","v","v","v","v","v","v"},
+                                        {"v","v","f","v","v","v","b","v","v","v","v","v","v","v","v","v"},
+                                        {"v","v","v","v","v","v","v","v","v","v","dc","v","v","v","v","v"},
+                                        {"v","v","v","v","v","v","v","v","v","v","v","v","v","v","v","v"},
+                                        {"v","v","f","v","v","v","v","v","v","v","f","v","v","v","v","v"},
+                                        {"v","v","v","v","v","b","v","v","v","v","v","v","v","v","f","v"},
+                                        {"v","v","v","v","v","v","v","v","v","v","v","v","v","v","v","v"},
+                             
+        };
+        String[][] ubicablesAire = {    {"v","v","v","v","v","v","v","v","v","v","v","v","v","v","v","v"},
+                                        {"v","v","v","v","v","v","v","v","v","v","v","v","v","v","v","v"},
+                                        {"v","v","v","v","v","v","v","v","v","v","v","v","v","v","v","v"},
+                                        {"v","v","v","v","v","v","v","v","v","v","v","v","v","v","v","v"},  
+                                        {"v","v","dc","v","v","v","v","v","v","v","v","v","v","v","v","v"},
+                                        {"v","v","v","v","v","v","v","v","v","v","v","v","dc","v","v","v"},
+                                        {"v","v","v","v","v","v","v","v","v","v","v","v","v","v","v","v"},
+                                        {"v","v","f","v","v","v","v","v","v","v","v","v","v","v","v","v"},
+                                        {"v","v","v","v","v","v","f","v","v","v","v","v","b","v","v","v"},
+                                        {"v","v","v","v","v","v","v","b","v","v","v","v","v","v","v","v"},
+                                        {"v","v","v","v","v","v","v","v","v","v","v","v","v","v","v","v"},
+                                        {"v","v","f","v","v","v","b","v","v","v","v","v","v","v","v","v"},
+                                        {"v","v","v","v","v","v","v","v","v","v","dc","v","v","v","v","v"},
+                                        {"v","v","v","v","v","v","v","v","v","v","v","v","v","v","v","v"},
+                                        {"v","v","v","v","v","v","f","v","v","v","v","v","b","v","v","v"},
+                                        {"v","v","v","v","v","v","v","b","v","v","v","v","v","v","v","v"},
+                             
+        };
         
         this.generarMapaAire(aire);
         this.generarMapaTierra(tierra);
+        this.generarMapaUbicablesTierra(ubicablesTierra);
+        this.generarMapaUbicablesAire(ubicablesAire);
     }
 
     

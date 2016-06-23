@@ -30,7 +30,7 @@ public class Casilla extends Button {
 	String txt;
 	Posicion posicion;
 	Ubicable ubicable;
-	
+        
 	public Casilla(int X, int Y,Superficie sup) {
             this.getStylesheets().add("casilla.css");
 		txt = String.valueOf(X) + " - " +String.valueOf(Y);
@@ -55,22 +55,13 @@ public class Casilla extends Button {
 	}
 
 	public void setUbicable(Ubicable ubi) {
+                this.getStyleClass().removeAll("ChispaSuprema","DobleCanon","Flash","BurbujaInmaculada");
 		this.ubicable = ubi;
 		ubi.setUbicable(this);
 	}
         
         public void setUbicable(Algoformer algoformer){
             this.getStyleClass().add(algoformer.getStyle());
-//            Image algoformerImagen = new Image(algoformer.getStyle());
-//            ImageView vista = new ImageView(algoformerImagen);
-//            vista.setFitHeight(50);
-//            vista.setFitWidth(50);
-//            vista.preserveRatioProperty();
-//            vista.setTranslateX(55);
-//            vista.setTranslateY(25);
-
-//            this.setGraphic(vista);
-//                       
             txt += "- A";
             this.setText(txt);
         }
@@ -94,7 +85,7 @@ public class Casilla extends Button {
         
         //Double Dispatch para identificar efecto
         public void setEfecto(BurbujaInmaculada burbuja){
-            this.getStyleClass().add("Burbuja");
+            this.getStyleClass().add("BurbujaInmaculada");
         }
         
         public void setEfecto(Flash flash){
@@ -102,7 +93,7 @@ public class Casilla extends Button {
         }
         
         public void setEfecto(DobleCañon dobleCañon){
-            this.getStyleClass().add("DobleCañon");
+            this.getStyleClass().add("DobleCanon");
         }
         
 	public Ubicable getUbicable() {
