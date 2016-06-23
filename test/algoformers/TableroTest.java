@@ -27,17 +27,6 @@ import org.junit.Test;
 public class TableroTest {
     
     @Test
-    public void testTableroEstaVacioCuandoSeInicia(){
-        Tablero tablero = new Tablero(new MapaChico());
-        for (int i=0;i<16;i++){
-            for (int j=0;j<16;j++){
-                Posicion posicion = new Posicion(i,j, new Rocosa());
-                Assert.assertTrue(tablero.estaVacio(posicion));
-            }
-        }
-    }
-    
-    @Test
     public void testColocarAlgoformerNoEstaVacio(){
         Tablero tablero = new Tablero(new MapaChico());
         Posicion posicion = new Posicion(1,2, new Rocosa());

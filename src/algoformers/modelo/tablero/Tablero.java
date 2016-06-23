@@ -11,6 +11,7 @@ import algoformers.modelo.tablero.Vacio;
 import algoformers.modelo.bonus.Bonus;
 import algoformers.modelo.bonus.FabricaBonus;
 import algoformers.modelo.algoformer.Algoformer;
+import algoformers.modelo.juego.Juego;
 import algoformers.modelo.mapa.Mapa;
 import algoformers.modelo.superficie.Superficie;
 import algoformers.modelo.superficie.Rocosa;
@@ -49,12 +50,13 @@ public class Tablero {
     }
     
 
-    public void ubicarChispaEnElCentro() {
+    public void ubicarChispaEnElCentro(Juego juego) {
         FabricaBonus fabricaBonus = new FabricaBonus();
 //        Bonus chispaSuprema = fabricaBonus.crearChispaSuprema();
         ChispaSuprema chispaSuprema = new ChispaSuprema();
         Posicion centro = new Posicion((this.dimX-1)/2, (this.dimY-1)/2, new Rocosa());
         chispaSuprema.establecerPosicion(centro);
+        chispaSuprema.establecerJuego(juego);
         this.agregarUbicable(centro, chispaSuprema);
     }
     public void verificarReemplazable(Posicion pos, Algoformer algof) {

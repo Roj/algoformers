@@ -98,6 +98,9 @@
 .DobleCanon{
     -fx-background-image:url("cañon.png");
 }
+.ChispaSuprema{
+    -fx-background-image:url("chispa.png");
+}
 .Maximizado{
     -fx-background-repeat: no-repeat;
     -fx-background-size: 50% 50%;
@@ -105,5 +108,4 @@
 }
 .Minimizado{
     -fx-background-size: stretch;
-    -fx-background-opacity: 0.5;
 }

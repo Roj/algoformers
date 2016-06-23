@@ -30,7 +30,7 @@ public class Juego {
         this.otroJugador = new Jugador(nombreJugadorB,tablero, this);
          
         //Agregar chispa en el centro del tablero
-        tablero.ubicarChispaEnElCentro();
+        tablero.ubicarChispaEnElCentro(this);
         
         //Creacion de algoformers
         this.agregarAlgoformers();
@@ -90,6 +90,9 @@ public class Juego {
 
     public void finalizarJuego() {
         this.ganador = this.jugadorActual;
-        this.jugadorActual = null;
+    }
+    
+    public Jugador obtenerGanador(){
+        return this.ganador;
     }
 }

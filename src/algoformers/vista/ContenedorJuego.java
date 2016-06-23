@@ -1,28 +1,14 @@
 package algoformers.vista;
 
-import algoformers.controlador.AccionCambiarSuperficie;
 import algoformers.modelo.algoformer.Algoformer;
 import algoformers.modelo.juego.Juego;
-import algoformers.modelo.juego.Jugador;
-import algoformers.modelo.algoformer.ModoAlgoformer;
 import algoformers.modelo.juego.NoSuperponibleException;
 import algoformers.modelo.tablero.Posicion;
 import algoformers.modelo.tablero.Tablero;
-import algoformers.modelo.superficie.Tierra;
-import algoformers.modelo.tablero.Ubicable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
-import javafx.scene.effect.BlendMode;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -31,7 +17,6 @@ import algoformers.controlador.AccionAtacar;
 import algoformers.controlador.AccionCambiarModo;
 import algoformers.controlador.AccionCasilla;
 import algoformers.controlador.AccionCombinarAlgoformers;
-import algoformers.controlador.AccionMarcarCamino;
 import algoformers.controlador.AccionMarcarCasilla;
 import algoformers.controlador.AccionMover;
 import algoformers.controlador.AccionPasarTurno;
@@ -46,10 +31,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import javafx.event.EventHandler;
-import javafx.geometry.Pos;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.StackPane;
 
 
 public class ContenedorJuego extends Contenedor {
@@ -203,7 +184,6 @@ public class ContenedorJuego extends Contenedor {
                         Superficie superficieAdyacente = casillaAdyacente.getSuperficie();
                         
                         //Chequeo que pueda ocupar la casilla
-                        //Se debe cambiar y reemplazar, no corresponde a vista
                         casillaAdyacente.getUbicable().puedeSerReemplazado();
                         algoformerActual.puedeAtravesarSuperficie(superficieAdyacente);
 
@@ -446,7 +426,7 @@ public class ContenedorJuego extends Contenedor {
     	this.crearEtiquetaJugadorActual(); 
     	
     	//this.casillaActual.setBlendMode(null);
-    	this.crearBotonPasarTurno(false);
+        this.crearBotonPasarTurno(false);
     	this.crearBotonMover(true);
     	this.crearBotonAtacar(true);
     	this.crearBotonCambiarModo(true);
@@ -458,5 +438,16 @@ public class ContenedorJuego extends Contenedor {
     }
     public Casilla getCasillaInicioMovimiento() {
     	return this.casillaInicialMovimiento;
+    }
+
+    public void crearEtiquetaGanador(String nombreGanador){
+        Label etiquetaGanador = new Label();
+        etiquetaGanador.setText("GANADOR: " + nombreGanador);
+        etiquetaGanador.getStyleClass().add("titulo");
+        etiquetaGanador.getStylesheets().add("texto.css");
+        
+        this.getChildren().add(etiquetaGanador);
+        etiquetaTurnoActual.setTranslateX(0);
+        etiquetaTurnoActual.setTranslateY(-100);            	
     }
 }

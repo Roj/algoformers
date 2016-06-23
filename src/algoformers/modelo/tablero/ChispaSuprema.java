@@ -15,14 +15,9 @@ public class ChispaSuprema implements Ubicable {
 
     Posicion posicion;
     Juego juego;
-    Jugador ganador;
+
     
-    
-    
-    public void establecerJugador(Jugador jugador){
-        this.ganador = jugador;
-    }
-    
+        
     public void establecerJuego(Juego juego){
         //Debe conocer al juego para poder finalizarlo
         this.juego = juego;
