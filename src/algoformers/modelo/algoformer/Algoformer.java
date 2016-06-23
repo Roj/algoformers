@@ -46,8 +46,7 @@ public abstract class Algoformer implements Ubicable {
         ModoAlgoformer aux = this.modoActual;
         //verificamos que la nueva superficie acepte la superficie
         try {
-
-            this.modoActual.aceptarSuperficie(this.posicion.obtenerSuperficie(), this);
+            this.otroModo.aceptarSuperficie(this.posicion.obtenerSuperficie(), this);
             this.modoActual = this.otroModo;
             this.otroModo = aux;
             this.vistaAlgoformer.cambiarStyle();
