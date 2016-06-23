@@ -83,14 +83,20 @@
 .BonecrusherAlterno{
     -fx-background-image: url("bonecrusherAlterno.png");
 }
+.Superion{
+    -fx-background-image: url("superion.png");
+}
+.Menasor{
+    -fx-background-image: url("menasor.png");
+}
 .Flash{
-    -fx-background-image:url("flash");
+    -fx-background-image:url("flash.png");
 }
 .BurbujaInmaculada{
-    -fx-background-image:url("burbujas");
+    -fx-background-image:url("burbujas.png");
 }
 .DobleCañon{
-    -fx-background-image:url("cañon");
+    -fx-background-image:url("cañon.png");
 }
 .Maximizado{
     -fx-background-repeat: no-repeat;
