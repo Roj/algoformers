@@ -3,6 +3,7 @@ package algoformers.modelo.algoformer;
 import algoformers.modelo.juego.AtaqueInvalidoException;
 import algoformers.modelo.juego.NoSuperponibleException;
 import algoformers.modelo.tablero.Ubicable;
+import algoformers.modelo.tablero.Vacio;
 import algoformers.vista.Casilla;
 import algoformers.vista.VistaAlgoformer;
 
