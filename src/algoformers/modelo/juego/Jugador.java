@@ -38,9 +38,9 @@ public class Jugador {
     public List<Algoformer> obtenerListaAlgoformers() {
         return this.algoformers;
     }
-    public void atacarPosicion(Algoformer alf, Posicion destino) {
+    public void atacarPosicion(Algoformer algoformer, Posicion destino) {
         juego.verificarTurno(this);
-        alf.atacar(tablero.obtenerUbicable(destino));
+        algoformer.atacar(tablero.obtenerUbicable(destino));
         juego.avanzarTurno();
         this.avisarAlgoformersPaseDeTurno();
     }
@@ -78,12 +78,12 @@ public class Jugador {
     	List<Posicion> posAux = new ArrayList<Posicion>();
     	Algoformer supremo = this.algoformers.get(3);
     	
-    	for (Algoformer alg : algos) {
-    		vidaTotal += alg.obtenerVida();
+    	for (Algoformer algoformer : algoformers) {
+                vidaTotal += algoformer.obtenerVida();
     		
-    		Posicion pos = alg.obtenerPosicion();
+    		Posicion pos = algoformer.obtenerPosicion();
     		    		
-    		this.tablero.borrarUbicable(alg.obtenerPosicion());
+    		this.tablero.borrarUbicable(algoformer.obtenerPosicion());
     		posAux.add(pos);
     	}
     	

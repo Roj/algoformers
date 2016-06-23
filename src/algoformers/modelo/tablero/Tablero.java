@@ -51,7 +51,8 @@ public class Tablero {
 
     public void ubicarChispaEnElCentro() {
         FabricaBonus fabricaBonus = new FabricaBonus();
-        Bonus chispaSuprema = fabricaBonus.crearChispaSuprema();
+//        Bonus chispaSuprema = fabricaBonus.crearChispaSuprema();
+        ChispaSuprema chispaSuprema = new ChispaSuprema();
         Posicion centro = new Posicion((this.dimX-1)/2, (this.dimY-1)/2, new Rocosa());
         chispaSuprema.establecerPosicion(centro);
         this.agregarUbicable(centro, chispaSuprema);

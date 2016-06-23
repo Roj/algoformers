@@ -11,7 +11,7 @@ import algoformers.modelo.juego.NoSuperponibleException;
 import algoformers.modelo.bonus.Bonus;
 import algoformers.modelo.algoformer.Algoformer;
 import algoformers.modelo.tablero.Posicion;
-import algoformers.modelo.buffs.ChispaSuprema;
+import algoformers.modelo.tablero.ChispaSuprema;
 import algoformers.modelo.juego.Juego;
 import algoformers.modelo.juego.AtaqueInvalidoException;
 import algoformers.modelo.mapa.MapaChico;
@@ -376,8 +376,7 @@ public class JuegoTest {
         Tablero tablero = juego.obtenerTablero();
         Ubicable chispa = tablero.obtenerUbicable(new Posicion(7, 7, new Rocosa()));
         
-        Assert.assertTrue(chispa instanceof Bonus); //Debería chequearse que en particular sea la chispaSuprema
-        Assert.assertTrue(((Bonus) chispa).obtenerEfecto() instanceof ChispaSuprema);
+        Assert.assertTrue(chispa instanceof ChispaSuprema); 
     }
     @Test
     public void testCambiarModoCambiaJugador(){

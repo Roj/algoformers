@@ -8,7 +8,7 @@ package algoformers;
 
 import algoformers.modelo.tablero.Posicion;
 import algoformers.modelo.tablero.Tablero;
-import algoformers.modelo.buffs.ChispaSuprema;
+import algoformers.modelo.tablero.ChispaSuprema;
 import algoformers.modelo.tablero.Ubicable;
 import algoformers.modelo.juego.Juego;
 import algoformers.modelo.superficie.Rocosa;
@@ -139,8 +139,7 @@ public class EntregaTest {
         Assert.assertEquals(bonecrusher.obtenerPosicion(),esquinaSuperiorDerInferior);
         Assert.assertEquals(frenzy.obtenerPosicion(),esquinaSuperioDerTrasera);     
         
-        Assert.assertTrue(chispa instanceof Bonus);
-        Assert.assertTrue(((Bonus) chispa).obtenerEfecto() instanceof ChispaSuprema);
+        Assert.assertTrue(chispa instanceof ChispaSuprema);
     }
     
 }

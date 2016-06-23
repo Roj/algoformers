@@ -12,7 +12,7 @@ import algoformers.modelo.superficie.Superficie;
 import algoformers.modelo.tablero.Tablero;
 import algoformers.modelo.tablero.Ubicable;
 import algoformers.modelo.tablero.Vacio;
-import algoformers.modelo.buffs.ChispaSuprema;
+import algoformers.modelo.tablero.ChispaSuprema;
 import algoformers.modelo.buffs.DobleCañon;
 import algoformers.modelo.buffs.Flash;
 import algoformers.modelo.superficie.NebulosaDeAndromeda;
@@ -61,6 +61,16 @@ public class Casilla extends Button {
         
         public void setUbicable(Algoformer algoformer){
             this.getStyleClass().add(algoformer.getStyle());
+//            Image algoformerImagen = new Image(algoformer.getStyle());
+//            ImageView vista = new ImageView(algoformerImagen);
+//            vista.setFitHeight(50);
+//            vista.setFitWidth(50);
+//            vista.preserveRatioProperty();
+//            vista.setTranslateX(55);
+//            vista.setTranslateY(25);
+
+//            this.setGraphic(vista);
+//                       
             txt += "- A";
             this.setText(txt);
         }
@@ -76,6 +86,11 @@ public class Casilla extends Button {
             this.setText(txt);
         }
         
+        public void setUbicable(ChispaSuprema chispaSuprema){
+            this.getStyleClass().add("ChispaSuprema");
+            txt += "- C";
+            this.setText(txt);
+        }
         
         //Double Dispatch para identificar efecto
         public void setEfecto(BurbujaInmaculada burbuja){
@@ -88,12 +103,6 @@ public class Casilla extends Button {
         
         public void setEfecto(DobleCañon dobleCañon){
             this.getStyleClass().add("DobleCañon");
-        }
-        
-        //Como implementamos chispa suprema? Actualmente esta como un buff
-        public void setUbicable(ChispaSuprema chispa){
-            txt += "- C";
-            this.setText(txt);
         }
         
 	public Ubicable getUbicable() {
@@ -126,6 +135,17 @@ public class Casilla extends Button {
         public void setSuperficie(NebulosaDeAndromeda nebulosaDeAndromeda){
             this.getStyleClass().add("NebulosaDeAndromeda");
         }
-
+        public void minimizar(){
+                this.getStyleClass().remove("Maximizado");
+                this.setTamanio(60, 50);
+                this.setTranslateY(-25);
+                this.getStyleClass().add("Minimizado");
+                this.toFront();
+        }
+        public void maximizar(){
+                this.getStyleClass().remove("Minimizado");
+                this.getStyleClass().add("Maximizado");
+                this.toBack();
+        }
 
     }

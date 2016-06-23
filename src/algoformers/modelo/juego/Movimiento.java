@@ -19,15 +19,18 @@ public class Movimiento {
     List<Posicion> pasos;
     int movimientosDisponibles;
     Tablero tablero;
+    
     public Movimiento(Algoformer algoformer, List<Posicion> destino, Tablero table) {
         this.algoformer = algoformer;
         this.pasos = destino;
         this.movimientosDisponibles = algoformer.obtenerVelocidad();
         this.tablero = table;
     }
+    
     public void modificarPuntosDeMovimiento(int i) {
         this.movimientosDisponibles+=i;
     }
+    
     public void mover() {
         for(int i=0; i < pasos.size(); i++ ) {
             if(this.movimientosDisponibles <= 0)

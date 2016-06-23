@@ -20,23 +20,24 @@ import java.util.List;
 public class Juego {
     private Jugador jugadorActual;
     private Jugador otroJugador;
+    private Jugador ganador;
     private Tablero tablero;
+    
     public Juego(String nombreJugadorA, String nombreJugadorB, Mapa mapa) {
         this.tablero = new Tablero(mapa);
-        
+  
         this.jugadorActual = new Jugador(nombreJugadorA,tablero, this);
         this.otroJugador = new Jugador(nombreJugadorB,tablero, this);
-     
-        tablero.ubicarChispaEnElCentro();
-        
+         
         //Agregar chispa en el centro del tablero
-        
+        tablero.ubicarChispaEnElCentro();
         
         //Creacion de algoformers
         this.agregarAlgoformers();
         //Los algoformers seran ubicados por el tablero
         this.posicionarAlgoformers();
     }
+ 
     private void agregarAlgoformers() {
         FabricaAlgoformers fabrica = new FabricaAlgoformers();
         
@@ -54,7 +55,9 @@ public class Juego {
     private void posicionarAlgoformers(){
         List<Algoformer> algoformersJugador1 = this.jugadorActual.obtenerListaAlgoformers();
         List<Algoformer> algoformersJugador2 = this.otroJugador.obtenerListaAlgoformers();
+        
         int dimension = this.tablero.obtenerDimension() - 1;
+        
         for(int i = 0; i<3; i ++){
             this.tablero.colocarAlgoformer(new Posicion(i,0,new Rocosa()), algoformersJugador1.get(i));
             this.tablero.colocarAlgoformer(new Posicion(dimension - i, dimension, new Rocosa()), algoformersJugador2.get(i));
@@ -78,9 +81,15 @@ public class Juego {
     public Tablero obtenerTablero() {
         return this.tablero;
     }
+    
     public void avanzarTurno() {
         Jugador aux = this.jugadorActual;
         this.jugadorActual = this.otroJugador;
         this.otroJugador = aux;
+    }
+
+    public void finalizarJuego() {
+        this.ganador = this.jugadorActual;
+        this.jugadorActual = null;
     }
 }

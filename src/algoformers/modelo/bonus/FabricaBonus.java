@@ -7,7 +7,7 @@ package algoformers.modelo.bonus;
 
 import algoformers.modelo.buffs.BurbujaInmaculada;
 import algoformers.modelo.buffs.DobleCañon;
-import algoformers.modelo.buffs.ChispaSuprema;
+import algoformers.modelo.tablero.ChispaSuprema;
 import algoformers.modelo.buffs.Flash;
 
 /**
@@ -23,8 +23,5 @@ public class FabricaBonus {
     }
     public Bonus crearFlash(){
         return new Bonus(new Flash());
-    }
-    public Bonus crearChispaSuprema(){
-        return new Bonus(new ChispaSuprema());
     }
 }
