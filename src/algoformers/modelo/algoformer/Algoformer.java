@@ -152,5 +152,9 @@ public abstract class Algoformer implements Ubicable {
     public void puedeAtravesarSuperficie(Superficie superficie){
         this.modoActual.puedeAtravesarSuperficie(superficie);
     }
+    
+    public boolean esta_vivo(){
+        return this.vida > 0;
+    }
 
 }

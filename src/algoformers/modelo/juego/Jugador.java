@@ -40,7 +40,12 @@ public class Jugador {
     }
     public void atacarPosicion(Algoformer algoformer, Posicion destino) {
         juego.verificarTurno(this);
-        algoformer.atacar(tablero.obtenerUbicable(destino));
+        
+        Algoformer algoformerEnemigo = (Algoformer) tablero.obtenerUbicable(destino);
+        algoformer.atacar(algoformerEnemigo);
+        if (!algoformerEnemigo.esta_vivo()){
+            this.tablero.borrarUbicable(destino);
+        }
         juego.avanzarTurno();
         this.avisarAlgoformersPaseDeTurno();
     }
