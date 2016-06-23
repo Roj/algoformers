@@ -220,22 +220,22 @@ public class ContenedorJuego extends Contenedor {
 	    
     	int distanciaCombinar = 3;
     	
-    	getAdyascentesCombinables(casilla, distanciaCombinar, casillasPosiblesCombinar);
+    	getAdyacentesCombinables(casilla, distanciaCombinar, casillasPosiblesCombinar);
     	
     	return casillasPosiblesCombinar;   	
     }
-    private void getAdyascentesCombinables(Casilla casilla, int distanciaCombinar, List<Casilla> casillasCombinar) {
+    private void getAdyacentesCombinables(Casilla casilla, int distanciaCombinar, List<Casilla> casillasCombinar) {
     	if (distanciaCombinar == 0)
     		return;
     	
-    	List<Casilla> adyascentes = getCasillasAdyascentes(casilla);
+    	List<Casilla> adyascentes = getCasillasAdyacentes(casilla);
     	List<Algoformer> algoformers = this.juego.obtenerJugadorActual().obtenerListaAlgoformers();
     	  	
     	for (Casilla adyascente : adyascentes) {
     			if (algoformers.contains(adyascente.getUbicable()) && !casillasCombinar.contains(adyascente)) {
     				casillasCombinar.add(adyascente);
     			}
-    			getAdyascentesCombinables(adyascente, distanciaCombinar - 1, casillasCombinar);		
+    			getAdyacentesCombinables(adyascente, distanciaCombinar - 1, casillasCombinar);		
     	}
     }      
     public List<Casilla> getCasillasPosiblesAtaque(Casilla casilla) {

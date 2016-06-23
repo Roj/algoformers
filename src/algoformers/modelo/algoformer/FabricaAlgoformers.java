@@ -71,7 +71,7 @@ public class FabricaAlgoformers {
     	ModoAlgoformer humanoide = new ModoHumanoide(100, 2, 3);
     	ModoAlgoformer alterno = new ModoTerrestre(100, 2, 3);
     	
-    	VistaAlgoformer vistaSuperion = new VistaAlgoformer("Superion", "Superion");
+    	VistaAlgoformer vistaSuperion = new VistaAlgoformer("Superion", "Superion", "Superion");
     	Algoformer superion = new Autobot(0, humanoide, alterno, vistaSuperion);
     	
     	return superion;
@@ -80,7 +80,7 @@ public class FabricaAlgoformers {
     	ModoAlgoformer humanoide = new ModoHumanoide(115, 2, 2);
     	ModoAlgoformer alterno = new ModoTerrestre(115, 2, 2);
     	
-    	VistaAlgoformer vistaMenasor = new VistaAlgoformer("Menasor", "Menasor");
+    	VistaAlgoformer vistaMenasor = new VistaAlgoformer("Menasor", "Menasor", "Menasor");
     	Algoformer menasor = new Decepticon(0, humanoide, alterno, vistaMenasor);
     	
     	return menasor;
