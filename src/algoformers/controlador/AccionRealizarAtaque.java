@@ -7,6 +7,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import algoformers.modelo.juego.Juego;
 import algoformers.modelo.tablero.Posicion;
+import algoformers.modelo.tablero.Ubicable;
+import algoformers.modelo.tablero.Vacio;
 import algoformers.vista.Casilla;
 import algoformers.vista.ContenedorJuego;
 
@@ -37,7 +39,12 @@ public class AccionRealizarAtaque implements EventHandler<ActionEvent> {
         if (casillasPosiblesAtaque.contains(casillaActual)){
             Algoformer algoformerEnemigo = (Algoformer) casillaActual.getUbicable();
             Posicion posicionAlgoformerEnemigo = algoformerEnemigo.obtenerPosicion();
-            this.juego.obtenerJugadorActual().atacarPosicion(algoformerActual, posicionAlgoformerEnemigo);                
+            this.juego.obtenerJugadorActual().atacarPosicion(algoformerActual, posicionAlgoformerEnemigo);
+            if(!algoformerEnemigo.esta_vivo()){
+    		casillaActual.getStyleClass().remove(algoformerEnemigo.getStyle());
+    		Ubicable vacio = new Vacio();
+    		casillaActual.setUbicable(vacio);
+            }
         }
         
         this.contenedorJuego.pasarTurno();
