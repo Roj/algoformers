@@ -5,9 +5,13 @@
  */
 package algoformers.modelo.juego;
 
+import algoformers.modelo.superficie.SuperficieNoAtravesableException;
+import algoformers.modelo.superficie.Tierra;
 import algoformers.modelo.tablero.Tablero;
 import algoformers.modelo.tablero.Posicion;
 import algoformers.modelo.algoformer.Algoformer;
+import algoformers.modelo.algoformer.FabricaAlgoformers;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -68,5 +72,32 @@ public class Jugador {
     
     public void pasarTurno() {
     	juego.avanzarTurno();
+    }
+    public void combinarAlgoformers(Posicion posFinal, List<Algoformer> algos) {
+    	int vidaTotal = 0;
+    	List<Posicion> posAux = new ArrayList<Posicion>();
+    	Algoformer supremo = this.algoformers.get(3);
+    	
+    	for (Algoformer alg : algos) {
+    		vidaTotal += alg.obtenerVida();
+    		
+    		Posicion pos = alg.obtenerPosicion();
+    		    		
+    		this.tablero.borrarUbicable(alg.obtenerPosicion());
+    		posAux.add(pos);
+    	}
+    	
+		try {
+			supremo.obtenerModoActual().aceptarSuperficie(posFinal.obtenerSuperficie(), supremo);
+			supremo.setVida(vidaTotal);
+			this.tablero.colocarAlgoformer(posFinal, supremo);
+		} catch (NoSuperponibleException|SuperficieNoAtravesableException e) {
+			for (int i = 0; i < algos.size(); i++) {
+				this.tablero.colocarAlgoformer(posAux.get(i), algos.get(i));
+			}
+			throw new NoSePuedeCombinarException();
+		} 
+    	
+		this.juego.avanzarTurno();
     }
 }

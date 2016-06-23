@@ -43,10 +43,12 @@ public class Juego {
         this.jugadorActual.agregarAlgoformer(fabrica.crearOptimus());
         this.jugadorActual.agregarAlgoformer(fabrica.crearBumblebee());
         this.jugadorActual.agregarAlgoformer(fabrica.crearRatchet());
+        this.jugadorActual.agregarAlgoformer(fabrica.crearSuperion());
         
         this.otroJugador.agregarAlgoformer(fabrica.crearMegatron());
         this.otroJugador.agregarAlgoformer(fabrica.crearBonecrusher());
         this.otroJugador.agregarAlgoformer(fabrica.crearFrenzy());
+        this.otroJugador.agregarAlgoformer(fabrica.crearMenasor());
     }
     
     private void posicionarAlgoformers(){

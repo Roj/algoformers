@@ -29,6 +29,7 @@ import javafx.scene.text.FontWeight;
 import algoformers.controlador.AccionAtacar;
 import algoformers.controlador.AccionCambiarModo;
 import algoformers.controlador.AccionCasilla;
+import algoformers.controlador.AccionCombinarAlgoformers;
 import algoformers.controlador.AccionMarcarCamino;
 import algoformers.controlador.AccionMarcarCasilla;
 import algoformers.controlador.AccionMover;
@@ -42,6 +43,7 @@ import algoformers.modelo.superficie.Superficie;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.input.MouseEvent;
@@ -59,6 +61,7 @@ public class ContenedorJuego extends Contenedor {
     Button botonRealizarAtaque;
     Button botonRealizarMovida;
     Button botonCambiarModo;
+    Button botonCombinarAlgos;
     Juego juego;
     Label etiquetaTurnoActual;
     Label etiquetaEstadisticasAlgoformer;
@@ -100,6 +103,7 @@ public class ContenedorJuego extends Contenedor {
 	this.crearBotonMover(true);
 	this.crearBotonAtacar(true);
         this.crearBotonCambiarModo(true);
+        this.crearBotonCombinarAlgos(true);
         this.crearEtiquetaJugadorActual();
         this.crearTablero();        
 
@@ -196,7 +200,29 @@ public class ContenedorJuego extends Contenedor {
     	
     	return adyascentes;
     }
-    
+    public List<Casilla> getCasillasCombinar(Casilla casilla) {
+    	List<Casilla> casillasPosiblesCombinar = new ArrayList<Casilla>();
+	    
+    	int distanciaCombinar = 3;
+    	
+    	getAdyascentesCombinables(casilla, distanciaCombinar, casillasPosiblesCombinar);
+    	
+    	return casillasPosiblesCombinar;   	
+    }
+    private void getAdyascentesCombinables(Casilla casilla, int distanciaCombinar, List<Casilla> casillasCombinar) {
+    	if (distanciaCombinar == 0)
+    		return;
+    	
+    	List<Casilla> adyascentes = getCasillasAdyascentes(casilla);
+    	List<Algoformer> algoformers = this.juego.obtenerJugadorActual().obtenerListaAlgoformers();
+    	  	
+    	for (Casilla adyascente : adyascentes) {
+    			if (algoformers.contains(adyascente.getUbicable()) && !casillasCombinar.contains(adyascente)) {
+    				casillasCombinar.add(adyascente);
+    			}
+    			getAdyascentesCombinables(adyascente, distanciaCombinar - 1, casillasCombinar);		
+    	}
+    }      
     public List<Casilla> getCasillasPosiblesAtaque(Casilla casilla) {
     	List<Casilla> casillasPosiblesAtaques = new ArrayList<Casilla>();
     	    			    
@@ -300,12 +326,20 @@ public class ContenedorJuego extends Contenedor {
 		this.botonCambiarModo.setOnAction(new AccionCambiarModo(this, this.juego));
         this.botonCambiarModo.setDisable(desactivado);   	
     }
-    
+    public void crearBotonCombinarAlgos(boolean desactivado) {
+        // Boton para pasar turno
+    	this.getChildren().remove(botonCombinarAlgos);
+		this.botonCombinarAlgos = new Button();
+		this.colocarBoton(botonCombinarAlgos, "Combinar", 20, -630, -170);
+		this.botonCombinarAlgos.setPrefSize(170, 50);
+		this.botonCombinarAlgos.setOnAction(new AccionCombinarAlgoformers(this, this.juego));    
+		this.botonCombinarAlgos.setDisable(desactivado); 
+    }    
     public void crearBotonPasarTurno(boolean desactivado) {
         // Boton para pasar turno
     	this.getChildren().remove(botonPasarTurno);
 		this.botonPasarTurno = new Button();
-		this.colocarBoton(botonPasarTurno, "Pasar Turno", 20, -630, -170);
+		this.colocarBoton(botonPasarTurno, "Pasar Turno", 20, -630, -120);
 		this.botonPasarTurno.setPrefSize(170, 50);
 		this.botonPasarTurno.setOnAction(new AccionPasarTurno(this, this.juego));    
 		this.botonPasarTurno.setDisable(desactivado); 
@@ -390,6 +424,8 @@ public class ContenedorJuego extends Contenedor {
     	this.crearBotonPasarTurno(false);
     	this.crearBotonMover(true);
     	this.crearBotonAtacar(true);
+    	this.crearBotonCambiarModo(true);
+    	this.crearBotonCombinarAlgos(true);
     }
     
     public void setCasillaInicioMovimiento(Casilla cas) {

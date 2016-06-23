@@ -26,6 +26,7 @@ public class AccionAtacar implements EventHandler<ActionEvent> {
         this.contenedorJuego.crearBotonPasarTurno(true);
         this.contenedorJuego.crearBotonMover(true);
         this.contenedorJuego.crearBotonCambiarModo(true);
+        this.contenedorJuego.crearBotonCombinarAlgos(true);
     }
 }
 

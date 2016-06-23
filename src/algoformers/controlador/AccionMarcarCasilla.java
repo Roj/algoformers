@@ -29,6 +29,7 @@ public class AccionMarcarCasilla extends AccionCasilla {
     	// Descomentar esto cuando existan algoformers en el tablero, comentado para testeo
         this.contenedorJuego.crearBotonMover(true);
         this.contenedorJuego.crearBotonAtacar(true);
+        this.contenedorJuego.crearBotonCombinarAlgos(true);
         
     	this.contenedorJuego.borrarEstadisticasAlgoformer();
     	
@@ -54,9 +55,14 @@ public class AccionMarcarCasilla extends AccionCasilla {
         		
         		// Habilito el boton de atacar solo si hay un enemigo cerca para atacar
         		List<Casilla> casillasPosiblesAtaque = this.contenedorJuego.getCasillasPosiblesAtaque(casilla);
+        		List<Casilla> casillasPosiblesCombinar = this.contenedorJuego.getCasillasCombinar(casilla);
         		
         		if (!casillasPosiblesAtaque.isEmpty()) {
         			this.contenedorJuego.crearBotonAtacar(false);
+        		}
+        		// Menos el supremo
+        		if (casillasPosiblesCombinar.size() == algoformersJugadorActual.size()-1) {
+        			this.contenedorJuego.crearBotonCombinarAlgos(false);
         		}
         	}
         }

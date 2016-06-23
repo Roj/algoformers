@@ -1,5 +1,7 @@
 package algoformers.modelo.algoformer;
 
+import java.util.List;
+
 import algoformers.vista.VistaAlgoformer;
 
 public class FabricaAlgoformers {
@@ -62,5 +64,25 @@ public class FabricaAlgoformers {
         Algoformer frenzy = new Decepticon(400,humanoide,alterno,vistaFrenzy);
         
         return frenzy;
-    }	
+    }
+    
+    public Algoformer crearSuperion() {
+    	
+    	ModoAlgoformer humanoide = new ModoHumanoide(100, 2, 3);
+    	ModoAlgoformer alterno = new ModoTerrestre(100, 2, 3);
+    	
+    	VistaAlgoformer vistaSuperion = new VistaAlgoformer("Superion", "Superion");
+    	Algoformer superion = new Autobot(0, humanoide, alterno, vistaSuperion);
+    	
+    	return superion;
+    }
+    public Algoformer crearMenasor() {    	
+    	ModoAlgoformer humanoide = new ModoHumanoide(115, 2, 2);
+    	ModoAlgoformer alterno = new ModoTerrestre(115, 2, 2);
+    	
+    	VistaAlgoformer vistaMenasor = new VistaAlgoformer("Menasor", "Menasor");
+    	Algoformer menasor = new Decepticon(0, humanoide, alterno, vistaMenasor);
+    	
+    	return menasor;
+    }    
 }

@@ -35,6 +35,7 @@ public class AccionCambiarModo implements EventHandler<ActionEvent>{
         this.contenedorJuego.crearBotonAtacar(true);
         this.contenedorJuego.crearBotonMover(true);
         this.contenedorJuego.crearBotonCambiarModo(true);
+        this.contenedorJuego.crearBotonCombinarAlgos(true);
         this.contenedorJuego.borrarEstadisticasAlgoformer();
         this.contenedorJuego.crearEstadisticasAlgoformer(algActual);
         this.juego.avanzarTurno();

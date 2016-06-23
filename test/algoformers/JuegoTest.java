@@ -3,8 +3,10 @@ package algoformers;
 import algoformers.modelo.tablero.Tablero;
 import algoformers.modelo.tablero.Ubicable;
 import algoformers.modelo.juego.ObjetivoMuyLejosException;
+import algoformers.modelo.superficie.Nube;
 import algoformers.modelo.superficie.Rocosa;
 import algoformers.modelo.juego.Jugador;
+import algoformers.modelo.juego.NoSePuedeCombinarException;
 import algoformers.modelo.juego.NoSuperponibleException;
 import algoformers.modelo.bonus.Bonus;
 import algoformers.modelo.algoformer.Algoformer;
@@ -14,10 +16,12 @@ import algoformers.modelo.juego.Juego;
 import algoformers.modelo.juego.AtaqueInvalidoException;
 import algoformers.modelo.mapa.MapaChico;
 import algoformers.modelo.juego.NoEsSuTurnoException;
+
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 /**
  *
  * @author joaquintz
@@ -431,4 +435,118 @@ public class JuegoTest {
         Assert.assertEquals(algoformer.obtenerPosicion().obtenerX(),0);
         Assert.assertEquals(algoformer.obtenerPosicion().obtenerY(),4);
     }
+    
+    @Test
+    public void testCombinarAlgoformersSeteaSupremoEnMedioDeTodos() {
+        String nombre1 = "Juan";
+        String nombre2 = "John";
+        Juego juego = new Juego(nombre1,nombre2,new MapaChico());
+        Jugador jugador1 = juego.obtenerJugadorActual();
+        
+        Tablero tablero = juego.obtenerTablero();
+        
+        List<Algoformer> algoformers = jugador1.obtenerListaAlgoformers();
+        List<Algoformer> algoformersACombinar = algoformers.subList(0, 3);
+        Algoformer supremo = algoformers.get(3);
+        
+        List<Posicion> posiciones = new ArrayList<Posicion>();
+        
+        for (Algoformer alg : algoformersACombinar) {
+        	Posicion pos = alg.obtenerPosicion();
+        	
+        	posiciones.add(pos);        	
+        }
+        
+        jugador1.combinarAlgoformers(posiciones.get(1), algoformersACombinar);
+        
+        Assert.assertTrue(tablero.estaVacio(posiciones.get(0)));
+        Assert.assertFalse(tablero.estaVacio(posiciones.get(1)));
+        Assert.assertTrue(tablero.estaVacio(posiciones.get(2)));     
+        
+        Assert.assertEquals(supremo.obtenerPosicion().equals(posiciones.get(1)), true);        
+        //Assert.assertEquals(supremo.obtenerPosicion().equals(pos2), true);
+    } 
+    @Test
+    public void testCombinarAlgoformersCreaSupremoConVidaSumaDeTodos() {
+        String nombre1 = "Juan";
+        String nombre2 = "John";
+        Juego juego = new Juego(nombre1,nombre2,new MapaChico());
+        Jugador jugador1 = juego.obtenerJugadorActual();
+        
+        Tablero tablero = juego.obtenerTablero();
+        
+        List<Algoformer> algoformers = jugador1.obtenerListaAlgoformers();
+        List<Algoformer> algoformersACombinar = algoformers.subList(0, 3);
+        Algoformer supremo = algoformers.get(3);
+        
+        List<Posicion> posiciones = new ArrayList<Posicion>();
+        
+        for (Algoformer alg : algoformersACombinar) {
+        	Posicion pos = alg.obtenerPosicion();
+        	
+        	posiciones.add(pos);        	
+        }
+        
+        jugador1.combinarAlgoformers(posiciones.get(1), algoformersACombinar);
+        
+        Assert.assertTrue(supremo.obtenerVida() == 1000);
+      
+    }     
+    @Test(expected=NoSePuedeCombinarException.class)
+    public void testCombinarAlgoformersSobrePosicionInvalida() {
+        String nombre1 = "Juan";
+        String nombre2 = "John";
+        Juego juego = new Juego(nombre1,nombre2,new MapaChico());
+        Jugador jugador1 = juego.obtenerJugadorActual();
+        
+        Tablero tablero = juego.obtenerTablero();
+        
+        List<Algoformer> algoformers = jugador1.obtenerListaAlgoformers();
+        List<Algoformer> algoformersACombinar = algoformers.subList(0, 3);
+        Algoformer supremo = algoformers.get(3);
+        
+        Posicion posAire = new Posicion(1, 1, new Nube());
+        
+        List<Posicion> posiciones = new ArrayList<Posicion>();
+        
+        for (Algoformer alg : algoformersACombinar) {
+        	Posicion pos = alg.obtenerPosicion();
+        	
+        	posiciones.add(pos);        	
+        }
+        
+        jugador1.combinarAlgoformers(posAire, algoformersACombinar);
+    } 
+    @Test
+    public void testCombinarAlgoformersSobrePosicionInvalidaNoSacaAlgoformers() {
+        String nombre1 = "Juan";
+        String nombre2 = "John";
+        Juego juego = new Juego(nombre1,nombre2,new MapaChico());
+        Jugador jugador1 = juego.obtenerJugadorActual();
+        
+        Tablero tablero = juego.obtenerTablero();
+        
+        List<Algoformer> algoformers = jugador1.obtenerListaAlgoformers();
+        List<Algoformer> algoformersACombinar = algoformers.subList(0, 3);
+        Algoformer supremo = algoformers.get(3);
+        
+        Posicion posAire = new Posicion(1, 1, new Nube());
+        
+        List<Posicion> posiciones = new ArrayList<Posicion>();
+        
+        for (Algoformer alg : algoformersACombinar) {
+        	Posicion pos = alg.obtenerPosicion();
+        	
+        	posiciones.add(pos);        	
+        }
+        
+        try {
+        	jugador1.combinarAlgoformers(posAire, algoformersACombinar);
+        } catch(NoSePuedeCombinarException e){
+        	Assert.assertFalse(tablero.estaVacio(posiciones.get(0)));
+        	Assert.assertFalse(tablero.estaVacio(posiciones.get(1)));
+        	Assert.assertFalse(tablero.estaVacio(posiciones.get(2)));            	
+        } 
+        
+    }    
 }
