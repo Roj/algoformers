@@ -94,7 +94,8 @@ public abstract class Algoformer implements Ubicable {
     public void mover(Posicion nuevaPosicion) {
         //verificacion
         this.avisarABuffsMovida();
-        this.modoActual.aceptarSuperficie(nuevaPosicion.obtenerSuperficie(), this);
+        Superficie superficie = nuevaPosicion.obtenerSuperficie();
+        this.modoActual.aceptarSuperficie(superficie, this);
         //todo bien, nos cambiamos
         this.establecerPosicion(nuevaPosicion);
     }       

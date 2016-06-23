@@ -30,9 +30,9 @@ public class Casilla extends Button {
         Posicion posicion;
 	Ubicable ubicable;
         
-	public Casilla(int X, int Y,Superficie sup) {
+	public Casilla(int X, int Y,Posicion pos) {
             this.getStylesheets().add("casilla.css");            
-            this.posicion = new Posicion(X,Y,sup);
+            this.posicion = pos;
             this.setSuperficie();
 	    	    
 	}
@@ -130,5 +130,8 @@ public class Casilla extends Button {
                 this.getStyleClass().add("Maximizado");
                 this.toBack();
         }
-
+        
+        public Posicion getPosicion() {
+            return this.posicion;
+        }
     }

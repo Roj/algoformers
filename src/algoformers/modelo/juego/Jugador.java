@@ -44,6 +44,7 @@ public class Jugador {
         Algoformer algoformerEnemigo = (Algoformer) tablero.obtenerUbicable(destino);
         algoformer.atacar(algoformerEnemigo);
         if (!algoformerEnemigo.esta_vivo()){
+            System.out.println("esta muerto");
             this.tablero.borrarUbicable(destino);
         }
         juego.avanzarTurno();

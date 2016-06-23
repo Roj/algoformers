@@ -36,7 +36,7 @@ public class AccionRealizarMovida implements EventHandler<ActionEvent> {
     	Algoformer algActual = this.contenedorJuego.getAlgoformerActual();
     	
     	for (Casilla casillaCamino : caminoMarcado) {
-    		caminoAlgoformer.add(casillaCamino.getUbicable().obtenerPosicion());
+    		caminoAlgoformer.add(casillaCamino.getPosicion());//getUbicable().obtenerPosicion());
     	}
     	
     	try {
@@ -53,7 +53,7 @@ public class AccionRealizarMovida implements EventHandler<ActionEvent> {
     		Casilla casillaAnterior = casillaInicioMov;
     		for (Casilla casilla : caminoMarcado) {
     	    		casilla.setUbicable(casillaAnterior.getUbicable());
-    	    		casillaAnterior.setUbicable(new Vacio());
+    	    		casillaAnterior.setUbicable((Ubicable)(new Vacio()));
     	    		casillaAnterior.getStyleClass().remove(algActual.getStyle());
     	    		casillaAnterior = casilla;
                         

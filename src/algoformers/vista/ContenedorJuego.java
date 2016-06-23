@@ -111,7 +111,7 @@ public class ContenedorJuego extends Contenedor {
         this.grilla.setGridLinesVisible(true);
         
         for (Posicion pos : posiciones) {
-            Casilla casilla = new Casilla(pos.obtenerX(),pos.obtenerY(),pos.obtenerSuperficie());
+            Casilla casilla = new Casilla(pos.obtenerX(),pos.obtenerY(),pos);
             casilla.setTamanio(120, 100);
             casilla.setUbicable(tablero.obtenerUbicable(pos));
             if (pos.obtenerSuperficie() instanceof Aire){

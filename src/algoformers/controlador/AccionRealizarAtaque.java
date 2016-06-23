@@ -24,14 +24,6 @@ public class AccionRealizarAtaque implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
-    	/* Todo lo de atacar al algoformer
-    	
-    	
-    	
-    	*/
-        
-        
-
 
         Casilla casillaActual = this.contenedorJuego.getCasillaActual();
     	List<Casilla> casillasPosiblesAtaque = this.contenedorJuego.getCasillasPosiblesAtaque(casillaActual);
