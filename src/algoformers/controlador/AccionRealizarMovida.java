@@ -47,22 +47,24 @@ public class AccionRealizarMovida implements EventHandler<ActionEvent> {
                 casillaActual.getStyleClass().remove(aux.getClass());
     		casillaInicioMov.getStyleClass().remove(algActual.getStyle());
     	} catch (ObjetivoMuyLejosException|SuperficieNoAtravesableException e) {
+
+    	}
     		Posicion posFinalAlgoformer = algActual.obtenerPosicion();
     		Casilla casillaAnterior = casillaInicioMov;
     		for (Casilla casilla : caminoMarcado) {
-    			if (casilla.getX() == posFinalAlgoformer.obtenerX() &&
-    				casilla.getY() == posFinalAlgoformer.obtenerY()) {
-    	    		Ubicable aux = casilla.getUbicable();
-    	    		casilla.setUbicable(casillaInicioMov.getUbicable());
-    	    		casillaInicioMov.setUbicable(aux);   				
+    	    		casilla.setUbicable(casillaAnterior.getUbicable());
+    	    		casillaAnterior.setUbicable(new Vacio());
     	    		casillaAnterior.getStyleClass().remove(algActual.getStyle());
     	    		casillaAnterior = casilla;
+                        
+                        if (casilla.getX() == posFinalAlgoformer.obtenerX() &&
+    				casilla.getY() == posFinalAlgoformer.obtenerY()) {
     	    		// esto es feo
     	    		this.juego.avanzarTurno();
+                        break;
     			}    				
     		}
-    	}
-    	
+                
         if (this.juego.obtenerGanador() != null){
             this.contenedorJuego.crearEtiquetaGanador(this.juego.obtenerGanador().obtenerNombre());
         }

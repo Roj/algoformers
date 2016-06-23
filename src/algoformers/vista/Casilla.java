@@ -27,14 +27,11 @@ import javafx.scene.shape.Rectangle;
 
 public class Casilla extends Button {
 	
-	String txt;
-	Posicion posicion;
+        Posicion posicion;
 	Ubicable ubicable;
         
 	public Casilla(int X, int Y,Superficie sup) {
-            this.getStylesheets().add("casilla.css");
-		txt = String.valueOf(X) + " - " +String.valueOf(Y);
-            
+            this.getStylesheets().add("casilla.css");            
             this.posicion = new Posicion(X,Y,sup);
             this.setSuperficie();
 	    	    
@@ -56,31 +53,26 @@ public class Casilla extends Button {
 
 	public void setUbicable(Ubicable ubi) {
                 this.getStyleClass().removeAll("ChispaSuprema","DobleCanon","Flash","BurbujaInmaculada");
-		this.ubicable = ubi;
 		ubi.setUbicable(this);
 	}
         
         public void setUbicable(Algoformer algoformer){
+            this.ubicable = algoformer;
             this.getStyleClass().add(algoformer.getStyle());
-            txt += "- A";
-            this.setText(txt);
         }
 	
         public void setUbicable(Vacio vacio){
-            txt += "- V";
-            this.setText(txt);
+            this.ubicable = vacio;
         }
 
         public void setUbicable(Bonus bonus){
+            this.ubicable = bonus;
             bonus.obtenerEfecto().setEfecto(this);
-            txt += "- B";
-            this.setText(txt);
         }
         
         public void setUbicable(ChispaSuprema chispaSuprema){
+            this.ubicable = chispaSuprema;
             this.getStyleClass().add("ChispaSuprema");
-            txt += "- C";
-            this.setText(txt);
         }
         
         //Double Dispatch para identificar efecto
