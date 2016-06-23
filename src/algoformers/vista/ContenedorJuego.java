@@ -447,7 +447,12 @@ public class ContenedorJuego extends Contenedor {
         etiquetaGanador.getStylesheets().add("texto.css");
         
         this.getChildren().add(etiquetaGanador);
-        etiquetaTurnoActual.setTranslateX(0);
-        etiquetaTurnoActual.setTranslateY(-100);            	
+        etiquetaGanador.setTranslateX(0);
+        etiquetaGanador.setTranslateY(-100);
+        this.crearBotonPasarTurno(true);
+    	this.crearBotonMover(true);
+    	this.crearBotonAtacar(true);
+    	this.crearBotonCambiarModo(true);
+    	this.crearBotonCombinarAlgos(true);
     }
 }

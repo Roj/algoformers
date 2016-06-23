@@ -65,9 +65,6 @@ public class AccionRealizarMovida implements EventHandler<ActionEvent> {
     			}    				
     		}
                 
-        if (this.juego.obtenerGanador() != null){
-            this.contenedorJuego.crearEtiquetaGanador(this.juego.obtenerGanador().obtenerNombre());
-        }
         
     	List<Casilla> casillasPosiblesMovimiento = this.contenedorJuego.getCasillasPosiblesMovimiento(casillaActual);
     	
@@ -78,6 +75,10 @@ public class AccionRealizarMovida implements EventHandler<ActionEvent> {
     	this.contenedorJuego.dejarDeMostrarCasillas(casillasPosiblesMovimiento);
     	
     	this.contenedorJuego.borrarCaminoMarcado();  
+        
+         if (this.juego.obtenerGanador() != null){
+            this.contenedorJuego.crearEtiquetaGanador(this.juego.obtenerGanador().obtenerNombre());
+        }       
     }
     
 }
