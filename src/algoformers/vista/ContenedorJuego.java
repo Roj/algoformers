@@ -23,6 +23,7 @@ import algoformers.controlador.AccionPasarTurno;
 import algoformers.controlador.AccionRealizarAtaque;
 import algoformers.controlador.AccionRealizarMovida;
 import algoformers.controlador.AccionTocarCasilla;
+import algoformers.modelo.juego.Jugador;
 import algoformers.modelo.superficie.Aire;
 import algoformers.modelo.superficie.Superficie;
 import algoformers.modelo.superficie.SuperficieNoAtravesableException;
@@ -432,8 +433,19 @@ public class ContenedorJuego extends Contenedor {
     	this.crearBotonCambiarModo(true);
     	this.crearBotonCombinarAlgos(true);
         
+        if(verificarAlgoformersEnemigosMuertos()){
+            this.juego.finalizarJuego();
+            crearEtiquetaGanador(this.juego.obtenerGanador().obtenerNombre());
+        }
         
         this.resetearScroll();
+    }
+    
+    public boolean verificarAlgoformersEnemigosMuertos(){
+        
+        Jugador Jugador = this.juego.obtenerJugadorActual();
+        List<Algoformer> algoformers = Jugador.obtenerListaAlgoformers();
+        return algoformers.size() <= 1;
     }
     
     public void setCasillaInicioMovimiento(Casilla cas) {

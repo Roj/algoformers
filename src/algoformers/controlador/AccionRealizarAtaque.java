@@ -6,6 +6,7 @@ import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import algoformers.modelo.juego.Juego;
+import algoformers.modelo.juego.Jugador;
 import algoformers.modelo.tablero.Posicion;
 import algoformers.modelo.tablero.Ubicable;
 import algoformers.modelo.tablero.Vacio;
@@ -36,6 +37,7 @@ public class AccionRealizarAtaque implements EventHandler<ActionEvent> {
     		casillaActual.getStyleClass().remove(algoformerEnemigo.getStyle());
     		Ubicable vacio = new Vacio();
     		casillaActual.setUbicable(vacio);
+                borrarAlgoformer(algoformerEnemigo);
             }
         }
         
@@ -46,5 +48,10 @@ public class AccionRealizarAtaque implements EventHandler<ActionEvent> {
 
     }
     
+    public void borrarAlgoformer(Algoformer algoformer){
+        Jugador Jugador = this.juego.obtenerJugadorActual();
+        List<Algoformer> algoformers = Jugador.obtenerListaAlgoformers();
+        algoformers.remove(algoformer);
+    }
 }
 
