@@ -6,7 +6,7 @@ import algoformers.vista.VistaAlgoformer;
 
 public class FabricaAlgoformers {
     public Algoformer crearOptimus() {	
-        ModoAlgoformer humanoide = new ModoHumanoide(200,2,10);
+        ModoAlgoformer humanoide = new ModoHumanoide(50,2,2);
         ModoAlgoformer alterno = new ModoTerrestre(15,4,5);
         
         VistaAlgoformer vistaOptimus = new VistaAlgoformer("Optimus","OptimusHumanoide","OptimusAlterno");

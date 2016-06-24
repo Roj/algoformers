@@ -51,11 +51,7 @@ public class AccionRealizarAtaque implements EventHandler<ActionEvent> {
     public void borrarAlgoformer(Algoformer algoformer){
         Jugador Jugador = this.juego.obtenerJugadorActual();
         List<Algoformer> algoformers = Jugador.obtenerListaAlgoformers();
-        System.out.println(algoformer.getName());
-        System.out.println(algoformers.indexOf(algoformer));
         algoformers.remove(algoformer);
-        System.out.println(algoformers.size());
-        
     }
 }
 
