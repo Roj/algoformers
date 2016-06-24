@@ -424,7 +424,7 @@ public class ContenedorJuego extends Contenedor {
     public void pasarTurno() {
     	//this.juego.avanzarTurno();    	
     	this.crearEtiquetaJugadorActual(); 
-    	
+    	System.out.println(this.juego.obtenerJugadorActual().obtenerNombre());
     	//this.casillaActual.setBlendMode(null);
         this.crearBotonPasarTurno(false);
     	this.crearBotonMover(true);

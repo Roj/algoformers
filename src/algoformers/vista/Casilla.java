@@ -25,6 +25,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+
 public class Casilla extends Button {
 	
         Posicion posicion;
@@ -59,6 +60,7 @@ public class Casilla extends Button {
         public void setUbicable(Algoformer algoformer){
             this.ubicable = algoformer;
             this.getStyleClass().add(algoformer.getStyle());
+            
         }
 	
         public void setUbicable(Vacio vacio){
@@ -132,6 +134,10 @@ public class Casilla extends Button {
         }
         
         public Posicion getPosicion() {
+            return this.posicion;
+        }
+
+        public Posicion obtenerPosicion() {
             return this.posicion;
         }
     }

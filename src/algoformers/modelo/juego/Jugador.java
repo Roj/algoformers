@@ -52,12 +52,16 @@ public class Jugador {
     }
     
     public void moverAPosiciones(Algoformer algof, List<Posicion> destino) {
-        juego.verificarTurno(this);
-        Movimiento mov = new Movimiento(algof,destino,tablero);
-        mov.mover();
-        
-        juego.avanzarTurno();
-        this.avisarAlgoformersPaseDeTurno();
+        try{
+            juego.verificarTurno(this);
+            Movimiento mov = new Movimiento(algof,destino,tablero);
+            mov.mover();
+        } catch (ObjetivoMuyLejosException e){
+            throw new ObjetivoMuyLejosException();
+        } finally {
+            juego.avanzarTurno();
+            this.avisarAlgoformersPaseDeTurno();
+        }
     }
     
     public void cambiarModo(Algoformer algof) {

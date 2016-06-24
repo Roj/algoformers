@@ -11,6 +11,7 @@ import algoformers.modelo.juego.Juego;
 import algoformers.modelo.juego.ObjetivoMuyLejosException;
 import algoformers.modelo.superficie.SuperficieNoAtravesableException;
 import algoformers.modelo.tablero.Posicion;
+import algoformers.modelo.tablero.Tablero;
 import algoformers.modelo.tablero.Ubicable;
 import algoformers.modelo.tablero.Vacio;
 import algoformers.vista.Casilla;
@@ -40,31 +41,22 @@ public class AccionRealizarMovida implements EventHandler<ActionEvent> {
     	}
     	
     	try {
-    		this.juego.obtenerJugadorActual().moverAPosiciones(algActual, caminoAlgoformer);
-    	
-    		Ubicable aux = casillaActual.getUbicable();
-    		casillaActual.setUbicable(casillaInicioMov.getUbicable());
-                casillaActual.getStyleClass().remove(aux.getClass());
-    		casillaInicioMov.getStyleClass().remove(algActual.getStyle());
+    		//Intento moverlo
+                this.juego.obtenerJugadorActual().moverAPosiciones(algActual, caminoAlgoformer);
     	} catch (ObjetivoMuyLejosException|SuperficieNoAtravesableException e) {
-
+                //Lanzar excepcion
     	}
-    		Posicion posFinalAlgoformer = algActual.obtenerPosicion();
-    		Casilla casillaAnterior = casillaInicioMov;
-    		for (Casilla casilla : caminoMarcado) {
-    	    		casilla.setUbicable(casillaAnterior.getUbicable());
-    	    		casillaAnterior.setUbicable((Ubicable)(new Vacio()));
-    	    		casillaAnterior.getStyleClass().remove(algActual.getStyle());
-    	    		casillaAnterior = casilla;
-                        
-                        if (casilla.getX() == posFinalAlgoformer.obtenerX() &&
-    				casilla.getY() == posFinalAlgoformer.obtenerY()) {
-    	    		// esto es feo
-    	    		this.juego.avanzarTurno();
-                        break;
-    			}    				
-    		}
-                
+        
+        Tablero tablero = this.juego.obtenerTablero();
+        
+    	casillaInicioMov.getStyleClass().remove(algActual.getStyle());        
+        Posicion posicion = casillaInicioMov.obtenerPosicion();
+        casillaInicioMov.setUbicable(tablero.obtenerUbicable(posicion));
+        
+        for (Casilla casilla: caminoMarcado){
+            posicion = casilla.obtenerPosicion();
+            casilla.setUbicable(tablero.obtenerUbicable(posicion));
+        }    
         
     	List<Casilla> casillasPosiblesMovimiento = this.contenedorJuego.getCasillasPosiblesMovimiento(casillaActual);
     	
