@@ -60,7 +60,7 @@ public class AccionRealizarMovida implements EventHandler<ActionEvent> {
                         if (casilla.getX() == posFinalAlgoformer.obtenerX() &&
     				casilla.getY() == posFinalAlgoformer.obtenerY()) {
     	    		// esto es feo
-    	    		this.juego.avanzarTurno();
+//    	    		this.juego.avanzarTurno();
                         break;
     			}    				
     		}
