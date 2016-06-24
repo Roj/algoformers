@@ -19,6 +19,7 @@ public class AccionPasarTurno implements EventHandler<ActionEvent> {
     public void handle(ActionEvent event) {   
     	this.juego.obtenerJugadorActual().pasarTurno();
     	this.contenedorJuego.pasarTurno();
+        
     }
 
 }

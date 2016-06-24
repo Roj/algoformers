@@ -431,6 +431,9 @@ public class ContenedorJuego extends Contenedor {
     	this.crearBotonAtacar(true);
     	this.crearBotonCambiarModo(true);
     	this.crearBotonCombinarAlgos(true);
+        
+        
+        this.resetearScroll();
     }
     
     public void setCasillaInicioMovimiento(Casilla cas) {
@@ -439,7 +442,11 @@ public class ContenedorJuego extends Contenedor {
     public Casilla getCasillaInicioMovimiento() {
     	return this.casillaInicialMovimiento;
     }
-
+    public void resetearScroll() {
+        this.casillaActual.requestFocus();
+        this.scroll.setHvalue(this.casillaActual.getX()/this.dimX);
+        this.scroll.setVvalue(this.casillaActual.getY()/this.dimY);
+    }
     public void crearEtiquetaGanador(String nombreGanador){
         Label etiquetaGanador = new Label();
         etiquetaGanador.setText("GANADOR: " + nombreGanador);

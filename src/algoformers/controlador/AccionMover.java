@@ -10,7 +10,7 @@ import javafx.scene.effect.BlendMode;
 
 public class AccionMover implements EventHandler<ActionEvent> {
 	
-	ContenedorJuego contenedorJuego;
+    ContenedorJuego contenedorJuego;
 
     public AccionMover(ContenedorJuego contJuego) {
     	this.contenedorJuego = contJuego;
@@ -30,5 +30,8 @@ public class AccionMover implements EventHandler<ActionEvent> {
         this.contenedorJuego.crearBotonCambiarModo(true);
         this.contenedorJuego.crearBotonCombinarAlgos(true);
         this.contenedorJuego.setCasillaInicioMovimiento(casillaActual);
+        
+        this.contenedorJuego.resetearScroll();
+        
     }
 }
