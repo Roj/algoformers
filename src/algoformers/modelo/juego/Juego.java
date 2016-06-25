@@ -44,12 +44,12 @@ public class Juego {
         this.jugadorActual.agregarAlgoformer(fabrica.crearOptimus());
         this.jugadorActual.agregarAlgoformer(fabrica.crearBumblebee());
         this.jugadorActual.agregarAlgoformer(fabrica.crearRatchet());
-        this.jugadorActual.agregarAlgoformer(fabrica.crearSuperion());
+        this.jugadorActual.agregarSupremo(fabrica.crearSuperion());
         
         this.otroJugador.agregarAlgoformer(fabrica.crearMegatron());
         this.otroJugador.agregarAlgoformer(fabrica.crearBonecrusher());
         this.otroJugador.agregarAlgoformer(fabrica.crearFrenzy());
-        this.otroJugador.agregarAlgoformer(fabrica.crearMenasor());
+        this.otroJugador.agregarSupremo(fabrica.crearMenasor());
     }
     
     private void posicionarAlgoformers(){
@@ -88,11 +88,23 @@ public class Juego {
         this.otroJugador = aux;
     }
 
+    public void verificarAlgoformersEnemigoMuertos(){
+        List<Algoformer> algoformers = this.otroJugador.obtenerListaAlgoformers();
+        System.out.println(algoformers);        
+        if (algoformers.size() <= 0){
+            this.finalizarJuego();
+        }
+    }
+    
     public void finalizarJuego() {
         this.ganador = this.jugadorActual;
     }
     
     public Jugador obtenerGanador(){
         return this.ganador;
+    }
+
+    void borrarAlgoformerEnemigo(Algoformer algoformerEnemigo) {
+        this.otroJugador.borrarAlgoformer(algoformerEnemigo);
     }
 }

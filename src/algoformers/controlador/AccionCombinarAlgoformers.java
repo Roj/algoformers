@@ -25,11 +25,11 @@ public class AccionCombinarAlgoformers implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent event) {
     	Jugador jugadorActual = this.juego.obtenerJugadorActual();
-    	List<Algoformer> combinables = jugadorActual.obtenerListaAlgoformers().subList(0, 3);
+    	List<Algoformer> combinables = jugadorActual.obtenerListaAlgoformers();
     	Casilla casillaActual = this.contenedorJuego.getCasillaActual();  	
     	List<Casilla> casillasPosiblesCombinar = this.contenedorJuego.getCasillasCombinar(casillaActual);
     	
-    	Ubicable supremo = jugadorActual.obtenerListaAlgoformers().get(3);
+    	Ubicable supremo = jugadorActual.obtenerSupremo();
     	
     	jugadorActual.combinarAlgoformers(casillaActual.getUbicable().obtenerPosicion(), combinables);
     	

@@ -107,5 +107,7 @@
     -fx-background-position: right bottom;
 }
 .Minimizado{
-    -fx-background-size: stretch;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 50% 50%;
+    -fx-background-position: right bottom;
 }

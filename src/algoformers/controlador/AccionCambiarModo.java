@@ -31,19 +31,25 @@ public class AccionCambiarModo implements EventHandler<ActionEvent>{
     public void handle(ActionEvent event) {
     	Algoformer algActual = this.contenedorJuego.getAlgoformerActual(); 
         Casilla casillaActual = this.contenedorJuego.getCasillaActual();
-        casillaActual.getStyleClass().remove(algActual.getStyle());
-        algActual.cambiarModo();
-        casillaActual.getStyleClass().add(algActual.getStyle());
-        this.contenedorJuego.crearBotonPasarTurno(true);
-        this.contenedorJuego.crearBotonAtacar(true);
-        this.contenedorJuego.crearBotonMover(true);
-        this.contenedorJuego.crearBotonCambiarModo(true);
-        this.contenedorJuego.crearBotonCombinarAlgos(true);
-        this.contenedorJuego.borrarEstadisticasAlgoformer();
-        this.contenedorJuego.crearEstadisticasAlgoformer(algActual);
+        String styleAnterior = algActual.getStyle();
+        try {
+            algActual.cambiarModo();
+            casillaActual.getStyleClass().remove(styleAnterior);
+            casillaActual.getStyleClass().add(algActual.getStyle());
+            this.contenedorJuego.crearBotonPasarTurno(true);
+            this.contenedorJuego.crearBotonAtacar(true);
+            this.contenedorJuego.crearBotonMover(true);
+            this.contenedorJuego.crearBotonCambiarModo(true);
+            this.contenedorJuego.crearBotonCombinarAlgos(true);
+            this.contenedorJuego.borrarEstadisticasAlgoformer();
+            this.contenedorJuego.crearEstadisticasAlgoformer(algActual);
 
-        this.juego.avanzarTurno();
-        this.contenedorJuego.pasarTurno();
+            this.juego.avanzarTurno();
+            this.contenedorJuego.pasarTurno();
+
+        }catch(Exception e){
+            //Mostrar mensaje de que no se puede realizar el cambio de modo
+        }
         
     }
     

@@ -433,20 +433,20 @@ public class ContenedorJuego extends Contenedor {
     	this.crearBotonCambiarModo(true);
     	this.crearBotonCombinarAlgos(true);
         
-        if(verificarAlgoformersEnemigosMuertos()){
-            this.juego.finalizarJuego();
+        if(this.juego.obtenerGanador() != null){
+//            this.juego.finalizarJuego();
             crearEtiquetaGanador(this.juego.obtenerGanador().obtenerNombre());
         }
         
         this.resetearScroll();
     }
     
-    public boolean verificarAlgoformersEnemigosMuertos(){
-        
-        Jugador Jugador = this.juego.obtenerJugadorActual();
-        List<Algoformer> algoformers = Jugador.obtenerListaAlgoformers();
-        return algoformers.size() <= 1;
-    }
+//    public boolean verificarAlgoformersEnemigosMuertos(){
+//        
+//        Jugador Jugador = this.juego.obtenerJugadorActual();
+//        List<Algoformer> algoformers = Jugador.obtenerListaAlgoformers();
+//        return algoformers.size() <= 1;
+//    }
     
     public void setCasillaInicioMovimiento(Casilla cas) {
     	this.casillaInicialMovimiento = cas;

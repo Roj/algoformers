@@ -40,7 +40,6 @@ public class FabricaAlgoformers {
         
         VistaAlgoformer vistaMegatron = new VistaAlgoformer("Megatron","MegatronHumanoide","MegatronAlterno");
         Algoformer megatron = new Decepticon(550,humanoide,alterno,vistaMegatron);
-        
         return megatron;
     }	
     
@@ -51,7 +50,6 @@ public class FabricaAlgoformers {
         
         VistaAlgoformer vistaBonecrusher = new VistaAlgoformer("Bonecrusher","BonecrusherHumanoide","BonecrusherAlterno");
         Algoformer boncrasher = new Decepticon(200,humanoide,alterno,vistaBonecrusher);
-        
         return boncrasher;
     }	
     
@@ -62,7 +60,6 @@ public class FabricaAlgoformers {
         
         VistaAlgoformer vistaFrenzy = new VistaAlgoformer("Frenzy","FrenzyHumanoide","FrenzyAlterno");
         Algoformer frenzy = new Decepticon(400,humanoide,alterno,vistaFrenzy);
-        
         return frenzy;
     }
     

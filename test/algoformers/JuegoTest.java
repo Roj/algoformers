@@ -96,29 +96,32 @@ public class JuegoTest {
     }
     @Test
     public void testAtacarMuyLejosNoCambiaTurno() {
-        String nombre1 = "Juan";
-        String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2,new MapaChico());
-        Jugador jugador1 = juego.obtenerJugadorActual();
-        
-        Tablero tablero = juego.obtenerTablero();
-        
-        Algoformer algoformer = jugador1.obtenerListaAlgoformers().get(0);
-        
-        tablero.colocarAlgoformer(new Posicion(1,1, new Rocosa()),algoformer);
-        
-        Assert.assertTrue(juego.verificarTurno(jugador1));
+//        En versiones anteriores se verificaba por el modelo
+//        En la version actual la vista no permite atacar a algoformers fuera del rango de ataque
 
-        try {
-            jugador1.atacarPosicion(algoformer,new Posicion(15,1, new Rocosa()));
-            
-            //Si esto sigue ejecutando caimos en un error
-            throw new AssertionError();
-        } catch(ObjetivoMuyLejosException e) {
-            Assert.assertTrue(juego.verificarTurno(jugador1));
-        }
-        
-        
+
+//        String nombre1 = "Juan";
+//        String nombre2 = "John";
+//        Juego juego = new Juego(nombre1,nombre2,new MapaChico());
+//        Jugador jugador1 = juego.obtenerJugadorActual();
+//        
+//        Tablero tablero = juego.obtenerTablero();
+//        
+//        Algoformer algoformer = jugador1.obtenerListaAlgoformers().get(0);
+//        
+//        tablero.colocarAlgoformer(new Posicion(1,1, new Rocosa()),algoformer);
+//        
+//        Assert.assertTrue(juego.verificarTurno(jugador1));
+//
+//        try {
+//            jugador1.atacarPosicion(algoformer,new Posicion(15,1, new Rocosa()));
+//            
+//            //Si esto sigue ejecutando caimos en un error
+//            throw new AssertionError();
+//        } catch(ObjetivoMuyLejosException e) {
+//            Assert.assertTrue(juego.verificarTurno(jugador1));
+//        }
+
     }
     @Test
     public void testAtacarMismoBandoNoCambiaTurno() {
@@ -165,27 +168,32 @@ public class JuegoTest {
     }
     @Test
     public void testAtacarAlVacioNoCambiaTurno() {
-        String nombre1 = "Juan";
-        String nombre2 = "John";
-        Juego juego = new Juego(nombre1,nombre2, new MapaChico());
-        Jugador jugador1 = juego.obtenerJugadorActual();
-        Tablero tablero = juego.obtenerTablero();
-        
-        Algoformer algoformer1 = jugador1.obtenerListaAlgoformers().get(0);
-        
-        tablero.colocarAlgoformer(new Posicion(1,1, new Rocosa()),algoformer1);
-        
-        
-        Assert.assertTrue(juego.verificarTurno(jugador1));
+//        En versiones anteriores se verificaba por el modelo
+//        En la version actual la vista no permite atacar a posiciones vacias
 
-        try {
-            jugador1.atacarPosicion(algoformer1,new Posicion(2,1, new Rocosa()));
-            
-            //Si esto sigue ejecutando caimos en un error
-            throw new AssertionError();
-        } catch(AtaqueInvalidoException e) {
-            Assert.assertTrue(juego.verificarTurno(jugador1));
-        }    
+        
+        
+//        String nombre1 = "Juan";
+//        String nombre2 = "John";
+//        Juego juego = new Juego(nombre1,nombre2, new MapaChico());
+//        Jugador jugador1 = juego.obtenerJugadorActual();
+//        Tablero tablero = juego.obtenerTablero();
+//        
+//        Algoformer algoformer1 = jugador1.obtenerListaAlgoformers().get(0);
+//        
+//        tablero.colocarAlgoformer(new Posicion(1,1, new Rocosa()),algoformer1);
+//        
+//        
+//        Assert.assertTrue(juego.verificarTurno(jugador1));
+//
+//        try {
+//            jugador1.atacarPosicion(algoformer1,new Posicion(2,1, new Rocosa()));
+//            
+//            //Si esto sigue ejecutando caimos en un error
+//            throw new AssertionError();
+//        } catch(AtaqueInvalidoException e) {
+//            Assert.assertTrue(juego.verificarTurno(jugador1));
+//        }    
     }
     @Test
     public void testMoverExitosamenteCambiaLaPosicion(){
@@ -261,63 +269,71 @@ public class JuegoTest {
     }
     @Test
     public void testMoverMuyLejosNoCambiaJugador(){
-        String nombre1 = "Juan";
-        String nombre2 = "Jhon";
-        Juego juego = new Juego(nombre1,nombre2, new MapaChico());
-        Jugador jugador1 = juego.obtenerJugadorActual();
-        Tablero tablero = juego.obtenerTablero();
-        Posicion posicionInicial = new Posicion(0,0, new Rocosa());
-        Algoformer algoformer1 = jugador1.obtenerListaAlgoformers().get(0);
+//        En versiones anteriores se verificaba por el modelo
+//        En la version actual la vista no permite realizar movimientos hasta donde la velocidad le permite
         
-        Assert.assertTrue(juego.verificarTurno(jugador1));
-        
-        try{
-            ArrayList<Posicion> pasos = new ArrayList<>();
-        
-            pasos.add(new Posicion(0,1, new Rocosa()));
-            pasos.add(new Posicion(0,2, new Rocosa()));
-            pasos.add(new Posicion(0,3, new Rocosa()));
-            pasos.add(new Posicion(0,4, new Rocosa()));
-            pasos.add(new Posicion(0,5, new Rocosa()));
-            pasos.add(new Posicion(0,6, new Rocosa()));
-            pasos.add(new Posicion(0,7, new Rocosa()));
-            pasos.add(new Posicion(0,8, new Rocosa()));
-
-            jugador1.moverAPosiciones(algoformer1, pasos);
-            
-            //Si llegamos aca, fallo el test.
-            throw new AssertionError();
-        } catch(ObjetivoMuyLejosException e) {
-            Assert.assertTrue(juego.verificarTurno(jugador1));
-        }        
+//        String nombre1 = "Juan";
+//        String nombre2 = "Jhon";
+//        Juego juego = new Juego(nombre1,nombre2, new MapaChico());
+//        Jugador jugador1 = juego.obtenerJugadorActual();
+//        Tablero tablero = juego.obtenerTablero();
+//        Posicion posicionInicial = new Posicion(0,0, new Rocosa());
+//        Algoformer algoformer1 = jugador1.obtenerListaAlgoformers().get(0);
+//        
+//        Assert.assertTrue(juego.verificarTurno(jugador1));
+//        
+//        try{
+//            ArrayList<Posicion> pasos = new ArrayList<>();
+//        
+//            pasos.add(new Posicion(0,1, new Rocosa()));
+//            pasos.add(new Posicion(0,2, new Rocosa()));
+//            pasos.add(new Posicion(0,3, new Rocosa()));
+//            pasos.add(new Posicion(0,4, new Rocosa()));
+//            pasos.add(new Posicion(0,5, new Rocosa()));
+//            pasos.add(new Posicion(0,6, new Rocosa()));
+//            pasos.add(new Posicion(0,7, new Rocosa()));
+//            pasos.add(new Posicion(0,8, new Rocosa()));
+//
+//            jugador1.moverAPosiciones(algoformer1, pasos);
+//            
+//            //Si llegamos aca, fallo el test.
+//            throw new AssertionError();
+//        } catch(ObjetivoMuyLejosException e) {
+//            Assert.assertTrue(juego.verificarTurno(jugador1));
+//        }        
     }
+    
     @Test
     public void testMoverAPosicionConAlgoformerNoCambiaJugador(){
-        String nombre1 = "Juan";
-        String nombre2 = "Jhon";
-        Juego juego = new Juego(nombre1,nombre2, new MapaChico());
-        Jugador jugador1 = juego.obtenerJugadorActual();
-        Jugador jugador2 = juego.obtenerJugadorEnEspera();
-        Tablero tablero = juego.obtenerTablero();
-        Algoformer algoformerj1 = jugador1.obtenerListaAlgoformers().get(0);
-        Algoformer algoformerj2 = jugador2.obtenerListaAlgoformers().get(0);
-        tablero.colocarAlgoformer(new Posicion(1,1, new Rocosa()),algoformerj1);
-        tablero.colocarAlgoformer(new Posicion(1,2, new Rocosa()),algoformerj2);
-
-        Assert.assertTrue(juego.verificarTurno(jugador1));
+//        En versiones anteriores se verificaba por el modelo
+//        En la version actual la vista no permite realizar movimientos donde hay otro algoformer
         
-        try{
-            Posicion posicionFinal = new Posicion(1,2, new Rocosa());
-            
-            ArrayList<Posicion> posiciones = new ArrayList<Posicion>();
-            
-            posiciones.add(posicionFinal);
-            jugador1.moverAPosiciones(algoformerj1, posiciones); 
-            
-            throw new AssertionError();
-        } catch(NoSuperponibleException e) {
-            Assert.assertTrue(juego.verificarTurno(jugador1));
-        }        
+        
+//        String nombre1 = "Juan";
+//        String nombre2 = "Jhon";
+//        Juego juego = new Juego(nombre1,nombre2, new MapaChico());
+//        Jugador jugador1 = juego.obtenerJugadorActual();
+//        Jugador jugador2 = juego.obtenerJugadorEnEspera();
+//        Tablero tablero = juego.obtenerTablero();
+//        Algoformer algoformerj1 = jugador1.obtenerListaAlgoformers().get(0);
+//        Algoformer algoformerj2 = jugador2.obtenerListaAlgoformers().get(0);
+//        tablero.colocarAlgoformer(new Posicion(1,1, new Rocosa()),algoformerj1);
+//        tablero.colocarAlgoformer(new Posicion(1,2, new Rocosa()),algoformerj2);
+//
+//        Assert.assertTrue(juego.verificarTurno(jugador1));
+//        
+//        try{
+//            Posicion posicionFinal = new Posicion(1,2, new Rocosa());
+//            
+//            ArrayList<Posicion> posiciones = new ArrayList<Posicion>();
+//            
+//            posiciones.add(posicionFinal);
+//            jugador1.moverAPosiciones(algoformerj1, posiciones); 
+//            
+//            throw new AssertionError();
+//        } catch(NoSuperponibleException e) {
+//            Assert.assertTrue(juego.verificarTurno(jugador1));
+//        }        
     }
     @Test(expected=ObjetivoMuyLejosException.class)
     public void testMoverAPosicionMuyLejosLanzaObjetoMuyLejosException(){
@@ -436,7 +452,7 @@ public class JuegoTest {
     }
     
     @Test
-    public void testCombinarAlgoformersSeteaSupremoEnMedioDeTodos() {
+    public void testCombinarAlgoformersSeteaSupremoEnPosicionDeseada() {
         String nombre1 = "Juan";
         String nombre2 = "John";
         Juego juego = new Juego(nombre1,nombre2,new MapaChico());
@@ -445,8 +461,8 @@ public class JuegoTest {
         Tablero tablero = juego.obtenerTablero();
         
         List<Algoformer> algoformers = jugador1.obtenerListaAlgoformers();
-        List<Algoformer> algoformersACombinar = algoformers.subList(0, 3);
-        Algoformer supremo = algoformers.get(3);
+        List<Algoformer> algoformersACombinar = algoformers;
+        Algoformer supremo = (Algoformer) jugador1.obtenerSupremo();
         
         List<Posicion> posiciones = new ArrayList<Posicion>();
         
@@ -475,8 +491,8 @@ public class JuegoTest {
         Tablero tablero = juego.obtenerTablero();
         
         List<Algoformer> algoformers = jugador1.obtenerListaAlgoformers();
-        List<Algoformer> algoformersACombinar = algoformers.subList(0, 3);
-        Algoformer supremo = algoformers.get(3);
+        List<Algoformer> algoformersACombinar = algoformers;
+        Algoformer supremo = (Algoformer) jugador1.obtenerSupremo();
         
         List<Posicion> posiciones = new ArrayList<Posicion>();
         
@@ -501,8 +517,8 @@ public class JuegoTest {
         Tablero tablero = juego.obtenerTablero();
         
         List<Algoformer> algoformers = jugador1.obtenerListaAlgoformers();
-        List<Algoformer> algoformersACombinar = algoformers.subList(0, 3);
-        Algoformer supremo = algoformers.get(3);
+        List<Algoformer> algoformersACombinar = algoformers;
+        Algoformer supremo = (Algoformer) jugador1.obtenerSupremo();
         
         Posicion posAire = new Posicion(1, 1, new Nube());
         
@@ -526,8 +542,8 @@ public class JuegoTest {
         Tablero tablero = juego.obtenerTablero();
         
         List<Algoformer> algoformers = jugador1.obtenerListaAlgoformers();
-        List<Algoformer> algoformersACombinar = algoformers.subList(0, 3);
-        Algoformer supremo = algoformers.get(3);
+        List<Algoformer> algoformersACombinar = algoformers;
+        Algoformer supremo = (Algoformer) jugador1.obtenerSupremo();
         
         Posicion posAire = new Posicion(1, 1, new Nube());
         
